@@ -1,0 +1,10 @@
+**/build/
+**/dist/
+**/node_modules/
+**/.astro/
+**/storybook-static/
+**/target/
+pnpm-lock.yaml
+
+# Generated/auto-formatted docs (specs e plans tem formatação própria)
+docs/superpowers/
