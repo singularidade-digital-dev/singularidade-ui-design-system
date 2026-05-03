@@ -1,0 +1,40 @@
+{
+  "brand": {
+    "name": { "$value": "integras.digital", "$type": "string" },
+    "id": { "$value": "integras", "$type": "string" },
+    "logoSymbol": {
+      "$value": "@singularidade/brand-assets/logos/integras/symbol.svg",
+      "$type": "asset"
+    },
+    "logoHorizontal": {
+      "$value": "@singularidade/brand-assets/logos/integras/horizontal.svg",
+      "$type": "asset"
+    },
+    "logoVertical": {
+      "$value": "@singularidade/brand-assets/logos/integras/vertical.svg",
+      "$type": "asset"
+    },
+    "logoMonochrome": {
+      "$value": "@singularidade/brand-assets/logos/integras/monochrome.svg",
+      "$type": "asset"
+    },
+    "favicon": {
+      "16": {
+        "$value": "@singularidade/brand-assets/logos/integras/icon-16.png",
+        "$type": "asset"
+      },
+      "32": {
+        "$value": "@singularidade/brand-assets/logos/integras/icon-32.png",
+        "$type": "asset"
+      },
+      "180": {
+        "$value": "@singularidade/brand-assets/logos/integras/icon-180.png",
+        "$type": "asset"
+      },
+      "512": {
+        "$value": "@singularidade/brand-assets/logos/integras/icon-512.png",
+        "$type": "asset"
+      }
+    }
+  }
+}

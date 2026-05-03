@@ -1,0 +1,40 @@
+{
+  "brand": {
+    "name": { "$value": "Singularidade Digital", "$type": "string" },
+    "id": { "$value": "singularidade", "$type": "string" },
+    "logoSymbol": {
+      "$value": "@singularidade/brand-assets/logos/singularidade/symbol.svg",
+      "$type": "asset"
+    },
+    "logoHorizontal": {
+      "$value": "@singularidade/brand-assets/logos/singularidade/horizontal.svg",
+      "$type": "asset"
+    },
+    "logoVertical": {
+      "$value": "@singularidade/brand-assets/logos/singularidade/vertical.svg",
+      "$type": "asset"
+    },
+    "logoMonochrome": {
+      "$value": "@singularidade/brand-assets/logos/singularidade/monochrome.svg",
+      "$type": "asset"
+    },
+    "favicon": {
+      "16": {
+        "$value": "@singularidade/brand-assets/logos/singularidade/icon-16.png",
+        "$type": "asset"
+      },
+      "32": {
+        "$value": "@singularidade/brand-assets/logos/singularidade/icon-32.png",
+        "$type": "asset"
+      },
+      "180": {
+        "$value": "@singularidade/brand-assets/logos/singularidade/icon-180.png",
+        "$type": "asset"
+      },
+      "512": {
+        "$value": "@singularidade/brand-assets/logos/singularidade/icon-512.png",
+        "$type": "asset"
+      }
+    }
+  }
+}
