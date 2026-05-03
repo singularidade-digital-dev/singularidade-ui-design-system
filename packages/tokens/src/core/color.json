@@ -1,0 +1,162 @@
+{
+  "color": {
+    "brand": {
+      "magenta": {
+        "50": { "$value": "#FCE7F3", "$type": "color", "$description": "Magenta 50" },
+        "100": { "$value": "#FBCFE8", "$type": "color" },
+        "200": { "$value": "#F9A8D4", "$type": "color" },
+        "300": {
+          "$value": "#F472B6",
+          "$type": "color",
+          "$description": "Magenta 300 — primary em dark mode"
+        },
+        "400": { "$value": "#EC4899", "$type": "color" },
+        "500": {
+          "$value": "#E91E8B",
+          "$type": "color",
+          "$description": "Brand primary — Singularidade magenta (oficial)"
+        },
+        "600": { "$value": "#C41776", "$type": "color" },
+        "700": { "$value": "#9D174D", "$type": "color" },
+        "800": { "$value": "#831843", "$type": "color" },
+        "900": { "$value": "#500724", "$type": "color" },
+        "950": { "$value": "#2E0414", "$type": "color" }
+      },
+      "coral": {
+        "50": { "$value": "#FFF1F2", "$type": "color" },
+        "100": { "$value": "#FFE4E6", "$type": "color" },
+        "200": { "$value": "#FECDD3", "$type": "color" },
+        "300": {
+          "$value": "#FDA4AF",
+          "$type": "color",
+          "$description": "Coral 300 — interactive hover em dark"
+        },
+        "400": {
+          "$value": "#FB7185",
+          "$type": "color",
+          "$description": "Coral 400 — interactive primary em dark"
+        },
+        "500": {
+          "$value": "#E8606A",
+          "$type": "color",
+          "$description": "Brand secondary — Singularidade coral (oficial)"
+        },
+        "600": {
+          "$value": "#BE3550",
+          "$type": "color",
+          "$description": "Coral 600 — interactive primary em light"
+        },
+        "700": {
+          "$value": "#9F1239",
+          "$type": "color",
+          "$description": "Coral 700 — interactive hover em light"
+        },
+        "800": { "$value": "#791832", "$type": "color" },
+        "900": { "$value": "#571520", "$type": "color" },
+        "950": { "$value": "#2C0A10", "$type": "color" }
+      },
+      "orange": {
+        "50": { "$value": "#FEF7E7", "$type": "color" },
+        "100": { "$value": "#FDE4A8", "$type": "color" },
+        "200": { "$value": "#FCD061", "$type": "color" },
+        "300": {
+          "$value": "#FBBF24",
+          "$type": "color",
+          "$description": "Orange 300 — warning em dark"
+        },
+        "400": { "$value": "#F8B339", "$type": "color" },
+        "500": {
+          "$value": "#F5A623",
+          "$type": "color",
+          "$description": "Brand tertiary — Singularidade orange (oficial)"
+        },
+        "600": { "$value": "#DD8E0E", "$type": "color" },
+        "700": { "$value": "#A86B0B", "$type": "color" },
+        "800": { "$value": "#784D08", "$type": "color" },
+        "900": { "$value": "#483006", "$type": "color" },
+        "950": { "$value": "#2A1B03", "$type": "color" }
+      }
+    },
+    "neutral": {
+      "0": { "$value": "#FFFFFF", "$type": "color" },
+      "50": {
+        "$value": "#FDFAFC",
+        "$type": "color",
+        "$description": "Surface base light (warm-magenta undertone)"
+      },
+      "100": { "$value": "#F5F0F4", "$type": "color" },
+      "200": {
+        "$value": "#ECE5EB",
+        "$type": "color",
+        "$description": "Border subtle light"
+      },
+      "300": { "$value": "#C8BCC4", "$type": "color" },
+      "400": { "$value": "#A697A1", "$type": "color" },
+      "500": { "$value": "#735F6B", "$type": "color", "$description": "Text muted" },
+      "600": { "$value": "#524049", "$type": "color" },
+      "700": { "$value": "#3A2C33", "$type": "color" },
+      "800": {
+        "$value": "#261A21",
+        "$type": "color",
+        "$description": "Text primary light"
+      },
+      "900": { "$value": "#1A111A", "$type": "color" },
+      "950": {
+        "$value": "#1A1517",
+        "$type": "color",
+        "$description": "Surface base dark"
+      },
+      "1000": { "$value": "#000000", "$type": "color" }
+    },
+    "feedback": {
+      "success": {
+        "50": { "$value": "#ECFDF5", "$type": "color" },
+        "100": { "$value": "#D1FAE5", "$type": "color" },
+        "300": { "$value": "#6EE7B7", "$type": "color", "$description": "Success em dark" },
+        "400": { "$value": "#34D399", "$type": "color" },
+        "500": { "$value": "#10B981", "$type": "color" },
+        "600": { "$value": "#059669", "$type": "color" },
+        "700": { "$value": "#047857", "$type": "color", "$description": "Success em light" },
+        "900": { "$value": "#064E3B", "$type": "color" }
+      },
+      "error": {
+        "50": { "$value": "#FEF2F2", "$type": "color" },
+        "100": { "$value": "#FEE2E2", "$type": "color" },
+        "300": { "$value": "#FCA5A5", "$type": "color" },
+        "400": { "$value": "#F87171", "$type": "color", "$description": "Error em dark" },
+        "500": { "$value": "#EF4444", "$type": "color" },
+        "600": {
+          "$value": "#DC2626",
+          "$type": "color",
+          "$description": "Error em light — red puro pra distinguir do coral"
+        },
+        "700": { "$value": "#B91C1C", "$type": "color" },
+        "900": { "$value": "#7F1D1D", "$type": "color" }
+      },
+      "warning": {
+        "50": { "$value": "#FFFBEB", "$type": "color" },
+        "100": { "$value": "#FEF3C7", "$type": "color" },
+        "300": { "$value": "#FCD34D", "$type": "color" },
+        "400": {
+          "$value": "#FBBF24",
+          "$type": "color",
+          "$description": "Warning em dark — amber"
+        },
+        "500": { "$value": "#F59E0B", "$type": "color" },
+        "600": { "$value": "#D97706", "$type": "color" },
+        "700": { "$value": "#B45309", "$type": "color", "$description": "Warning em light" },
+        "900": { "$value": "#78350F", "$type": "color" }
+      },
+      "info": {
+        "50": { "$value": "#EFF6FF", "$type": "color" },
+        "100": { "$value": "#DBEAFE", "$type": "color" },
+        "300": { "$value": "#93C5FD", "$type": "color" },
+        "400": { "$value": "#60A5FA", "$type": "color", "$description": "Info em dark" },
+        "500": { "$value": "#3B82F6", "$type": "color" },
+        "600": { "$value": "#2563EB", "$type": "color" },
+        "700": { "$value": "#1D4ED8", "$type": "color", "$description": "Info em light" },
+        "900": { "$value": "#1E3A8A", "$type": "color" }
+      }
+    }
+  }
+}
