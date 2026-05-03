@@ -1,1 +1,35 @@
 .superpowers/
+
+# Dependencies
+node_modules/
+
+# Build outputs
+build/
+dist/
+target/
+storybook-static/
+.astro/
+
+# Caches
+.turbo/
+.changeset/.cache/
+*.tsbuildinfo
+
+# Logs
+*.log
+pnpm-debug.log*
+npm-debug.log*
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+.env.*.local
