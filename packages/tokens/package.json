@@ -1,0 +1,39 @@
+{
+  "name": "@singularidade/tokens",
+  "version": "0.0.0",
+  "description": "Singularidade Design System — design tokens (W3C DTF)",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./build/js/tokens.js",
+  "types": "./build/js/tokens.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/js/tokens.d.ts",
+      "import": "./build/js/tokens.js"
+    },
+    "./css/*": "./build/css/*",
+    "./json/*": "./build/json/*",
+    "./tokens.json": "./build/json/tokens.json"
+  },
+  "files": [
+    "build/css/*.css",
+    "build/js/tokens.js",
+    "build/js/tokens.d.ts",
+    "build/json/tokens.json",
+    "src/**/*.json"
+  ],
+  "scripts": {
+    "build": "node style-dictionary.config.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.3.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
