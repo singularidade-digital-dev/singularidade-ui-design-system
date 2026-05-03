@@ -32,8 +32,8 @@ describe('build outputs', () => {
     expect(existsSync(join(BUILD_DIR, 'json/tokens.json'))).toBe(true);
   });
 
-  it('Java SingularidadeTokens.java existe e tem package + classe', () => {
-    const javaPath = join(BUILD_DIR, 'java/SingularidadeTokens.java');
+  it('Java SingularidadeTokens.java existe no path do package + tem classe', () => {
+    const javaPath = join(BUILD_DIR, 'java/digital/singularidade/tokens/SingularidadeTokens.java');
     expect(existsSync(javaPath)).toBe(true);
     const java = readFileSync(javaPath, 'utf-8');
     expect(java).toContain('package digital.singularidade.tokens;');

@@ -5,10 +5,12 @@ import { mkdirSync, readdirSync } from 'fs';
 const BRANDS = ['singularidade', 'integras'];
 const MODES = ['light', 'dark'];
 
+const JAVA_PACKAGE_PATH = 'build/java/digital/singularidade/tokens';
+
 mkdirSync('build/css', { recursive: true });
 mkdirSync('build/js', { recursive: true });
 mkdirSync('build/json', { recursive: true });
-mkdirSync('build/java', { recursive: true });
+mkdirSync(JAVA_PACKAGE_PATH, { recursive: true });
 
 // SD4 builtin css/variables doesn't accept options.selector — register a custom format.
 StyleDictionary.registerFormat({
@@ -102,7 +104,7 @@ const javaConfig = {
   platforms: {
     java: {
       transformGroup: 'java',
-      buildPath: 'build/java/',
+      buildPath: `${JAVA_PACKAGE_PATH}/`,
       files: [
         {
           destination: 'SingularidadeTokens.java',
@@ -154,4 +156,4 @@ console.log('✓ Build complete');
 console.log(`  CSS:  ${readdirSync('build/css').length} files`);
 console.log(`  JS:   ${readdirSync('build/js').length} files`);
 console.log(`  JSON: ${readdirSync('build/json').length} files`);
-console.log(`  Java: ${readdirSync('build/java').length} files`);
+console.log(`  Java: ${readdirSync(JAVA_PACKAGE_PATH).length} files`);

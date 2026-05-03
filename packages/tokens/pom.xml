@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>digital.singularidade</groupId>
+        <artifactId>singularidade-ui-design-system-parent</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>tokens</artifactId>
+    <packaging>jar</packaging>
+    <name>Singularidade Tokens</name>
+    <description>Design tokens compiled to Java constants and CSS</description>
+
+    <build>
+        <sourceDirectory>build/java</sourceDirectory>
+
+        <resources>
+            <resource>
+                <directory>build/css</directory>
+                <targetPath>META-INF/resources/tokens/css</targetPath>
+            </resource>
+            <resource>
+                <directory>build/json</directory>
+                <targetPath>META-INF/resources/tokens/json</targetPath>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>build-tokens</id>
+                        <phase>generate-sources</phase>
+                        <goals><goal>exec</goal></goals>
+                        <configuration>
+                            <executable>pnpm</executable>
+                            <arguments>
+                                <argument>--filter</argument>
+                                <argument>@singularidade/tokens</argument>
+                                <argument>build</argument>
+                            </arguments>
+                            <workingDirectory>${project.basedir}/../..</workingDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
