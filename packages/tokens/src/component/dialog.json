@@ -1,0 +1,11 @@
+{
+  "dialog": {
+    "background": { "$value": "{color.surface.raised}", "$type": "color" },
+    "border": { "$value": "{color.border.subtle}", "$type": "color" },
+    "radius": { "$value": "{radius.lg}", "$type": "dimension" },
+    "padding": { "$value": "{size.6}", "$type": "dimension" },
+    "shadow": { "$value": "{shadow.light.xl}", "$type": "shadow" },
+    "backdrop": { "$value": "{color.surface.overlay}", "$type": "color" },
+    "max-width": { "$value": "560px", "$type": "dimension" }
+  }
+}

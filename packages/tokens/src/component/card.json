@@ -1,0 +1,12 @@
+{
+  "card": {
+    "background": { "$value": "{color.surface.raised}", "$type": "color" },
+    "border": { "$value": "{color.border.subtle}", "$type": "color" },
+    "radius": { "$value": "{radius.lg}", "$type": "dimension" },
+    "padding": { "$value": "{size.5}", "$type": "dimension" },
+    "shadow": {
+      "default": { "$value": "{shadow.light.xs}", "$type": "shadow" },
+      "hover": { "$value": "{shadow.light.md}", "$type": "shadow" }
+    }
+  }
+}

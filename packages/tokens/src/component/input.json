@@ -1,0 +1,21 @@
+{
+  "input": {
+    "background": { "$value": "{color.surface.raised}", "$type": "color" },
+    "foreground": { "$value": "{color.text.primary}", "$type": "color" },
+    "border": { "$value": "{color.border.default}", "$type": "color" },
+    "border-radius": { "$value": "{radius.md}", "$type": "dimension" },
+    "padding": { "$value": "{size.2} {size.3}", "$type": "dimension" },
+    "placeholder": { "$value": "{color.text.muted}", "$type": "color" },
+    "focus": {
+      "border": { "$value": "{color.interactive.primary}", "$type": "color" },
+      "ring": {
+        "$value": "0 0 0 2px {color.interactive.primary}",
+        "$type": "shadow"
+      }
+    },
+    "disabled": {
+      "background": { "$value": "{color.surface.sunken}", "$type": "color" },
+      "foreground": { "$value": "{color.text.disabled}", "$type": "color" }
+    }
+  }
+}
