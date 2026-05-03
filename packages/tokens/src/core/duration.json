@@ -1,0 +1,16 @@
+{
+  "duration": {
+    "instant": { "$value": "0ms", "$type": "duration" },
+    "fast": {
+      "$value": "100ms",
+      "$type": "duration",
+      "$description": "Micro-interações (hover, focus)"
+    },
+    "base": { "$value": "200ms", "$type": "duration", "$description": "Default" },
+    "slow": {
+      "$value": "400ms",
+      "$type": "duration",
+      "$description": "Mudanças de página, dialogs"
+    }
+  }
+}

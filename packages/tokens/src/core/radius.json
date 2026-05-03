@@ -1,0 +1,23 @@
+{
+  "radius": {
+    "none": { "$value": "0px", "$type": "dimension" },
+    "xs": { "$value": "2px", "$type": "dimension" },
+    "sm": { "$value": "6px", "$type": "dimension" },
+    "md": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Botões, inputs default"
+    },
+    "lg": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Cards, dialogs"
+    },
+    "xl": { "$value": "16px", "$type": "dimension" },
+    "full": {
+      "$value": "9999px",
+      "$type": "dimension",
+      "$description": "Pills, avatares"
+    }
+  }
+}

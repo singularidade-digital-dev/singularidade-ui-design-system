@@ -1,0 +1,21 @@
+{
+  "easing": {
+    "linear": { "$value": "linear", "$type": "cubicBezier" },
+    "ease-out": {
+      "$value": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "$type": "cubicBezier",
+      "$description": "Entrada (padrão)"
+    },
+    "ease-in": {
+      "$value": "cubic-bezier(0.4, 0, 1, 1)",
+      "$type": "cubicBezier",
+      "$description": "Saída"
+    },
+    "ease-in-out": { "$value": "cubic-bezier(0.4, 0, 0.2, 1)", "$type": "cubicBezier" },
+    "spring": {
+      "$value": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+      "$type": "cubicBezier",
+      "$description": "Drag, pop"
+    }
+  }
+}

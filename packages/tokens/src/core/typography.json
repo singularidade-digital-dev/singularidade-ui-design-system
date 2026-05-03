@@ -1,0 +1,56 @@
+{
+  "font": {
+    "family": {
+      "sans": {
+        "$value": "'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        "$type": "fontFamily",
+        "$description": "Display + body — geometric, modern"
+      },
+      "mono": {
+        "$value": "'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace",
+        "$type": "fontFamily",
+        "$description": "Code, números financeiros, IDs"
+      }
+    },
+    "weight": {
+      "regular": { "$value": 400, "$type": "fontWeight" },
+      "medium": { "$value": 500, "$type": "fontWeight" },
+      "semibold": { "$value": 600, "$type": "fontWeight" },
+      "bold": { "$value": 700, "$type": "fontWeight" }
+    },
+    "size": {
+      "xs": { "$value": "11px", "$type": "dimension", "$description": "Labels, captions" },
+      "s": { "$value": "13px", "$type": "dimension", "$description": "Secondary body" },
+      "m": { "$value": "14px", "$type": "dimension", "$description": "Body default" },
+      "l": { "$value": "16px", "$type": "dimension" },
+      "xl": { "$value": "18px", "$type": "dimension", "$description": "H4, section headings" },
+      "2xl": { "$value": "22px", "$type": "dimension", "$description": "H3, page titles" },
+      "3xl": { "$value": "28px", "$type": "dimension", "$description": "H2" },
+      "4xl": { "$value": "32px", "$type": "dimension" },
+      "5xl": { "$value": "40px", "$type": "dimension", "$description": "H1, hero" },
+      "6xl": { "$value": "48px", "$type": "dimension" },
+      "7xl": { "$value": "56px", "$type": "dimension" }
+    },
+    "lineHeight": {
+      "tight": { "$value": "1.1", "$type": "number" },
+      "snug": { "$value": "1.25", "$type": "number" },
+      "normal": { "$value": "1.5", "$type": "number", "$description": "Body default" },
+      "relaxed": { "$value": "1.75", "$type": "number" }
+    },
+    "letterSpacing": {
+      "tighter": {
+        "$value": "-0.03em",
+        "$type": "dimension",
+        "$description": "Display large"
+      },
+      "tight": { "$value": "-0.02em", "$type": "dimension", "$description": "Headings" },
+      "normal": { "$value": "0", "$type": "dimension" },
+      "wide": {
+        "$value": "0.04em",
+        "$type": "dimension",
+        "$description": "Labels uppercase"
+      },
+      "wider": { "$value": "0.06em", "$type": "dimension" }
+    }
+  }
+}
