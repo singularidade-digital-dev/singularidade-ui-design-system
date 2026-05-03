@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write # npm provenance
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: pnpm/action-setup@v4
+        with: { version: 9.15.0 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          registry-url: 'https://registry.npmjs.org'
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 21, cache: maven }
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-1
+          role-to-assume: ${{ secrets.AWS_CODEARTIFACT_ROLE }}
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
+          createGithubReleases: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Sync Maven version
+        if: steps.changesets.outputs.published == 'true'
+        run: |
+          NEW_VERSION=$(node -p "require('./packages/tokens/package.json').version")
+          mvn versions:set -DnewVersion=$NEW_VERSION -DgenerateBackupPoms=false
+          mvn versions:commit
+
+      - name: Login to AWS CodeArtifact
+        if: steps.changesets.outputs.published == 'true'
+        run: |
+          aws codeartifact login --tool maven --repository maven --domain singularidade-digital --domain-owner 539191403497
+
+      - name: Maven Deploy
+        if: steps.changesets.outputs.published == 'true'
+        run: mvn -pl packages/tokens deploy -DskipTests -B
