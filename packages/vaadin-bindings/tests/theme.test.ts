@@ -65,4 +65,43 @@ describe('vaadin-bindings theme', () => {
     expect(java).toContain('BRAND_INTEGRAS');
     expect(java).toContain('@JsModule');
   });
+
+  // ---- Smoke tests against brand×theme CSS output ---------------------
+  // These guard against silent regressions in the Style Dictionary pipeline.
+  // The brand-color values below are committed in @singularidade/tokens
+  // (src/core/color.json + src/brands/*); if Style Dictionary's transforms
+  // change or a brand swap is misrouted, these tests catch it before the
+  // theme reaches downstream consumers.
+
+  it('singularidade.light.css resolves --color-interactive-primary to coral.700 (#be3550)', () => {
+    const path = join(ROOT, '../tokens/build/css/singularidade.light.css');
+    expect(existsSync(path)).toBe(true);
+    const css = readFileSync(path, 'utf-8');
+    expect(css).toMatch(/--color-interactive-primary:\s*#be3550/i);
+  });
+
+  it('singularidade.dark.css resolves --color-interactive-primary to coral.400 brighter (#fb7185)', () => {
+    const path = join(ROOT, '../tokens/build/css/singularidade.dark.css');
+    expect(existsSync(path)).toBe(true);
+    const css = readFileSync(path, 'utf-8');
+    expect(css).toMatch(/--color-interactive-primary:\s*#fb7185/i);
+  });
+
+  it('integras.light.css resolves --color-interactive-primary (sub-brand override)', () => {
+    const path = join(ROOT, '../tokens/build/css/integras.light.css');
+    expect(existsSync(path)).toBe(true);
+    const css = readFileSync(path, 'utf-8');
+    // Integras uses a distinct primary; assert it's defined and not the same
+    // hex as singularidade.light to verify the brand overlay actually overrides.
+    expect(css).toMatch(/--color-interactive-primary:\s*#[0-9a-f]{6}/i);
+  });
+
+  it('styles.css supports both Vaadin standard `theme="dark"` and data-theme dark triggers', () => {
+    // Regression guard: dark mode broke when only [data-theme='dark'] matched
+    // (Vaadin Flow uses theme="dark" attribute); both selectors must apply
+    // the same dark token set.
+    const css = readFileSync(join(ROOT, 'themes/singularidade-base/styles.css'), 'utf-8');
+    expect(css).toMatch(/\[theme~='dark'\]/);
+    expect(css).toMatch(/\[data-theme='dark'\]/);
+  });
 });

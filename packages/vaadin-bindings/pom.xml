@@ -50,7 +50,15 @@
               so the source-of-truth lives in @singularidade/tokens (Style Dictionary
               output in build/css) and @singularidade/brand-assets (src/fonts), and
               vaadin-bindings serves them under /themes/singularidade-base/{tokens,fonts}/
-              — the only path Spring Security / Vaadin allow by default.
+              — the only path Spring Security / Vaadin Flow allow by default.
+
+              Alternative considered: keep tokens/brand-assets at their natural
+              classpath locations (/tokens/css/*, /brand-assets/fonts/*) and have
+              consumers add Spring Security `requestMatchers("/tokens/**", "/brand-assets/**").permitAll()`.
+              Rejected because it pushes asset-path knowledge into every consumer's
+              security config — breaking encapsulation. With this Maven resource
+              copy, the design-system ships a single self-contained `/themes/<name>`
+              tree that any Vaadin app picks up without security-config changes.
             -->
             <resource>
                 <directory>../tokens/build/css</directory>
