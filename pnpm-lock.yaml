@@ -212,6 +212,18 @@ importers:
         specifier: ^4.3.0
         version: 4.4.0(tslib@2.8.1)
 
+  packages/vaadin-bindings:
+    devDependencies:
+      '@singularidade/brand-assets':
+        specifier: workspace:*
+        version: link:../brand-assets
+      '@singularidade/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+      vitest:
+        specifier: ^2.1.0
+        version: 2.1.9(@types/node@24.12.2)
+
 packages:
 
   '@adobe/css-tools@4.4.4':
@@ -11060,6 +11072,24 @@ snapshots:
       - supports-color
       - terser
 
+  vite-node@2.1.9(@types/node@24.12.2):
+    dependencies:
+      cac: 6.7.14
+      debug: 4.4.3
+      es-module-lexer: 1.7.0
+      pathe: 1.1.2
+      vite: 5.4.21(@types/node@24.12.2)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+
   vite@5.4.21(@types/node@22.19.17):
     dependencies:
       esbuild: 0.21.5
@@ -11120,6 +11150,41 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.19.17
+    transitivePeerDependencies:
+      - less
+      - lightningcss
+      - msw
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+
+  vitest@2.1.9(@types/node@24.12.2):
+    dependencies:
+      '@vitest/expect': 2.1.9
+      '@vitest/mocker': 2.1.9(vite@5.4.21(@types/node@22.19.17))
+      '@vitest/pretty-format': 2.1.9
+      '@vitest/runner': 2.1.9
+      '@vitest/snapshot': 2.1.9
+      '@vitest/spy': 2.1.9
+      '@vitest/utils': 2.1.9
+      chai: 5.3.3
+      debug: 4.4.3
+      expect-type: 1.3.0
+      magic-string: 0.30.21
+      pathe: 1.1.2
+      std-env: 3.10.0
+      tinybench: 2.9.0
+      tinyexec: 0.3.2
+      tinypool: 1.1.1
+      tinyrainbow: 1.2.0
+      vite: 5.4.21(@types/node@24.12.2)
+      vite-node: 2.1.9(@types/node@24.12.2)
+      why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/node': 24.12.2
     transitivePeerDependencies:
       - less
       - lightningcss

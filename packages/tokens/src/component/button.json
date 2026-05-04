@@ -3,11 +3,11 @@
     "primary": {
       "background": { "$value": "{color.interactive.primary}", "$type": "color" },
       "background-hover": {
-        "$value": "{color.interactive.primary.hover}",
+        "$value": "{color.interactive.primary-hover}",
         "$type": "color"
       },
       "background-active": {
-        "$value": "{color.interactive.primary.active}",
+        "$value": "{color.interactive.primary-active}",
         "$type": "color"
       },
       "foreground": { "$value": "{color.text.inverse}", "$type": "color" },
@@ -17,7 +17,7 @@
     "secondary": {
       "background": { "$value": "{color.surface.raised}", "$type": "color" },
       "background-hover": {
-        "$value": "{color.interactive.secondary.hover}",
+        "$value": "{color.interactive.secondary-hover}",
         "$type": "color"
       },
       "foreground": { "$value": "{color.text.primary}", "$type": "color" },

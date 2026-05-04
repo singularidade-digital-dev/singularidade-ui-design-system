@@ -14,6 +14,7 @@
     <modules>
         <module>packages/tokens</module>
         <module>packages/brand-assets</module>
+        <module>packages/vaadin-bindings</module>
     </modules>
 
     <properties>

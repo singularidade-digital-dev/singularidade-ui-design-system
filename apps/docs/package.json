@@ -1,6 +1,6 @@
 {
   "name": "@singularidade/docs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "Singularidade Design System — public docs site (ds.singularidade.digital)",
   "license": "Apache-2.0",

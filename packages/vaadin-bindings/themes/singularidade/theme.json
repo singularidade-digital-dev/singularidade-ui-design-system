@@ -1,0 +1,18 @@
+{
+  "lumoImports": [],
+  "documentCss": [
+    "/tokens/css/singularidade.light.css",
+    "/tokens/css/singularidade.dark.css",
+    "/tokens/css/integras.light.css",
+    "/tokens/css/integras.dark.css",
+    "/brand-assets/fonts/plus-jakarta-sans.css",
+    "/brand-assets/fonts/jetbrains-mono.css"
+  ],
+  "assets": {
+    "@singularidade/brand-assets": {
+      "src/logos/**/*.svg": "logos/",
+      "src/logos/**/*.png": "logos/",
+      "build/icons.svg-sprite.svg": "icons.svg-sprite.svg"
+    }
+  }
+}

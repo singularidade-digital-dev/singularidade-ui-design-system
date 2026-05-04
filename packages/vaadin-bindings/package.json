@@ -1,0 +1,28 @@
+{
+  "name": "@singularidade/vaadin-bindings",
+  "version": "0.1.0",
+  "description": "Singularidade Design System — Vaadin Flow theme bridge (tokens → --vaadin-*)",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./themes/singularidade/styles.css",
+  "exports": {
+    "./themes/*": "./themes/*",
+    "./theme.json": "./themes/singularidade/theme.json"
+  },
+  "files": [
+    "themes/**/*",
+    "src/main/java/**/*.java"
+  ],
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@singularidade/brand-assets": "workspace:*",
+    "@singularidade/tokens": "workspace:*",
+    "vitest": "^2.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

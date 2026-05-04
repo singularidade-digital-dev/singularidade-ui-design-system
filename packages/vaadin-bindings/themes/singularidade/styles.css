@@ -1,36 +1,21 @@
 /*
- * Vaadin v25 → Singularidade DS bridge.
+ * @singularidade/vaadin-bindings — Vaadin Flow theme bridge.
  *
- * Vaadin 25 dropped Lumo (--lumo-*) and adopted --vaadin-* tokens declared in
- * a CSS @layer named "vaadin.base". Rules outside any layer have higher
- * precedence than layered rules, so this file overrides the Vaadin defaults
- * cleanly.
+ * Maps @singularidade/tokens semantic vars (--color-*) onto Vaadin v25 tokens
+ * (--vaadin-*). Loaded by Vaadin Flow apps via @Theme("singularidade").
  *
- * Note: Storybook-only preview. The real bridge ships in Phase 3 inside the
- * singularidade-ui-vaadin theme.
+ * Tokens are loaded from the classpath at /tokens/css/ (provided by
+ * @singularidade/tokens Maven JAR via META-INF/resources). Same applies to
+ * brand-assets fonts.
  */
 
-/* ---- Intensity overrides (highest specificity for the toolbar selector) ---- */
-:root[data-intensity='brand'][data-theme='light'] {
-  --color-interactive-primary: #e8606a;
-  --color-interactive-primary-hover: #be3550;
-  --color-border-focus: #e8606a;
-}
-:root[data-intensity='brand'][data-theme='dark'] {
-  --color-interactive-primary: #fda4af;
-  --color-interactive-primary-hover: #fecdd3;
-  --color-border-focus: #fda4af;
-}
-:root[data-intensity='magenta'][data-theme='light'] {
-  --color-interactive-primary: #e91e8b;
-  --color-interactive-primary-hover: #9d174d;
-  --color-border-focus: #e91e8b;
-}
-:root[data-intensity='magenta'][data-theme='dark'] {
-  --color-interactive-primary: #f472b6;
-  --color-interactive-primary-hover: #fbcfe8;
-  --color-border-focus: #f472b6;
-}
+/* ---- Tokens + fonts (served from classpath META-INF/resources) ---- */
+@import url('/tokens/css/singularidade.light.css');
+@import url('/tokens/css/singularidade.dark.css');
+@import url('/tokens/css/integras.light.css');
+@import url('/tokens/css/integras.dark.css');
+@import url('/brand-assets/fonts/plus-jakarta-sans.css');
+@import url('/brand-assets/fonts/jetbrains-mono.css');
 
 /* ---- Vaadin v25 base tokens ---- */
 :root[data-theme='light'] {
@@ -73,9 +58,9 @@
   --vaadin-radius-l: var(--radius-lg);
 }
 
-/* ---- Per-component brand overrides (Vaadin v25 uses CSS vars in light DOM, propagating into shadow) ---- */
+/* ---- Per-component brand overrides ---- */
 
-/* Primary button — coral by default, overridden by intensity selector via --color-interactive-primary */
+/* Primary button — coral solid */
 vaadin-button[theme~='primary'] {
   --vaadin-button-background: var(--color-interactive-primary);
   --vaadin-button-text-color: var(--color-text-inverse);
@@ -84,6 +69,10 @@ vaadin-button[theme~='primary'] {
 
 vaadin-button[theme~='primary']:hover:not([disabled]) {
   --vaadin-button-background: var(--color-interactive-primary-hover);
+}
+
+vaadin-button[theme~='primary']:active:not([disabled]) {
+  --vaadin-button-background: var(--color-interactive-primary-active);
 }
 
 /* Error / danger primary button */
@@ -98,11 +87,7 @@ vaadin-button[theme~='primary'][theme~='success'] {
   --vaadin-button-text-color: var(--color-text-inverse);
 }
 
-/*
- * Secondary button — neutral by default, with subtle brand hint on hover/focus.
- * color-mix produces a tinted background that follows the active intensity
- * automatically (sober/brand/magenta).
- */
+/* Secondary button — neutral with subtle brand hint on hover/focus */
 vaadin-button:not([theme~='primary']):not([theme~='tertiary']):not([theme~='error']):not(
     [theme~='success']
   ):hover:not([disabled]) {
@@ -121,16 +106,11 @@ vaadin-button:not([theme~='primary']):not([theme~='tertiary']):not([theme~='erro
   --vaadin-button-border-color: var(--color-interactive-primary);
 }
 
-/* Tertiary (ghost) — text in brand color, subtle background tint on hover */
+/* Tertiary (ghost) — brand text, subtle hover tint */
 vaadin-button[theme~='tertiary'] {
   --vaadin-button-text-color: var(--color-interactive-primary);
 }
 
-/*
- * Vaadin v25 hardcodes `background: transparent` on :host([theme~='tertiary']),
- * not via --vaadin-button-background. So we override the property directly with
- * !important to win against the shadow DOM rule.
- */
 vaadin-button[theme~='tertiary']:hover:not([disabled]) {
   background: color-mix(in oklab, var(--color-interactive-primary) 10%, transparent) !important;
   --vaadin-button-text-color: var(--color-interactive-primary-hover);

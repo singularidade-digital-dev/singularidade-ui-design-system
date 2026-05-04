@@ -11,12 +11,12 @@ describe('semantic light', () => {
     expect(light.color.interactive.primary.$value).toBe('{color.brand.coral.600}');
   });
 
-  it('interactive.primary.hover é coral.700', () => {
-    expect(light.color.interactive.primary.hover.$value).toBe('{color.brand.coral.700}');
+  it('interactive.primary-hover é coral.700 (flat token, gera --color-interactive-primary-hover)', () => {
+    expect(light.color.interactive['primary-hover'].$value).toBe('{color.brand.coral.700}');
   });
 
-  it('interactive.primary.active volta pra coral.500 (brand pure)', () => {
-    expect(light.color.interactive.primary.active.$value).toBe('{color.brand.coral.500}');
+  it('interactive.primary-active volta pra coral.500 (brand pure)', () => {
+    expect(light.color.interactive['primary-active'].$value).toBe('{color.brand.coral.500}');
   });
 
   it('surface.base aponta pra neutral.50 (warm-magenta undertone)', () => {
@@ -37,8 +37,8 @@ describe('semantic dark', () => {
     expect(dark.color.interactive.primary.$value).toBe('{color.brand.coral.400}');
   });
 
-  it('interactive.primary.hover é coral.300 em dark', () => {
-    expect(dark.color.interactive.primary.hover.$value).toBe('{color.brand.coral.300}');
+  it('interactive.primary-hover é coral.300 em dark', () => {
+    expect(dark.color.interactive['primary-hover'].$value).toBe('{color.brand.coral.300}');
   });
 
   it('surface.base aponta pra neutral.950', () => {
