@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 100" width="620" height="100">
+  <defs>
+    <linearGradient id="ig-h-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E91E8B"/>
+      <stop offset="100%" stop-color="#E8606A"/>
+    </linearGradient>
+    <linearGradient id="ig-h-bot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8606A"/>
+      <stop offset="100%" stop-color="#F5A623"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0, 0) scale(1)">
+    <path d="M 25 12 L 50 42 L 75 12" stroke="url(#ig-h-top)" stroke-width="13" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 25 88 L 50 58 L 75 88" stroke="url(#ig-h-bot)" stroke-width="13" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text
+    x="115"
+    y="68"
+    font-family="'Plus Jakarta Sans', system-ui, sans-serif"
+    font-weight="700"
+    font-size="44"
+    letter-spacing="0.06em"
+    fill="#F5A623"
+  >INTEGRAS<tspan fill="#E91E8B">.</tspan>DIGITAL</text>
+</svg>

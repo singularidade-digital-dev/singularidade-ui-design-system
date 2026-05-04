@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <defs>
+    <linearGradient id="ig-v-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E91E8B"/>
+      <stop offset="100%" stop-color="#E8606A"/>
+    </linearGradient>
+    <linearGradient id="ig-v-bot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8606A"/>
+      <stop offset="100%" stop-color="#F5A623"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(110, 5)">
+    <path d="M 25 12 L 50 42 L 75 12" stroke="url(#ig-v-top)" stroke-width="13" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 25 88 L 50 58 L 75 88" stroke="url(#ig-v-bot)" stroke-width="13" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text
+    x="160"
+    y="170"
+    text-anchor="middle"
+    font-family="'Plus Jakarta Sans', system-ui, sans-serif"
+    font-weight="700"
+    font-size="28"
+    letter-spacing="0.06em"
+    fill="#F5A623"
+  >INTEGRAS<tspan fill="#E91E8B">.</tspan>DIGITAL</text>
+</svg>

@@ -1,0 +1,49 @@
+{
+  "name": "@singularidade/brand-assets",
+  "version": "0.0.0",
+  "description": "Singularidade Design System — brand logos, icons, fonts, illustrations",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    "./logos/*": "./src/logos/*",
+    "./icons/*": "./src/icons/*",
+    "./illustrations/*": "./src/illustrations/*",
+    "./og-images/*": "./src/og-images/*",
+    "./fonts/*": "./src/fonts/*",
+    "./build/*": "./build/*"
+  },
+  "files": [
+    "src/logos/**/*.svg",
+    "src/logos/**/*.png",
+    "src/icons/**/*.svg",
+    "src/illustrations/**/*.svg",
+    "src/og-images/**/*",
+    "src/fonts/**/*.woff2",
+    "src/fonts/**/*.css",
+    "build/**"
+  ],
+  "scripts": {
+    "build:pngs": "node scripts/generate-pngs.mjs",
+    "build:fonts": "node scripts/copy-fonts.mjs",
+    "build:lucide": "node scripts/copy-lucide-subset.mjs",
+    "preview:icons": "node scripts/preview-custom-icons.mjs",
+    "build:sprite": "node scripts/generate-sprite.mjs",
+    "build:iconset": "node scripts/generate-vaadin-iconset.mjs",
+    "build:catalog": "node scripts/generate-catalog.mjs",
+    "build": "pnpm build:pngs && pnpm build:fonts && pnpm build:lucide && pnpm build:sprite && pnpm build:iconset && pnpm build:catalog",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "lucide-static": "^0.469.0",
+    "sharp": "^0.33.5",
+    "svgo": "^3.3.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@fontsource-variable/plus-jakarta-sans": "^5.2.8"
+  }
+}
