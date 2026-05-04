@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "jsx": "preserve",
+    "verbatimModuleSyntax": false,
+    "exactOptionalPropertyTypes": false,
+    "noImplicitOverride": false
+  },
+  "include": [".storybook/**/*", "src/**/*"]
+}

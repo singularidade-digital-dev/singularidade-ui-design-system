@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Welcome" />
+
+# Singularidade Design System
+
+Workshop interativo dos **tokens**, **assets de marca** e **componentes** da Singularidade Digital.
+
+## Estrutura
+
+- **Foundations** — paleta, tipografia, escala de espaçamento, motion, iconografia, logos
+- **Vaadin** — componentes web do Vaadin com tokens aplicados (inputs, actions, display, layout, overlay)
+
+## Brand × Tema
+
+Use o seletor de tema na toolbar (ícone de paleta) pra alternar entre:
+
+- `singularidade · light` (default)
+- `singularidade · dark`
+- `integras · light`
+- `integras · dark`
+
+A paleta brand canônica:
+
+<div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
+  <div
+    style={{ width: 80, height: 80, background: '#E91E8B', borderRadius: 8 }}
+    title="Magenta #E91E8B"
+  />
+  <div
+    style={{ width: 80, height: 80, background: '#E8606A', borderRadius: 8 }}
+    title="Coral #E8606A"
+  />
+  <div
+    style={{ width: 80, height: 80, background: '#F5A623', borderRadius: 8 }}
+    title="Orange #F5A623"
+  />
+</div>
+
+## Acessibilidade
+
+Todos os stories são auditados via axe-core (addon-a11y). Violações são bloqueantes em CI.

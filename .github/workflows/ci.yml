@@ -77,6 +77,24 @@ jobs:
       - run: pnpm --filter @singularidade/brand-assets build
       - run: mvn -pl packages/brand-assets install -DskipTests -B
 
+  storybook:
+    name: Storybook Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 9.15.0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @singularidade/brand-assets build
+      - run: pnpm --filter @singularidade/storybook build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: storybook-static
+          path: apps/storybook/storybook-static
+          retention-days: 7
+
   changeset-check:
     name: Changeset Required
     runs-on: ubuntu-latest

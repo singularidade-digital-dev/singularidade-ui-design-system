@@ -1,0 +1,53 @@
+{
+  "name": "@singularidade/storybook",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Singularidade Design System — Storybook (foundations + Vaadin components)",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6006 --no-open",
+    "build": "storybook build -o storybook-static",
+    "test": "echo 'no unit tests yet'"
+  },
+  "dependencies": {
+    "@singularidade/brand-assets": "workspace:*",
+    "@singularidade/tokens": "workspace:*",
+    "@vaadin/avatar": "^25.1.0",
+    "@vaadin/badge": "^25.1.0",
+    "@vaadin/button": "^25.1.0",
+    "@vaadin/checkbox": "^25.1.0",
+    "@vaadin/combo-box": "^25.1.0",
+    "@vaadin/date-picker": "^25.1.0",
+    "@vaadin/dialog": "^25.1.0",
+    "@vaadin/horizontal-layout": "^25.1.0",
+    "@vaadin/icon": "^25.1.0",
+    "@vaadin/integer-field": "^25.1.0",
+    "@vaadin/menu-bar": "^25.1.0",
+    "@vaadin/notification": "^25.1.0",
+    "@vaadin/number-field": "^25.1.0",
+    "@vaadin/password-field": "^25.1.0",
+    "@vaadin/popover": "^25.1.0",
+    "@vaadin/progress-bar": "^25.1.0",
+    "@vaadin/select": "^25.1.0",
+    "@vaadin/split-layout": "^25.1.0",
+    "@vaadin/tabs": "^25.1.0",
+    "@vaadin/text-area": "^25.1.0",
+    "@vaadin/text-field": "^25.1.0",
+    "@vaadin/tooltip": "^25.1.0",
+    "@vaadin/vertical-layout": "^25.1.0",
+    "lit": "^3.2.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.6.14",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-themes": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/test": "^8.6.14",
+    "@storybook/web-components": "^8.6.14",
+    "@storybook/web-components-vite": "^8.6.14",
+    "storybook": "^8.6.14",
+    "storybook-addon-pseudo-states": "^4.0.2",
+    "vite": "^5.4.11"
+  }
+}
