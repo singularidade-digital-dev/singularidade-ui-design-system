@@ -1,0 +1,26 @@
+/* Brand-specific tweaks for Starlight */
+
+/* Hero gradient on landing page */
+.hero {
+  background: linear-gradient(160deg, #e91e8b 0%, #e8606a 50%, #f5a623 100%);
+  color: #ffffff;
+  padding: 4rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+.hero h1,
+.hero p {
+  color: #ffffff;
+}
+
+/* Tighter logo in nav */
+.site-title img {
+  height: 32px;
+  width: auto;
+}
+
+/* Code blocks slightly less aggressive */
+.expressive-code {
+  border-radius: 8px;
+}

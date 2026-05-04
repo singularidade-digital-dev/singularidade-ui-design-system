@@ -1,0 +1,57 @@
+---
+title: Singularidade Design System
+description: Design system unificado da Singularidade Digital — tokens, brand book, componentes
+template: splash
+hero:
+  tagline: Tokens, brand book e componentes da Singularidade Digital — para apps SaaS construídos com Vaadin Flow.
+  image:
+    file: ../../assets/logo-horizontal.svg
+  actions:
+    - text: Começar
+      link: /comecar/visao-geral/
+      icon: right-arrow
+      variant: primary
+    - text: Ver no GitHub
+      link: https://github.com/singularidade-digital-dev/singularidade-ui-design-system
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## O que tem aqui
+
+<CardGrid stagger>
+  <Card title="Marca" icon="open-book">
+    Logo, cor, tipografia, voice & tone, motion. Brand book completo em 10 capítulos.
+  </Card>
+  <Card title="Foundations" icon="seti:config">
+    Tokens W3C DTF, tema light/dark, sub-marcas via overlay, multi-platform (CSS, JS, JSON, Java).
+  </Card>
+  <Card title="Componentes" icon="puzzle">
+    Componentes Vaadin com tema brand aplicado. Storybook embedado pra explorar variações.
+  </Card>
+  <Card title="Devs" icon="rocket">
+    Guias de integração Vaadin Flow, ADRs, contribuição. Tudo automatizado via Changesets.
+  </Card>
+</CardGrid>
+
+## Paleta brand
+
+<div style="display:flex;gap:16px;margin:24px 0;">
+  <div style="flex:1;height:96px;background:#E91E8B;border-radius:12px;display:flex;align-items:flex-end;padding:12px;color:white;font-family:monospace;font-size:13px;">
+    magenta · #E91E8B
+  </div>
+  <div style="flex:1;height:96px;background:#E8606A;border-radius:12px;display:flex;align-items:flex-end;padding:12px;color:white;font-family:monospace;font-size:13px;">
+    coral · #E8606A
+  </div>
+  <div style="flex:1;height:96px;background:#F5A623;border-radius:12px;display:flex;align-items:flex-end;padding:12px;color:white;font-family:monospace;font-size:13px;">
+    orange · #F5A623
+  </div>
+</div>
+
+## Status
+
+- `@singularidade/tokens@0.1.0` · `@singularidade/brand-assets@0.1.0`
+- 4 brand × theme combinations (singularidade/integras × light/dark)
+- 81 ícones (71 Lucide + 10 ss:\* domínio)
+- Storybook + Vaadin v25 bridge funcional

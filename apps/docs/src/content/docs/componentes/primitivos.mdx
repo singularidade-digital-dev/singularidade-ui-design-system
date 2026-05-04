@@ -1,0 +1,46 @@
+---
+title: Componentes primitivos
+description: Componentes Vaadin com tema brand aplicado
+sidebar: { order: 1 }
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## Storybook embedado
+
+Catálogo visual completo está no Storybook. Cada componente tem múltiplas stories, theme switcher (singularidade/integras × light/dark) e Intensity selector (sober/brand/magenta).
+
+<Aside>
+  Em desenvolvimento: o iframe abaixo aponta para localhost. Em produção, vai para
+  `https://storybook.singularidade.digital`.
+</Aside>
+
+<iframe
+  src="http://localhost:6006/?path=/story/welcome--docs"
+  style="width:100%;height:600px;border:1px solid var(--sl-color-gray-2);border-radius:8px;"
+  title="Singularidade Storybook"
+></iframe>
+
+## Categorias
+
+### Foundations
+
+- **Color** — paleta brand, escalas, gradient
+- **Typography** — Plus Jakarta Sans + JetBrains Mono, scale, weights
+- **Spacing** — escala 4px, radius, shadow
+- **Motion** — durations, easings
+- **Iconography** — Lucide subset + custom ss:\*
+- **Logos** — todas as variantes por brand
+
+### Vaadin core
+
+- **Inputs** — text-field, password, integer, number, text-area, combo-box, select, date-picker, checkbox
+- **Actions** — button (primary/secondary/tertiary/danger/success), menu-bar
+- **Display** — avatar, badge, icon, progress-bar
+- **Layout** — vertical/horizontal-layout, split-layout, tabs
+- **Overlay** — dialog, notification, tooltip, popover
+
+## Roadmap
+
+- 🚧 **Singularidade UI** components (BoundFormPanel, ProfileEditCard, AvatarUploadField, AddressField, PhoneField, TaxIdField, EulaAcceptancePanel) — depende da Fase 3 (vaadin-bindings)
+- 🚧 **Patterns** (login flow, CRUD page, empty state, onboarding wizard) — Fase 4 v2

@@ -1,0 +1,50 @@
+@import '@singularidade/tokens/css/singularidade.light.css';
+@import '@singularidade/tokens/css/singularidade.dark.css';
+@import '@singularidade/brand-assets/fonts/plus-jakarta-sans.css';
+@import '@singularidade/brand-assets/fonts/jetbrains-mono.css';
+
+:root {
+  /* Force singularidade brand by default; consumers can override via data-brand */
+  --sl-font:
+    'Plus Jakarta Sans Variable', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  --sl-font-mono: 'JetBrains Mono Variable', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+}
+
+html[data-theme='light'] {
+  --sl-color-bg: #fdfafc;
+  --sl-color-bg-nav: #fdfafc;
+  --sl-color-bg-sidebar: #fdfafc;
+  --sl-color-text: #261a21;
+  --sl-color-text-accent: #be3550;
+  --sl-color-accent: #be3550;
+  --sl-color-accent-high: #9f1239;
+  --sl-color-accent-low: #fff1f2;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #ece5eb;
+  --sl-color-gray-2: #c8bcc4;
+  --sl-color-gray-3: #a697a1;
+  --sl-color-gray-4: #735f6b;
+  --sl-color-gray-5: #524049;
+  --sl-color-gray-6: #3a2c33;
+  --sl-color-black: #1a111a;
+}
+
+html[data-theme='dark'] {
+  --sl-color-bg: #1a1517;
+  --sl-color-bg-nav: #261a21;
+  --sl-color-bg-sidebar: #1a1517;
+  --sl-color-text: #fdfafc;
+  --sl-color-text-accent: #fb7185;
+  --sl-color-accent: #fb7185;
+  --sl-color-accent-high: #fda4af;
+  --sl-color-accent-low: rgba(251, 113, 133, 0.16);
+  --sl-color-white: #1a1517;
+  --sl-color-gray-1: #261a21;
+  --sl-color-gray-2: #3a2c33;
+  --sl-color-gray-3: #524049;
+  --sl-color-gray-4: #735f6b;
+  --sl-color-gray-5: #a697a1;
+  --sl-color-gray-6: #c8bcc4;
+  --sl-color-black: #fdfafc;
+}
