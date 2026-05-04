@@ -137,8 +137,13 @@ vaadin-button[theme~='tertiary'] {
   --vaadin-button-text-color: var(--color-interactive-primary);
 }
 
+/*
+ * Vaadin v25 hardcodes `background: transparent` on :host([theme~='tertiary']),
+ * not via --vaadin-button-background. So we override the property directly with
+ * !important to win against the shadow DOM rule.
+ */
 vaadin-button[theme~='tertiary']:hover:not([disabled]) {
-  --vaadin-button-background: color-mix(in oklab, var(--color-interactive-primary) 8%, transparent);
+  background: color-mix(in oklab, var(--color-interactive-primary) 10%, transparent) !important;
   --vaadin-button-text-color: var(--color-interactive-primary-hover);
 }
 
