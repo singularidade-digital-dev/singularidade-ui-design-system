@@ -33,7 +33,16 @@
 }
 
 /* ---- Vaadin v25 base tokens ---- */
+/*
+ * NOTE: --color-interactive-primary-hover is declared here because the SD4
+ * generated CSS dropped the nested hover/active children (hybrid DTF structure
+ * is invalid). Defaults below reflect the "sober" intensity preset; the
+ * data-intensity rules above override for brand/magenta. Will be cleaned up
+ * when we flatten interactive.primary in the semantic tokens (Phase 3).
+ */
 :root[data-theme='light'] {
+  --color-interactive-primary-hover: #9f1239; /* coral.700 — sober default */
+  --color-interactive-primary-active: #e8606a; /* coral.500 — sober default */
   --vaadin-text-color: var(--color-text-primary);
   --vaadin-text-color-secondary: var(--color-text-secondary);
   --vaadin-text-color-disabled: var(--color-text-disabled);
@@ -58,6 +67,8 @@
 }
 
 :root[data-theme='dark'] {
+  --color-interactive-primary-hover: #fda4af; /* coral.300 — sober default dark */
+  --color-interactive-primary-active: #e8606a; /* coral.500 — sober default dark */
   --vaadin-text-color: var(--color-text-primary);
   --vaadin-text-color-secondary: var(--color-text-secondary);
   --vaadin-text-color-disabled: var(--color-text-disabled);
