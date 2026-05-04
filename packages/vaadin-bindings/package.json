@@ -1,13 +1,13 @@
 {
   "name": "@singularidade/vaadin-bindings",
   "version": "0.1.0",
-  "description": "Singularidade Design System — Vaadin Flow theme bridge (tokens → --vaadin-*)",
+  "description": "Singularidade Design System — Vaadin Flow parent theme (tokens → --lumo-*)",
   "license": "Apache-2.0",
   "type": "module",
-  "main": "./themes/singularidade/styles.css",
+  "main": "./themes/singularidade-base/styles.css",
   "exports": {
     "./themes/*": "./themes/*",
-    "./theme.json": "./themes/singularidade/theme.json"
+    "./theme.json": "./themes/singularidade-base/theme.json"
   },
   "files": [
     "themes/**/*",

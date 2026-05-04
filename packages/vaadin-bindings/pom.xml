@@ -14,7 +14,7 @@
     <artifactId>vaadin-bindings</artifactId>
     <packaging>jar</packaging>
     <name>Singularidade Vaadin Bindings</name>
-    <description>Vaadin Flow theme bridge mapping design tokens to --vaadin-* component vars</description>
+    <description>Vaadin Flow theme bridge — provides singularidade-base parent theme mapping tokens to --lumo-*</description>
 
     <properties>
         <vaadin.version>24.9.10</vaadin.version>
@@ -42,8 +42,8 @@
     <build>
         <resources>
             <resource>
-                <directory>themes/singularidade</directory>
-                <targetPath>META-INF/resources/themes/singularidade</targetPath>
+                <directory>themes/singularidade-base</directory>
+                <targetPath>META-INF/resources/themes/singularidade-base</targetPath>
             </resource>
         </resources>
 
