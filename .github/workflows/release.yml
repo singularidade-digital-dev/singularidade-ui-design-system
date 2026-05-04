@@ -60,8 +60,29 @@ jobs:
       # Versions stay at *-SNAPSHOT in pom.xml; CodeArtifact stores each push
       # under a timestamped revision. This is what unblocks the Java consumers
       # (singularidade-ui-vaadin, integras-digital, integras-digital-plataform).
-      - name: Login to AWS CodeArtifact
-        run: aws codeartifact login --tool maven --repository maven --domain singularidade-digital --domain-owner 539191403497
+      #
+      # Auth pattern matches integras-digital and singularidade-ui-vaadin CIs:
+      # write ~/.m2/settings.xml with a CodeArtifact bearer token under server
+      # id "codeartifact" — same id referenced by distributionManagement in the
+      # root pom.xml. (`aws codeartifact login --tool maven` does not exist —
+      # CodeArtifact's CLI helper supports npm/pip/twine/etc., not Maven.)
+      - name: Configure CodeArtifact Maven settings
+        run: |
+          TOKEN=$(aws codeartifact get-authorization-token \
+            --domain singularidade-digital \
+            --query authorizationToken --output text)
+          mkdir -p ~/.m2
+          cat > ~/.m2/settings.xml <<EOF
+          <settings>
+            <servers>
+              <server>
+                <id>codeartifact</id>
+                <username>aws</username>
+                <password>${TOKEN}</password>
+              </server>
+            </servers>
+          </settings>
+          EOF
 
       - name: Maven Deploy (SNAPSHOT)
         run: mvn -pl packages/tokens,packages/brand-assets,packages/vaadin-bindings deploy -DskipTests -B

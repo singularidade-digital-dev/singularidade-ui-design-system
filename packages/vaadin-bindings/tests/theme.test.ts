@@ -9,22 +9,24 @@ describe('vaadin-bindings theme', () => {
     expect(existsSync(join(ROOT, 'themes/singularidade-base/styles.css'))).toBe(true);
   });
 
-  it('themes/singularidade-base/theme.json is valid JSON with expected structure', () => {
+  it('themes/singularidade-base/theme.json is valid JSON', () => {
     const path = join(ROOT, 'themes/singularidade-base/theme.json');
     expect(existsSync(path)).toBe(true);
     const json = JSON.parse(readFileSync(path, 'utf-8'));
-    expect(Array.isArray(json.documentCss)).toBe(true);
-    expect(json.documentCss.length).toBeGreaterThan(0);
-    expect(json.documentCss).toContain('/tokens/css/singularidade.light.css');
-    expect(json.documentCss).toContain('/brand-assets/fonts/plus-jakarta-sans.css');
+    // Tokens and fonts are imported via theme-relative paths in styles.css
+    // (./tokens/, ./fonts/), not via documentCss. The Vaadin theme handler
+    // serves them under /themes/singularidade-base/{tokens,fonts}/ at runtime
+    // — the only path Spring Security allows by default. See pom.xml for
+    // the build-time copy from sibling @singularidade packages.
+    expect(json.lumoImports).toEqual([]);
   });
 
-  it('styles.css imports tokens for all 4 brand×theme combinations', () => {
+  it('styles.css imports tokens for all 4 brand×theme combinations (theme-relative)', () => {
     const css = readFileSync(join(ROOT, 'themes/singularidade-base/styles.css'), 'utf-8');
-    expect(css).toContain('/tokens/css/singularidade.light.css');
-    expect(css).toContain('/tokens/css/singularidade.dark.css');
-    expect(css).toContain('/tokens/css/integras.light.css');
-    expect(css).toContain('/tokens/css/integras.dark.css');
+    expect(css).toContain('./tokens/singularidade.light.css');
+    expect(css).toContain('./tokens/singularidade.dark.css');
+    expect(css).toContain('./tokens/integras.light.css');
+    expect(css).toContain('./tokens/integras.dark.css');
   });
 
   it('styles.css maps --color-* to --lumo-* base tokens', () => {
