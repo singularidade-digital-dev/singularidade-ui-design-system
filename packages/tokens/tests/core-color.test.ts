@@ -11,9 +11,13 @@ describe('core color tokens', () => {
   it('cada brand color tem 11 paradas (50, 100, 200, ..., 950)', () => {
     const stops = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950'];
     for (const family of ['magenta', 'coral', 'orange'] as const) {
+      const palette = coreColor.color.brand[family] as Record<
+        string,
+        { $value: string; $type: string }
+      >;
       for (const stop of stops) {
-        expect(coreColor.color.brand[family][stop], `${family}.${stop}`).toBeDefined();
-        expect(coreColor.color.brand[family][stop].$type).toBe('color');
+        expect(palette[stop], `${family}.${stop}`).toBeDefined();
+        expect(palette[stop]!.$type).toBe('color');
       }
     }
   });
@@ -34,8 +38,9 @@ describe('core color tokens', () => {
       '950',
       '1000',
     ];
+    const neutral = coreColor.color.neutral as Record<string, { $value: string; $type: string }>;
     for (const stop of stops) {
-      expect(coreColor.color.neutral[stop], `neutral.${stop}`).toBeDefined();
+      expect(neutral[stop], `neutral.${stop}`).toBeDefined();
     }
   });
 

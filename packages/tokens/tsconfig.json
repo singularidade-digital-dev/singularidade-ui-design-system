@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./build/js",
-    "rootDir": "./src",
+    "rootDir": ".",
     "moduleResolution": "node",
     "module": "ESNext"
   },
