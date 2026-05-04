@@ -86,13 +86,20 @@ const horizontalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${H_
 writeFileSync(join(LOGOS, 'horizontal.svg'), horizontalSvg);
 console.log('✓ src/logos/integras/horizontal.svg');
 
-// 4. vertical.svg — symbol on top + text below
+// 4. vertical.svg — symbol on top + text below.
+// Balance top/bottom margins so the layout sits visually centered:
+//   [V_PAD] [symbol V_SYM_H] [gap] [text V_TEXT_VISUAL_H] [V_PAD]
+// Text at font-size 28 visually occupies ~25px (cap height + descent).
 const V_W = 400;
-const V_TOTAL_H = 220;
-const V_SYM_H = 140;
+const V_PAD = 15;
+const V_SYM_H = 130;
+const V_TEXT_VISUAL_H = 25;
+const V_GAP = 30;
+const V_TOTAL_H = V_PAD * 2 + V_SYM_H + V_GAP + V_TEXT_VISUAL_H;
+const V_SYM_Y = V_PAD;
 const V_SYM_W = Math.round(V_SYM_H * aspect);
 const V_SYM_X = (V_W - V_SYM_W) / 2;
-const V_TEXT_Y = V_SYM_H + 50;
+const V_TEXT_Y = V_SYM_Y + V_SYM_H + V_GAP + 22; // baseline = top + ascent (~22 for 28px Plus Jakarta)
 const verticalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${V_W} ${V_TOTAL_H}" width="${V_W}" height="${V_TOTAL_H}">
   <defs>
     <linearGradient id="ig-v-grad" x1="0.5" y1="0" x2="0.5" y2="1">
@@ -101,7 +108,7 @@ const verticalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${V_W}
       <stop offset="100%" stop-color="#F5A623"/>
     </linearGradient>
   </defs>
-  <svg x="${V_SYM_X}" y="0" width="${V_SYM_W}" height="${V_SYM_H}" viewBox="${viewBox}" preserveAspectRatio="xMidYMid meet">
+  <svg x="${V_SYM_X}" y="${V_SYM_Y}" width="${V_SYM_W}" height="${V_SYM_H}" viewBox="${viewBox}" preserveAspectRatio="xMidYMid meet">
     <path fill="url(#ig-v-grad)" fill-rule="evenodd" d="${optimizedPathD}"/>
   </svg>
   <text
