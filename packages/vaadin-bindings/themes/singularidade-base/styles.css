@@ -2,21 +2,24 @@
  * @singularidade/vaadin-bindings — Vaadin Flow theme bridge.
  *
  * Maps @singularidade/tokens semantic vars (--color-*) onto Vaadin Lumo tokens
- * (--lumo-*). Designed for Vaadin Flow 24.x (the LTS line). Vaadin 25 will need
- * a parallel theme using --vaadin-* tokens.
+ * (--lumo-*). Designed for Vaadin Flow 24.x (the LTS line).
  *
- * Loaded by Vaadin Flow apps via @Theme("singularidade").
- * Tokens served from classpath at /tokens/css/ (provided by @singularidade/tokens
- * Maven JAR via META-INF/resources). Same applies to brand-assets fonts.
+ * Tokens and fonts are bundled inside this theme (tokens/, fonts/) — Vaadin
+ * theme loader copies them to the frontend bundle, while Spring Security only
+ * exposes /VAADIN/static and /themes/* by default. Importing them as theme-
+ * relative paths avoids 401/404 issues.
  */
 
-/* ---- Tokens + fonts (served from classpath META-INF/resources) ---- */
-@import url('/tokens/css/singularidade.light.css');
-@import url('/tokens/css/singularidade.dark.css');
-@import url('/tokens/css/integras.light.css');
-@import url('/tokens/css/integras.dark.css');
-@import url('/brand-assets/fonts/plus-jakarta-sans.css');
-@import url('/brand-assets/fonts/jetbrains-mono.css');
+/* ---- Tokens + fonts (theme-relative, copied by Vaadin theme handler) ---- */
+/* Defaults first (brand-agnostic, Singularidade as the default brand). */
+@import url('./tokens/defaults.css');
+/* Brand×theme-specific tokens — activate when both data-brand + data-theme are set. */
+@import url('./tokens/singularidade.light.css');
+@import url('./tokens/singularidade.dark.css');
+@import url('./tokens/integras.light.css');
+@import url('./tokens/integras.dark.css');
+@import url('./fonts/plus-jakarta-sans.css');
+@import url('./fonts/jetbrains-mono.css');
 
 /* ---- Default = Singularidade light when no data-brand/data-theme set ---- */
 :root {
@@ -137,7 +140,14 @@
   --lumo-box-shadow-xl: var(--shadow-light-xl);
 }
 
-/* ---- Dark theme ---- */
+/* ---- Dark theme ----
+   Two trigger forms:
+   - Vaadin Flow apps use the standard `theme="dark"` attribute on <html>
+     (matched via `[theme~='dark']`) — that's the most common case.
+   - Apps that switch brand at runtime set `data-brand` + `data-theme='dark'`
+     (matched via `[data-theme='dark']`).
+   Both selectors apply the same full dark token set. */
+[theme~='dark'],
 [data-theme='dark'],
 [data-brand][data-theme='dark'] {
   /* Primary — coral.400 brighter in dark */

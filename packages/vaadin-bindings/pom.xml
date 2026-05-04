@@ -45,6 +45,25 @@
                 <directory>themes/singularidade-base</directory>
                 <targetPath>META-INF/resources/themes/singularidade-base</targetPath>
             </resource>
+            <!--
+              Pull brand×theme CSS and font assets from sibling packages at build time,
+              so the source-of-truth lives in @singularidade/tokens (Style Dictionary
+              output in build/css) and @singularidade/brand-assets (src/fonts), and
+              vaadin-bindings serves them under /themes/singularidade-base/{tokens,fonts}/
+              — the only path Spring Security / Vaadin allow by default.
+            -->
+            <resource>
+                <directory>../tokens/build/css</directory>
+                <targetPath>META-INF/resources/themes/singularidade-base/tokens</targetPath>
+                <includes>
+                    <include>integras.*.css</include>
+                    <include>singularidade.*.css</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>../brand-assets/src/fonts</directory>
+                <targetPath>META-INF/resources/themes/singularidade-base/fonts</targetPath>
+            </resource>
         </resources>
 
         <plugins>
