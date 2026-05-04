@@ -27,22 +27,30 @@ describe('vaadin-bindings theme', () => {
     expect(css).toContain('/tokens/css/integras.dark.css');
   });
 
-  it('styles.css maps --color-* to --vaadin-* base tokens', () => {
+  it('styles.css maps --color-* to --lumo-* base tokens', () => {
     const css = readFileSync(join(ROOT, 'themes/singularidade/styles.css'), 'utf-8');
-    expect(css).toContain('--vaadin-text-color: var(--color-text-primary)');
-    expect(css).toContain('--vaadin-background-color: var(--color-surface-base)');
-    expect(css).toContain('--vaadin-focus-ring-color: var(--color-interactive-primary)');
+    expect(css).toContain('--lumo-primary-color: var(--color-interactive-primary)');
+    expect(css).toContain('--lumo-base-color: var(--color-surface-base)');
+    expect(css).toContain('--lumo-body-text-color: var(--color-text-primary)');
   });
 
-  it('styles.css overrides primary button background with brand', () => {
+  it('styles.css covers feedback colors using semantic tokens', () => {
     const css = readFileSync(join(ROOT, 'themes/singularidade/styles.css'), 'utf-8');
-    expect(css).toMatch(/vaadin-button\[theme~='primary'\]\s*\{[^}]*--vaadin-button-background/);
+    expect(css).toContain('--lumo-error-color: var(--color-feedback-error-solid)');
+    expect(css).toContain('--lumo-success-color: var(--color-feedback-success-solid)');
+    expect(css).toContain('--lumo-warning-color: var(--color-feedback-warning-solid)');
   });
 
-  it('styles.css covers hover and active states using flat tokens', () => {
+  it('styles.css declares Plus Jakarta Sans Variable as default font family', () => {
     const css = readFileSync(join(ROOT, 'themes/singularidade/styles.css'), 'utf-8');
-    expect(css).toContain('--color-interactive-primary-hover');
-    expect(css).toContain('--color-interactive-primary-active');
+    expect(css).toContain('--lumo-font-family');
+    expect(css).toContain('Plus Jakarta Sans Variable');
+  });
+
+  it('styles.css uses shadow tokens with light/dark variants', () => {
+    const css = readFileSync(join(ROOT, 'themes/singularidade/styles.css'), 'utf-8');
+    expect(css).toContain('--lumo-box-shadow-m: var(--shadow-light-md)');
+    expect(css).toContain('--lumo-box-shadow-m: var(--shadow-dark-md)');
   });
 
   it('SingularidadeTheme.java has expected constants', () => {

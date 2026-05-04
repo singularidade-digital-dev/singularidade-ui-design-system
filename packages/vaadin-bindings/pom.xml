@@ -17,7 +17,7 @@
     <description>Vaadin Flow theme bridge mapping design tokens to --vaadin-* component vars</description>
 
     <properties>
-        <vaadin.version>25.1.2</vaadin.version>
+        <vaadin.version>24.9.10</vaadin.version>
     </properties>
 
     <dependencies>
