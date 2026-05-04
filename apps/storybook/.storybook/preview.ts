@@ -19,53 +19,9 @@ import './preview.css';
 // (vaadin-bindings inside singularidade-ui-vaadin).
 import './lumo-overrides.css';
 
-// Intensity presets to compare different primary palette strategies live.
-// Default ("sober") matches the spec's hybrid color strategy.
-const INTENSITY_PRESETS: Record<
-  string,
-  Record<
-    string,
-    { lightPrimary: string; lightHover: string; darkPrimary: string; darkHover: string }
-  >
-> = {
-  sober: {
-    coral: {
-      lightPrimary: '#BE3550',
-      lightHover: '#9F1239',
-      darkPrimary: '#FB7185',
-      darkHover: '#FDA4AF',
-    },
-  },
-  brand: {
-    coral: {
-      lightPrimary: '#E8606A',
-      lightHover: '#BE3550',
-      darkPrimary: '#FDA4AF',
-      darkHover: '#FECDD3',
-    },
-  },
-  magenta: {
-    coral: {
-      lightPrimary: '#E91E8B',
-      lightHover: '#9D174D',
-      darkPrimary: '#F472B6',
-      darkHover: '#FBCFE8',
-    },
-  },
-};
-
-function applyIntensity(intensity: string, theme: string) {
-  const preset = INTENSITY_PRESETS[intensity]?.coral || INTENSITY_PRESETS.sober.coral;
-  const isDark = theme === 'dark';
-  const primary = isDark ? preset.darkPrimary : preset.lightPrimary;
-  const hover = isDark ? preset.darkHover : preset.lightHover;
-  const root = document.documentElement;
-  root.style.setProperty('--color-interactive-primary', primary);
-  root.style.setProperty('--color-interactive-primary-hover', hover);
-  root.style.setProperty('--lumo-primary-color', primary);
-  root.style.setProperty('--lumo-primary-text-color', primary);
-  root.style.setProperty('--color-border-focus', primary);
-}
+// Intensity is applied via data-intensity attribute on <html>; the matching
+// CSS rules live in lumo-overrides.css for proper cascade with the brand+theme
+// rules from the tokens package.
 
 const preview: Preview = {
   globalTypes: {
@@ -133,7 +89,7 @@ const preview: Preview = {
       const root = document.documentElement;
       root.setAttribute('data-brand', brand);
       root.setAttribute('data-theme', theme);
-      applyIntensity(intensity, theme);
+      root.setAttribute('data-intensity', intensity);
       return story();
     },
   ],

@@ -11,6 +11,31 @@
  * (vaadin-bindings) inside the singularidade-ui-vaadin theme.
  */
 
+/*
+ * Intensity overrides — applied when the toolbar selector is changed.
+ * Higher specificity than the brand+theme rules from singularidade.light.css.
+ */
+:root[data-intensity='brand'][data-theme='light'] {
+  --color-interactive-primary: #e8606a;
+  --color-interactive-primary-hover: #be3550;
+  --color-border-focus: #e8606a;
+}
+:root[data-intensity='brand'][data-theme='dark'] {
+  --color-interactive-primary: #fda4af;
+  --color-interactive-primary-hover: #fecdd3;
+  --color-border-focus: #fda4af;
+}
+:root[data-intensity='magenta'][data-theme='light'] {
+  --color-interactive-primary: #e91e8b;
+  --color-interactive-primary-hover: #9d174d;
+  --color-border-focus: #e91e8b;
+}
+:root[data-intensity='magenta'][data-theme='dark'] {
+  --color-interactive-primary: #f472b6;
+  --color-interactive-primary-hover: #fbcfe8;
+  --color-border-focus: #f472b6;
+}
+
 :root[data-theme='light'] {
   /* Primary — coral.600 in light (more sober than brand pure) */
   --lumo-primary-color: var(--color-interactive-primary);
