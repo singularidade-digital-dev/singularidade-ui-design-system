@@ -76,11 +76,17 @@ jobs:
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 21, cache: maven }
       - run: pnpm install --frozen-lockfile
+      # Style Dictionary outputs (build/css, build/js, build/java) and
+      # brand-assets fonts must exist before Maven copies them at process-resources.
       - run: pnpm --filter @singularidade/tokens build
-      - run: mvn -pl packages/tokens install -DskipTests -B
       - run: pnpm --filter @singularidade/brand-assets build
-      - run: mvn -pl packages/brand-assets install -DskipTests -B
-      - run: mvn -pl packages/vaadin-bindings install -DskipTests -B
+      # Single Maven invocation builds the full reactor so the parent pom is
+      # implicitly available to every child. Splitting into separate `mvn -pl`
+      # calls breaks transitive parent resolution: each child install records
+      # parent: digital.singularidade:singularidade-ui-design-system-parent in
+      # its installed pom, and a *later* mvn invocation can't resolve that
+      # parent from ~/.m2 because no step ever installs the aggregator alone.
+      - run: mvn -pl packages/tokens,packages/brand-assets,packages/vaadin-bindings install -DskipTests -B
 
   storybook:
     name: Storybook Build
@@ -92,6 +98,10 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20, cache: pnpm }
       - run: pnpm install --frozen-lockfile
+      # storybook/preview.ts imports from @singularidade/tokens/css/* — those
+      # files are emitted by Style Dictionary into packages/tokens/build/css/,
+      # so the tokens build must run before storybook bundles its preview.
+      - run: pnpm --filter @singularidade/tokens build
       - run: pnpm --filter @singularidade/brand-assets build
       - run: pnpm --filter @singularidade/storybook build
       - uses: actions/upload-artifact@v4
