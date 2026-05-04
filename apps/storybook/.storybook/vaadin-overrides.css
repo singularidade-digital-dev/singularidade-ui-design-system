@@ -6,26 +6,49 @@
  * Vaadin 24 components with the exact tokens that production apps will use.
  */
 
-/* ---- Intensity overrides (Storybook toolbar selector) ---- */
+/* ---- Intensity overrides (Storybook toolbar selector) ----
+ * Vaadin 24 Lumo CSS may load after this file in dev. Use !important to win
+ * the cascade — these are designer-facing knobs only, not consumer code.
+ */
 :root[data-intensity='brand'][data-theme='light'] {
-  --color-interactive-primary: #e8606a;
-  --color-interactive-primary-hover: #be3550;
-  --color-border-focus: #e8606a;
+  --color-interactive-primary: #e8606a !important;
+  --color-interactive-primary-hover: #be3550 !important;
+  --color-border-focus: #e8606a !important;
+  --lumo-primary-color: #e8606a !important;
+  --lumo-primary-text-color: #e8606a !important;
 }
 :root[data-intensity='brand'][data-theme='dark'] {
-  --color-interactive-primary: #fda4af;
-  --color-interactive-primary-hover: #fecdd3;
-  --color-border-focus: #fda4af;
+  --color-interactive-primary: #fda4af !important;
+  --color-interactive-primary-hover: #fecdd3 !important;
+  --color-border-focus: #fda4af !important;
+  --lumo-primary-color: #fda4af !important;
+  --lumo-primary-text-color: #fda4af !important;
 }
 :root[data-intensity='magenta'][data-theme='light'] {
-  --color-interactive-primary: #e91e8b;
-  --color-interactive-primary-hover: #9d174d;
-  --color-border-focus: #e91e8b;
+  --color-interactive-primary: #e91e8b !important;
+  --color-interactive-primary-hover: #9d174d !important;
+  --color-border-focus: #e91e8b !important;
+  --lumo-primary-color: #e91e8b !important;
+  --lumo-primary-text-color: #e91e8b !important;
 }
 :root[data-intensity='magenta'][data-theme='dark'] {
-  --color-interactive-primary: #f472b6;
-  --color-interactive-primary-hover: #fbcfe8;
-  --color-border-focus: #f472b6;
+  --color-interactive-primary: #f472b6 !important;
+  --color-interactive-primary-hover: #fbcfe8 !important;
+  --color-border-focus: #f472b6 !important;
+  --lumo-primary-color: #f472b6 !important;
+  --lumo-primary-text-color: #f472b6 !important;
+}
+
+/* Default sober — also force --lumo-primary-color to win against Vaadin's Lumo CSS */
+:root[data-intensity='sober'][data-theme='light'],
+:root:not([data-intensity])[data-theme='light'] {
+  --lumo-primary-color: var(--color-interactive-primary) !important;
+  --lumo-primary-text-color: var(--color-interactive-primary) !important;
+}
+:root[data-intensity='sober'][data-theme='dark'],
+:root:not([data-intensity])[data-theme='dark'] {
+  --lumo-primary-color: var(--color-interactive-primary) !important;
+  --lumo-primary-text-color: var(--color-interactive-primary) !important;
 }
 
 /* ---- Lumo base tokens (mirrors vaadin-bindings) ---- */
