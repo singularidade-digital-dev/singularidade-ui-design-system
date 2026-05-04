@@ -8,3 +8,6 @@ pnpm-lock.yaml
 
 # Generated/auto-formatted docs (specs e plans tem formatação própria)
 docs/superpowers/
+
+# Scratch — exploratory scripts, not production code
+**/scratch/

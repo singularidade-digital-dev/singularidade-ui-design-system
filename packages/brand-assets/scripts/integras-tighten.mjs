@@ -14,7 +14,10 @@ const TRACED = join(SCRATCH, 'integras-x-traced.svg');
 
 // 1. Read original viewBox + path
 const traced = readFileSync(TRACED, 'utf-8');
-const origViewBox = traced.match(/viewBox="([^"]+)"/)[1].split(/\s+/).map(Number);
+const origViewBox = traced
+  .match(/viewBox="([^"]+)"/)[1]
+  .split(/\s+/)
+  .map(Number);
 const [origX, origY, origW, origH] = origViewBox;
 console.log(`original viewBox: ${origX} ${origY} ${origW} ${origH}`);
 
@@ -27,9 +30,11 @@ const rendered = await sharp(Buffer.from(traced), { density: 200, limitInputPixe
   .toBuffer();
 
 // 3. Trim transparent edges and capture offsets
-const trimmed = await sharp(rendered).trim({ background: { r: 0, g: 0, b: 0, alpha: 0 } }).toBuffer({
-  resolveWithObject: true,
-});
+const trimmed = await sharp(rendered)
+  .trim({ background: { r: 0, g: 0, b: 0, alpha: 0 } })
+  .toBuffer({
+    resolveWithObject: true,
+  });
 const { trimOffsetLeft, trimOffsetTop, width: tightPixW, height: tightPixH } = trimmed.info;
 console.log(
   `trim offsets: left=${trimOffsetLeft}, top=${trimOffsetTop}, tight pixels: ${tightPixW}x${tightPixH}`,

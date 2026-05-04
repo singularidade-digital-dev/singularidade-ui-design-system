@@ -30,7 +30,9 @@ for (const it of items) {
       .png()
       .toFile(join(ROOT, 'scratch', it.out));
   } else {
-    await sharp(buf).png().toFile(join(ROOT, 'scratch', it.out));
+    await sharp(buf)
+      .png()
+      .toFile(join(ROOT, 'scratch', it.out));
   }
   console.log(`✓ scratch/${it.out}`);
 }

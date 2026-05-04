@@ -108,7 +108,7 @@ for (const name of SUBSET) {
   try {
     copyFileSync(src, dst);
     copied++;
-  } catch (err) {
+  } catch {
     missing.push(name);
   }
 }
