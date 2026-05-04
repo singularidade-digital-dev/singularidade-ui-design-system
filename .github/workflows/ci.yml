@@ -74,6 +74,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter @singularidade/tokens build
       - run: mvn -pl packages/tokens install -DskipTests -B
+      - run: pnpm --filter @singularidade/brand-assets build
+      - run: mvn -pl packages/brand-assets install -DskipTests -B
 
   changeset-check:
     name: Changeset Required

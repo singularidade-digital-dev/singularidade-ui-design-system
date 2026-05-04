@@ -61,4 +61,4 @@ jobs:
 
       - name: Maven Deploy
         if: steps.changesets.outputs.published == 'true'
-        run: mvn -pl packages/tokens deploy -DskipTests -B
+        run: mvn -pl packages/tokens,packages/brand-assets deploy -DskipTests -B

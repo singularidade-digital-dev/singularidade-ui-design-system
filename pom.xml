@@ -13,6 +13,7 @@
 
     <modules>
         <module>packages/tokens</module>
+        <module>packages/brand-assets</module>
     </modules>
 
     <properties>
