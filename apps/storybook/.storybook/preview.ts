@@ -14,6 +14,11 @@ import '@singularidade/brand-assets/fonts/jetbrains-mono.css';
 // Global page styles — neutral background using semantic tokens.
 import './preview.css';
 
+// Bridge our DS tokens → Vaadin Lumo tokens so every Vaadin component picks
+// up the brand palette. Storybook-only preview; the real bridge lives in Phase 3
+// (vaadin-bindings inside singularidade-ui-vaadin).
+import './lumo-overrides.css';
+
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },

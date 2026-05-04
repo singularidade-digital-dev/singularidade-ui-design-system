@@ -1,0 +1,171 @@
+/*
+ * Lumo → Singularidade DS overrides.
+ *
+ * Vaadin components consume Lumo tokens (--lumo-*). Our DS exposes semantic
+ * tokens (--color-*). This file bridges them so every Vaadin component picks
+ * up the brand palette automatically — without modifying the Vaadin packages.
+ *
+ * Selector matches the data-theme attribute set by .storybook/preview.ts.
+ *
+ * Note: this is a Storybook-only preview. The real bridge ships in Phase 3
+ * (vaadin-bindings) inside the singularidade-ui-vaadin theme.
+ */
+
+:root[data-theme='light'] {
+  /* Primary — coral.600 in light (more sober than brand pure) */
+  --lumo-primary-color: var(--color-interactive-primary);
+  --lumo-primary-color-50pct: rgba(190, 53, 80, 0.5);
+  --lumo-primary-color-10pct: rgba(190, 53, 80, 0.1);
+  --lumo-primary-text-color: var(--color-interactive-primary);
+  --lumo-primary-contrast-color: var(--color-text-inverse);
+
+  /* Feedback */
+  --lumo-error-color: var(--color-feedback-error-solid);
+  --lumo-error-color-50pct: rgba(220, 38, 38, 0.5);
+  --lumo-error-color-10pct: rgba(220, 38, 38, 0.1);
+  --lumo-error-text-color: var(--color-feedback-error-solid);
+  --lumo-error-contrast-color: var(--color-text-inverse);
+
+  --lumo-success-color: var(--color-feedback-success-solid);
+  --lumo-success-color-50pct: rgba(4, 120, 87, 0.5);
+  --lumo-success-color-10pct: rgba(4, 120, 87, 0.1);
+  --lumo-success-text-color: var(--color-feedback-success-solid);
+  --lumo-success-contrast-color: var(--color-text-inverse);
+
+  --lumo-warning-color: var(--color-feedback-warning-solid);
+  --lumo-warning-color-50pct: rgba(180, 83, 9, 0.5);
+  --lumo-warning-color-10pct: rgba(180, 83, 9, 0.1);
+  --lumo-warning-text-color: var(--color-feedback-warning-solid);
+  --lumo-warning-contrast-color: var(--color-text-inverse);
+
+  /* Surface + neutrals */
+  --lumo-base-color: var(--color-surface-base);
+  --lumo-tint: #ffffff;
+  --lumo-tint-5pct: rgba(255, 255, 255, 0.3);
+  --lumo-tint-10pct: rgba(255, 255, 255, 0.37);
+  --lumo-tint-20pct: rgba(255, 255, 255, 0.44);
+  --lumo-tint-30pct: rgba(255, 255, 255, 0.5);
+  --lumo-tint-40pct: rgba(255, 255, 255, 0.57);
+  --lumo-tint-50pct: rgba(255, 255, 255, 0.64);
+  --lumo-tint-60pct: rgba(255, 255, 255, 0.7);
+  --lumo-tint-70pct: rgba(255, 255, 255, 0.77);
+  --lumo-tint-80pct: rgba(255, 255, 255, 0.84);
+  --lumo-tint-90pct: rgba(255, 255, 255, 0.9);
+
+  --lumo-shade: var(--color-neutral-1000);
+  --lumo-shade-5pct: rgba(38, 26, 33, 0.05);
+  --lumo-shade-10pct: rgba(38, 26, 33, 0.1);
+  --lumo-shade-20pct: rgba(38, 26, 33, 0.16);
+  --lumo-shade-30pct: rgba(38, 26, 33, 0.24);
+  --lumo-shade-40pct: rgba(38, 26, 33, 0.34);
+  --lumo-shade-50pct: rgba(38, 26, 33, 0.45);
+  --lumo-shade-60pct: rgba(38, 26, 33, 0.57);
+  --lumo-shade-70pct: rgba(38, 26, 33, 0.69);
+  --lumo-shade-80pct: rgba(38, 26, 33, 0.81);
+  --lumo-shade-90pct: rgba(38, 26, 33, 0.9);
+  --lumo-contrast: var(--color-text-primary);
+  --lumo-contrast-5pct: rgba(38, 26, 33, 0.05);
+  --lumo-contrast-10pct: rgba(38, 26, 33, 0.1);
+  --lumo-contrast-20pct: rgba(38, 26, 33, 0.16);
+  --lumo-contrast-30pct: rgba(38, 26, 33, 0.24);
+  --lumo-contrast-40pct: rgba(38, 26, 33, 0.34);
+  --lumo-contrast-50pct: rgba(38, 26, 33, 0.45);
+  --lumo-contrast-60pct: rgba(38, 26, 33, 0.57);
+  --lumo-contrast-70pct: rgba(38, 26, 33, 0.69);
+  --lumo-contrast-80pct: rgba(38, 26, 33, 0.81);
+  --lumo-contrast-90pct: rgba(38, 26, 33, 0.9);
+
+  /* Text */
+  --lumo-header-text-color: var(--color-text-primary);
+  --lumo-body-text-color: var(--color-text-primary);
+  --lumo-secondary-text-color: var(--color-text-secondary);
+  --lumo-tertiary-text-color: var(--color-text-muted);
+  --lumo-disabled-text-color: var(--color-text-disabled);
+  --lumo-link-color: var(--color-interactive-primary);
+
+  /* Typography */
+  --lumo-font-family:
+    'Plus Jakarta Sans Variable', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+
+  /* Border radius — match our token scale */
+  --lumo-border-radius-s: var(--radius-sm);
+  --lumo-border-radius-m: var(--radius-md);
+  --lumo-border-radius-l: var(--radius-lg);
+}
+
+:root[data-theme='dark'] {
+  /* Primary — coral.400 brighter for AA contrast in dark mode */
+  --lumo-primary-color: var(--color-interactive-primary);
+  --lumo-primary-color-50pct: rgba(251, 113, 133, 0.5);
+  --lumo-primary-color-10pct: rgba(251, 113, 133, 0.16);
+  --lumo-primary-text-color: var(--color-interactive-primary);
+  --lumo-primary-contrast-color: var(--color-text-inverse);
+
+  --lumo-error-color: var(--color-feedback-error-solid);
+  --lumo-error-color-50pct: rgba(248, 113, 113, 0.5);
+  --lumo-error-color-10pct: rgba(248, 113, 113, 0.16);
+  --lumo-error-text-color: var(--color-feedback-error-solid);
+
+  --lumo-success-color: var(--color-feedback-success-solid);
+  --lumo-success-color-50pct: rgba(110, 231, 183, 0.5);
+  --lumo-success-color-10pct: rgba(110, 231, 183, 0.16);
+  --lumo-success-text-color: var(--color-feedback-success-solid);
+
+  --lumo-warning-color: var(--color-feedback-warning-solid);
+  --lumo-warning-color-50pct: rgba(251, 191, 36, 0.5);
+  --lumo-warning-color-10pct: rgba(251, 191, 36, 0.16);
+  --lumo-warning-text-color: var(--color-feedback-warning-solid);
+
+  /* Surface — neutral.950 base */
+  --lumo-base-color: var(--color-surface-base);
+  --lumo-tint: #fdfafc;
+  --lumo-tint-5pct: rgba(253, 250, 252, 0.05);
+  --lumo-tint-10pct: rgba(253, 250, 252, 0.1);
+  --lumo-tint-20pct: rgba(253, 250, 252, 0.16);
+  --lumo-tint-30pct: rgba(253, 250, 252, 0.24);
+  --lumo-tint-40pct: rgba(253, 250, 252, 0.34);
+  --lumo-tint-50pct: rgba(253, 250, 252, 0.45);
+  --lumo-tint-60pct: rgba(253, 250, 252, 0.57);
+  --lumo-tint-70pct: rgba(253, 250, 252, 0.69);
+  --lumo-tint-80pct: rgba(253, 250, 252, 0.81);
+  --lumo-tint-90pct: rgba(253, 250, 252, 0.9);
+
+  --lumo-shade: #000000;
+  --lumo-shade-5pct: rgba(0, 0, 0, 0.05);
+  --lumo-shade-10pct: rgba(0, 0, 0, 0.1);
+  --lumo-shade-20pct: rgba(0, 0, 0, 0.16);
+  --lumo-shade-30pct: rgba(0, 0, 0, 0.24);
+  --lumo-shade-40pct: rgba(0, 0, 0, 0.34);
+  --lumo-shade-50pct: rgba(0, 0, 0, 0.45);
+  --lumo-shade-60pct: rgba(0, 0, 0, 0.57);
+  --lumo-shade-70pct: rgba(0, 0, 0, 0.69);
+  --lumo-shade-80pct: rgba(0, 0, 0, 0.81);
+  --lumo-shade-90pct: rgba(0, 0, 0, 0.9);
+  --lumo-contrast: var(--color-text-primary);
+  --lumo-contrast-5pct: rgba(253, 250, 252, 0.05);
+  --lumo-contrast-10pct: rgba(253, 250, 252, 0.1);
+  --lumo-contrast-20pct: rgba(253, 250, 252, 0.16);
+  --lumo-contrast-30pct: rgba(253, 250, 252, 0.24);
+  --lumo-contrast-40pct: rgba(253, 250, 252, 0.34);
+  --lumo-contrast-50pct: rgba(253, 250, 252, 0.45);
+  --lumo-contrast-60pct: rgba(253, 250, 252, 0.57);
+  --lumo-contrast-70pct: rgba(253, 250, 252, 0.69);
+  --lumo-contrast-80pct: rgba(253, 250, 252, 0.81);
+  --lumo-contrast-90pct: rgba(253, 250, 252, 0.9);
+
+  --lumo-header-text-color: var(--color-text-primary);
+  --lumo-body-text-color: var(--color-text-primary);
+  --lumo-secondary-text-color: var(--color-text-secondary);
+  --lumo-tertiary-text-color: var(--color-text-muted);
+  --lumo-disabled-text-color: var(--color-text-disabled);
+  --lumo-link-color: var(--color-interactive-primary);
+
+  --lumo-font-family:
+    'Plus Jakarta Sans Variable', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+
+  --lumo-border-radius-s: var(--radius-sm);
+  --lumo-border-radius-m: var(--radius-md);
+  --lumo-border-radius-l: var(--radius-lg);
+}
