@@ -19,7 +19,72 @@ import './preview.css';
 // (vaadin-bindings inside singularidade-ui-vaadin).
 import './lumo-overrides.css';
 
+// Intensity presets to compare different primary palette strategies live.
+// Default ("sober") matches the spec's hybrid color strategy.
+const INTENSITY_PRESETS: Record<
+  string,
+  Record<
+    string,
+    { lightPrimary: string; lightHover: string; darkPrimary: string; darkHover: string }
+  >
+> = {
+  sober: {
+    coral: {
+      lightPrimary: '#BE3550',
+      lightHover: '#9F1239',
+      darkPrimary: '#FB7185',
+      darkHover: '#FDA4AF',
+    },
+  },
+  brand: {
+    coral: {
+      lightPrimary: '#E8606A',
+      lightHover: '#BE3550',
+      darkPrimary: '#FDA4AF',
+      darkHover: '#FECDD3',
+    },
+  },
+  magenta: {
+    coral: {
+      lightPrimary: '#E91E8B',
+      lightHover: '#9D174D',
+      darkPrimary: '#F472B6',
+      darkHover: '#FBCFE8',
+    },
+  },
+};
+
+function applyIntensity(intensity: string, theme: string) {
+  const preset = INTENSITY_PRESETS[intensity]?.coral || INTENSITY_PRESETS.sober.coral;
+  const isDark = theme === 'dark';
+  const primary = isDark ? preset.darkPrimary : preset.lightPrimary;
+  const hover = isDark ? preset.darkHover : preset.lightHover;
+  const root = document.documentElement;
+  root.style.setProperty('--color-interactive-primary', primary);
+  root.style.setProperty('--color-interactive-primary-hover', hover);
+  root.style.setProperty('--lumo-primary-color', primary);
+  root.style.setProperty('--lumo-primary-text-color', primary);
+  root.style.setProperty('--color-border-focus', primary);
+}
+
 const preview: Preview = {
+  globalTypes: {
+    intensity: {
+      name: 'Intensity',
+      description: 'Primary color intensity preset',
+      defaultValue: 'sober',
+      toolbar: {
+        icon: 'paintbrush',
+        title: 'Intensity',
+        items: [
+          { value: 'sober', title: 'Sober (industry standard) — coral.600 / coral.400' },
+          { value: 'brand', title: 'Brand pure — coral.500 / coral.300' },
+          { value: 'magenta', title: 'Magenta max — magenta.500 / magenta.300' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
@@ -64,9 +129,11 @@ const preview: Preview = {
     (story, context) => {
       const themePair = context.globals.theme || 'singularidade · light';
       const [brand, theme] = themePair.split(' · ');
+      const intensity = context.globals.intensity || 'sober';
       const root = document.documentElement;
       root.setAttribute('data-brand', brand);
       root.setAttribute('data-theme', theme);
+      applyIntensity(intensity, theme);
       return story();
     },
   ],
