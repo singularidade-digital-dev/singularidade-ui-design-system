@@ -38,9 +38,17 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Create Release Pull Request or Publish
+      # Build pnpm assets first so vaadin-bindings can copy tokens/brand-assets
+      # outputs at Maven process-resources, and so changesets can include
+      # generated artifacts in any npm publish.
+      - run: pnpm build
+
+      - name: Create Release Pull Request or Publish (npm)
         id: changesets
         uses: changesets/action@v1
+        continue-on-error: true # npm scope @singularidade isn't yet provisioned;
+        # don't let npm-side failures block the Maven publish that downstream
+        # apps depend on. Track npm setup separately.
         with:
           publish: pnpm release
           createGithubReleases: true
@@ -48,18 +56,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Sync Maven version
-        if: steps.changesets.outputs.published == 'true'
-        run: |
-          NEW_VERSION=$(node -p "require('./packages/tokens/package.json').version")
-          mvn versions:set -DnewVersion=$NEW_VERSION -DgenerateBackupPoms=false
-          mvn versions:commit
-
+      # Maven publish to CodeArtifact runs unconditionally on push to main.
+      # Versions stay at *-SNAPSHOT in pom.xml; CodeArtifact stores each push
+      # under a timestamped revision. This is what unblocks the Java consumers
+      # (singularidade-ui-vaadin, integras-digital, integras-digital-plataform).
       - name: Login to AWS CodeArtifact
-        if: steps.changesets.outputs.published == 'true'
-        run: |
-          aws codeartifact login --tool maven --repository maven --domain singularidade-digital --domain-owner 539191403497
+        run: aws codeartifact login --tool maven --repository maven --domain singularidade-digital --domain-owner 539191403497
 
-      - name: Maven Deploy
-        if: steps.changesets.outputs.published == 'true'
+      - name: Maven Deploy (SNAPSHOT)
         run: mvn -pl packages/tokens,packages/brand-assets,packages/vaadin-bindings deploy -DskipTests -B

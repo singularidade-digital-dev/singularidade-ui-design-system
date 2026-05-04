@@ -46,6 +46,10 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20, cache: pnpm }
       - run: pnpm install --frozen-lockfile
+      # tokens tests assert against build output (build/css/*.css, build/json/*, build/java/*).
+      # Style Dictionary doesn't run as a vitest fixture, so emit it explicitly.
+      - run: pnpm --filter @singularidade/tokens build
+      - run: pnpm --filter @singularidade/brand-assets build
       - run: pnpm test
 
   build:
