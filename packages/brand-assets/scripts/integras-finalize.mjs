@@ -15,6 +15,9 @@ const LOGOS = join(ROOT, 'src/logos/integras');
 const traced = readFileSync(join(SCRATCH, 'integras-x-traced.svg'), 'utf-8');
 const pathD = traced.match(/<path[^>]*d="([^"]+)"[^>]*\/>/)[1];
 const viewBox = traced.match(/viewBox="([^"]+)"/)[1];
+const [, , vbW, vbH] = viewBox.split(/\s+/).map(Number);
+const aspect = vbW / vbH;
+console.log(`viewBox: ${viewBox} (aspect ratio ${aspect.toFixed(3)})`);
 
 // Optimize the path d using SVGO (it cleans up coords).
 const tempSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}"><path fill="#000" fill-rule="evenodd" d="${pathD}"/></svg>`;
@@ -51,12 +54,14 @@ const monoSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" ve
 writeFileSync(join(LOGOS, 'monochrome.svg'), monoSvg);
 console.log('✓ src/logos/integras/monochrome.svg');
 
-// 3. horizontal.svg — symbol + INTEGRAS.DIGITAL text inline
-//    viewBox of traced is 880x720. Scale to 100px height: scale = 100/720 = 0.139.
-//    Symbol width @ 100h = 880 * 0.139 = ~122px.
-const SCALE = 100 / 720;
-const SYM_W = Math.round(880 * SCALE);
-const horizontalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SYM_W + 480} 100" width="${SYM_W + 480}" height="100">
+// 3. horizontal.svg — symbol on left + INTEGRAS.DIGITAL text inline.
+//    Use nested <svg> with its own viewBox to isolate the symbol's coordinate
+//    space — avoids dealing with viewBox minX/minY offsets in transforms.
+const H_HEIGHT = 100;
+const H_SYM_W = Math.round(H_HEIGHT * aspect);
+const H_TEXT_GAP = 24;
+const H_TEXT_W = 480;
+const horizontalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${H_SYM_W + H_TEXT_GAP + H_TEXT_W} ${H_HEIGHT}" width="${H_SYM_W + H_TEXT_GAP + H_TEXT_W}" height="${H_HEIGHT}">
   <defs>
     <linearGradient id="ig-h-grad" x1="0.5" y1="0" x2="0.5" y2="1">
       <stop offset="0%" stop-color="#E91E8B"/>
@@ -64,11 +69,11 @@ const horizontalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SY
       <stop offset="100%" stop-color="#F5A623"/>
     </linearGradient>
   </defs>
-  <g transform="scale(${SCALE.toFixed(4)})">
+  <svg x="0" y="0" width="${H_SYM_W}" height="${H_HEIGHT}" viewBox="${viewBox}" preserveAspectRatio="xMidYMid meet">
     <path fill="url(#ig-h-grad)" fill-rule="evenodd" d="${optimizedPathD}"/>
-  </g>
+  </svg>
   <text
-    x="${SYM_W + 25}"
+    x="${H_SYM_W + H_TEXT_GAP}"
     y="68"
     font-family="'Plus Jakarta Sans', system-ui, sans-serif"
     font-weight="700"
@@ -82,9 +87,13 @@ writeFileSync(join(LOGOS, 'horizontal.svg'), horizontalSvg);
 console.log('✓ src/logos/integras/horizontal.svg');
 
 // 4. vertical.svg — symbol on top + text below
-const V_SCALE = 130 / 720; // bigger symbol vertically
-const V_SYM_W = Math.round(880 * V_SCALE);
-const verticalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" width="400" height="220">
+const V_W = 400;
+const V_TOTAL_H = 220;
+const V_SYM_H = 140;
+const V_SYM_W = Math.round(V_SYM_H * aspect);
+const V_SYM_X = (V_W - V_SYM_W) / 2;
+const V_TEXT_Y = V_SYM_H + 50;
+const verticalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${V_W} ${V_TOTAL_H}" width="${V_W}" height="${V_TOTAL_H}">
   <defs>
     <linearGradient id="ig-v-grad" x1="0.5" y1="0" x2="0.5" y2="1">
       <stop offset="0%" stop-color="#E91E8B"/>
@@ -92,12 +101,12 @@ const verticalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 22
       <stop offset="100%" stop-color="#F5A623"/>
     </linearGradient>
   </defs>
-  <g transform="translate(${(400 - V_SYM_W) / 2}, 5) scale(${V_SCALE.toFixed(4)})">
+  <svg x="${V_SYM_X}" y="0" width="${V_SYM_W}" height="${V_SYM_H}" viewBox="${viewBox}" preserveAspectRatio="xMidYMid meet">
     <path fill="url(#ig-v-grad)" fill-rule="evenodd" d="${optimizedPathD}"/>
-  </g>
+  </svg>
   <text
-    x="200"
-    y="190"
+    x="${V_W / 2}"
+    y="${V_TEXT_Y}"
     text-anchor="middle"
     font-family="'Plus Jakarta Sans', system-ui, sans-serif"
     font-weight="700"

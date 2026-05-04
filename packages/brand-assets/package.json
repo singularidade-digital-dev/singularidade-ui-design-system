@@ -29,6 +29,7 @@
     "preview:icons": "node scripts/preview-custom-icons.mjs",
     "scratch:integras-recrop": "node scripts/integras-recrop.mjs",
     "scratch:integras-vectorize": "node scripts/integras-vectorize.mjs",
+    "scratch:integras-tighten": "node scripts/integras-tighten.mjs",
     "scratch:integras-finalize": "node scripts/integras-finalize.mjs",
     "scratch:integras-preview": "node scripts/preview-integras-final.mjs",
     "build:sprite": "node scripts/generate-sprite.mjs",
