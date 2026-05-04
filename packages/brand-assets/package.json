@@ -27,6 +27,10 @@
     "build:fonts": "node scripts/copy-fonts.mjs",
     "build:lucide": "node scripts/copy-lucide-subset.mjs",
     "preview:icons": "node scripts/preview-custom-icons.mjs",
+    "scratch:integras-recrop": "node scripts/integras-recrop.mjs",
+    "scratch:integras-vectorize": "node scripts/integras-vectorize.mjs",
+    "scratch:integras-finalize": "node scripts/integras-finalize.mjs",
+    "scratch:integras-preview": "node scripts/preview-integras-final.mjs",
     "build:sprite": "node scripts/generate-sprite.mjs",
     "build:iconset": "node scripts/generate-vaadin-iconset.mjs",
     "build:catalog": "node scripts/generate-catalog.mjs",
@@ -35,6 +39,7 @@
   },
   "devDependencies": {
     "lucide-static": "^0.469.0",
+    "potrace": "^2",
     "sharp": "^0.33.5",
     "svgo": "^3.3.3"
   },
