@@ -98,6 +98,39 @@ vaadin-button[theme~='primary'][theme~='success'] {
   --vaadin-button-text-color: var(--color-text-inverse);
 }
 
+/*
+ * Secondary button — neutral by default, with subtle brand hint on hover/focus.
+ * color-mix produces a tinted background that follows the active intensity
+ * automatically (sober/brand/magenta).
+ */
+vaadin-button:not([theme~='primary']):not([theme~='tertiary']):not([theme~='error']):not(
+    [theme~='success']
+  ):hover:not([disabled]) {
+  --vaadin-button-background: color-mix(
+    in oklab,
+    var(--color-interactive-primary) 8%,
+    var(--color-surface-raised)
+  );
+  --vaadin-button-text-color: var(--color-interactive-primary);
+  --vaadin-button-border-color: var(--color-interactive-primary);
+}
+
+vaadin-button:not([theme~='primary']):not([theme~='tertiary']):not([theme~='error']):not(
+    [theme~='success']
+  ):focus-visible {
+  --vaadin-button-border-color: var(--color-interactive-primary);
+}
+
+/* Tertiary (ghost) — text in brand color, subtle background tint on hover */
+vaadin-button[theme~='tertiary'] {
+  --vaadin-button-text-color: var(--color-interactive-primary);
+}
+
+vaadin-button[theme~='tertiary']:hover:not([disabled]) {
+  --vaadin-button-background: color-mix(in oklab, var(--color-interactive-primary) 8%, transparent);
+  --vaadin-button-text-color: var(--color-interactive-primary-hover);
+}
+
 /* Text inputs — focus ring follows brand */
 vaadin-text-field,
 vaadin-password-field,
