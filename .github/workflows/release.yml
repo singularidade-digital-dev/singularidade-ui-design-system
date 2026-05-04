@@ -12,10 +12,11 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    environment: production
     permissions:
       contents: write
       pull-requests: write
-      id-token: write # npm provenance
+      id-token: write # npm provenance + AWS OIDC
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
@@ -29,11 +30,11 @@ jobs:
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 21, cache: maven }
 
-      - name: Configure AWS credentials
+      - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-1
-          role-to-assume: ${{ secrets.AWS_CODEARTIFACT_ROLE }}
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
 
       - run: pnpm install --frozen-lockfile
 
