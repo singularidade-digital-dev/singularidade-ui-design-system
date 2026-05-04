@@ -84,5 +84,9 @@ jobs:
           </settings>
           EOF
 
+      # Deploy the full reactor (root aggregator pom + 3 children). Without
+      # the aggregator pom in CodeArtifact, downstream Java consumers fail to
+      # resolve `digital.singularidade:singularidade-ui-design-system-parent`
+      # (declared as the <parent> of every published child) at install time.
       - name: Maven Deploy (SNAPSHOT)
-        run: mvn -pl packages/tokens,packages/brand-assets,packages/vaadin-bindings deploy -DskipTests -B
+        run: mvn deploy -DskipTests -B
