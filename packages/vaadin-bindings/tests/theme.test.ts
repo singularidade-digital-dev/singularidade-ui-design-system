@@ -104,4 +104,18 @@ describe('vaadin-bindings theme', () => {
     expect(css).toMatch(/\[theme~='dark'\]/);
     expect(css).toMatch(/\[data-theme='dark'\]/);
   });
+
+  it('styles.css re-pins dark tokens on body-appended Vaadin overlays (dialog, notification, popover, etc.)', () => {
+    // Regression guard: when only the [theme~='dark'] block on :root applies
+    // dark tokens, body-appended overlays (vaadin-dialog-overlay,
+    // vaadin-notification-card, vaadin-popover-overlay, ...) inherit Lumo's
+    // light defaults from their own :host shadow-DOM declarations and
+    // render with wrong colors. The re-pin block scoped via
+    // html[theme~='dark'] vaadin-*-overlay fixes this.
+    const css = readFileSync(join(ROOT, 'themes/singularidade-base/styles.css'), 'utf-8');
+    expect(css).toMatch(/html\[theme~='dark'\] vaadin-dialog-overlay/);
+    expect(css).toMatch(/html\[theme~='dark'\] vaadin-notification-card/);
+    expect(css).toMatch(/html\[theme~='dark'\] vaadin-popover-overlay/);
+    expect(css).toMatch(/html\[theme~='dark'\] vaadin-combo-box-overlay/);
+  });
 });
