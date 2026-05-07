@@ -6,11 +6,18 @@ const BRANDS = ['singularidade', 'integras'];
 const MODES = ['light', 'dark'];
 
 const JAVA_PACKAGE_PATH = 'build/java/digital/singularidade/tokens';
+// Emit email tokens under the same Java source root so the existing
+// <sourceDirectory>build/java</sourceDirectory> in pom.xml picks them up
+// automatically — no build-helper-maven-plugin needed.
+const EMAIL_JAVA_PACKAGE_PATH = 'build/java/digital/singularidade/tokens/email';
 
 mkdirSync('build/css', { recursive: true });
 mkdirSync('build/js', { recursive: true });
 mkdirSync('build/json', { recursive: true });
 mkdirSync(JAVA_PACKAGE_PATH, { recursive: true });
+mkdirSync(EMAIL_JAVA_PACKAGE_PATH, { recursive: true });
+
+const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 // SD4 builtin css/variables doesn't accept options.selector — register a custom format.
 StyleDictionary.registerFormat({
@@ -86,6 +93,25 @@ function configFor(brand, mode) {
         buildPath: 'build/json/',
         files: [{ destination: `${brand}.${mode}.json`, format: 'json/flat' }],
       },
+      // Per-brand × mode Java POJO consumed by Spring/Thymeleaf for email
+      // rendering (cf. integras-digital-plataform spec
+      // 2026-05-07-design-system-comunicacoes-design.md). Reuses the existing
+      // java/class format — same constant names as SingularidadeTokens, just
+      // segregated per brand×mode so a consumer can pick the right resolved set.
+      emailJava: {
+        transformGroup: 'java',
+        buildPath: `${EMAIL_JAVA_PACKAGE_PATH}/`,
+        files: [
+          {
+            destination: `EmailTokens${capitalize(brand)}${capitalize(mode)}.java`,
+            format: 'java/class',
+            options: {
+              className: `EmailTokens${capitalize(brand)}${capitalize(mode)}`,
+              packageName: 'digital.singularidade.tokens.email',
+            },
+          },
+        ],
+      },
     },
   };
 }
@@ -153,7 +179,8 @@ const canonical = new StyleDictionary({
 await canonical.buildAllPlatforms();
 
 console.log('✓ Build complete');
-console.log(`  CSS:  ${readdirSync('build/css').length} files`);
-console.log(`  JS:   ${readdirSync('build/js').length} files`);
-console.log(`  JSON: ${readdirSync('build/json').length} files`);
-console.log(`  Java: ${readdirSync(JAVA_PACKAGE_PATH).length} files`);
+console.log(`  CSS:        ${readdirSync('build/css').length} files`);
+console.log(`  JS:         ${readdirSync('build/js').length} files`);
+console.log(`  JSON:       ${readdirSync('build/json').length} files`);
+console.log(`  Java:       ${readdirSync(JAVA_PACKAGE_PATH).length} files`);
+console.log(`  Email Java: ${readdirSync(EMAIL_JAVA_PACKAGE_PATH).length} files`);
