@@ -18,8 +18,11 @@ const SRC = join(
 const OUT_DIR = join(__dirname, '../scratch');
 
 // Tight crop of the X from LOGO PRIMÁRIA section.
+// Brand-color bbox in source: x=[453..583], y=[97..269] (W=131, H=173).
+// Crop with ~10px margin so the rounded leg endings of the bottom chevron
+// are fully included — earlier 180px-tall crop clipped the bottom by ~9px.
 const cropBuf = await sharp(SRC)
-  .extract({ left: 420, top: 80, width: 220, height: 180 })
+  .extract({ left: 440, top: 85, width: 160, height: 200 })
   .toBuffer();
 writeFileSync(join(OUT_DIR, 'integras-x-tight.png'), cropBuf);
 
