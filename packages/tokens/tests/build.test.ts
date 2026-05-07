@@ -40,4 +40,36 @@ describe('build outputs', () => {
     expect(java).toContain('public final class SingularidadeTokens');
     expect(java).toContain('"#e91e8b"');
   });
+
+  it.each([
+    ['EmailTokensIntegrasLight', '#be3550' /* coral.600 interactive */],
+    ['EmailTokensIntegrasDark', '#fb7185' /* coral.400 interactive (dark) */],
+    ['EmailTokensSingularidadeLight', '#be3550'],
+    ['EmailTokensSingularidadeDark', '#fb7185'],
+  ])(
+    'Email Java %s existe no subpackage email + tem cor interactive primary correta',
+    (className, expectedPrimary) => {
+      const javaPath = join(BUILD_DIR, `java/digital/singularidade/tokens/email/${className}.java`);
+      expect(existsSync(javaPath)).toBe(true);
+      const java = readFileSync(javaPath, 'utf-8');
+      expect(java).toContain('package digital.singularidade.tokens.email;');
+      expect(java).toContain(`public final class ${className}`);
+      expect(java).toContain(`colorInteractivePrimary = "${expectedPrimary}"`);
+      // Sanity: integras brands carry the magenta brand primary
+      if (className.includes('Integras')) {
+        expect(java).toContain('colorBrandPrimary = "#e91e8b"');
+      }
+    },
+  );
+
+  it('Email Java tokens compartilham mesmo java/class format (camelCase, hex inline)', () => {
+    const javaPath = join(
+      BUILD_DIR,
+      'java/digital/singularidade/tokens/email/EmailTokensIntegrasLight.java',
+    );
+    const java = readFileSync(javaPath, 'utf-8');
+    expect(java).toMatch(/public static final String fontSizeM = "\d+px"/);
+    expect(java).toMatch(/public static final String radiusLg = "\d+px"/);
+    expect(java).toMatch(/public static final String fontFamilySans = ".+"/);
+  });
 });
