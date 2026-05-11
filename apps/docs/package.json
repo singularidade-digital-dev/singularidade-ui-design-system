@@ -17,6 +17,6 @@
     "@singularidade/tokens": "workspace:*",
     "astro": "^5.1.0",
     "pagefind": "^1.3.0",
-    "sharp": "^0.33.5"
+    "sharp": "^0.34.5"
   }
 }
