@@ -41,7 +41,7 @@
   "devDependencies": {
     "lucide-static": "^0.469.0",
     "potrace": "^2",
-    "sharp": "^0.33.5",
+    "sharp": "^0.34.5",
     "svgo": "^3.3.3"
   },
   "publishConfig": {
