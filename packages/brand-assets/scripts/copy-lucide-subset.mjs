@@ -56,13 +56,18 @@ const SUBSET = [
   'loader-circle',
   // Users / auth
   'user',
+  'user-check',
   'users',
   'log-in',
   'log-out',
   'lock',
+  'lock-keyhole',
   'lock-open',
   'key',
+  'key-round',
   'shield',
+  'shield-check',
+  'badge-check',
   // Content
   'file',
   'file-text',
@@ -90,6 +95,18 @@ const SUBSET = [
   'heart',
   'bookmark',
   'bell',
+  // Lists / checks
+  'list-checks',
+  // Theme
+  'sun',
+  'moon',
+  // Infra / business
+  'server',
+  'server-off',
+  'building-2',
+  'layers',
+  'cloud',
+  'git-branch',
   // Misc
   'globe',
   'link',
