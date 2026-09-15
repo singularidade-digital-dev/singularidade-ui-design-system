@@ -1,42 +1,38 @@
-# Secrets necessários no repo
+# Secrets e variables do repo
 
-| Secret                  | Origem                                                      | Uso                           |
-| ----------------------- | ----------------------------------------------------------- | ----------------------------- |
-| `NPM_TOKEN`             | npmjs.com → Account → Access Tokens → Automation            | Publica @singularidade/\*     |
-| `AWS_CODEARTIFACT_ROLE` | IAM role com permissão `codeartifact:PublishPackageVersion` | Publica em Maven CodeArtifact |
+Este repositório é **público**. Nenhum job que roda `pnpm install`/`pnpm build`
+(código de terceiros) pode ter `id-token: write` nem credencial AWS.
 
-## Setup
+| Nome                       | Tipo / escopo                                 | Uso                                                                                                      |
+| -------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `AWS_LIB_PUBLISH_ROLE_ARN` | Variable do environment `production`          | ARN do role **só de publish no CodeArtifact**, assumido pelo job `maven-publish` do `release.yml`        |
+| `AWS_DEPLOY_ROLE_ARN`      | Variable do environment `production` (legado) | Não é mais usada por nenhum workflow deste repo; remover depois que o `release.yml` novo estiver na main |
+| `NPM_TOKEN`                | Secret do repo (**ainda não existe**)         | Publicação npm `@singularidade/*` via changesets (hoje falha sem bloquear, `continue-on-error`)          |
 
-1. **npm scope** — verificar que `@singularidade` existe no npmjs.com e o token tem permissão de publish.
-2. **IAM Role** — configurar OIDC trust no IAM role (GitHub OIDC provider). O role deve permitir:
-   - `codeartifact:GetAuthorizationToken`
-   - `codeartifact:GetRepositoryEndpoint`
-   - `codeartifact:PublishPackageVersion`
-   - `sts:GetServiceBearerToken`
-3. Cole o ARN do role em `Settings → Secrets → Actions → AWS_CODEARTIFACT_ROLE`.
-4. Gere automation token no npmjs.com com 2FA opcional, cole em `NPM_TOKEN`.
+## Fluxo de release
 
-## Trust policy de exemplo (OIDC GitHub → IAM Role)
+- **Push na main** → só o job `changesets` (PR "Version Packages" / npm). **Não publica Maven.**
+- **Maven (CodeArtifact)** → só por **tag `v*`** ou **workflow_dispatch**:
+  - tag: precisa ser `v<project.version>` e a versão não pode ser `-SNAPSHOT`;
+  - dispatch: versão `-SNAPSHOT` só com o input `allow_snapshot=true` (sobrescreve o snapshot congelado que os consumidores Java resolvem).
+- O job `build` (sem credenciais, `--ignore-scripts`) gera `packages/tokens/build`, `packages/brand-assets/{build,src}` e sobe como artefato; o job `maven-publish` baixa esse artefato e roda `mvn deploy -Dexec.skip=true` (sem pnpm/npm).
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Federated": "arn:aws:iam::539191403497:oidc-provider/token.actions.githubusercontent.com"
-      },
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-        "StringEquals": {
-          "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
-        },
-        "StringLike": {
-          "token.actions.githubusercontent.com:sub": "repo:singularidade-digital/singularidade-ui-design-system:*"
-        }
-      }
-    }
-  ]
-}
-```
+## Role de publish (IAM)
+
+Permissões mínimas (as mesmas de CodeArtifact que o role de deploy tinha):
+
+- `codeartifact:GetAuthorizationToken`, `codeartifact:GetRepositoryEndpoint`, `codeartifact:ReadFromRepository`
+- `codeartifact:PublishPackageVersion`, `codeartifact:PutPackageMetadata`
+- `codeartifact:DescribeRepository`, `codeartifact:DescribeDomain`
+- `sts:GetServiceBearerToken`
+
+**Claim `sub` do OIDC:** o job `maven-publish` usa `environment: production`, então com o template padrão do
+GitHub o `sub` é `repo:singularidade-digital-dev/singularidade-ui-design-system:environment:production` (não contém a
+tag). Para restringir a tags `v*`, escolher uma das opções:
+
+1. trust no `sub` acima **e** deployment policy do environment `production` restrita a tags `v*`; ou
+2. customizar o template do `sub` do repo para incluir `ref`
+   (`repo:…:environment:production:ref:refs/tags/v*` na trust).
+
+npm: ao ativar a publicação npm, usar trusted publishing (OIDC do npm) num job próprio sem install scripts, e só
+depois que nenhum role AWS confiar mais em `ref:refs/heads/main` deste repo.
