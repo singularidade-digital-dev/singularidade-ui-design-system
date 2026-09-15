@@ -1,54 +1,73 @@
 name: Release
 
+# Credential isolation (this repository is PUBLIC):
+#
+#   changesets     push to main. Runs pnpm install/build (third-party code),
+#                  so it gets NO AWS role and NO id-token.
+#   build          tag v* / manual dispatch. Runs pnpm install (lifecycle
+#                  scripts disabled) + the pnpm builds Maven packages, with
+#                  contents: read only. Uploads the generated outputs.
+#   maven-publish  needs build. The ONLY job with id-token + environment
+#                  production. Never runs pnpm/npm: it downloads the outputs
+#                  and runs Maven with exec-maven-plugin skipped. Assumes the
+#                  CodeArtifact-only publish role, never the deploy role.
+#
+# Maven publishing no longer happens on push to main, which freezes the
+# 0.1.0-SNAPSHOT currently in CodeArtifact (the build of 5522de5, 2026-06-10)
+# that the Java consumers resolve.
+
 on:
   push:
     branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      allow_snapshot:
+        description: >-
+          Allow publishing a -SNAPSHOT version. This overwrites the frozen
+          snapshot every Java consumer resolves; leave unchecked unless that
+          is the explicit intent.
+        type: boolean
+        default: false
+
+permissions: {}
 
 concurrency:
   group: release
   cancel-in-progress: false
 
 jobs:
-  release:
-    name: Release
+  changesets:
+    name: npm / changesets
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment: production
     permissions:
-      contents: write
-      pull-requests: write
-      id-token: write # npm provenance + AWS OIDC
+      contents: write # version commit + GitHub releases
+      pull-requests: write # "Version Packages" PR
+      # No id-token: npm provenance is intentionally off while any AWS role
+      # still trusts this repository's main branch (see .github/SECRETS.md).
     steps:
-      - uses: actions/checkout@v4
-        with: { fetch-depth: 0 }
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+          # changesets/action writes its own ~/.netrc for pushes, so the
+          # token does not need to sit in .git/config during install/build.
+          persist-credentials: false
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
         with: { version: 9.15.0 }
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 20
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
-      - uses: actions/setup-java@v4
-        with: { distribution: temurin, java-version: 21, cache: maven }
 
-      - name: Configure AWS credentials (OIDC)
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-region: us-east-1
-          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
-
-      - run: pnpm install --frozen-lockfile
-
-      # Build pnpm assets first so vaadin-bindings can copy tokens/brand-assets
-      # outputs at Maven process-resources, and so changesets can include
-      # generated artifacts in any npm publish.
+      - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pnpm build
 
       - name: Create Release Pull Request or Publish (npm)
         id: changesets
-        uses: changesets/action@v1
-        continue-on-error: true # npm scope @singularidade isn't yet provisioned;
-        # don't let npm-side failures block the Maven publish that downstream
-        # apps depend on. Track npm setup separately.
+        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
+        continue-on-error: true # npm scope @singularidade isn't provisioned yet
         with:
           publish: pnpm release
           createGithubReleases: true
@@ -56,21 +75,121 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Maven publish to CodeArtifact runs unconditionally on push to main.
-      # Versions stay at *-SNAPSHOT in pom.xml; CodeArtifact stores each push
-      # under a timestamped revision. This is what unblocks the Java consumers
-      # (singularidade-ui-vaadin, integras-digital, integras-digital-plataform).
-      #
-      # Auth pattern matches integras-digital and singularidade-ui-vaadin CIs:
-      # write ~/.m2/settings.xml with a CodeArtifact bearer token under server
-      # id "codeartifact" — same id referenced by distributionManagement in the
-      # root pom.xml. (`aws codeartifact login --tool maven` does not exist —
-      # CodeArtifact's CLI helper supports npm/pip/twine/etc., not Maven.)
+  build:
+    name: Build Maven inputs (no credentials)
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+        with: { version: 9.15.0 }
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 20
+          cache: pnpm
+      # No Maven cache here or in maven-publish: a cache saved by a job that
+      # ran npm code must never be restored into the credentialed job.
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with: { distribution: temurin, java-version: 21 }
+
+      - name: Check release version
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+          ALLOW_SNAPSHOT: ${{ inputs.allow_snapshot }}
+        run: |
+          VERSION=$(mvn -B -q help:evaluate -Dexpression=project.version -DforceStdout)
+          echo "project.version=${VERSION}"
+          if [ "$REF_TYPE" = "tag" ]; then
+            if [ "v${VERSION}" != "$REF_NAME" ]; then
+              echo "::error::Tag ${REF_NAME} does not match project.version ${VERSION} (expected tag v${VERSION})."
+              exit 1
+            fi
+          fi
+          case "$VERSION" in
+            *-SNAPSHOT)
+              if [ "$EVENT_NAME" != "workflow_dispatch" ] || [ "$ALLOW_SNAPSHOT" != "true" ]; then
+                echo "::error::Refusing to publish ${VERSION}: snapshots are frozen. Set a release version, or dispatch with allow_snapshot=true."
+                exit 1
+              fi
+              ;;
+          esac
+
+      # Lifecycle scripts stay disabled: none of the packages below needs one
+      # (sharp ships prebuilt @img/* binaries).
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      # Exactly the builds exec-maven-plugin would otherwise run inside Maven.
+      - run: pnpm --filter @singularidade/tokens build
+      - run: pnpm --filter @singularidade/brand-assets build
+
+      # Fail here, without credentials, if the outputs are not enough for the
+      # Maven reactor to package without pnpm.
+      - name: Maven package (exec-maven-plugin skipped)
+        run: mvn -B -DskipTests -Dexec.skip=true package
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: maven-inputs
+          # Least common ancestor is packages/, so the artifact root holds
+          # tokens/build, brand-assets/build and brand-assets/src.
+          path: |
+            packages/tokens/build
+            packages/brand-assets/build
+            packages/brand-assets/src
+          if-no-files-found: error
+          retention-days: 7
+
+  maven-publish:
+    name: Maven publish (CodeArtifact)
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write # AWS OIDC, publish role only
+    env:
+      AWS_REGION: us-east-1
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: maven-inputs
+          path: packages
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with: { distribution: temurin, java-version: 21 }
+
+      - name: Check publish role is configured
+        env:
+          ROLE_ARN: ${{ vars.AWS_LIB_PUBLISH_ROLE_ARN }}
+        run: |
+          if [ -z "$ROLE_ARN" ]; then
+            echo "::error::vars.AWS_LIB_PUBLISH_ROLE_ARN is not set on the production environment."
+            exit 1
+          fi
+
+      - name: Configure AWS credentials (OIDC, CodeArtifact publish role)
+        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4.3.1
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ vars.AWS_LIB_PUBLISH_ROLE_ARN }}
+
+      # Auth pattern matches the other Java repos: ~/.m2/settings.xml with a
+      # CodeArtifact bearer token under server id "codeartifact", the id used
+      # by distributionManagement in the root pom.xml.
       - name: Configure CodeArtifact Maven settings
         run: |
           TOKEN=$(aws codeartifact get-authorization-token \
             --domain singularidade-digital \
             --query authorizationToken --output text)
+          echo "::add-mask::${TOKEN}"
           mkdir -p ~/.m2
           cat > ~/.m2/settings.xml <<EOF
           <settings>
@@ -84,9 +203,8 @@ jobs:
           </settings>
           EOF
 
-      # Deploy the full reactor (root aggregator pom + 3 children). Without
-      # the aggregator pom in CodeArtifact, downstream Java consumers fail to
-      # resolve `digital.singularidade:singularidade-ui-design-system-parent`
-      # (declared as the <parent> of every published child) at install time.
-      - name: Maven Deploy (SNAPSHOT)
-        run: mvn deploy -DskipTests -B
+      # Full reactor (aggregator pom + 3 children): consumers need the parent
+      # pom in CodeArtifact. exec-maven-plugin is skipped, so no pnpm runs;
+      # resources come from the downloaded build outputs.
+      - name: Maven deploy
+        run: mvn -B -DskipTests -Dexec.skip=true deploy
