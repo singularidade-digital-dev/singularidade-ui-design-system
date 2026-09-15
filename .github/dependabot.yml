@@ -10,11 +10,24 @@ updates:
     groups:
       dev-deps:
         dependency-type: development
+    ignore:
+      # Vaadin 25 web components belong to the coordinated Boot 4.1 / Vaadin 25 /
+      # Spring AI 2 / Jackson 3 upgrade wave (upgrade plan 2026-09-15, item F0 0.1).
+      # Minor/patch bumps keep flowing, and update-types does not filter security
+      # updates. Revisit when the wave lands.
+      - dependency-name: '@vaadin/*'
+        update-types: ['version-update:semver-major']
   - package-ecosystem: maven
     directory: /
     schedule:
       interval: weekly
       day: monday
+    ignore:
+      # flow-server 25 requires Vaadin 25 / Boot 4.1, and every merge to main
+      # republishes the SNAPSHOT that singularidade-ui-vaadin consumes in production.
+      # The Vaadin major moves only with the coordinated wave (plan item F0 0.1).
+      - dependency-name: 'com.vaadin:*'
+        update-types: ['version-update:semver-major']
   - package-ecosystem: github-actions
     directory: /
     schedule:
