@@ -6,7 +6,7 @@
 
     <groupId>digital.singularidade</groupId>
     <artifactId>singularidade-ui-design-system-parent</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.2.0-RC1</version>
     <packaging>pom</packaging>
 
     <name>Singularidade Design System (parent)</name>

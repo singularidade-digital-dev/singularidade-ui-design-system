@@ -18,7 +18,10 @@ describe('vaadin-bindings theme', () => {
     // serves them under /themes/singularidade-base/{tokens,fonts}/ at runtime
     // — the only path Spring Security allows by default. See pom.xml for
     // the build-time copy from sibling @singularidade packages.
-    expect(json.lumoImports).toEqual([]);
+    // No lumoImports key at all: an empty array is a no-op that reads as "Lumo was
+    // dropped", which is not true — Lumo is still the base theme in Vaadin 25, and the
+    // tokens below map onto its --lumo-* variables.
+    expect(json.lumoImports).toBeUndefined();
   });
 
   it('styles.css imports tokens for all 4 brand×theme combinations (theme-relative)', () => {

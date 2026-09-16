@@ -7,7 +7,7 @@
     <parent>
         <groupId>digital.singularidade</groupId>
         <artifactId>singularidade-ui-design-system-parent</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.2.0-RC1</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -17,14 +17,27 @@
     <description>Vaadin Flow theme bridge — provides singularidade-base parent theme mapping tokens to --lumo-*</description>
 
     <properties>
-        <vaadin.version>24.9.10</vaadin.version>
+        <vaadin.version>25.2.0</vaadin.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- The consuming app decides the Vaadin version; importing the BOM here keeps
+                 flow-server from being pinned to one and dragging a conflicting copy in. -->
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <version>${vaadin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>flow-server</artifactId>
-            <version>${vaadin.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
