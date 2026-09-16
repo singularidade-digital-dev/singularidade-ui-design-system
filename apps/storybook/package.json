@@ -21,7 +21,7 @@
     "@vaadin/dialog": "^24.9.0",
     "@vaadin/horizontal-layout": "^24.9.0",
     "@vaadin/icon": "^24.9.0",
-    "@vaadin/integer-field": "^24.9.0",
+    "@vaadin/integer-field": "^24.10.6",
     "@vaadin/menu-bar": "^24.9.0",
     "@vaadin/notification": "^24.9.0",
     "@vaadin/number-field": "^24.9.0",
