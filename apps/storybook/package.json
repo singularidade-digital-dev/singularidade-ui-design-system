@@ -1,6 +1,6 @@
 {
   "name": "@singularidade/storybook",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "Singularidade Design System — Storybook (foundations + Vaadin components)",
   "license": "Apache-2.0",
