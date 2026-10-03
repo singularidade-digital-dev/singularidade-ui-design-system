@@ -4,8 +4,6 @@ description: Design system unificado da Singularidade Digital — tokens, brand 
 template: splash
 hero:
   tagline: Tokens, brand book e componentes da Singularidade Digital — para apps SaaS construídos com Vaadin Flow.
-  image:
-    file: ../../assets/logo-horizontal.svg
   actions:
     - text: Começar
       link: /comecar/visao-geral/
@@ -14,39 +12,42 @@ hero:
     - text: Ver no GitHub
       link: https://github.com/singularidade-digital-dev/singularidade-ui-design-system
       icon: external
+      variant: secondary
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
 ## O que tem aqui
 
-<CardGrid stagger>
-  <Card title="Marca" icon="open-book">
-    Logo, cor, tipografia, voice & tone, motion. Brand book completo em 10 capítulos.
-  </Card>
-  <Card title="Foundations" icon="seti:config">
-    Tokens W3C DTF, tema light/dark, sub-marcas via overlay, multi-platform (CSS, JS, JSON, Java).
-  </Card>
-  <Card title="Componentes" icon="puzzle">
-    Componentes Vaadin com tema brand aplicado. Storybook embedado pra explorar variações.
-  </Card>
-  <Card title="Devs" icon="rocket">
-    Guias de integração Vaadin Flow, ADRs, contribuição. Tudo automatizado via Changesets.
-  </Card>
+<CardGrid>
+  <LinkCard
+    title="Marca"
+    href="/marca/01-identidade/"
+    description="Logo, cor, tipografia, voz e tom, movimento. Brand book em 10 capítulos."
+  />
+  <LinkCard
+    title="Foundations"
+    href="/foundations/tokens/"
+    description="Tokens no formato W3C DTF, tema claro e escuro, sub-marcas e saída para CSS, JS, JSON e Java."
+  />
+  <LinkCard
+    title="Componentes"
+    href="/componentes/primitivos/"
+    description="Componentes Vaadin com o tema da marca aplicado."
+  />
+  <LinkCard
+    title="Devs"
+    href="/devs/arquitetura/"
+    description="Integração com Vaadin Flow, decisões de arquitetura e como contribuir."
+  />
 </CardGrid>
 
 ## Paleta brand
 
-<div style="display:flex;gap:16px;margin:24px 0;">
-  <div style="flex:1;height:96px;background:#E91E8B;border-radius:12px;display:flex;align-items:flex-end;padding:12px;color:white;font-family:monospace;font-size:13px;">
-    magenta · #E91E8B
-  </div>
-  <div style="flex:1;height:96px;background:#E8606A;border-radius:12px;display:flex;align-items:flex-end;padding:12px;color:white;font-family:monospace;font-size:13px;">
-    coral · #E8606A
-  </div>
-  <div style="flex:1;height:96px;background:#F5A623;border-radius:12px;display:flex;align-items:flex-end;padding:12px;color:white;font-family:monospace;font-size:13px;">
-    orange · #F5A623
-  </div>
+<div class="ds-palette">
+  <div style="background:#E91E8B">magenta · #E91E8B</div>
+  <div style="background:#E8606A">coral · #E8606A</div>
+  <div style="background:#F5A623">orange · #F5A623</div>
 </div>
 
 ## Status
