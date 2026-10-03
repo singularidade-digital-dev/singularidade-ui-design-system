@@ -3,7 +3,7 @@
 /* Hero gradient on landing page */
 .hero {
   background: linear-gradient(160deg, #e91e8b 0%, #e8606a 50%, #f5a623 100%);
-  color: #ffffff;
+  color: #fff;
   padding: 4rem 2rem;
   border-radius: 16px;
   margin-bottom: 2rem;
@@ -11,7 +11,7 @@
 
 .hero h1,
 .hero p {
-  color: #ffffff;
+  color: #fff;
 }
 
 /* Tighter logo in nav */
@@ -23,4 +23,42 @@
 /* Code blocks slightly less aggressive */
 .expressive-code {
   border-radius: 8px;
+}
+
+/* Hero buttons sit on the brand gradient: use white instead of accent tones */
+.hero .sl-link-button.primary {
+  background: #fff;
+  border-color: #fff;
+  color: #9f1239;
+}
+
+.hero .sl-link-button.secondary,
+.hero .sl-link-button.minimal {
+  background: transparent;
+  border: 1px solid rgb(255 255 255 / 85%);
+  color: #fff;
+}
+
+.hero .tagline {
+  color: rgb(255 255 255 / 92%);
+}
+
+/* Brand palette swatches (home and Cor pages) */
+.ds-palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+  margin-block: 1.5rem;
+}
+
+.sl-markdown-content .ds-palette > div {
+  display: flex;
+  align-items: flex-end;
+  height: 6rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  color: #fff;
+  font-family: var(--sl-font-mono);
+  font-size: 0.8125rem;
+  margin: 0; /* cancel Starlight's sibling margin-top so swatches align */
 }

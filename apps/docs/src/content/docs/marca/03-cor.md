@@ -6,10 +6,10 @@ sidebar: { order: 3 }
 
 ## Brand canônica
 
-<div style="display:flex;gap:16px;margin:16px 0;">
-  <div style="flex:1;height:80px;background:#E91E8B;border-radius:8px;display:flex;align-items:flex-end;padding:8px;color:white;font-family:monospace;font-size:11px;">magenta · #E91E8B</div>
-  <div style="flex:1;height:80px;background:#E8606A;border-radius:8px;display:flex;align-items:flex-end;padding:8px;color:white;font-family:monospace;font-size:11px;">coral · #E8606A</div>
-  <div style="flex:1;height:80px;background:#F5A623;border-radius:8px;display:flex;align-items:flex-end;padding:8px;color:white;font-family:monospace;font-size:11px;">orange · #F5A623</div>
+<div class="ds-palette">
+  <div style="background:#E91E8B">magenta · #E91E8B</div>
+  <div style="background:#E8606A">coral · #E8606A</div>
+  <div style="background:#F5A623">orange · #F5A623</div>
 </div>
 
 Gradient brand canônico: `linear-gradient(160deg, #E91E8B 0%, #E8606A 50%, #F5A623 100%)`.

@@ -6,6 +6,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Singularidade DS',
+      favicon: '/favicon.png',
       description: 'Design system da Singularidade Digital — tokens, brand book, componentes',
       defaultLocale: 'root',
       locales: {

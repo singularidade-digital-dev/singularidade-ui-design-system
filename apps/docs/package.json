@@ -6,8 +6,8 @@
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
-    "dev": "astro dev --host 0.0.0.0",
-    "build": "astro build && pagefind --site dist",
+    "dev": "node scripts/copy-logos.mjs && astro dev --host 0.0.0.0",
+    "build": "node scripts/copy-logos.mjs && astro build && pagefind --site dist",
     "preview": "astro preview",
     "test": "echo 'no unit tests yet'"
   },

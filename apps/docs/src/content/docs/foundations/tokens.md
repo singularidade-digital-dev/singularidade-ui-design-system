@@ -62,4 +62,4 @@ Aplicação via data attributes:
 
 ## Catálogo
 
-[Storybook → Foundations / Color](http://localhost:6006/?path=/story/foundations-color--brand) tem o catálogo visual completo.
+O catálogo visual completo está no Storybook (Foundations / Color); veja em [Componentes](/componentes/primitivos/) como abrir.
