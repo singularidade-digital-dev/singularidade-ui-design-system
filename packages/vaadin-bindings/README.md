@@ -1,6 +1,6 @@
 # @singularidade/vaadin-bindings
 
-Tema parente Vaadin Flow `singularidade-base` — ponte entre [`@singularidade/tokens`](../tokens) (`--color-*`) e os Vaadin web-components 24.x (`--lumo-*`).
+Tema parente Vaadin Flow `singularidade-base` — ponte entre [`@singularidade/tokens`](../tokens) (`--color-*`) e os Vaadin web-components 25.x (`--lumo-*`).
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](../../LICENSE)
 [![Vaadin Flow](https://img.shields.io/badge/vaadin--flow-25.2-blue.svg)](https://vaadin.com/flow)
@@ -35,8 +35,7 @@ O `singularidade-base` carrega tokens, fontes e mapeia automaticamente todos os 
 ```json
 // src/main/frontend/themes/<seu-tema>/theme.json
 {
-  "parent": "singularidade-base",
-  "lumoImports": ["typography", "color", "spacing", "badge", "utility"]
+  "parent": "singularidade-base"
 }
 ```
 
@@ -44,6 +43,7 @@ O `singularidade-base` carrega tokens, fontes e mapeia automaticamente todos os 
 
 ```java
 @Theme("seu-tema")
+@StyleSheet(Lumo.UTILITY_STYLESHEET) // utility classes: o único módulo Lumo que não vem sozinho no 25
 public class Application implements AppShellConfigurator {
 }
 ```
@@ -70,7 +70,7 @@ UI.getCurrent().getElement().setAttribute("data-theme", "dark");
 ```
 themes/singularidade-base/
 ├── styles.css                  — bridge (--color-* → --lumo-*) + dark overrides
-├── theme.json                  — config Vaadin (lumoImports vazio, parent serve tudo)
+├── theme.json                  — config Vaadin (sem lumoImports; parent serve tudo)
 ├── tokens/
 │   ├── defaults.css            — token semantic baseline (Singularidade light + dark overrides)
 │   └── {brand}.{theme}.css     — gerado de @singularidade/tokens em build time
@@ -90,7 +90,7 @@ Suportado via dois seletores (conviventes):
 
 ## Cobertura de componentes
 
-Mapeamento completo dos `--lumo-*` usados por todos os componentes Vaadin 24.x:
+Mapeamento completo dos `--lumo-*` usados por todos os componentes Vaadin 25.x:
 
 - **Inputs:** text-field, password-field, integer-field, number-field, text-area, combo-box, select, date-picker, time-picker, checkbox, radio-button
 - **Actions:** button (primary/secondary/tertiary/error/success), menu-bar, context-menu
@@ -101,7 +101,9 @@ Mapeamento completo dos `--lumo-*` usados por todos os componentes Vaadin 24.x:
 
 ## Notas técnicas
 
-- **Vaadin 25 (futuro):** quando migrar, o bridge precisará apontar para `--vaadin-*` (Lumo será removido). Plano em [docs/adr/](../../docs/adr/)
+- **Vaadin 25:** o Lumo continua (o 25.0 removeu o Material, não o Lumo), então o bridge segue mapeando `--lumo-*`. Duas mudanças do 25 que afetam quem consome este tema:
+  - `lumoImports` no `theme.json` agora **quebra o build** — os módulos do Lumo carregam sozinhos quando o tema estende o Lumo; só as utility classes precisam de `@StyleSheet(Lumo.UTILITY_STYLESHEET)` no shell (padrão de `integras-digital` e `integras-digital-plataform`);
+  - `@Theme`/`theme.json` estão deprecated (ainda funcionam no 25.x; saem no 26).
 - **Dependência transitiva:** apps que adicionem `vaadin-bindings` ganham automaticamente `@singularidade/tokens` e `@singularidade/brand-assets` no classpath
 - **Spring Security:** o tema serve assets em `/themes/singularidade-base/**`, path liberado por padrão pelo Vaadin
 
