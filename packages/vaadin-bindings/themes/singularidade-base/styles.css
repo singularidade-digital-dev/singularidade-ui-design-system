@@ -2,7 +2,8 @@
  * @singularidade/vaadin-bindings — Vaadin Flow theme bridge.
  *
  * Maps @singularidade/tokens semantic vars (--color-*) onto Vaadin Lumo tokens
- * (--lumo-*). Designed for Vaadin Flow 24.x (the LTS line).
+ * (--lumo-*). Built against Vaadin Flow 25.2; Lumo and its --lumo-* tokens are
+ * still the theming API in 25.x (25.0 removed Material, not Lumo).
  *
  * Tokens and fonts are bundled inside this theme (tokens/, fonts/) — Vaadin
  * theme loader copies them to the frontend bundle, while Spring Security only
