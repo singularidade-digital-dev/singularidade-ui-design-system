@@ -19,11 +19,11 @@ Monorepo (pnpm workspaces + Turborepo + Maven multi-module) que entrega três ar
                                 ─┘
 ```
 
-| Pacote                                                       | Descrição                                                                              | Versão           |
-| ------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ---------------- |
-| [`@singularidade/tokens`](packages/tokens)                   | Design tokens W3C (DTF) compilados via Style Dictionary 4 para CSS, JS, JSON e Java    | `0.2.0`          |
-| [`@singularidade/brand-assets`](packages/brand-assets)       | Logos, fontes, ícones (Lucide + custom) e illustrations                                | `0.2.0`          |
-| [`@singularidade/vaadin-bindings`](packages/vaadin-bindings) | Tema parente `singularidade-base` que mapeia tokens → `--lumo-*` para Vaadin Flow 25.x | `0.2.0`          |
+| Pacote                                                       | Descrição                                                                              | Versão  |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------- |
+| [`@singularidade/tokens`](packages/tokens)                   | Design tokens W3C (DTF) compilados via Style Dictionary 4 para CSS, JS, JSON e Java    | `0.2.0` |
+| [`@singularidade/brand-assets`](packages/brand-assets)       | Logos, fontes, ícones (Lucide + custom) e illustrations                                | `0.2.0` |
+| [`@singularidade/vaadin-bindings`](packages/vaadin-bindings) | Tema parente `singularidade-base` que mapeia tokens → `--lumo-*` para Vaadin Flow 25.x | `0.2.0` |
 
 Aplicações Vaadin consomem o design system via [`singularidade-ui-vaadin`](https://github.com/singularidade-digital-dev/singularidade-ui-vaadin) (lib de componentes que estende `singularidade-base`).
 

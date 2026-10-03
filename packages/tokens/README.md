@@ -9,11 +9,11 @@ Design tokens da **Singularidade Digital** no formato [W3C Design Tokens (DTF)](
 
 Fonte única da verdade para cores, tipografia, espaçamento, elevação e radii do design system. Os tokens são definidos uma única vez em JSON DTF e gerados em múltiplos formatos:
 
-| Output | Path                                                  | Consumidor                                                |
-| ------ | ----------------------------------------------------- | --------------------------------------------------------- |
-| CSS    | `build/css/<brand>.<theme>.css`                       | `--color-*`, `--space-*`, `--font-*` em web/Vaadin        |
-| JSON   | `build/json/<brand>.<theme>.json`                     | tooling, IDE plugins                                      |
-| JS     | `build/js/tokens.js`                                  | aplicações TypeScript/React                               |
+| Output | Path                                                               | Consumidor                                                |
+| ------ | ------------------------------------------------------------------ | --------------------------------------------------------- |
+| CSS    | `build/css/<brand>.<theme>.css`                                    | `--color-*`, `--space-*`, `--font-*` em web/Vaadin        |
+| JSON   | `build/json/<brand>.<theme>.json`                                  | tooling, IDE plugins                                      |
+| JS     | `build/js/tokens.js`                                               | aplicações TypeScript/React                               |
 | Java   | `build/java/digital/singularidade/tokens/SingularidadeTokens.java` | back-end (raros casos onde o estado precisa do valor cru) |
 
 ## Instalação
