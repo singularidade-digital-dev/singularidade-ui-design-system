@@ -9,7 +9,7 @@ Sistema de design open-source da **Singularidade Digital** — tokens, brand ass
 
 ## Visão geral
 
-Monorepo (pnpm workspaces + Turborepo + Maven multi-module) que entrega três artefatos publicados **lado a lado em npm e Maven Central**, formando uma cadeia de dependências única para garantir consistência visual cross-app:
+Monorepo (pnpm workspaces + Turborepo + Maven multi-module) que entrega três artefatos publicados **lado a lado em npm e Maven (AWS CodeArtifact)**, formando uma cadeia de dependências única para garantir consistência visual cross-app:
 
 ```
 @singularidade/tokens          ─┐
@@ -19,11 +19,11 @@ Monorepo (pnpm workspaces + Turborepo + Maven multi-module) que entrega três ar
                                 ─┘
 ```
 
-| Pacote                                                       | Descrição                                                                              | Versão           |
-| ------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ---------------- |
-| [`@singularidade/tokens`](packages/tokens)                   | Design tokens W3C (DTF) compilados via Style Dictionary 4 para CSS, JS, JSON e Java    | `0.1.0-SNAPSHOT` |
-| [`@singularidade/brand-assets`](packages/brand-assets)       | Logos, fontes, ícones (Lucide + custom) e illustrations                                | `0.1.0-SNAPSHOT` |
-| [`@singularidade/vaadin-bindings`](packages/vaadin-bindings) | Tema parente `singularidade-base` que mapeia tokens → `--lumo-*` para Vaadin Flow 24.x | `0.1.0-SNAPSHOT` |
+| Pacote                                                       | Descrição                                                                              | Versão  |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------- |
+| [`@singularidade/tokens`](packages/tokens)                   | Design tokens W3C (DTF) compilados via Style Dictionary 4 para CSS, JS, JSON e Java    | `0.2.0` |
+| [`@singularidade/brand-assets`](packages/brand-assets)       | Logos, fontes, ícones (Lucide + custom) e illustrations                                | `0.2.0` |
+| [`@singularidade/vaadin-bindings`](packages/vaadin-bindings) | Tema parente `singularidade-base` que mapeia tokens → `--lumo-*` para Vaadin Flow 25.x | `0.2.0` |
 
 Aplicações Vaadin consomem o design system via [`singularidade-ui-vaadin`](https://github.com/singularidade-digital-dev/singularidade-ui-vaadin) (lib de componentes que estende `singularidade-base`).
 
@@ -44,11 +44,12 @@ mvn install -DskipTests         # publica os 3 JARs no ~/.m2 local
 ```
 singularidade-ui-design-system/
 ├── apps/
+│   ├── docs/                  — site de documentação (Astro Starlight + Pagefind)
 │   └── storybook/             — Storybook 8 (preview de tokens e components)
 ├── packages/
 │   ├── tokens/                — design tokens (3-tier: brand → semantic → component)
 │   ├── brand-assets/          — logos, fontes, iconset
-│   └── vaadin-bindings/       — parent theme singularidade-base (Vaadin 24)
+│   └── vaadin-bindings/       — parent theme singularidade-base (Vaadin 25)
 ├── docs/
 │   ├── adr/                   — Architecture Decision Records
 │   └── superpowers/           — plans, specs, research notes

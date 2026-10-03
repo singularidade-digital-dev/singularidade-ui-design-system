@@ -3,7 +3,7 @@
 Tema parente Vaadin Flow `singularidade-base` — ponte entre [`@singularidade/tokens`](../tokens) (`--color-*`) e os Vaadin web-components 24.x (`--lumo-*`).
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](../../LICENSE)
-[![Vaadin Flow](https://img.shields.io/badge/vaadin--flow-24.9-blue.svg)](https://vaadin.com/flow)
+[![Vaadin Flow](https://img.shields.io/badge/vaadin--flow-25.2-blue.svg)](https://vaadin.com/flow)
 
 ## Visão geral
 
@@ -22,7 +22,7 @@ O `singularidade-base` carrega tokens, fontes e mapeia automaticamente todos os 
 <dependency>
   <groupId>digital.singularidade</groupId>
   <artifactId>vaadin-bindings</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
