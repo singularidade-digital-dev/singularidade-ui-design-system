@@ -13,8 +13,8 @@ Fonte única da verdade para cores, tipografia, espaçamento, elevação e radii
 | ------ | ----------------------------------------------------- | --------------------------------------------------------- |
 | CSS    | `build/css/<brand>.<theme>.css`                       | `--color-*`, `--space-*`, `--font-*` em web/Vaadin        |
 | JSON   | `build/json/<brand>.<theme>.json`                     | tooling, IDE plugins                                      |
-| JS     | `build/js/index.js`                                   | aplicações TypeScript/React                               |
-| Java   | `build/java/digital/singularidade/tokens/Tokens.java` | back-end (raros casos onde o estado precisa do valor cru) |
+| JS     | `build/js/tokens.js`                                  | aplicações TypeScript/React                               |
+| Java   | `build/java/digital/singularidade/tokens/SingularidadeTokens.java` | back-end (raros casos onde o estado precisa do valor cru) |
 
 ## Instalação
 
@@ -30,7 +30,7 @@ pnpm add @singularidade/tokens
 <dependency>
   <groupId>digital.singularidade</groupId>
   <artifactId>tokens</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
@@ -66,9 +66,9 @@ console.log(tokens.space.m); // "1rem"
 ### Java
 
 ```java
-import digital.singularidade.tokens.Tokens;
+import digital.singularidade.tokens.SingularidadeTokens;
 
-String coral = Tokens.Color.Brand.Coral._600; // "#be3550"
+String coral = SingularidadeTokens.colorBrandCoral600; // "#be3550"
 ```
 
 ## Arquitetura 3-tier
@@ -76,13 +76,16 @@ String coral = Tokens.Color.Brand.Coral._600; // "#be3550"
 ```
 src/
 ├── core/                    # Tier 1: Brand — cores cruas (palette)
-│   └── color.json
+│   ├── color.json
+│   └── spacing.json, typography.json, radius.json, shadow.json, duration.json, easing.json
 ├── semantic/                # Tier 2: Semantic — intent (interactive.primary, surface.base)
 │   ├── color.light.json
 │   ├── color.dark.json
-│   └── space.json
-└── component/               # Tier 3: Component — contexto (button.background)
-    └── button.json
+│   └── typography.json
+├── component/               # Tier 3: Component — contexto (button.background)
+│   └── button.json, card.json, dialog.json, input.json
+└── brands/                  # overlays por marca (singularidade, integras)
+    └── <brand>/identity.json, overrides.json
 ```
 
 Por que 3-tier? Mudanças de marca tocam só Tier 1; mudanças de modo (light/dark) tocam Tier 2; ajuste de componente toca Tier 3. Cada camada referencia a anterior via `{path.to.token}`.
