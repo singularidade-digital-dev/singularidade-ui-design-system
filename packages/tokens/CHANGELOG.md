@@ -1,5 +1,15 @@
 # @singularidade/tokens
 
+## 0.3.0
+
+### Minor Changes
+
+- fe42225: Adiciona target Java per-brand × mode em `build/java/digital/singularidade/tokens/email/`. Gera 4 classes (`EmailTokensIntegrasLight`, `EmailTokensIntegrasDark`, `EmailTokensSingularidadeLight`, `EmailTokensSingularidadeDark`) com hex literais resolvidos por brand+mode — consumível por Spring/Thymeleaf em e-mails inline-styled (sem CSS variables, sem theme switching em runtime). Reusa o format `java/class` existente; mesma convenção de nomes camelCase. Construído junto com o build de tokens; não requer pnpm/Maven plugins extras.
+
+### Patch Changes
+
+- 006ae2b: `font.family.sans` e `font.family.mono` passam a listar primeiro o nome registrado pelo `@font-face` do `@singularidade/brand-assets` ('Plus Jakarta Sans Variable', 'JetBrains Mono Variable'). Antes só traziam o nome da família estática, que nenhum `@font-face` registra, e os sites caíam para a fonte do sistema. O nome estático continua na lista como reserva.
+
 ## 0.1.1
 
 ### Patch Changes
