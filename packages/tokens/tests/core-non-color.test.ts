@@ -12,6 +12,15 @@ describe('typography', () => {
     expect(typography.font.family.mono.$value).toContain('JetBrains Mono');
   });
 
+  it('lista primeiro o nome registrado pelo @font-face do brand-assets', () => {
+    // brand-assets registers the variable fonts as '<Family> Variable'; a token
+    // that names only the static family makes browsers fall back to system-ui.
+    expect(typography.font.family.sans.$value.startsWith("'Plus Jakarta Sans Variable'")).toBe(
+      true,
+    );
+    expect(typography.font.family.mono.$value.startsWith("'JetBrains Mono Variable'")).toBe(true);
+  });
+
   it('escala modular xs..7xl', () => {
     const sizes = ['xs', 's', 'm', 'l', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl'] as const;
     for (const s of sizes) {
