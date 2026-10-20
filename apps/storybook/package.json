@@ -27,7 +27,7 @@
     "@vaadin/number-field": "^24.9.0",
     "@vaadin/password-field": "^24.9.0",
     "@vaadin/popover": "^24.9.0",
-    "@vaadin/progress-bar": "^24.9.0",
+    "@vaadin/progress-bar": "^24.10.6",
     "@vaadin/select": "^24.9.0",
     "@vaadin/split-layout": "^24.9.0",
     "@vaadin/tabs": "^24.9.0",
