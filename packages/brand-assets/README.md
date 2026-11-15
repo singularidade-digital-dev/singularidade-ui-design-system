@@ -26,21 +26,19 @@ build/                          — gerado via scripts (sprite, iconset, catalog
 
 ## Instalação
 
-### npm/pnpm
-
-```bash
-pnpm add @singularidade/brand-assets
-```
-
-### Maven
+### Maven (AWS CodeArtifact)
 
 ```xml
 <dependency>
   <groupId>digital.singularidade</groupId>
   <artifactId>brand-assets</artifactId>
-  <version>0.2.0</version>
+  <version>1.0.0</version>
 </dependency>
 ```
+
+### npm
+
+Ainda não está no npm. Dentro do monorepo, o pacote resolve pelo workspace do pnpm (`"@singularidade/brand-assets": "workspace:*"`); os exemplos com `@singularidade/brand-assets/...` abaixo valem ali.
 
 ## Uso
 
@@ -76,8 +74,10 @@ import '@singularidade/brand-assets/build/vaadin-iconset.js';
 ```
 
 ```html
-<vaadin-icon icon="ss:tenant"></vaadin-icon> <vaadin-icon icon="ss:module"></vaadin-icon>
+<vaadin-icon icon="ss:tenant"></vaadin-icon> <vaadin-icon icon="ss:tool"></vaadin-icon>
 ```
+
+Só dentro do monorepo. Num app Vaadin que recebe o pacote pelo Maven, o iconset ainda não tem como ser importado: o JAR leva o arquivo em `META-INF/resources/brand-assets/vaadin-iconset.js`, fora das pastas de onde o Vaadin importa JavaScript de um JAR (`META-INF/frontend/` e `META-INF/resources/frontend/`).
 
 ### Java (Spring Boot classpath)
 

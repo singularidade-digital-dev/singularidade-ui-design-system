@@ -4,11 +4,13 @@ description: Lucide subset + custom ss:* namespace
 sidebar: { order: 7 }
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
 ## Sistema dual
 
 | Origem            | Quantidade        | Quando usar                                                     |
 | ----------------- | ----------------- | --------------------------------------------------------------- |
-| **Lucide**        | 71 ícones curados | Ações comuns (search, edit, settings, user)                     |
+| **Lucide**        | 85 ícones curados | Ações comuns (search, edit, settings, user)                     |
 | **Custom `ss:*`** | 10 ícones         | Domínio Singularidade (tenant, mcp-server, eula, billing-cycle) |
 
 ## Especificações
@@ -21,7 +23,7 @@ sidebar: { order: 7 }
 
 ## Lucide
 
-Subset curado pra apps SaaS — Lucide v0.469. 71 ícones cobrindo navigation, actions, status, content, settings, feedback. Catálogo completo em [Foundations / Iconography](/foundations/tokens/).
+Subset curado pra apps SaaS — Lucide v0.469. 85 ícones cobrindo navigation, actions, status, content, settings, feedback. Catálogo completo em [Foundations / Iconography](/foundations/tokens/).
 
 ## Custom (ss:\*)
 
@@ -42,6 +44,8 @@ Subset curado pra apps SaaS — Lucide v0.469. 71 ícones cobrindo navigation, a
 
 ## Uso (Vaadin Flow)
 
+O build do `brand-assets` gera `build/vaadin-iconset.js`, que registra o iconset `ss` no `<vaadin-icon>`. Dentro do monorepo, o pacote resolve pelo workspace do pnpm:
+
 ```js
 import '@singularidade/brand-assets/build/vaadin-iconset.js';
 ```
@@ -49,6 +53,12 @@ import '@singularidade/brand-assets/build/vaadin-iconset.js';
 ```html
 <vaadin-icon icon="ss:tenant"></vaadin-icon>
 ```
+
+<Aside type="caution">
+  Fora do monorepo, o iconset ainda não tem como ser importado: `@singularidade/brand-assets` não
+  está no npm, e o JAR leva o arquivo em `META-INF/resources/brand-assets/vaadin-iconset.js`, fora
+  das pastas de onde o Vaadin importa JavaScript de um JAR. Veja [Vaadin Flow](/devs/vaadin-flow/).
+</Aside>
 
 ## Adicionar novo custom icon
 

@@ -8,16 +8,24 @@ import { Aside } from '@astrojs/starlight/components';
 
 ## Modelo
 
-Singularidade Digital é a **matriz**. Cada produto (integras.digital, futuros) é uma sub-marca **endossada** — herda integralmente DNA visual (paleta, tipografia, princípios).
+Singularidade Digital é a **matriz**. Cada produto (integras.digital, futuros) é uma sub-marca **endossada**: tipografia, neutros, cor de ação e princípios são os mesmos. Entre as marcas, mudam só as três cores da marca, o logo e o nome.
 
 ## Aplicação
 
-```text
-<html data-brand="singularidade" data-theme="light">
-<html data-brand="integras" data-theme="light">
-```
+Nos tokens, o **Integras é a marca padrão**: o `:root` do `theme.css` e a saída canônica (JS, JSON e `SingularidadeTokens`) seguem o Integras. `data-brand="singularidade"` troca só as três cores da marca, para a paleta original da Singularidade:
 
-Ambos brands carregam o mesmo magenta `#E91E8B` em `--color-brand-primary` — são da mesma família. Só **logo + nome** mudam.
+| Token                     | Integras (padrão) | Singularidade |
+| ------------------------- | ----------------- | ------------- |
+| `--color-brand-primary`   | `#E91E8B`         | `#ED1E79`     |
+| `--color-brand-secondary` | `#E8606A`         | `#F15052`     |
+| `--color-brand-tertiary`  | `#F5A623`         | `#F7931E`     |
+
+O resto do sistema é igual nas duas marcas; o build falha se a Singularidade trocar qualquer outro token. **Logo e nome** vêm de cada marca.
+
+```text
+<html data-brand="singularidade">                 theme.css: troca a marca
+<html data-brand="integras" data-theme="light">   sites: integras.light.css
+```
 
 ## Adicionando uma nova sub-marca
 
@@ -36,7 +44,7 @@ Ambos brands carregam o mesmo magenta `#E91E8B` em `--color-brand-primary` — s
    }
    ```
 
-2. Criar `packages/tokens/src/brands/<nome>/overrides.json` vazio:
+2. Criar `packages/tokens/src/brands/<nome>/overrides.json` — vazio se a marca segue o padrão:
 
    ```json
    {}
@@ -44,19 +52,21 @@ Ambos brands carregam o mesmo magenta `#E91E8B` em `--color-brand-primary` — s
 
 3. Adicionar `nome` no array `BRANDS` do `style-dictionary.config.mjs`.
 
-4. Build: `pnpm --filter @singularidade/tokens build` — gera `nome.{light,dark}.css` automaticamente.
+4. Build: `pnpm --filter @singularidade/tokens build` — gera `nome.{light,dark}.css` (e os JS, JSON e `EmailTokens` da marca) automaticamente.
 
 5. Adicionar logos correspondentes em `packages/brand-assets/src/logos/<nome>/`.
 
+O `theme.css` só conhece o Integras e o `[data-brand='singularidade']`. Uma marca nova no tema Vaadin precisa do seu bloco no `style-dictionary.config.mjs`.
+
 <Aside>
-  Customização pontual (cor primary diferente, tipografia alternativa) vai em `overrides.json`.
-  Manter overrides mínimos preserva DNA da família.
+  `overrides.json` guarda só o que a marca troca. O do Integras é vazio; o da Singularidade troca
+  `color.brand.primary`, `secondary` e `tertiary`. Manter overrides mínimos preserva DNA da família.
 </Aside>
 
 ## Por que esse modelo
 
 - **DNA unificada** — qualquer mudança em `core` ou `semantic` propaga pra TODAS as marcas
 - **Reconhecimento visual** — usuário sabe que integras é "do mesmo grupo" da Singularidade
-- **Setup leve** — adicionar nova marca é 2 arquivos JSON + assets
+- **Setup leve** — adicionar uma marca são 2 arquivos JSON, a entrada em `BRANDS` e os logos; para o `theme.css` (e o tema Vaadin), também o bloco dela no `style-dictionary.config.mjs`
 
-Veja [ADR-003](/devs/arquitetura/) pra rationale completa.
+Veja [ADR-003](/devs/arquitetura/) pra rationale; a nota de status no topo dele diz o que mudou na 1.0.0.

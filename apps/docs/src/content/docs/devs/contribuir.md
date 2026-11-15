@@ -54,10 +54,9 @@ pnpm --filter @singularidade/docs dev
 
 1. Story em `apps/storybook/src/vaadin/<categoria>.stories.ts`
 2. Variações em estados: default, hover, focus, disabled, error
-3. addon-a11y deve passar (axe-core inline)
-4. Visual regression aprovado (Chromatic, Fase 7)
-5. Documentar em `apps/docs/src/content/docs/componentes/`
-6. Changeset + commit
+3. Conferir o painel do addon-a11y (axe-core) em cada story. É conferência manual: o CI só faz o build do Storybook.
+4. Documentar em `apps/docs/src/content/docs/componentes/`
+5. Changeset + commit
 
 ## Conventional Commits
 

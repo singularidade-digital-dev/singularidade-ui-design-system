@@ -22,11 +22,11 @@ O `singularidade-base` carrega o tema gerado dos tokens (`tokens/theme.css`), as
 <dependency>
   <groupId>digital.singularidade</groupId>
   <artifactId>vaadin-bindings</artifactId>
-  <version>0.2.0</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
-(Inclui transitivamente `@singularidade/tokens` e `@singularidade/brand-assets`.)
+(Inclui transitivamente `@singularidade/tokens` e `@singularidade/brand-assets`.) Publicado no AWS CodeArtifact; ainda não está no npm. A biblioteca `singularidade-ui-vaadin` 2.1.0 já declara a 1.0.0.
 
 ## Uso
 
@@ -51,12 +51,16 @@ public class Application implements AppShellConfigurator {
 ### 3. (Opcional) Toggle light/dark
 
 ```java
-// Light = default
-UI.getCurrent().getElement().removeAttribute("theme");
+import com.vaadin.flow.component.page.ColorScheme;
 
-// Dark
-UI.getCurrent().getElement().setAttribute("theme", "dark");
+// Light = default
+UI.getCurrent().getPage().setColorScheme(ColorScheme.Value.LIGHT);
+
+// Dark: theme="dark" no <html>
+UI.getCurrent().getPage().setColorScheme(ColorScheme.Value.DARK);
 ```
+
+O `theme` vai no `<html>`, onde o `setColorScheme` do Vaadin 25 o põe. `UI.getCurrent().getElement()` é o `<body>`: com o atributo só nele, o `<html>` fica claro (fundo fora do `<body>` e barra de rolagem) e as regras `html[theme~='dark']` da ponte não valem.
 
 ### 4. (Opcional) Marca Singularidade
 
@@ -101,7 +105,7 @@ Suportado via dois seletores (conviventes):
 
 | Seletor               | Quando usar                                                                                                                           |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `[theme~='dark']`     | Vaadin Flow padrão (`element.setAttribute('theme', 'dark')`)                                                                          |
+| `[theme~='dark']`     | Vaadin Flow: `theme="dark"` no `<html>` (`Page.setColorScheme(ColorScheme.Value.DARK)`)                                               |
 | `[data-theme='dark']` | Páginas e regiões que trocam o tema via `data-theme` (inclusive uma faixa clara com `data-theme='light'` dentro de uma página escura) |
 
 ## Cobertura de componentes

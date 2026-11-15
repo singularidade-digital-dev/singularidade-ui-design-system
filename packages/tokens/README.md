@@ -23,21 +23,19 @@ A saída canônica (`tokens.js`, `tokens.json`, `SingularidadeTokens.java`) e o 
 
 ## Instalação
 
-### npm/pnpm
-
-```bash
-pnpm add @singularidade/tokens
-```
-
-### Maven
+### Maven (AWS CodeArtifact)
 
 ```xml
 <dependency>
   <groupId>digital.singularidade</groupId>
   <artifactId>tokens</artifactId>
-  <version>0.2.0</version>
+  <version>1.0.0</version>
 </dependency>
 ```
+
+### npm
+
+Ainda não está no npm. Dentro do monorepo, o pacote resolve pelo workspace do pnpm (`"@singularidade/tokens": "workspace:*"`); fora dele, os arquivos saem do build (`pnpm --filter @singularidade/tokens build`).
 
 ## Uso
 

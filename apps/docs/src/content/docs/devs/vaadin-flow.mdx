@@ -4,70 +4,93 @@ description: Integração com apps Vaadin Flow + Spring Boot
 sidebar: { order: 1 }
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
 ## Maven dependencies
+
+O tema vem no `vaadin-bindings`, compilado contra o Vaadin Flow 25.2 (o app decide a versão do Vaadin). Ele traz `tokens` e `brand-assets` junto:
 
 ```xml
 <dependency>
   <groupId>digital.singularidade</groupId>
-  <artifactId>tokens</artifactId>
-  <version>0.1.0</version>
-</dependency>
-<dependency>
-  <groupId>digital.singularidade</groupId>
-  <artifactId>brand-assets</artifactId>
-  <version>0.1.0</version>
+  <artifactId>vaadin-bindings</artifactId>
+  <version>1.0.0</version>
 </dependency>
 ```
 
-Recursos ficam em `META-INF/resources/` no classpath — Spring Boot serve automaticamente.
+Os apps da Singularidade recebem o tema pela biblioteca `digital.singularidade:singularidade-ui-vaadin`. A 2.1.0 já declara os três artefatos na 1.0.0 e traz o tema `singularidade`, filho do `singularidade-base`.
+
+Recursos ficam em `META-INF/resources/` no classpath — Spring Boot serve automaticamente. O tema serve os seus arquivos em `/themes/singularidade-base/**`, caminho que o Vaadin libera por padrão.
 
 ## Aplicar tema
 
-`themes/singularidade/styles.css` (do app Vaadin):
+`src/main/frontend/themes/<seu-tema>/theme.json` (com a biblioteca, o pai é `singularidade`):
 
-```css
-@import url('/tokens/css/singularidade.light.css');
-@import url('/tokens/css/singularidade.dark.css');
-@import url('/brand-assets/fonts/plus-jakarta-sans.css');
-@import url('/brand-assets/fonts/jetbrains-mono.css');
+```json
+{ "parent": "singularidade-base" }
 ```
 
 ```java
-@Theme("singularidade")
+@Theme("seu-tema")
+@StyleSheet(Lumo.UTILITY_STYLESHEET)
 public class Application implements AppShellConfigurator {
 }
 ```
 
-## Trocar brand/theme em runtime
+O `singularidade-base` importa o `tokens/theme.css` gerado dos tokens e as fontes, e liga os `--lumo-*` e as style properties do Vaadin 25 (`--vaadin-*`) aos tokens semânticos, no claro e no escuro. Não importe os `{marca}.{tema}.css` no app: eles dependem de `data-brand` + `data-theme` e servem os sites.
+
+O Lumo continua no Vaadin 25 (o 25.0 removeu o Material, não o Lumo). Só as utility classes precisam do `@StyleSheet(Lumo.UTILITY_STYLESHEET)`; `lumoImports` no `theme.json` quebra o build.
+
+## O que a ponte mapeia
+
+| Vaadin / Lumo                                                    | Token                                                               |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `--lumo-primary-color`, `--lumo-primary-text-color`              | `--color-interactive-primary`                                       |
+| `--lumo-primary-contrast-color`                                  | `--color-on-primary`                                                |
+| `--lumo-{error,success,warning}-color`                           | `--color-feedback-*-solid`                                          |
+| `--lumo-{error,success,warning}-text-color`                      | `--color-feedback-*-text`                                           |
+| `--lumo-{error,success,warning}-contrast-color`                  | `--color-on-status`                                                 |
+| `--lumo-link-color`                                              | `--color-link`                                                      |
+| `--lumo-box-shadow-{xs,s,m,l,xl}`                                | `--shadow-{xs,sm,md,lg,xl}` (um valor por tema)                     |
+| `--vaadin-focus-ring-color` (largura 2px)                        | `--color-border-focus`                                              |
+| `--vaadin-input-field-border-color` (largura 1px), `-background` | `--input-border` (= `--color-border-control`), `--input-background` |
+
+No Vaadin 25, os overlays de diálogo, confirmação, menu de contexto, combo-box, select, date-picker e popover ficam no shadow DOM do próprio componente e recebem as cores do tema por herança, como o resto da página. O bloco da ponte que reaplica as cores do escuro nos overlays (`html[theme~='dark'] vaadin-*-overlay`) só alcança o cartão de notificação, que o Vaadin põe num contêiner no `<body>`.
+
+## Trocar theme/brand em runtime
 
 ```java
-UI.getCurrent().getElement().setAttribute("data-brand", "integras");
-UI.getCurrent().getElement().setAttribute("data-theme", "dark");
+import com.vaadin.flow.component.page.ColorScheme;
+
+// Escuro: theme="dark" no <html>
+UI.getCurrent().getPage().setColorScheme(ColorScheme.Value.DARK);
+
+// Claro (padrão)
+UI.getCurrent().getPage().setColorScheme(ColorScheme.Value.LIGHT);
+
+// Marca Singularidade: troca só as três cores da marca (o Integras é o padrão)
+UI.getCurrent().getElement().setAttribute("data-brand", "singularidade");
 ```
+
+O `theme` vai no `<html>`, onde o `setColorScheme` do Vaadin 25 o põe e onde o `theme.css` e a ponte o esperam. O elemento da UI (`UI.getCurrent().getElement()`) é o `<body>`; com o atributo só nele, o `<html>` continua claro (o fundo fora do `<body>` e a barra de rolagem), e as regras da ponte com `html[theme~='dark']` não valem. O seletor de tema da biblioteca 2.1.0 também grava o atributo no `<html>`.
 
 ## Custom icons (ss:\*)
 
-Importar o iconset gerado:
-
-```java
-@JsModule("@singularidade/brand-assets/build/vaadin-iconset.js")
-```
-
-Usar em views:
-
-```java
-Icon tenantIcon = new Icon("ss", "tenant");
-```
+<Aside type="caution">
+  O iconset `ss:*` ainda não chega aos apps Vaadin pelo Maven. O JAR do `brand-assets` leva o
+  arquivo em `META-INF/resources/brand-assets/vaadin-iconset.js`, fora das pastas de onde o Vaadin
+  importa JavaScript de um JAR (`META-INF/frontend/` e `META-INF/resources/frontend/`, com
+  `@JsModule("./…")`). E `@JsModule("@singularidade/brand-assets/build/vaadin-iconset.js")` é um
+  import de pacote npm, que não existe: `@singularidade/brand-assets` não está no npm.
+</Aside>
 
 ## Acessar tokens em Java
 
 ```java
 import digital.singularidade.tokens.SingularidadeTokens;
 
-String brandColor = SingularidadeTokens.colorBrandPrimary;
-String surfaceLight = SingularidadeTokens.colorSurfaceBase;
+String brandColor = SingularidadeTokens.colorBrandPrimary;   // "#e91e8b"
+String surfaceLight = SingularidadeTokens.colorSurfaceBase;  // "#fdfafc"
 ```
 
-## Próximos passos (Fase 3)
-
-Em desenvolvimento: `digital.singularidade:vaadin-bindings` — façade Java que expõe componentes singularidade-ui-vaadin já themed e auto-instala iconset/fonts.
+`SingularidadeTokens` segue o Integras claro. Para e-mail, as classes `digital.singularidade.tokens.email.EmailTokens{Integras,Singularidade}{Light,Dark}` trazem os valores resolvidos por marca e tema.

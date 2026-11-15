@@ -4,6 +4,11 @@
 - **Date:** 2026-05-03
 - **Deciders:** singularidade.digital
 
+> **Nota de status (2026-11-15, release 1.0.0).** A estratégia continua: `--color-interactive-primary` (coral.600 #BE3550 no claro, coral.400 #FB7185 no escuro) é a cor de ação, e as cores da marca ficam no logo e em superfície de marca. O texto abaixo fica como foi escrito, mas dois pontos não valem mais:
+>
+> - O degradê não é token na v2: fica só dentro do símbolo, na vertical. `--color-brand-gradient` é alias deprecado até a 1.2, então hero e login não usam `var(--color-brand-gradient)`.
+> - `--color-brand-primary` depende da marca: #E91E8B no Integras, a marca padrão, e #ED1E79 com `data-brand="singularidade"`. Ele fica em `semantic/color.json` e aponta para `{color.brand.integras.magenta}`, não mais para `{color.brand.magenta.500}` em `semantic/color.light.json`.
+
 ## Contexto
 
 Brand magenta puro `#E91E8B` é vibrante. Aplicado em **todo CTA** (botões repetidos em formulários, listas, dialogs) gera fadiga visual e disputa atenção com conteúdo. Como manter brand presente sem cansar?
