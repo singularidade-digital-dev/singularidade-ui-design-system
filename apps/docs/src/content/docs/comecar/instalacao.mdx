@@ -3,46 +3,47 @@ title: Instalação
 description: Como instalar tokens, brand assets e bindings Vaadin
 ---
 
-## npm (web frontend)
-
-```bash
-pnpm add @singularidade/tokens @singularidade/brand-assets
-```
-
-```css
-@import '@singularidade/tokens/css/singularidade.light.css';
-@import '@singularidade/brand-assets/fonts/plus-jakarta-sans.css';
-```
-
-```ts
-import tokens from '@singularidade/tokens';
-console.log(tokens.color.brand.primary); // "#e91e8b"
-```
+A versão atual é a **1.0.0**, publicada no AWS CodeArtifact (Maven). Os pacotes `@singularidade/*` ainda não estão no npm.
 
 ## Maven (Vaadin Flow / Spring Boot)
+
+Num app Vaadin, use o `vaadin-bindings` (tema pai `singularidade-base`). Ele traz `tokens` e `brand-assets` junto:
+
+```xml
+<dependency>
+  <groupId>digital.singularidade</groupId>
+  <artifactId>vaadin-bindings</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
+Só os tokens ou só os assets:
 
 ```xml
 <dependency>
   <groupId>digital.singularidade</groupId>
   <artifactId>tokens</artifactId>
-  <version>0.1.0</version>
+  <version>1.0.0</version>
 </dependency>
 <dependency>
   <groupId>digital.singularidade</groupId>
   <artifactId>brand-assets</artifactId>
-  <version>0.1.0</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
+A biblioteca `digital.singularidade:singularidade-ui-vaadin` 2.1.0 já declara os três na 1.0.0. Veja [Vaadin Flow](/devs/vaadin-flow/).
+
 Os recursos ficam disponíveis em `META-INF/resources/`:
 
-- `/tokens/css/singularidade.light.css` (e `dark`, `integras.{light,dark}`)
+- `/tokens/css/theme.css` (claro, escuro e troca de marca num arquivo só) e `/tokens/css/text-styles.css`
+- `/tokens/css/integras.light.css` (e `integras.dark`, `singularidade.{light,dark}`)
 - `/tokens/json/tokens.json`
 - `/brand-assets/logos/{singularidade,integras}/symbol.svg`
 - `/brand-assets/fonts/plus-jakarta-sans.css`
 - `/brand-assets/icons.json`
 
-Em Java:
+Em Java (a saída canônica segue o Integras claro):
 
 ```java
 import digital.singularidade.tokens.SingularidadeTokens;
@@ -51,10 +52,51 @@ String brandColor = SingularidadeTokens.colorBrandPrimary;
 // "#e91e8b"
 ```
 
+## CSS e JS (web)
+
+Fora do Maven, os arquivos saem do build do repositório: `pnpm --filter @singularidade/tokens build` gera `packages/tokens/build/` (CSS, JS, JSON e Java). Dentro do monorepo, os pacotes resolvem pelo workspace do pnpm:
+
+```css
+@import '@singularidade/tokens/css/theme.css';
+@import '@singularidade/brand-assets/fonts/plus-jakarta-sans.css';
+```
+
+```ts
+import tokens from '@singularidade/tokens';
+console.log(tokens.color.brand.primary.$value); // "#e91e8b"
+```
+
 ## CodeArtifact
 
-Configurar settings.xml com credenciais OIDC:
+O Maven lê o CodeArtifact com um token de autorização, no mesmo esquema do CI:
 
 ```bash
-aws codeartifact login --tool maven --repository maven --domain singularidade-digital --domain-owner 539191403497
+export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token \
+  --domain singularidade-digital --domain-owner 539191403497 \
+  --query authorizationToken --output text)
+```
+
+No `~/.m2/settings.xml`, o servidor `codeartifact`:
+
+```xml
+<settings>
+  <servers>
+    <server>
+      <id>codeartifact</id>
+      <username>aws</username>
+      <password>${env.CODEARTIFACT_AUTH_TOKEN}</password>
+    </server>
+  </servers>
+</settings>
+```
+
+E o repositório no `pom.xml` do app:
+
+```xml
+<repositories>
+  <repository>
+    <id>codeartifact</id>
+    <url>https://singularidade-digital-539191403497.d.codeartifact.us-east-1.amazonaws.com/maven/maven/</url>
+  </repository>
+</repositories>
 ```

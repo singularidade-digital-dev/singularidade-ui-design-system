@@ -4,6 +4,13 @@
 - **Date:** 2026-05-03
 - **Deciders:** singularidade.digital
 
+> **Nota de status (2026-11-15, release 1.0.0).** A decisão continua valendo: Storybook 8.6 com `@storybook/web-components-vite` e Lit. O texto abaixo fica como foi escrito, mas dois pontos não valem mais:
+>
+> - "Vaadin v25 abandonou Lumo — bridge `--vaadin-*` necessário": o Vaadin 25.0 removeu o Material, não o Lumo. A ponte `@singularidade/vaadin-bindings` segue mapeando `--lumo-*` e usa as style properties `--vaadin-*` só no anel de foco e nos campos (borda e fundo). A cópia do Storybook (`.storybook/vaadin-overrides.css`) também só mapeia `--lumo-*`.
+> - O Storybook roda os web components do Vaadin 24 (`@vaadin/*` ^24.9.0, 24.10.1 no lockfile), com essa cópia da ponte sobre os quatro `{marca}.{tema}.css`. Ele não carrega o tema `singularidade-base` da 1.0.0, gerado do `tokens/theme.css`, então não mostra exatamente o tema dos apps, que rodam o Vaadin 25.
+>
+> O Chromatic não foi adotado: não há dependência nem passo dele no CI.
+
 ## Contexto
 
 Apps Singularidade são Vaadin Flow (Java server-side rendering). Componentes da UI são Vaadin web-components customizados. Como apresentar/documentar/iterar visualmente sem precisar do app full-stack?

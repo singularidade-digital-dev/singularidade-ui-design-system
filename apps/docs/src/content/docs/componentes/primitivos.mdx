@@ -14,6 +14,12 @@ O catálogo visual (cada componente com várias stories, troca de tema singulari
 pnpm --filter @singularidade/storybook dev   # http://localhost:6006
 ```
 
+<Aside type="caution">
+  O Storybook usa os web components do Vaadin 24 e uma cópia própria da ponte
+  (`.storybook/vaadin-overrides.css`) sobre os quatro `{marca}.{tema}.css`. Ele não carrega o tema
+  `singularidade-base` da 1.0.0, então pode diferir do que os apps mostram no Vaadin 25.
+</Aside>
+
 ## Categorias
 
 ### Foundations
@@ -35,5 +41,5 @@ pnpm --filter @singularidade/storybook dev   # http://localhost:6006
 
 ## Roadmap
 
-- 🚧 **Singularidade UI** components (BoundFormPanel, ProfileEditCard, AvatarUploadField, AddressField, PhoneField, TaxIdField, EulaAcceptancePanel) — depende da Fase 3 (vaadin-bindings)
+- 🚧 **Singularidade UI** components (BoundFormPanel, ProfileEditCard, AvatarUploadField, AddressField, PhoneField, TaxIdField, EulaAcceptancePanel) — já existem na biblioteca `singularidade-ui-vaadin` 2.1.0; falta documentar aqui
 - 🚧 **Patterns** (login flow, CRUD page, empty state, onboarding wizard) — Fase 4 v2
