@@ -60,6 +60,43 @@ describe('fonts', () => {
     expect(css).toContain('Plus Jakarta Sans Variable');
     expect(css).toContain('./plus-jakarta-sans-latin-wght-normal.woff2');
   });
+
+  // Every @font-face of the DS v2 reference (packages/tokens/reference): the long name
+  // ('<Family> Variable', first in the font-family tokens) and the short one, which the
+  // e-mail stack and older CSS name; JetBrains Mono covers weights 100 to 800.
+  const faces = (file: string) =>
+    [
+      ...readFileSync(join(ROOT, 'src/fonts', file), 'utf-8').matchAll(/@font-face\s*\{([^}]*)\}/g),
+    ].map((m) => {
+      const body = m[1] ?? '';
+      const prop = (name: string) => body.match(new RegExp(`${name}:\\s*([^;]+);`))?.[1]?.trim();
+      return {
+        family: prop('font-family')?.replace(/'/g, ''),
+        style: prop('font-style'),
+        weight: prop('font-weight'),
+        src: prop('src'),
+      };
+    });
+
+  it('registra o nome longo e o curto de cada família, com os pesos do arquivo variável', () => {
+    const reference = JSON.parse(
+      readFileSync(join(ROOT, '../tokens/reference/ds-v2.tokens.json'), 'utf-8'),
+    ) as { type: { fonts: { family: string; file: string; weight: string; style: string }[] } };
+    const registered = [...faces('plus-jakarta-sans.css'), ...faces('jetbrains-mono.css')];
+    for (const font of reference.type.fonts) {
+      const file = font.file.replace(/^fonts\//, '');
+      const match = registered.find(
+        (f) =>
+          f.family === font.family &&
+          f.style === font.style &&
+          f.weight === font.weight &&
+          f.src === `url('./${file}') format('woff2-variations')`,
+      );
+      expect(match, `${font.family} ${font.style} ${font.weight}`).toBeDefined();
+    }
+    // latin + latin-ext, normal + italic, for both names
+    expect(registered).toHaveLength(16);
+  });
 });
 
 describe('icons', () => {
