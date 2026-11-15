@@ -59,11 +59,13 @@
                 <targetPath>META-INF/resources/themes/singularidade-base</targetPath>
             </resource>
             <!--
-              Pull brand×theme CSS and font assets from sibling packages at build time,
-              so the source-of-truth lives in @singularidade/tokens (Style Dictionary
-              output in build/css) and @singularidade/brand-assets (src/fonts), and
-              vaadin-bindings serves them under /themes/singularidade-base/{tokens,fonts}/
-              — the only path Spring Security / Vaadin Flow allow by default.
+              Pull the token theme (theme.css: light, dark, brand switch) and the font
+              assets from sibling packages at build time, so the source-of-truth lives
+              in @singularidade/tokens (Style Dictionary output in build/css) and
+              @singularidade/brand-assets (src/fonts), and vaadin-bindings serves them
+              under /themes/singularidade-base/{tokens,fonts}/ — the only path Spring
+              Security / Vaadin Flow allow by default. The {brand}.{theme}.css files
+              stay out: they need data-brand + data-theme and serve the sites.
 
               Alternative considered: keep tokens/brand-assets at their natural
               classpath locations (/tokens/css/*, /brand-assets/fonts/*) and have
@@ -77,8 +79,7 @@
                 <directory>../tokens/build/css</directory>
                 <targetPath>META-INF/resources/themes/singularidade-base/tokens</targetPath>
                 <includes>
-                    <include>integras.*.css</include>
-                    <include>singularidade.*.css</include>
+                    <include>theme.css</include>
                 </includes>
             </resource>
             <resource>

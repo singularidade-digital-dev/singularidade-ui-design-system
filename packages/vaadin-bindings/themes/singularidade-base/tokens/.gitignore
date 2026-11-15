@@ -1,6 +1,4 @@
 # Generated at Maven build time — pulled from @singularidade/tokens (Style Dictionary)
-# Source of truth: ../../../../tokens/build/css/{singularidade,integras}.{light,dark}.css
-# Only defaults.css is hand-crafted and committed.
+# Source of truth: ../../../../tokens/build/css/theme.css
 *.css
-!defaults.css
 !.gitignore
