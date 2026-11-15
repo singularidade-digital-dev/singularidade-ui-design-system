@@ -1,0 +1,77 @@
+{
+  "color": {
+    "brand": {
+      "primary": {
+        "$value": "{color.brand.integras.magenta}",
+        "$type": "color",
+        "$description": "Nome da fonte. Alias da primeira cor da marca ativa: Integras por padrão; com data-brand=\"singularidade\", passa a #ed1e79."
+      },
+      "secondary": {
+        "$value": "{color.brand.integras.coral}",
+        "$type": "color",
+        "$description": "Nome da fonte. Alias da segunda cor da marca ativa (Integras #e8606a; Singularidade #f15052)."
+      },
+      "tertiary": {
+        "$value": "{color.brand.integras.orange}",
+        "$type": "color",
+        "$description": "Nome da fonte. Alias da terceira cor da marca ativa (Integras #f5a623; Singularidade #f7931e)."
+      },
+      "gradient": {
+        "$value": "linear-gradient(160deg, {color.brand.magenta.500} 0%, {color.brand.coral.500} 50%, {color.brand.orange.500} 100%)",
+        "$type": "color",
+        "$description": "Degradê da v1, mantido só por compatibilidade. Na v2 degradê não é token: fica dentro do símbolo e no diagrama do site, sempre a 180°.",
+        "$deprecated": "gradients are not tokens in v2 (only inside the logo, at 180deg); removed in 1.2"
+      }
+    },
+    "on-primary": {
+      "$value": "{color.text.inverse}",
+      "$type": "color",
+      "$description": "ADIÇÃO v2 (padrão on-*): texto e ícone sobre color-interactive-primary e seus estados: 5,51 | 6,85:1 em repouso, 8,02 | 9,75 no hover, 10,55 | 5,54 pressionado."
+    },
+    "on-status": {
+      "$value": "{color.text.inverse}",
+      "$type": "color",
+      "$description": "ADIÇÃO v2: texto sobre um preenchimento de status sólido (botão danger, badge sólido): sucesso 5,48 | 12,10; erro 4,83 | 6,67; aviso 5,02 | 11,04; info 6,70 | 7,25."
+    },
+    "link": {
+      "$value": "{color.interactive.primary}",
+      "$type": "color",
+      "$description": "ADIÇÃO v2 (o singularidade-website já usa --color-link): link no meio do texto, sempre sublinhado, sobre base, raised e sunken (4,89 a 5,51 | 6,23 a 6,85). Dentro de Alert, use color-text-primary."
+    },
+    "link-hover": {
+      "$value": "{color.interactive.primary-hover}",
+      "$type": "color",
+      "$description": "ADIÇÃO v2: link em hover, com sublinhado de 2px."
+    },
+    "border": {
+      "control": {
+        "$value": "{color.neutral.450}",
+        "$type": "color",
+        "$description": "ADIÇÃO v2 (WCAG 1.4.11): borda de campo, select, checkbox, rádio, botão secundário e chip. 3,52 a 3,97:1 no claro; 4,23 a 4,65:1 no escuro."
+      }
+    },
+    "feedback": {
+      "success": {
+        "text": {
+          "$value": "{color.feedback.success.solid}",
+          "$type": "color",
+          "$description": "ADIÇÃO v2: texto de sucesso sobre color-feedback-success-surface (5,21 | 8,01) e direto sobre base ou raised."
+        }
+      },
+      "warning": {
+        "text": {
+          "$value": "{color.feedback.warning.solid}",
+          "$type": "color",
+          "$description": "ADIÇÃO v2: texto de aviso sobre color-feedback-warning-surface (4,84 | 7,00) e direto sobre base ou raised. Nunca direto sobre sunken: 4,46:1."
+        }
+      },
+      "info": {
+        "text": {
+          "$value": "{color.feedback.info.solid}",
+          "$type": "color",
+          "$description": "ADIÇÃO v2: texto de informação sobre color-feedback-info-surface (6,16 | 5,26) e direto sobre base ou raised."
+        }
+      }
+    }
+  }
+}

@@ -5,11 +5,16 @@ import radius from '../src/core/radius.json' with { type: 'json' };
 import shadow from '../src/core/shadow.json' with { type: 'json' };
 import duration from '../src/core/duration.json' with { type: 'json' };
 import easing from '../src/core/easing.json' with { type: 'json' };
+import layout from '../src/core/layout.json' with { type: 'json' };
+import semanticShadowLight from '../src/semantic/shadow.light.json' with { type: 'json' };
+import semanticShadowDark from '../src/semantic/shadow.dark.json' with { type: 'json' };
 
 describe('typography', () => {
-  it('define famílias sans (Plus Jakarta) e mono (JetBrains)', () => {
+  it('define famílias sans (Plus Jakarta), mono (JetBrains) e e-mail', () => {
     expect(typography.font.family.sans.$value).toContain('Plus Jakarta Sans');
     expect(typography.font.family.mono.$value).toContain('JetBrains Mono');
+    // e-mail clients do not download fonts: the static name, then system fallbacks
+    expect(typography.font.family.email.$value.startsWith("'Plus Jakarta Sans',")).toBe(true);
   });
 
   it('lista primeiro o nome registrado pelo @font-face do brand-assets', () => {
@@ -21,11 +26,12 @@ describe('typography', () => {
     expect(typography.font.family.mono.$value.startsWith("'JetBrains Mono Variable'")).toBe(true);
   });
 
-  it('escala modular xs..7xl', () => {
+  it('escala xs..7xl, com xs em 12px (v2)', () => {
     const sizes = ['xs', 's', 'm', 'l', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl'] as const;
     for (const s of sizes) {
       expect(typography.font.size[s], `font.size.${s}`).toBeDefined();
     }
+    expect(typography.font.size.xs.$value).toBe('12px');
   });
 
   it('weights regular/medium/semibold/bold', () => {
@@ -59,11 +65,31 @@ describe('radius', () => {
 });
 
 describe('shadow', () => {
-  it('escala xs/sm/md/lg/xl/2xl com variantes light e dark', () => {
+  it('escala xs/sm/md/lg/xl/2xl com um valor por tema', () => {
     for (const level of ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const) {
-      expect(shadow.shadow.light[level], `shadow.light.${level}`).toBeDefined();
-      expect(shadow.shadow.dark[level], `shadow.dark.${level}`).toBeDefined();
+      expect(semanticShadowLight.shadow[level].$value).toBe(`{shadow.light.${level}}`);
+      expect(semanticShadowDark.shadow[level].$value).toBe(`{shadow.dark.${level}}`);
     }
+  });
+
+  it('shadow.light.* e shadow.dark.* ficam como aliases deprecados', () => {
+    for (const level of ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const) {
+      expect(shadow.shadow.light[level].$deprecated, `shadow.light.${level}`).toBeDefined();
+      expect(shadow.shadow.dark[level].$deprecated, `shadow.dark.${level}`).toBeDefined();
+    }
+  });
+});
+
+describe('layout (v2)', () => {
+  it('breakpoints, contêineres, controles, alvos, ícones e z-index', () => {
+    expect(layout.bp.sm.$value).toBe('640px');
+    expect(layout.container.auth.$value).toBe('440px');
+    expect(layout.control.md.$value).toBe('36px');
+    expect(layout.target.touch.$value).toBe('44px');
+    expect(layout.icon['2xl'].$value).toBe('48px');
+    expect(layout.header.height.app.$value).toBe('56px');
+    expect(layout.sidenav.width.$value).toBe('240px');
+    expect(layout.z['skip-link'].$value).toBe(1700);
   });
 });
 

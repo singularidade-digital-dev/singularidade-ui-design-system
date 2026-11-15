@@ -1,52 +1,134 @@
 {
   "button": {
+    "radius": {
+      "$value": "{radius.md}",
+      "$type": "dimension",
+      "$description": "Raio do botão."
+    },
     "primary": {
-      "background": { "$value": "{color.interactive.primary}", "$type": "color" },
+      "background": {
+        "$value": "{color.interactive.primary}",
+        "$type": "color",
+        "$description": "Botão primário em repouso. Um por tela ou diálogo."
+      },
       "background-hover": {
         "$value": "{color.interactive.primary-hover}",
-        "$type": "color"
+        "$type": "color",
+        "$description": "Botão primário em hover."
       },
       "background-active": {
         "$value": "{color.interactive.primary-active}",
-        "$type": "color"
+        "$type": "color",
+        "$description": "Botão primário pressionado (corrigido na v2: #791832 no claro)."
       },
-      "foreground": { "$value": "{color.text.inverse}", "$type": "color" },
-      "border-radius": { "$value": "{radius.md}", "$type": "dimension" },
-      "font-weight": { "$value": "{font.weight.semibold}", "$type": "fontWeight" }
+      "foreground": {
+        "$value": "{color.on-primary}",
+        "$type": "color",
+        "$description": "Rótulo e ícone do botão primário."
+      },
+      "border-radius": {
+        "$value": "{button.radius}",
+        "$type": "dimension",
+        "$deprecated": "use --button-radius; removed in 1.2"
+      },
+      "font-weight": {
+        "$value": "{font.weight.semibold}",
+        "$type": "fontWeight",
+        "$deprecated": "use the button text style (css/text-styles.css); removed in 1.2"
+      }
     },
     "secondary": {
-      "background": { "$value": "{color.surface.raised}", "$type": "color" },
-      "background-hover": {
-        "$value": "{color.interactive.secondary-hover}",
-        "$type": "color"
+      "background": {
+        "$value": "{color.surface.raised}",
+        "$type": "color",
+        "$description": "Fundo do botão secundário."
       },
-      "foreground": { "$value": "{color.text.primary}", "$type": "color" },
-      "border": { "$value": "{color.border.default}", "$type": "color" }
-    },
-    "tertiary": {
-      "background": { "$value": "transparent", "$type": "color" },
       "background-hover": {
         "$value": "{color.interactive.secondary}",
-        "$type": "color"
+        "$type": "color",
+        "$description": "Hover do secundário. MUDANÇA v2: era #c8bcc4, igual à borda, e o botão sumia."
       },
-      "foreground": { "$value": "{color.interactive.primary}", "$type": "color" }
+      "foreground": {
+        "$value": "{color.text.primary}",
+        "$type": "color",
+        "$description": "Rótulo do botão secundário."
+      },
+      "border": {
+        "$value": "{color.border.control}",
+        "$type": "color",
+        "$description": "Borda de 1px do botão secundário. MUDANÇA v2: era 1,83:1."
+      }
+    },
+    "tertiary": {
+      "background": {
+        "$value": "rgba(0, 0, 0, 0)",
+        "$type": "color",
+        "$description": "Fundo transparente do terciário (o formato não aceita \"transparent\")."
+      },
+      "background-hover": {
+        "$value": "{color.interactive.primary-subtle}",
+        "$type": "color",
+        "$description": "Hover do terciário. MUDANÇA v2: era #ece5eb, com 4,45:1."
+      },
+      "foreground": {
+        "$value": "{color.interactive.primary}",
+        "$type": "color",
+        "$description": "Rótulo do botão terciário."
+      }
     },
     "danger": {
-      "background": { "$value": "{color.feedback.error.solid}", "$type": "color" },
-      "foreground": { "$value": "{color.text.inverse}", "$type": "color" }
+      "background": {
+        "$value": "{color.feedback.error.solid}",
+        "$type": "color",
+        "$description": "Botão que confirma a ação destrutiva. Danger e primary são quase a mesma cor (1,03:1 no escuro, 1,14:1 no claro, de 9° a 12° de matiz). O danger nunca divide a tela com um primário: aparece só no diálogo de confirmação, ao lado do secundário, e o rótulo diz o verbo (\"Cancelar assinatura\")."
+      },
+      "background-hover": {
+        "$value": "{color.feedback.error.hover}",
+        "$type": "color",
+        "$description": "ADIÇÃO v2: hover do botão danger."
+      },
+      "foreground": {
+        "$value": "{color.on-status}",
+        "$type": "color",
+        "$description": "Rótulo do botão danger."
+      }
     },
     "size": {
       "small": {
-        "padding": { "$value": "{size.1} {size.3}", "$type": "dimension" },
-        "font-size": { "$value": "{font.size.s}", "$type": "dimension" }
+        "padding": {
+          "$value": "{size.1} {size.3}",
+          "$type": "dimension",
+          "$deprecated": "use the control-* heights and the button/button-lg text styles; removed in 1.2"
+        },
+        "font-size": {
+          "$value": "{font.size.s}",
+          "$type": "dimension",
+          "$deprecated": "use the control-* heights and the button/button-lg text styles; removed in 1.2"
+        }
       },
       "medium": {
-        "padding": { "$value": "{size.2} {size.4}", "$type": "dimension" },
-        "font-size": { "$value": "{font.size.m}", "$type": "dimension" }
+        "padding": {
+          "$value": "{size.2} {size.4}",
+          "$type": "dimension",
+          "$deprecated": "use the control-* heights and the button/button-lg text styles; removed in 1.2"
+        },
+        "font-size": {
+          "$value": "{font.size.m}",
+          "$type": "dimension",
+          "$deprecated": "use the control-* heights and the button/button-lg text styles; removed in 1.2"
+        }
       },
       "large": {
-        "padding": { "$value": "{size.3} {size.5}", "$type": "dimension" },
-        "font-size": { "$value": "{font.size.l}", "$type": "dimension" }
+        "padding": {
+          "$value": "{size.3} {size.5}",
+          "$type": "dimension",
+          "$deprecated": "use the control-* heights and the button/button-lg text styles; removed in 1.2"
+        },
+        "font-size": {
+          "$value": "{font.size.l}",
+          "$type": "dimension",
+          "$deprecated": "use the control-* heights and the button/button-lg text styles; removed in 1.2"
+        }
       }
     }
   }

@@ -1,35 +1,323 @@
 {
   "text": {
     "display": {
-      "fontFamily": { "$value": "{font.family.sans}", "$type": "fontFamily" },
-      "fontSize": { "$value": "{font.size.5xl}", "$type": "dimension" },
-      "fontWeight": { "$value": "{font.weight.bold}", "$type": "fontWeight" },
-      "lineHeight": { "$value": "{font.lineHeight.tight}", "$type": "number" },
-      "letterSpacing": { "$value": "{font.letterSpacing.tighter}", "$type": "dimension" }
+      "fontFamily": {
+        "$value": "{font.family.sans}",
+        "$type": "fontFamily",
+        "$deprecated": "use the display text style (css/text-styles.css); removed in 1.2"
+      },
+      "fontSize": {
+        "$value": "{font.size.5xl}",
+        "$type": "dimension",
+        "$deprecated": "use the display text style (css/text-styles.css); removed in 1.2"
+      },
+      "fontWeight": {
+        "$value": "{font.weight.bold}",
+        "$type": "fontWeight",
+        "$deprecated": "use the display text style (css/text-styles.css); removed in 1.2"
+      },
+      "lineHeight": {
+        "$value": "{font.lineHeight.tight}",
+        "$type": "number",
+        "$deprecated": "use the display text style (css/text-styles.css); removed in 1.2"
+      },
+      "letterSpacing": {
+        "$value": "{font.letterSpacing.tighter}",
+        "$type": "dimension",
+        "$deprecated": "use the display text style (css/text-styles.css); removed in 1.2"
+      }
     },
     "heading": {
-      "fontFamily": { "$value": "{font.family.sans}", "$type": "fontFamily" },
-      "fontSize": { "$value": "{font.size.3xl}", "$type": "dimension" },
-      "fontWeight": { "$value": "{font.weight.bold}", "$type": "fontWeight" },
-      "lineHeight": { "$value": "{font.lineHeight.snug}", "$type": "number" },
-      "letterSpacing": { "$value": "{font.letterSpacing.tight}", "$type": "dimension" }
+      "fontFamily": {
+        "$value": "{font.family.sans}",
+        "$type": "fontFamily",
+        "$deprecated": "use the heading text style (css/text-styles.css); removed in 1.2"
+      },
+      "fontSize": {
+        "$value": "{font.size.3xl}",
+        "$type": "dimension",
+        "$deprecated": "use the heading text style (css/text-styles.css); removed in 1.2"
+      },
+      "fontWeight": {
+        "$value": "{font.weight.bold}",
+        "$type": "fontWeight",
+        "$deprecated": "use the heading text style (css/text-styles.css); removed in 1.2"
+      },
+      "lineHeight": {
+        "$value": "{font.lineHeight.snug}",
+        "$type": "number",
+        "$deprecated": "use the heading text style (css/text-styles.css); removed in 1.2"
+      },
+      "letterSpacing": {
+        "$value": "{font.letterSpacing.tight}",
+        "$type": "dimension",
+        "$deprecated": "use the heading text style (css/text-styles.css); removed in 1.2"
+      }
     },
     "body": {
-      "fontFamily": { "$value": "{font.family.sans}", "$type": "fontFamily" },
-      "fontSize": { "$value": "{font.size.m}", "$type": "dimension" },
-      "fontWeight": { "$value": "{font.weight.regular}", "$type": "fontWeight" },
-      "lineHeight": { "$value": "{font.lineHeight.normal}", "$type": "number" }
+      "fontFamily": {
+        "$value": "{font.family.sans}",
+        "$type": "fontFamily",
+        "$deprecated": "use the body-sm text style (css/text-styles.css); removed in 1.2"
+      },
+      "fontSize": {
+        "$value": "{font.size.m}",
+        "$type": "dimension",
+        "$deprecated": "use the body-sm text style (css/text-styles.css); removed in 1.2"
+      },
+      "fontWeight": {
+        "$value": "{font.weight.regular}",
+        "$type": "fontWeight",
+        "$deprecated": "use the body-sm text style (css/text-styles.css); removed in 1.2"
+      },
+      "lineHeight": {
+        "$value": "{font.lineHeight.normal}",
+        "$type": "number",
+        "$deprecated": "use the body-sm text style (css/text-styles.css); removed in 1.2"
+      }
     },
     "label": {
-      "fontFamily": { "$value": "{font.family.sans}", "$type": "fontFamily" },
-      "fontSize": { "$value": "{font.size.xs}", "$type": "dimension" },
-      "fontWeight": { "$value": "{font.weight.semibold}", "$type": "fontWeight" },
-      "letterSpacing": { "$value": "{font.letterSpacing.wider}", "$type": "dimension" },
-      "textTransform": { "$value": "uppercase", "$type": "string" }
+      "fontFamily": {
+        "$value": "{font.family.sans}",
+        "$type": "fontFamily",
+        "$deprecated": "use the overline text style (css/text-styles.css); removed in 1.2"
+      },
+      "fontSize": {
+        "$value": "{font.size.xs}",
+        "$type": "dimension",
+        "$deprecated": "use the overline text style (css/text-styles.css); removed in 1.2"
+      },
+      "fontWeight": {
+        "$value": "{font.weight.semibold}",
+        "$type": "fontWeight",
+        "$deprecated": "use the overline text style (css/text-styles.css); removed in 1.2"
+      },
+      "letterSpacing": {
+        "$value": "{font.letterSpacing.wider}",
+        "$type": "dimension",
+        "$deprecated": "use the overline text style (css/text-styles.css); removed in 1.2"
+      },
+      "textTransform": {
+        "$value": "uppercase",
+        "$type": "string",
+        "$deprecated": "use the overline text style (css/text-styles.css); removed in 1.2"
+      }
     },
     "code": {
-      "fontFamily": { "$value": "{font.family.mono}", "$type": "fontFamily" },
-      "fontSize": { "$value": "{font.size.s}", "$type": "dimension" }
+      "fontFamily": {
+        "$value": "{font.family.mono}",
+        "$type": "fontFamily",
+        "$deprecated": "use the code text style (css/text-styles.css); removed in 1.2"
+      },
+      "fontSize": {
+        "$value": "{font.size.s}",
+        "$type": "dimension",
+        "$deprecated": "use the code text style (css/text-styles.css); removed in 1.2"
+      }
+    }
+  },
+  "text-style": {
+    "$description": "Estilos de texto da v2: no CSS, classes em css/text-styles.css (.display-xl, .heading, .body…). Tamanhos em rem e entrelinha absoluta na grade de 4px.",
+    "display-xl": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "3.5rem",
+        "lineHeight": "3.75rem",
+        "fontWeight": 700,
+        "letterSpacing": "-0.03em"
+      },
+      "$type": "typography",
+      "$description": "56/60 px. Hero de site, um por página; abaixo de 640px vira display. Adição: os docs já prometiam display de 56px."
+    },
+    "display": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "2.5rem",
+        "lineHeight": "2.75rem",
+        "fontWeight": 700,
+        "letterSpacing": "-0.03em"
+      },
+      "$type": "typography",
+      "$description": "40/44 px. Título de página de site e hero do Hub. Fonte (text.display)."
+    },
+    "heading-xl": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "2rem",
+        "lineHeight": "2.5rem",
+        "fontWeight": 700,
+        "letterSpacing": "-0.02em"
+      },
+      "$type": "typography",
+      "$description": "32/40 px. Seção de site; título do Hub a partir de 640px. Adição."
+    },
+    "heading": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "1.75rem",
+        "lineHeight": "2.25rem",
+        "fontWeight": 700,
+        "letterSpacing": "-0.02em"
+      },
+      "$type": "typography",
+      "$description": "28/36 px. Título de página (h1) no Hub, no login e nas configurações. Fonte (text.heading)."
+    },
+    "heading-md": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "1.375rem",
+        "lineHeight": "1.75rem",
+        "fontWeight": 600,
+        "letterSpacing": "-0.01em"
+      },
+      "$type": "typography",
+      "$description": "22/28 px. Título de página nas listas compactas do admin e títulos de seção. Adição."
+    },
+    "heading-sm": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "1.125rem",
+        "lineHeight": "1.5rem",
+        "fontWeight": 600
+      },
+      "$type": "typography",
+      "$description": "18/24 px. Título de card e de diálogo, nome do conector, título de EmptyState. Adição."
+    },
+    "body-lg": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "1.125rem",
+        "lineHeight": "1.75rem",
+        "fontWeight": 400
+      },
+      "$type": "typography",
+      "$description": "18/28 px. Parágrafo de abertura (hero, intro de seção). Adição."
+    },
+    "body": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "1rem",
+        "lineHeight": "1.5rem",
+        "fontWeight": 400
+      },
+      "$type": "typography",
+      "$description": "16/24 px. Corpo no Hub, nos sites e no e-mail; campos no modo confortável. MUDANÇA: era 14px (abaixo de 16px o iOS dá zoom no campo)."
+    },
+    "body-sm": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "0.875rem",
+        "lineHeight": "1.25rem",
+        "fontWeight": 400
+      },
+      "$type": "typography",
+      "$description": "14/20 px. Corpo do admin compacto, células de tabela, descrição de card, texto de toast e alerta. Adição (é o body antigo)."
+    },
+    "caption": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "0.8125rem",
+        "lineHeight": "1.25rem",
+        "fontWeight": 400
+      },
+      "$type": "typography",
+      "$description": "13/20 px. Ajuda de campo, metadado, mensagem de erro, contagens. Adição."
+    },
+    "label": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "0.875rem",
+        "lineHeight": "1.25rem",
+        "fontWeight": 500
+      },
+      "$type": "typography",
+      "$description": "14/20 px 500. Rótulo de campo, item de menu e de aba, link sozinho. Adição."
+    },
+    "button": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "0.875rem",
+        "lineHeight": "1.25rem",
+        "fontWeight": 600,
+        "letterSpacing": "-0.01em"
+      },
+      "$type": "typography",
+      "$description": "14/20 px 600. Texto de botão md (36px). Fonte (lib)."
+    },
+    "button-lg": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "1rem",
+        "lineHeight": "1.5rem",
+        "fontWeight": 600,
+        "letterSpacing": "-0.01em"
+      },
+      "$type": "typography",
+      "$description": "16/24 px 600. Texto de botão lg (44px), padrão do modo confortável. Fonte (lib)."
+    },
+    "badge": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "0.75rem",
+        "lineHeight": "1rem",
+        "fontWeight": 600,
+        "letterSpacing": "0.02em"
+      },
+      "$type": "typography",
+      "$description": "12/16 px 600. Badge e pill de contagem. Fonte."
+    },
+    "overline": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "0.75rem",
+        "lineHeight": "1rem",
+        "fontWeight": 600,
+        "letterSpacing": "0.06em"
+      },
+      "$type": "typography",
+      "$description": "12/16 px 600, caixa alta (text-transform no bundle.css). Sobretítulo, rótulo de grupo da SideNav e de detalhe; nunca cabeçalho de tabela. Fonte (text.label), de 11 para 12px."
+    },
+    "brand-label": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": "1rem",
+        "lineHeight": "1.5rem",
+        "fontWeight": 700,
+        "letterSpacing": "0.06em"
+      },
+      "$type": "typography",
+      "$description": "16/24 px 700, caixa alta, com o espaçamento do logotipo. Só o nome do produto ao lado do símbolo (\"INTEGRAS HUB\"). Adição."
+    },
+    "code": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "0.8125rem",
+        "lineHeight": "1.25rem",
+        "fontWeight": 400
+      },
+      "$type": "typography",
+      "$description": "13/20 px. Código e ID no meio do texto e em tabela. Fonte."
+    },
+    "code-lg": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "1rem",
+        "lineHeight": "1.5rem",
+        "fontWeight": 500
+      },
+      "$type": "typography",
+      "$description": "16/24 px 500. Endereço do conector (CopyField) e chaves. Adição."
+    },
+    "otp": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": "2.25rem",
+        "lineHeight": "2.75rem",
+        "fontWeight": 700,
+        "letterSpacing": "8px"
+      },
+      "$type": "typography",
+      "$description": "36/44 px 700, letter-spacing 8px. Código de acesso no e-mail (partial code-block). Fonte. O campo OtpField da tela usa 24px."
     }
   }
 }

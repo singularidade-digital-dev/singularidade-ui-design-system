@@ -11,3 +11,6 @@ docs/superpowers/
 
 # Scratch — exploratory scripts, not production code
 **/scratch/
+
+# Byte-for-byte copy of the approved DS v2 tokens.json (see packages/tokens/reference/README.md)
+packages/tokens/reference/ds-v2.tokens.json

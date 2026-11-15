@@ -1,55 +1,69 @@
 {
   "shadow": {
     "light": {
+      "$description": "Raw light shadows. The per-theme shadow-* tokens (semantic/shadow.light.json, semantic/shadow.dark.json) read these values: use them instead.",
       "xs": {
         "$value": "0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-xs (per theme); removed in 1.2"
       },
       "sm": {
         "$value": "0 2px 4px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.03)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-sm (per theme); removed in 1.2"
       },
       "md": {
         "$value": "0 4px 12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-md (per theme); removed in 1.2"
       },
       "lg": {
         "$value": "0 8px 24px rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.03)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-lg (per theme); removed in 1.2"
       },
       "xl": {
         "$value": "0 16px 48px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-xl (per theme); removed in 1.2"
       },
       "2xl": {
         "$value": "0 24px 64px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.04)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-2xl (per theme); removed in 1.2"
       }
     },
     "dark": {
+      "$description": "Raw dark shadows. The per-theme shadow-* tokens (semantic/shadow.light.json, semantic/shadow.dark.json) read these values: use them instead.",
       "xs": {
         "$value": "0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.03)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-xs (per theme); removed in 1.2"
       },
       "sm": {
         "$value": "0 2px 6px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.03)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-sm (per theme); removed in 1.2"
       },
       "md": {
         "$value": "0 4px 14px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-md (per theme); removed in 1.2"
       },
       "lg": {
         "$value": "0 8px 28px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-lg (per theme); removed in 1.2"
       },
       "xl": {
         "$value": "0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-xl (per theme); removed in 1.2"
       },
       "2xl": {
         "$value": "0 24px 64px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.05)",
-        "$type": "shadow"
+        "$type": "shadow",
+        "$deprecated": "use --shadow-2xl (per theme); removed in 1.2"
       }
     }
   }

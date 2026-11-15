@@ -1,12 +1,29 @@
 {
   "card": {
-    "background": { "$value": "{color.surface.raised}", "$type": "color" },
-    "border": { "$value": "{color.border.subtle}", "$type": "color" },
-    "radius": { "$value": "{radius.lg}", "$type": "dimension" },
-    "padding": { "$value": "{size.5}", "$type": "dimension" },
+    "background": {
+      "$value": "{color.surface.raised}",
+      "$type": "color",
+      "$description": "Fundo do card."
+    },
+    "radius": {
+      "$value": "{radius.lg}",
+      "$type": "dimension"
+    },
+    "padding": {
+      "$value": "{size.5}",
+      "$type": "dimension"
+    },
     "shadow": {
-      "default": { "$value": "{shadow.light.xs}", "$type": "shadow" },
-      "hover": { "$value": "{shadow.light.md}", "$type": "shadow" }
+      "default": {
+        "$value": "{shadow.xs}",
+        "$type": "shadow",
+        "$deprecated": "use --shadow-xs (card at rest, per theme); removed in 1.2"
+      },
+      "hover": {
+        "$value": "{shadow.md}",
+        "$type": "shadow",
+        "$deprecated": "use --shadow-md (clickable card on hover, per theme); removed in 1.2"
+      }
     }
   }
 }

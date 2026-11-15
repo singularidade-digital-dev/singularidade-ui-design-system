@@ -7,9 +7,14 @@
         "$description": "Display + body — geometric, modern"
       },
       "mono": {
-        "$value": "'JetBrains Mono Variable', 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace",
+        "$value": "'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
         "$type": "fontFamily",
-        "$description": "Code, números financeiros, IDs"
+        "$description": "Dado técnico: endereço do conector, códigos, IDs, versão. Número comum fica em Plus Jakarta Sans com tabular-nums."
+      },
+      "email": {
+        "$value": "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif",
+        "$type": "fontFamily",
+        "$description": "E-mail: cliente de e-mail não baixa fonte, então a lista cai em fontes do sistema."
       }
     },
     "weight": {
@@ -19,10 +24,19 @@
       "bold": { "$value": 700, "$type": "fontWeight" }
     },
     "size": {
-      "xs": { "$value": "11px", "$type": "dimension", "$description": "Labels, captions" },
+      "$description": "Escala da fonte. No CSS sai em rem (px/16), para o zoom de texto funcionar; JS, JSON e Java mantêm px.",
+      "xs": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "Badge, overline (v2: de 11 para 12px)"
+      },
       "s": { "$value": "13px", "$type": "dimension", "$description": "Secondary body" },
-      "m": { "$value": "14px", "$type": "dimension", "$description": "Body default" },
-      "l": { "$value": "16px", "$type": "dimension" },
+      "m": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "body-sm: admin compacto, tabela"
+      },
+      "l": { "$value": "16px", "$type": "dimension", "$description": "body: Hub, sites e e-mail" },
       "xl": { "$value": "18px", "$type": "dimension", "$description": "H4, section headings" },
       "2xl": { "$value": "22px", "$type": "dimension", "$description": "H3, page titles" },
       "3xl": { "$value": "28px", "$type": "dimension", "$description": "H2" },
