@@ -15,7 +15,11 @@ Decisões arquiteturais documentadas em ADR (Architecture Decision Records). For
 - [ADR-005 · Pagefind como motor de busca](https://github.com/singularidade-digital-dev/singularidade-ui-design-system/blob/main/docs/adr/ADR-005-pagefind-search.md)
 - [ADR-006 · Storybook 8 com web-components renderer](https://github.com/singularidade-digital-dev/singularidade-ui-design-system/blob/main/docs/adr/ADR-006-storybook-web-components.md)
 
-O ADR-006 ganhou uma nota de status na 1.0.0: o Vaadin 25 não abandonou o Lumo, e o Storybook ainda usa os web components do Vaadin 24 com uma cópia própria da ponte, sem o tema `singularidade-base` que os apps carregam.
+Três ADRs ganharam uma nota de status na 1.0.0:
+
+- ADR-003: o Integras é a marca padrão, e a Singularidade troca só as três cores da marca pela paleta original.
+- ADR-004: o degradê não é token na v2, e `--color-brand-primary` depende da marca.
+- ADR-006: o Vaadin 25 não abandonou o Lumo, e o Storybook ainda usa os web components do Vaadin 24 com uma cópia própria da ponte, sem o tema `singularidade-base` que os apps carregam.
 
 ## Como adicionar ADR
 

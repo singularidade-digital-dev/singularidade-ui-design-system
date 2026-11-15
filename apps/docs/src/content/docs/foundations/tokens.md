@@ -78,4 +78,4 @@ Os nomes da v1 que a v2 não tem continuam como aliases deprecados até a 1.2: `
 
 ## Catálogo
 
-O catálogo visual completo está no Storybook (Foundations / Color); veja em [Componentes](/componentes/primitivos/) como abrir.
+A lista completa, com o valor de cada token nos dois temas, é o `theme.css` gerado. O Storybook (Foundations / Color) ainda usa só os nomes da v1: não mostra `color-border-control`, `color-on-primary`, `color-link`, `color-feedback-*-text` nem as paletas por marca. Veja em [Componentes](/componentes/primitivos/) como abrir.

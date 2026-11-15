@@ -4,6 +4,8 @@ description: Integração com apps Vaadin Flow + Spring Boot
 sidebar: { order: 1 }
 ---
 
+import { Aside } from '@astrojs/starlight/components';
+
 ## Maven dependencies
 
 O tema vem no `vaadin-bindings`, compilado contra o Vaadin Flow 25.2 (o app decide a versão do Vaadin). Ele traz `tokens` e `brand-assets` junto:
@@ -41,46 +43,46 @@ O Lumo continua no Vaadin 25 (o 25.0 removeu o Material, não o Lumo). Só as ut
 
 ## O que a ponte mapeia
 
-| Vaadin / Lumo                                                  | Token                                          |
-| -------------------------------------------------------------- | ---------------------------------------------- |
-| `--lumo-primary-color`, `--lumo-primary-text-color`            | `--color-interactive-primary`                  |
-| `--lumo-primary-contrast-color`                                | `--color-on-primary`                           |
-| `--lumo-{error,success,warning}-color`                         | `--color-feedback-*-solid`                     |
-| `--lumo-{error,success,warning}-text-color`                    | `--color-feedback-*-text`                      |
-| `--lumo-{error,success,warning}-contrast-color`                | `--color-on-status`                            |
-| `--lumo-link-color`                                            | `--color-link`                                 |
-| `--lumo-box-shadow-{xs,s,m,l,xl}`                              | `--shadow-{xs,sm,md,lg,xl}` (um valor por tema) |
-| `--vaadin-focus-ring-color` (largura 2px)                      | `--color-border-focus`                         |
+| Vaadin / Lumo                                                    | Token                                                               |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `--lumo-primary-color`, `--lumo-primary-text-color`              | `--color-interactive-primary`                                       |
+| `--lumo-primary-contrast-color`                                  | `--color-on-primary`                                                |
+| `--lumo-{error,success,warning}-color`                           | `--color-feedback-*-solid`                                          |
+| `--lumo-{error,success,warning}-text-color`                      | `--color-feedback-*-text`                                           |
+| `--lumo-{error,success,warning}-contrast-color`                  | `--color-on-status`                                                 |
+| `--lumo-link-color`                                              | `--color-link`                                                      |
+| `--lumo-box-shadow-{xs,s,m,l,xl}`                                | `--shadow-{xs,sm,md,lg,xl}` (um valor por tema)                     |
+| `--vaadin-focus-ring-color` (largura 2px)                        | `--color-border-focus`                                              |
 | `--vaadin-input-field-border-color` (largura 1px), `-background` | `--input-border` (= `--color-border-control`), `--input-background` |
 
-No escuro, o tema reaplica as cores nos overlays que o Vaadin anexa fora do layout: diálogo, confirmação, notificação, menu de contexto, combo-box, select, date-picker e popover.
+No Vaadin 25, os overlays de diálogo, confirmação, menu de contexto, combo-box, select, date-picker e popover ficam no shadow DOM do próprio componente e recebem as cores do tema por herança, como o resto da página. O bloco da ponte que reaplica as cores do escuro nos overlays (`html[theme~='dark'] vaadin-*-overlay`) só alcança o cartão de notificação, que o Vaadin põe num contêiner no `<body>`.
 
 ## Trocar theme/brand em runtime
 
 ```java
-// Escuro: o atributo que o Vaadin usa
-UI.getCurrent().getElement().setAttribute("theme", "dark");
+import com.vaadin.flow.component.page.ColorScheme;
+
+// Escuro: theme="dark" no <html>
+UI.getCurrent().getPage().setColorScheme(ColorScheme.Value.DARK);
 
 // Claro (padrão)
-UI.getCurrent().getElement().removeAttribute("theme");
+UI.getCurrent().getPage().setColorScheme(ColorScheme.Value.LIGHT);
 
 // Marca Singularidade: troca só as três cores da marca (o Integras é o padrão)
 UI.getCurrent().getElement().setAttribute("data-brand", "singularidade");
 ```
 
+O `theme` vai no `<html>`, onde o `setColorScheme` do Vaadin 25 o põe e onde o `theme.css` e a ponte o esperam. O elemento da UI (`UI.getCurrent().getElement()`) é o `<body>`; com o atributo só nele, o `<html>` continua claro (o fundo fora do `<body>` e a barra de rolagem), e as regras da ponte com `html[theme~='dark']` não valem. O seletor de tema da biblioteca 2.1.0 também grava o atributo no `<html>`.
+
 ## Custom icons (ss:\*)
 
-Importar o iconset gerado:
-
-```java
-@JsModule("@singularidade/brand-assets/build/vaadin-iconset.js")
-```
-
-Usar em views:
-
-```java
-Icon tenantIcon = new Icon("ss", "tenant");
-```
+<Aside type="caution">
+  O iconset `ss:*` ainda não chega aos apps Vaadin pelo Maven. O JAR do `brand-assets` leva o
+  arquivo em `META-INF/resources/brand-assets/vaadin-iconset.js`, fora das pastas de onde o Vaadin
+  importa JavaScript de um JAR (`META-INF/frontend/` e `META-INF/resources/frontend/`, com
+  `@JsModule("./…")`). E `@JsModule("@singularidade/brand-assets/build/vaadin-iconset.js")` é um
+  import de pacote npm, que não existe: `@singularidade/brand-assets` não está no npm.
+</Aside>
 
 ## Acessar tokens em Java
 

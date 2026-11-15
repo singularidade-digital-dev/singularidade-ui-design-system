@@ -9,7 +9,7 @@ Sistema de design open-source da **Singularidade Digital** — tokens, brand ass
 
 ## Visão geral
 
-Monorepo (pnpm workspaces + Turborepo + Maven multi-module) que entrega três artefatos publicados **lado a lado em npm e Maven (AWS CodeArtifact)**, formando uma cadeia de dependências única para garantir consistência visual cross-app:
+Monorepo (pnpm workspaces + Turborepo + Maven multi-module) que entrega três artefatos publicados **no Maven (AWS CodeArtifact)**, formando uma cadeia de dependências única para garantir consistência visual cross-app. Os pacotes `@singularidade/*` ainda não estão no npm; dentro do monorepo, resolvem pelo workspace do pnpm.
 
 ```
 @singularidade/tokens          ─┐
@@ -21,11 +21,11 @@ Monorepo (pnpm workspaces + Turborepo + Maven multi-module) que entrega três ar
 
 | Pacote                                                       | Descrição                                                                              | Versão  |
 | ------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------- |
-| [`@singularidade/tokens`](packages/tokens)                   | Design tokens W3C (DTF) compilados via Style Dictionary 4 para CSS, JS, JSON e Java    | `0.2.0` |
-| [`@singularidade/brand-assets`](packages/brand-assets)       | Logos, fontes, ícones (Lucide + custom) e illustrations                                | `0.2.0` |
-| [`@singularidade/vaadin-bindings`](packages/vaadin-bindings) | Tema parente `singularidade-base` que mapeia tokens → `--lumo-*` para Vaadin Flow 25.x | `0.2.0` |
+| [`@singularidade/tokens`](packages/tokens)                   | Design tokens W3C (DTF) compilados via Style Dictionary 4 para CSS, JS, JSON e Java    | `1.0.0` |
+| [`@singularidade/brand-assets`](packages/brand-assets)       | Logos, fontes, ícones (Lucide + custom) e illustrations                                | `1.0.0` |
+| [`@singularidade/vaadin-bindings`](packages/vaadin-bindings) | Tema parente `singularidade-base` que mapeia tokens → `--lumo-*` para Vaadin Flow 25.x | `1.0.0` |
 
-Aplicações Vaadin consomem o design system via [`singularidade-ui-vaadin`](https://github.com/singularidade-digital-dev/singularidade-ui-vaadin) (lib de componentes que estende `singularidade-base`).
+A 1.0.0 é o Design System v2: veja as [notas da versão](https://ds.singularidade.digital/releases/v1-0-0/). Aplicações Vaadin consomem o design system via [`singularidade-ui-vaadin`](https://github.com/singularidade-digital-dev/singularidade-ui-vaadin) 2.1.0 (lib de componentes que estende `singularidade-base`).
 
 ## Quick Start
 
@@ -66,7 +66,7 @@ Tier 2: Semantic     →  intent (interactive.primary, surface.base, text.primar
 Tier 3: Component    →  contexto (button.background, card.border, ...)
 ```
 
-Sub-marcas (Integras, futuras) são overlays sobre os semantic tokens via `[data-brand="X"][data-theme="Y"]` ([ADR-003](docs/adr/ADR-003-sub-brands-overlay.md)). O brand padrão (Singularidade) é carregado por `:root`.
+Cada marca é um overlay fino sobre os semantic tokens ([ADR-003](docs/adr/ADR-003-sub-brands-overlay.md)). O Integras é a marca padrão, carregada no `:root` do `theme.css`; `[data-brand='singularidade']` troca só as três cores da marca. Os sites usam os quatro `{marca}.{tema}.css`, com `[data-brand][data-theme]`.
 
 ## Comandos comuns
 

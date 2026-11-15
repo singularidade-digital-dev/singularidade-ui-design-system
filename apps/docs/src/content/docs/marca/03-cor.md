@@ -42,7 +42,7 @@ A `--color-feedback-error-solid` usa **vermelho puro** (não coral) pra distingu
 
 ## Escalas completas
 
-Cada cor brand tem 11 paradas (`50` → `950`). Acesse via `var(--color-brand-magenta-500)` etc. A rampa neutra (`--color-neutral-*`) vai de `0` a `1000` e ganhou o `450` (`#8C7B86`), base da `--color-border-control`. Demonstradas em [Foundations / Color](/foundations/tokens/) ou explore o Storybook.
+Cada cor brand tem 11 paradas (`50` → `950`). Acesse via `var(--color-brand-magenta-500)` etc. A rampa neutra (`--color-neutral-*`) vai de `0` a `1000` e ganhou o `450` (`#8C7B86`), base da `--color-border-control`. Todas estão no `theme.css` gerado (veja [Tokens](/foundations/tokens/)); o Storybook (Foundations / Color) ainda usa só os nomes da v1.
 
 ## Universal feedback
 

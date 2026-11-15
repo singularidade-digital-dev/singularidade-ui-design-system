@@ -4,6 +4,11 @@
 - **Date:** 2026-05-03
 - **Deciders:** singularidade.digital
 
+> **Nota de status (2026-11-15, release 1.0.0).** O overlay fino continua: `core`, `semantic` e `component` são compartilhados, e cada marca tem `identity.json` e `overrides.json`. O texto abaixo fica como foi escrito, mas dois pontos não valem mais:
+>
+> - A marca padrão é o Integras (`DEFAULT_BRAND` no `style-dictionary.config.mjs`): o `:root` do `theme.css` e a saída canônica (`tokens.js`, `tokens.json`, `SingularidadeTokens`) seguem o Integras.
+> - O magenta não é mais compartilhado. O `overrides.json` da Singularidade troca `color.brand.primary`, `secondary` e `tertiary` pela paleta original (#ED1E79, #F15052, #F7931E), e o build falha se a marca trocar outro token. Os apps Vaadin carregam o `theme.css`, onde `[data-brand='singularidade']` faz essa troca; os quatro `{marca}.{tema}.css` ficam para os sites.
+
 ## Contexto
 
 Singularidade Digital é a empresa-matriz. Cada produto (integras.digital, futuros) precisa identidade própria mas com **DNA visual unificada**. Como modelar isso nos tokens sem duplicar código?

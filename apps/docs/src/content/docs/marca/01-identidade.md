@@ -18,6 +18,6 @@ A **Singularidade Digital** é a empresa-matriz que constrói SaaS para automaç
 
 ## Sub-marcas
 
-Singularidade é a matriz. Cada produto (integras.digital, futuros) é **endosso** com mesma DNA visual — herdam paleta, tipografia, princípios. Diferenciação por logo próprio.
+Singularidade é a matriz. Cada produto (integras.digital, futuros) é **endosso** com mesma DNA visual — tipografia, neutros, cor de ação, princípios. Diferenciação por logo próprio e pelas três cores da marca: o Integras é a marca padrão, e a Singularidade usa a sua paleta original. Veja [Multi-marca](/foundations/multi-marca/).
 
-Em código, isso é overlay fino: `identity.json` aponta path do logo, `overrides.json` fica vazio quando segue padrão.
+Em código, isso é overlay fino: `identity.json` aponta path do logo, `overrides.json` fica vazio quando segue padrão (o da Singularidade troca só as três cores da marca).

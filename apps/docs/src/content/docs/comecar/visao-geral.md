@@ -23,9 +23,9 @@ O **Singularidade Design System** unifica identidade visual, tokens técnicos, c
 
 ## Quem deve consumir
 
-| Você é…                     | Use                                                                                                              |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| **Dev backend Vaadin Flow** | `digital.singularidade:vaadin-bindings` (Maven), que traz `tokens` e `brand-assets`                              |
-| **Dev frontend marketing**  | CSS gerado (`theme.css` ou `{marca}.{tema}.css`) + fontes de `@singularidade/brand-assets`; sem npm por enquanto |
-| **Designer**                | `tokens.json` (W3C DTF) — importa em Figma/Penpot via Tokens Studio                                              |
-| **Curador de docs**         | Esse próprio site (Astro Starlight com conteúdo MDX)                                                             |
+| Você é…                     | Use                                                                                                               |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Dev backend Vaadin Flow** | `digital.singularidade:vaadin-bindings` (Maven), que traz `tokens` e `brand-assets`                               |
+| **Dev frontend marketing**  | CSS gerado (`theme.css` ou `{marca}.{tema}.css`) + fontes de `@singularidade/brand-assets`; sem npm por enquanto  |
+| **Designer**                | As fontes em W3C DTF (`packages/tokens/src/**/*.json`); o `tokens.json` publicado é um mapa plano de nome e valor |
+| **Curador de docs**         | Esse próprio site (Astro Starlight com conteúdo MDX)                                                              |

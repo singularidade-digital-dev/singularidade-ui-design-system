@@ -6,7 +6,7 @@ sidebar: { order: 8 }
 
 ## Estilo
 
-Ilustrações herdam o vocabulário visual do logo Singularidade — **geométrico isométrico**, formas planas, gradient brand quando aplicável.
+Ilustrações herdam o vocabulário visual do logo Singularidade — **geométrico isométrico**, formas planas e chapadas. O degradê segue a regra de [Cor](/marca/03-cor/): na v2, ele fica dentro do símbolo.
 
 ## Casos de uso
 
@@ -17,4 +17,4 @@ Ilustrações herdam o vocabulário visual do logo Singularidade — **geométri
 
 ## Status
 
-🚧 Em construção. Backlog para próxima iteração da Fase 2 do design system. Por enquanto, prefira ícones Lucide grandes ou cards com gradient brand para o mesmo papel.
+🚧 Em construção. Backlog para próxima iteração da Fase 2 do design system. Por enquanto, prefira ícones Lucide grandes para o mesmo papel, sem degradê.

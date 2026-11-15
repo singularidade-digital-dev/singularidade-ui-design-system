@@ -8,7 +8,7 @@ import { Aside } from '@astrojs/starlight/components';
 
 ## Modelo
 
-Singularidade Digital é a **matriz**. Cada produto (integras.digital, futuros) é uma sub-marca **endossada** — herda integralmente DNA visual (paleta, tipografia, princípios).
+Singularidade Digital é a **matriz**. Cada produto (integras.digital, futuros) é uma sub-marca **endossada**: tipografia, neutros, cor de ação e princípios são os mesmos. Entre as marcas, mudam só as três cores da marca, o logo e o nome.
 
 ## Aplicação
 
@@ -67,6 +67,6 @@ O `theme.css` só conhece o Integras e o `[data-brand='singularidade']`. Uma mar
 
 - **DNA unificada** — qualquer mudança em `core` ou `semantic` propaga pra TODAS as marcas
 - **Reconhecimento visual** — usuário sabe que integras é "do mesmo grupo" da Singularidade
-- **Setup leve** — adicionar nova marca é 2 arquivos JSON + assets
+- **Setup leve** — adicionar uma marca são 2 arquivos JSON, a entrada em `BRANDS` e os logos; para o `theme.css` (e o tema Vaadin), também o bloco dela no `style-dictionary.config.mjs`
 
-Veja [ADR-003](/devs/arquitetura/) pra rationale completa.
+Veja [ADR-003](/devs/arquitetura/) pra rationale; a nota de status no topo dele diz o que mudou na 1.0.0.
