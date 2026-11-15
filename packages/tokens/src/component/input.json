@@ -1,21 +1,63 @@
 {
   "input": {
-    "background": { "$value": "{color.surface.raised}", "$type": "color" },
-    "foreground": { "$value": "{color.text.primary}", "$type": "color" },
-    "border": { "$value": "{color.border.default}", "$type": "color" },
-    "border-radius": { "$value": "{radius.md}", "$type": "dimension" },
-    "padding": { "$value": "{size.2} {size.3}", "$type": "dimension" },
-    "placeholder": { "$value": "{color.text.muted}", "$type": "color" },
+    "background": {
+      "$value": "{color.surface.raised}",
+      "$type": "color",
+      "$description": "Fundo do campo. Acaba com o campo cinza sem borda (1,22:1)."
+    },
+    "foreground": {
+      "$value": "{color.text.primary}",
+      "$type": "color",
+      "$description": "Texto digitado."
+    },
+    "border": {
+      "$value": "{color.border.control}",
+      "$type": "color",
+      "$description": "Borda de 1px do campo. MUDANÇA v2: era 1,83:1."
+    },
+    "placeholder": {
+      "$value": "{color.text.muted}",
+      "$type": "color",
+      "$description": "Placeholder, só como exemplo (\"ana@empresa.com.br\")."
+    },
+    "radius": {
+      "$value": "{radius.md}",
+      "$type": "dimension",
+      "$description": "Raio do campo."
+    },
     "focus": {
-      "border": { "$value": "{color.interactive.primary}", "$type": "color" },
+      "border": {
+        "$value": "{color.border.focus}",
+        "$type": "color",
+        "$description": "Borda e outline do campo em foco."
+      },
       "ring": {
-        "$value": "0 0 0 2px {color.interactive.primary}",
-        "$type": "shadow"
+        "$value": "0 0 0 2px {color.border.focus}",
+        "$type": "shadow",
+        "$description": "Anel do campo em foco, para as partes do Vaadin que não aceitam outline."
       }
     },
     "disabled": {
-      "background": { "$value": "{color.surface.sunken}", "$type": "color" },
-      "foreground": { "$value": "{color.text.disabled}", "$type": "color" }
+      "background": {
+        "$value": "{color.surface.sunken}",
+        "$type": "color",
+        "$description": "Fundo do campo desabilitado."
+      },
+      "foreground": {
+        "$value": "{color.text.disabled}",
+        "$type": "color",
+        "$description": "Texto do campo desabilitado."
+      }
+    },
+    "border-radius": {
+      "$value": "{input.radius}",
+      "$type": "dimension",
+      "$deprecated": "use --input-radius; removed in 1.2"
+    },
+    "padding": {
+      "$value": "{size.2} {size.3}",
+      "$type": "dimension",
+      "$deprecated": "use the control-* heights; removed in 1.2"
     }
   }
 }

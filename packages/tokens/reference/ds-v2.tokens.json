@@ -1,0 +1,1776 @@
+{
+  "name": "Singularidade Design System",
+  "version": 1,
+  "color": {
+    "themes": [
+      {
+        "id": "light",
+        "name": "Claro"
+      },
+      {
+        "id": "dark",
+        "name": "Escuro"
+      }
+    ],
+    "tokens": [
+      {
+        "name": "color-brand-magenta-50",
+        "value": "#fce7f3",
+        "usage": "Rampa magenta. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-magenta-100",
+        "value": "#fbcfe8",
+        "usage": "Rampa magenta. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-magenta-200",
+        "value": "#f9a8d4",
+        "usage": "Rampa magenta. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-magenta-300",
+        "value": "#f472b6",
+        "usage": "Rampa magenta. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-magenta-400",
+        "value": "#ec4899",
+        "usage": "Rampa magenta. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-magenta-500",
+        "value": "#e91e8b",
+        "usage": "Magenta do símbolo do Integras (= color-brand-integras-magenta). Cor de marca, nunca de interface: 4,18:1 no branco. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-magenta-600",
+        "value": "#c41776",
+        "usage": "Rampa magenta. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-magenta-700",
+        "value": "#9d174d",
+        "usage": "Rampa magenta. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-magenta-800",
+        "value": "#831843",
+        "usage": "Rampa magenta. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-magenta-900",
+        "value": "#500724",
+        "usage": "Rampa magenta. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-magenta-950",
+        "value": "#2e0414",
+        "usage": "Rampa magenta. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-coral-50",
+        "value": "#fff1f2",
+        "usage": "Fundo de color-interactive-primary-subtle no claro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-coral-100",
+        "value": "#ffe4e6",
+        "usage": "Fundo de color-interactive-primary-subtle-hover no claro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-coral-200",
+        "value": "#fecdd3",
+        "usage": "Rampa coral. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico. A única exceção é o mapa de calor: \"Alto\" no escuro."
+      },
+      {
+        "name": "color-brand-coral-300",
+        "value": "#fda4af",
+        "usage": "color-interactive-primary-hover no escuro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-coral-400",
+        "value": "#fb7185",
+        "usage": "color-interactive-primary e color-border-focus no escuro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico. A única exceção é o mapa de calor: \"Baixo\" no claro, \"Médio\" no escuro."
+      },
+      {
+        "name": "color-brand-coral-500",
+        "value": "#e8606a",
+        "usage": "Coral do símbolo do Integras (= color-brand-integras-coral) e color-interactive-primary-active no escuro. Com texto branco dá 3,33:1: nunca fundo de texto no claro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-coral-600",
+        "value": "#be3550",
+        "usage": "color-interactive-primary e color-border-focus no claro (coral-vinho, a cor de ação). Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico. A única exceção é o mapa de calor: \"Médio\" no claro, \"Baixo\" no escuro."
+      },
+      {
+        "name": "color-brand-coral-700",
+        "value": "#9f1239",
+        "usage": "color-interactive-primary-hover no claro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-coral-800",
+        "value": "#791832",
+        "usage": "color-interactive-primary-active no claro (MUDANÇA v2: o #e8606a da fonte dava 3,33:1 com branco; este dá 10,55:1). Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico. A única exceção é o mapa de calor: \"Alto\" no claro."
+      },
+      {
+        "name": "color-brand-coral-900",
+        "value": "#571520",
+        "usage": "Rampa coral. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-coral-950",
+        "value": "#2c0a10",
+        "usage": "Rampa coral. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-orange-50",
+        "value": "#fef7e7",
+        "usage": "Rampa laranja. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-orange-100",
+        "value": "#fde4a8",
+        "usage": "Rampa laranja. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-orange-200",
+        "value": "#fcd061",
+        "usage": "Rampa laranja. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-orange-300",
+        "value": "#fbbf24",
+        "usage": "Rampa laranja. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-orange-400",
+        "value": "#f8b339",
+        "usage": "Rampa laranja. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-orange-500",
+        "value": "#f5a623",
+        "usage": "Laranja do símbolo do Integras (= color-brand-integras-orange). 2,03:1 no branco: nunca texto nem ícone sobre claro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-orange-600",
+        "value": "#dd8e0e",
+        "usage": "Rampa laranja. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-orange-700",
+        "value": "#a86b0b",
+        "usage": "Rampa laranja. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-orange-800",
+        "value": "#784d08",
+        "usage": "Rampa laranja. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-orange-900",
+        "value": "#483006",
+        "usage": "Rampa laranja. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-orange-950",
+        "value": "#2a1b03",
+        "usage": "Rampa laranja. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-0",
+        "value": "#ffffff",
+        "usage": "Neutro quente (cinza puxado para o magenta). Branco. color-surface-raised no claro e o quadro do logo de conector, sempre branco, também no escuro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-50",
+        "value": "#fdfafc",
+        "usage": "Neutro quente (cinza puxado para o magenta). color-surface-base no claro; color-text-primary no escuro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-100",
+        "value": "#f5f0f4",
+        "usage": "Neutro quente (cinza puxado para o magenta). color-surface-sunken no claro; fundo externo do e-mail. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-200",
+        "value": "#ece5eb",
+        "usage": "Neutro quente (cinza puxado para o magenta). color-border-subtle e color-interactive-secondary no claro; color-surface-inverse no escuro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-300",
+        "value": "#c8bcc4",
+        "usage": "Neutro quente (cinza puxado para o magenta). color-border-default no claro; color-text-secondary no escuro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-400",
+        "value": "#a697a1",
+        "usage": "Neutro quente (cinza puxado para o magenta). color-border-strong e color-text-disabled no claro; color-text-muted no escuro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-450",
+        "value": "#8c7b86",
+        "usage": "Neutro quente (cinza puxado para o magenta). ADIÇÃO v2: ponto médio entre 400 e 500. É color-border-control, a borda de campo que chega a 3:1 nos dois temas. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-500",
+        "value": "#735f6b",
+        "usage": "Neutro quente (cinza puxado para o magenta). color-text-muted no claro; color-text-disabled no escuro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-600",
+        "value": "#524049",
+        "usage": "Neutro quente (cinza puxado para o magenta). color-text-secondary no claro; color-interactive-secondary-hover no escuro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-700",
+        "value": "#3a2c33",
+        "usage": "Neutro quente (cinza puxado para o magenta). color-interactive-secondary no escuro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-800",
+        "value": "#261a21",
+        "usage": "Neutro quente (cinza puxado para o magenta). color-text-primary no claro; color-surface-raised no escuro; tinta do logo monocromático sobre claro. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-900",
+        "value": "#1a1517",
+        "usage": "Neutro quente (cinza puxado para o magenta). color-surface-base no escuro. MUDANÇA v2: troca de nome com 950 (valor mantido), para a rampa ficar em ordem. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-950",
+        "value": "#1a111a",
+        "usage": "Neutro quente (cinza puxado para o magenta). color-surface-sunken e color-text-inverse no escuro. MUDANÇA v2: troca de nome com 900 (valor mantido). Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-neutral-1000",
+        "value": "#000000",
+        "usage": "Neutro quente (cinza puxado para o magenta). Preto puro. Não use em interface. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-success-50",
+        "value": "#ecfdf5",
+        "usage": "Rampa de sucesso (esmeralda). Leia os semânticos color-feedback-success-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-success-100",
+        "value": "#d1fae5",
+        "usage": "Rampa de sucesso (esmeralda). Leia os semânticos color-feedback-success-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-success-300",
+        "value": "#6ee7b7",
+        "usage": "Rampa de sucesso (esmeralda). Leia os semânticos color-feedback-success-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-success-400",
+        "value": "#34d399",
+        "usage": "Rampa de sucesso (esmeralda). Leia os semânticos color-feedback-success-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-success-500",
+        "value": "#10b981",
+        "usage": "Rampa de sucesso (esmeralda). Leia os semânticos color-feedback-success-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-success-600",
+        "value": "#059669",
+        "usage": "Rampa de sucesso (esmeralda). Leia os semânticos color-feedback-success-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-success-700",
+        "value": "#047857",
+        "usage": "Rampa de sucesso (esmeralda). Leia os semânticos color-feedback-success-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-success-900",
+        "value": "#064e3b",
+        "usage": "Rampa de sucesso (esmeralda). Leia os semânticos color-feedback-success-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-error-50",
+        "value": "#fef2f2",
+        "usage": "Rampa de erro (vermelho). Leia os semânticos color-feedback-error-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-error-100",
+        "value": "#fee2e2",
+        "usage": "Rampa de erro (vermelho). Leia os semânticos color-feedback-error-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-error-300",
+        "value": "#fca5a5",
+        "usage": "Rampa de erro (vermelho). Leia os semânticos color-feedback-error-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-error-400",
+        "value": "#f87171",
+        "usage": "Rampa de erro (vermelho). Leia os semânticos color-feedback-error-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-error-500",
+        "value": "#ef4444",
+        "usage": "Rampa de erro (vermelho). Leia os semânticos color-feedback-error-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-error-600",
+        "value": "#dc2626",
+        "usage": "Rampa de erro (vermelho). Leia os semânticos color-feedback-error-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-error-700",
+        "value": "#b91c1c",
+        "usage": "Rampa de erro (vermelho). Leia os semânticos color-feedback-error-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-error-900",
+        "value": "#7f1d1d",
+        "usage": "Rampa de erro (vermelho). Leia os semânticos color-feedback-error-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-warning-50",
+        "value": "#fffbeb",
+        "usage": "Rampa de aviso (âmbar). Leia os semânticos color-feedback-warning-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-warning-100",
+        "value": "#fef3c7",
+        "usage": "Rampa de aviso (âmbar). Leia os semânticos color-feedback-warning-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-warning-300",
+        "value": "#fcd34d",
+        "usage": "Rampa de aviso (âmbar). Leia os semânticos color-feedback-warning-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-warning-400",
+        "value": "#fbbf24",
+        "usage": "Rampa de aviso (âmbar). Leia os semânticos color-feedback-warning-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-warning-500",
+        "value": "#f59e0b",
+        "usage": "Rampa de aviso (âmbar). Leia os semânticos color-feedback-warning-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-warning-600",
+        "value": "#d97706",
+        "usage": "Rampa de aviso (âmbar). Leia os semânticos color-feedback-warning-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-warning-700",
+        "value": "#b45309",
+        "usage": "Rampa de aviso (âmbar). Leia os semânticos color-feedback-warning-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-warning-900",
+        "value": "#78350f",
+        "usage": "Rampa de aviso (âmbar). Leia os semânticos color-feedback-warning-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-info-50",
+        "value": "#eff6ff",
+        "usage": "Rampa de informação (azul). Leia os semânticos color-feedback-info-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-info-100",
+        "value": "#dbeafe",
+        "usage": "Rampa de informação (azul). Leia os semânticos color-feedback-info-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-info-300",
+        "value": "#93c5fd",
+        "usage": "Rampa de informação (azul). Leia os semânticos color-feedback-info-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-info-400",
+        "value": "#60a5fa",
+        "usage": "Rampa de informação (azul). Leia os semânticos color-feedback-info-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-info-500",
+        "value": "#3b82f6",
+        "usage": "Rampa de informação (azul). Leia os semânticos color-feedback-info-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-info-600",
+        "value": "#2563eb",
+        "usage": "Rampa de informação (azul). Leia os semânticos color-feedback-info-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-info-700",
+        "value": "#1d4ed8",
+        "usage": "Rampa de informação (azul). Leia os semânticos color-feedback-info-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-feedback-info-900",
+        "value": "#1e3a8a",
+        "usage": "Rampa de informação (azul). Leia os semânticos color-feedback-info-solid, -text, -surface e -border. Rampa do núcleo, igual nos dois temas. Componente nunca lê a rampa: leia um token semântico."
+      },
+      {
+        "name": "color-brand-integras-magenta",
+        "value": "{color-brand-magenta-500}",
+        "usage": "Magenta do Integras (#e91e8b, folha do Integras), igual nos dois temas. Só no logo, no degradê do símbolo e em superfície de marca. Nunca texto, botão ou estado: 4,18:1 no branco (só texto de 24px ou mais)."
+      },
+      {
+        "name": "color-brand-integras-coral",
+        "value": "{color-brand-coral-500}",
+        "usage": "Coral do Integras (#e8606a), parada do meio do degradê do símbolo. Não é cor de interface: 3,33:1 no branco."
+      },
+      {
+        "name": "color-brand-integras-orange",
+        "value": "{color-brand-orange-500}",
+        "usage": "Laranja do Integras (#f5a623), parada final do degradê do símbolo. 2,03:1 no branco: nunca texto sobre claro (8,90:1 sobre o escuro)."
+      },
+      {
+        "name": "color-brand-singularidade-magenta",
+        "value": "#ed1e79",
+        "usage": "ADIÇÃO v2: magenta original da Singularidade (folha da marca). Com data-brand=\"singularidade\", color-brand-primary aponta para ele. Uso de marca, não de interface."
+      },
+      {
+        "name": "color-brand-singularidade-coral",
+        "value": "#f15052",
+        "usage": "ADIÇÃO v2: coral original da Singularidade (folha da marca). Vira color-brand-secondary com data-brand=\"singularidade\"."
+      },
+      {
+        "name": "color-brand-singularidade-orange",
+        "value": "#f7931e",
+        "usage": "ADIÇÃO v2: laranja original da Singularidade (folha da marca), fim do degradê de duas paradas. Vira color-brand-tertiary com data-brand=\"singularidade\"."
+      },
+      {
+        "name": "color-brand-primary",
+        "value": "{color-brand-integras-magenta}",
+        "usage": "Nome da fonte. Alias da primeira cor da marca ativa: Integras por padrão; com data-brand=\"singularidade\", passa a #ed1e79."
+      },
+      {
+        "name": "color-brand-secondary",
+        "value": "{color-brand-integras-coral}",
+        "usage": "Nome da fonte. Alias da segunda cor da marca ativa (Integras #e8606a; Singularidade #f15052)."
+      },
+      {
+        "name": "color-brand-tertiary",
+        "value": "{color-brand-integras-orange}",
+        "usage": "Nome da fonte. Alias da terceira cor da marca ativa (Integras #f5a623; Singularidade #f7931e)."
+      },
+      {
+        "name": "color-surface-base",
+        "value": {
+          "light": "{color-neutral-50}",
+          "dark": "{color-neutral-900}"
+        },
+        "usage": "Fundo da página e do shell que aparece antes do JS (#fdfafc | #1a1517)."
+      },
+      {
+        "name": "color-surface-raised",
+        "value": {
+          "light": "{color-neutral-0}",
+          "dark": "{color-neutral-800}"
+        },
+        "usage": "Cards, campos, diálogos, menus, toasts (#ffffff | #261a21). No escuro, o que está mais perto é mais claro."
+      },
+      {
+        "name": "color-surface-sunken",
+        "value": {
+          "light": "{color-neutral-100}",
+          "dark": "{color-neutral-950}"
+        },
+        "usage": "Poços: código, cabeçalho de tabela, SideNav no claro, campo somente leitura, fundo externo do e-mail (#f5f0f4 | #1a111a)."
+      },
+      {
+        "name": "color-surface-overlay",
+        "value": {
+          "light": "rgba(38, 26, 33, 0.4)",
+          "dark": "rgba(0, 0, 0, 0.6)"
+        },
+        "usage": "Véu atrás do diálogo, do drawer no celular e do tour."
+      },
+      {
+        "name": "color-surface-inverse",
+        "value": {
+          "light": "{color-neutral-800}",
+          "dark": "{color-neutral-200}"
+        },
+        "usage": "ADIÇÃO v2, só para tooltip (texto em color-text-on-inverse). Faixa escura de site não usa este token: aplique data-theme=\"dark\" na seção."
+      },
+      {
+        "name": "color-text-primary",
+        "value": {
+          "light": "{color-neutral-800}",
+          "dark": "{color-neutral-50}"
+        },
+        "usage": "Texto principal sobre base, raised e sunken: 14,90 a 16,77:1 no claro; 16,18 a 17,78:1 no escuro. Também sobre as superfícies de feedback e primary-subtle."
+      },
+      {
+        "name": "color-text-secondary",
+        "value": {
+          "light": "{color-neutral-600}",
+          "dark": "{color-neutral-300}"
+        },
+        "usage": "Texto de apoio, ajuda, descrição, rótulo de menu, cabeçalho de tabela, sobre base, raised, sunken e interactive-secondary: 8,52 a 9,60:1 no claro; 9,14 a 10,05:1 no escuro (7,76 | 7,21 sobre interactive-secondary). Em gráfico: a série de comparação (passa 3:1 em todas as superfícies), o rótulo direto e a legenda."
+      },
+      {
+        "name": "color-text-muted",
+        "value": {
+          "light": "{color-neutral-500}",
+          "dark": "{color-neutral-400}"
+        },
+        "usage": "Placeholder, metadado, rótulo de grupo, aviso de órgão público, sobre base, raised e sunken: 5,21 a 5,87:1 no claro; 6,04 a 6,64:1 no escuro. Em gráfico: eixos e marcações, nunca uma série (ao lado do primário, ΔE 5,0 com protanopia simulada)."
+      },
+      {
+        "name": "color-text-disabled",
+        "value": {
+          "light": "{color-neutral-400}",
+          "dark": "{color-neutral-500}"
+        },
+        "usage": "Texto de controle desabilitado (isento de contraste pela WCAG). MUDANÇA v2 no escuro: era #524049 (1,38:1); agora 2,25 a 2,86:1, em paridade com o claro."
+      },
+      {
+        "name": "color-text-inverse",
+        "value": {
+          "light": "{color-neutral-0}",
+          "dark": "{color-neutral-950}"
+        },
+        "usage": "Texto sobre preenchimento de ação ou de status (#ffffff | #1a111a). Prefira os aliases color-on-primary e color-on-status."
+      },
+      {
+        "name": "color-text-on-inverse",
+        "value": {
+          "light": "{color-neutral-50}",
+          "dark": "{color-neutral-800}"
+        },
+        "usage": "ADIÇÃO v2: texto sobre color-surface-inverse (tooltip): 16,18:1 | 13,56:1."
+      },
+      {
+        "name": "color-on-primary",
+        "value": "{color-text-inverse}",
+        "usage": "ADIÇÃO v2 (padrão on-*): texto e ícone sobre color-interactive-primary e seus estados: 5,51 | 6,85:1 em repouso, 8,02 | 9,75 no hover, 10,55 | 5,54 pressionado."
+      },
+      {
+        "name": "color-on-status",
+        "value": "{color-text-inverse}",
+        "usage": "ADIÇÃO v2: texto sobre um preenchimento de status sólido (botão danger, badge sólido): sucesso 5,48 | 12,10; erro 4,83 | 6,67; aviso 5,02 | 11,04; info 6,70 | 7,25."
+      },
+      {
+        "name": "color-link",
+        "value": "{color-interactive-primary}",
+        "usage": "ADIÇÃO v2 (o singularidade-website já usa --color-link): link no meio do texto, sempre sublinhado, sobre base, raised e sunken (4,89 a 5,51 | 6,23 a 6,85). Dentro de Alert, use color-text-primary."
+      },
+      {
+        "name": "color-link-hover",
+        "value": "{color-interactive-primary-hover}",
+        "usage": "ADIÇÃO v2: link em hover, com sublinhado de 2px."
+      },
+      {
+        "name": "color-interactive-primary",
+        "value": {
+          "light": "{color-brand-coral-600}",
+          "dark": "{color-brand-coral-400}"
+        },
+        "usage": "A ÚNICA cor de ação: botão primário, link, controle marcado, item selecionado, indicador de aba, preenchimento do medidor. Como texto sobre base, raised e sunken: 4,89 a 5,51 | 6,23 a 6,85. Um primário por tela. Em gráfico: a série principal."
+      },
+      {
+        "name": "color-interactive-primary-hover",
+        "value": {
+          "light": "{color-brand-coral-700}",
+          "dark": "{color-brand-coral-300}"
+        },
+        "usage": "Hover do primário e do link; texto do terciário em hover (sobre primary-subtle: 7,30 | 6,84)."
+      },
+      {
+        "name": "color-interactive-primary-active",
+        "value": {
+          "light": "{color-brand-coral-800}",
+          "dark": "{color-brand-coral-500}"
+        },
+        "usage": "Primário pressionado. MUDANÇA v2 no claro: #791832 (10,55:1 com branco) no lugar do #e8606a (3,33:1)."
+      },
+      {
+        "name": "color-interactive-primary-subtle",
+        "value": {
+          "light": "{color-brand-coral-50}",
+          "dark": "rgba(251, 113, 133, 0.16)"
+        },
+        "usage": "ADIÇÃO v2: item de menu ativo, hover do terciário, chip e linha selecionados, badge brand. color-interactive-primary sobre ele: 5,01 | 4,81 sobre raised e 5,25 sobre base."
+      },
+      {
+        "name": "color-interactive-primary-subtle-hover",
+        "value": {
+          "light": "{color-brand-coral-100}",
+          "dark": "rgba(251, 113, 133, 0.24)"
+        },
+        "usage": "ADIÇÃO v2: terciário pressionado, com texto em color-interactive-primary-hover (6,68 | 5,88)."
+      },
+      {
+        "name": "color-interactive-secondary",
+        "value": {
+          "light": "{color-neutral-200}",
+          "dark": "{color-neutral-700}"
+        },
+        "usage": "Hover do secundário e de item de lista, badge neutro, trilho do medidor, quadro do EmptyState, esqueleto, botão desabilitado. Texto sobre ele: color-text-primary ou color-text-secondary (7,76 | 7,21). \"Sem uso\" no mapa de calor."
+      },
+      {
+        "name": "color-interactive-secondary-hover",
+        "value": {
+          "light": "{color-neutral-300}",
+          "dark": "{color-neutral-600}"
+        },
+        "usage": "Secundário pressionado."
+      },
+      {
+        "name": "color-interactive-secondary-active",
+        "value": {
+          "light": "{color-neutral-400}",
+          "dark": "{color-neutral-500}"
+        },
+        "usage": "Estado ativo forte de controles neutros (raro)."
+      },
+      {
+        "name": "color-border-subtle",
+        "value": {
+          "light": "{color-neutral-200}",
+          "dark": "rgba(200, 188, 196, 0.08)"
+        },
+        "usage": "Divisórias, borda de card no claro, de diálogo, menu e toast. Decorativa (1,19:1): nunca a única pista de um controle. Linhas de grade do gráfico."
+      },
+      {
+        "name": "color-border-default",
+        "value": {
+          "light": "{color-neutral-300}",
+          "dark": "rgba(200, 188, 196, 0.15)"
+        },
+        "usage": "Contêineres (tabela, painel), borda de card no escuro e de card clicável em hover, linha do Stepper. Decorativa (1,77:1)."
+      },
+      {
+        "name": "color-border-strong",
+        "value": {
+          "light": "{color-neutral-400}",
+          "dark": "rgba(200, 188, 196, 0.25)"
+        },
+        "usage": "Ênfase decorativa e tracejado do campo somente leitura. Não serve para controle: 2,78:1."
+      },
+      {
+        "name": "color-border-control",
+        "value": "{color-neutral-450}",
+        "usage": "ADIÇÃO v2 (WCAG 1.4.11): borda de campo, select, checkbox, rádio, botão secundário e chip. 3,52 a 3,97:1 no claro; 4,23 a 4,65:1 no escuro."
+      },
+      {
+        "name": "color-border-focus",
+        "value": {
+          "light": "{color-brand-coral-600}",
+          "dark": "{color-brand-coral-400}"
+        },
+        "usage": "Anel de foco: outline 2px, offset 2px. Pelo menos 4,89:1 | 6,23:1 sobre base, raised e sunken; 5,01 | 4,81 sobre primary-subtle."
+      },
+      {
+        "name": "color-feedback-success-solid",
+        "value": {
+          "light": "{color-feedback-success-700}",
+          "dark": "{color-feedback-success-300}"
+        },
+        "usage": "Ícone, preenchimento e borda de sucesso. Sobre base, raised e sunken passa 3:1. Com color-on-status por cima: 5,48 | 12,10."
+      },
+      {
+        "name": "color-feedback-success-text",
+        "value": "{color-feedback-success-solid}",
+        "usage": "ADIÇÃO v2: texto de sucesso sobre color-feedback-success-surface (5,21 | 8,01) e direto sobre base ou raised."
+      },
+      {
+        "name": "color-feedback-success-surface",
+        "value": {
+          "light": "{color-feedback-success-50}",
+          "dark": "rgba(110, 231, 183, 0.14)"
+        },
+        "usage": "Fundo tingido de sucesso: Alert, Banner, badge, quadro de tela de resultado. Texto sobre ele: color-text-primary ou color-feedback-success-text."
+      },
+      {
+        "name": "color-feedback-success-border",
+        "value": {
+          "light": "{color-feedback-success-300}",
+          "dark": "{color-feedback-success-700}"
+        },
+        "usage": "Borda inteira de 1px do Alert e do Banner de sucesso. Decorativa: o tom também vem na palavra e no ícone."
+      },
+      {
+        "name": "color-feedback-error-solid",
+        "value": {
+          "light": "{color-feedback-error-600}",
+          "dark": "{color-feedback-error-400}"
+        },
+        "usage": "Ícone, preenchimento e borda de erro. Também a borda do campo inválido. Sobre base, raised e sunken passa 3:1. Com color-on-status por cima: 4,83 | 6,67. Quase a mesma cor de color-interactive-primary (1,14:1 no claro, 1,03:1 no escuro, de 9° a 12° de matiz): o botão danger nunca divide a tela com um primário, e o erro sempre leva palavra e ícone."
+      },
+      {
+        "name": "color-feedback-error-text",
+        "value": {
+          "light": "{color-feedback-error-700}",
+          "dark": "{color-feedback-error-400}"
+        },
+        "usage": "ADIÇÃO v2: texto de erro (mensagem do campo inválido) sobre color-feedback-error-surface (5,91 | 4,87) e direto sobre base ou raised (6,24 a 6,52). MUDANÇA no claro: #dc2626 sobre #fef2f2 dava 4,41:1; o error-700 dá 5,91."
+      },
+      {
+        "name": "color-feedback-error-surface",
+        "value": {
+          "light": "{color-feedback-error-50}",
+          "dark": "rgba(248, 113, 113, 0.14)"
+        },
+        "usage": "Fundo tingido de erro: Alert, Banner, badge, quadro de tela de resultado. Texto sobre ele: color-text-primary ou color-feedback-error-text."
+      },
+      {
+        "name": "color-feedback-error-border",
+        "value": {
+          "light": "{color-feedback-error-300}",
+          "dark": "{color-feedback-error-700}"
+        },
+        "usage": "Borda inteira de 1px do Alert e do Banner de erro. Decorativa: o tom também vem na palavra e no ícone."
+      },
+      {
+        "name": "color-feedback-warning-solid",
+        "value": {
+          "light": "{color-feedback-warning-700}",
+          "dark": "{color-feedback-warning-400}"
+        },
+        "usage": "Ícone, preenchimento e borda de aviso. Sobre base, raised e sunken passa 3:1. Com color-on-status por cima: 5,02 | 11,04."
+      },
+      {
+        "name": "color-feedback-warning-text",
+        "value": "{color-feedback-warning-solid}",
+        "usage": "ADIÇÃO v2: texto de aviso sobre color-feedback-warning-surface (4,84 | 7,00) e direto sobre base ou raised. Nunca direto sobre sunken: 4,46:1."
+      },
+      {
+        "name": "color-feedback-warning-surface",
+        "value": {
+          "light": "{color-feedback-warning-50}",
+          "dark": "rgba(251, 191, 36, 0.16)"
+        },
+        "usage": "Fundo tingido de aviso: Alert, Banner, badge, quadro de tela de resultado. Texto sobre ele: color-text-primary ou color-feedback-warning-text."
+      },
+      {
+        "name": "color-feedback-warning-border",
+        "value": {
+          "light": "{color-feedback-warning-300}",
+          "dark": "{color-feedback-warning-700}"
+        },
+        "usage": "Borda inteira de 1px do Alert e do Banner de aviso. Decorativa: o tom também vem na palavra e no ícone."
+      },
+      {
+        "name": "color-feedback-info-solid",
+        "value": {
+          "light": "{color-feedback-info-700}",
+          "dark": "{color-feedback-info-400}"
+        },
+        "usage": "Ícone, preenchimento e borda de informação. Substitui o #2f80ed do selo \"verificado\". Sobre base, raised e sunken passa 3:1. Com color-on-status por cima: 6,70 | 7,25."
+      },
+      {
+        "name": "color-feedback-info-text",
+        "value": "{color-feedback-info-solid}",
+        "usage": "ADIÇÃO v2: texto de informação sobre color-feedback-info-surface (6,16 | 5,26) e direto sobre base ou raised."
+      },
+      {
+        "name": "color-feedback-info-surface",
+        "value": {
+          "light": "{color-feedback-info-50}",
+          "dark": "rgba(96, 165, 250, 0.14)"
+        },
+        "usage": "Fundo tingido de informação: Alert, Banner, badge, quadro de tela de resultado. Texto sobre ele: color-text-primary ou color-feedback-info-text."
+      },
+      {
+        "name": "color-feedback-info-border",
+        "value": {
+          "light": "{color-feedback-info-300}",
+          "dark": "{color-feedback-info-700}"
+        },
+        "usage": "Borda inteira de 1px do Alert e do Banner de informação. Decorativa: o tom também vem na palavra e no ícone."
+      },
+      {
+        "name": "color-feedback-error-hover",
+        "value": {
+          "light": "{color-feedback-error-700}",
+          "dark": "{color-feedback-error-300}"
+        },
+        "usage": "ADIÇÃO v2: hover do botão danger, com color-on-status (6,47 | 9,71)."
+      },
+      {
+        "name": "button-primary-background",
+        "value": "{color-interactive-primary}",
+        "usage": "Botão primário em repouso. Um por tela ou diálogo."
+      },
+      {
+        "name": "button-primary-background-hover",
+        "value": "{color-interactive-primary-hover}",
+        "usage": "Botão primário em hover."
+      },
+      {
+        "name": "button-primary-background-active",
+        "value": "{color-interactive-primary-active}",
+        "usage": "Botão primário pressionado (corrigido na v2: #791832 no claro)."
+      },
+      {
+        "name": "button-primary-foreground",
+        "value": "{color-on-primary}",
+        "usage": "Rótulo e ícone do botão primário."
+      },
+      {
+        "name": "button-secondary-background",
+        "value": "{color-surface-raised}",
+        "usage": "Fundo do botão secundário."
+      },
+      {
+        "name": "button-secondary-background-hover",
+        "value": "{color-interactive-secondary}",
+        "usage": "Hover do secundário. MUDANÇA v2: era #c8bcc4, igual à borda, e o botão sumia."
+      },
+      {
+        "name": "button-secondary-foreground",
+        "value": "{color-text-primary}",
+        "usage": "Rótulo do botão secundário."
+      },
+      {
+        "name": "button-secondary-border",
+        "value": "{color-border-control}",
+        "usage": "Borda de 1px do botão secundário. MUDANÇA v2: era 1,83:1."
+      },
+      {
+        "name": "button-tertiary-background",
+        "value": "rgba(0, 0, 0, 0)",
+        "usage": "Fundo transparente do terciário (o formato não aceita \"transparent\")."
+      },
+      {
+        "name": "button-tertiary-background-hover",
+        "value": "{color-interactive-primary-subtle}",
+        "usage": "Hover do terciário. MUDANÇA v2: era #ece5eb, com 4,45:1."
+      },
+      {
+        "name": "button-tertiary-foreground",
+        "value": "{color-interactive-primary}",
+        "usage": "Rótulo do botão terciário."
+      },
+      {
+        "name": "button-danger-background",
+        "value": "{color-feedback-error-solid}",
+        "usage": "Botão que confirma a ação destrutiva. Danger e primary são quase a mesma cor (1,03:1 no escuro, 1,14:1 no claro, de 9° a 12° de matiz). O danger nunca divide a tela com um primário: aparece só no diálogo de confirmação, ao lado do secundário, e o rótulo diz o verbo (\"Cancelar assinatura\")."
+      },
+      {
+        "name": "button-danger-background-hover",
+        "value": "{color-feedback-error-hover}",
+        "usage": "ADIÇÃO v2: hover do botão danger."
+      },
+      {
+        "name": "button-danger-foreground",
+        "value": "{color-on-status}",
+        "usage": "Rótulo do botão danger."
+      },
+      {
+        "name": "card-background",
+        "value": "{color-surface-raised}",
+        "usage": "Fundo do card."
+      },
+      {
+        "name": "card-border",
+        "value": {
+          "light": "{color-border-subtle}",
+          "dark": "{color-border-default}"
+        },
+        "usage": "Borda de 1px do card: subtle no claro, default no escuro (no escuro, α .08 some)."
+      },
+      {
+        "name": "dialog-background",
+        "value": "{color-surface-raised}",
+        "usage": "Fundo do diálogo."
+      },
+      {
+        "name": "dialog-border",
+        "value": "{color-border-subtle}",
+        "usage": "Borda de 1px do diálogo."
+      },
+      {
+        "name": "dialog-backdrop",
+        "value": "{color-surface-overlay}",
+        "usage": "Véu atrás do diálogo."
+      },
+      {
+        "name": "input-background",
+        "value": "{color-surface-raised}",
+        "usage": "Fundo do campo. Acaba com o campo cinza sem borda (1,22:1)."
+      },
+      {
+        "name": "input-foreground",
+        "value": "{color-text-primary}",
+        "usage": "Texto digitado."
+      },
+      {
+        "name": "input-border",
+        "value": "{color-border-control}",
+        "usage": "Borda de 1px do campo. MUDANÇA v2: era 1,83:1."
+      },
+      {
+        "name": "input-placeholder",
+        "value": "{color-text-muted}",
+        "usage": "Placeholder, só como exemplo (\"ana@empresa.com.br\")."
+      },
+      {
+        "name": "input-focus-border",
+        "value": "{color-border-focus}",
+        "usage": "Borda e outline do campo em foco."
+      },
+      {
+        "name": "input-disabled-background",
+        "value": "{color-surface-sunken}",
+        "usage": "Fundo do campo desabilitado."
+      },
+      {
+        "name": "input-disabled-foreground",
+        "value": "{color-text-disabled}",
+        "usage": "Texto do campo desabilitado."
+      }
+    ]
+  },
+  "type": {
+    "fonts": [
+      {
+        "family": "Plus Jakarta Sans Variable",
+        "file": "fonts/plus-jakarta-sans-latin-wght-normal.woff2",
+        "weight": "200 800",
+        "style": "normal"
+      },
+      {
+        "family": "Plus Jakarta Sans Variable",
+        "file": "fonts/plus-jakarta-sans-latin-wght-italic.woff2",
+        "weight": "200 800",
+        "style": "italic"
+      },
+      {
+        "family": "Plus Jakarta Sans",
+        "file": "fonts/plus-jakarta-sans-latin-wght-normal.woff2",
+        "weight": "200 800",
+        "style": "normal"
+      },
+      {
+        "family": "Plus Jakarta Sans",
+        "file": "fonts/plus-jakarta-sans-latin-wght-italic.woff2",
+        "weight": "200 800",
+        "style": "italic"
+      },
+      {
+        "family": "JetBrains Mono Variable",
+        "file": "fonts/jetbrains-mono-latin-wght-normal.woff2",
+        "weight": "100 800",
+        "style": "normal"
+      },
+      {
+        "family": "JetBrains Mono Variable",
+        "file": "fonts/jetbrains-mono-latin-wght-italic.woff2",
+        "weight": "100 800",
+        "style": "italic"
+      },
+      {
+        "family": "JetBrains Mono",
+        "file": "fonts/jetbrains-mono-latin-wght-normal.woff2",
+        "weight": "100 800",
+        "style": "normal"
+      },
+      {
+        "family": "JetBrains Mono",
+        "file": "fonts/jetbrains-mono-latin-wght-italic.woff2",
+        "weight": "100 800",
+        "style": "italic"
+      }
+    ],
+    "families": {
+      "family-sans": "'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "family-mono": "'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "family-email": "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+    },
+    "groups": [
+      {
+        "name": "Display",
+        "family": "family-sans",
+        "note": "Plus Jakarta Sans 700. Só em site e no hero do Hub.",
+        "styles": [
+          {
+            "name": "display-xl",
+            "fontSize": "3.5rem",
+            "lineHeight": "3.75rem",
+            "fontWeight": 700,
+            "letterSpacing": "-0.03em",
+            "sample": "Sistemas que não podem parar",
+            "usage": "56/60 px. Hero de site, um por página; abaixo de 640px vira display. Adição: os docs já prometiam display de 56px."
+          },
+          {
+            "name": "display",
+            "fontSize": "2.5rem",
+            "lineHeight": "2.75rem",
+            "fontWeight": 700,
+            "letterSpacing": "-0.03em",
+            "sample": "Conectores",
+            "usage": "40/44 px. Título de página de site e hero do Hub. Fonte (text.display)."
+          }
+        ]
+      },
+      {
+        "name": "Títulos",
+        "family": "family-sans",
+        "note": "Títulos quebram linha, nunca viram reticências. Só a primeira letra maiúscula.",
+        "styles": [
+          {
+            "name": "heading-xl",
+            "fontSize": "2rem",
+            "lineHeight": "2.5rem",
+            "fontWeight": 700,
+            "letterSpacing": "-0.02em",
+            "sample": "Permissão por pessoa e registro de cada acesso",
+            "usage": "32/40 px. Seção de site; título do Hub a partir de 640px. Adição."
+          },
+          {
+            "name": "heading",
+            "fontSize": "1.75rem",
+            "lineHeight": "2.25rem",
+            "fontWeight": 700,
+            "letterSpacing": "-0.02em",
+            "sample": "Minha conta",
+            "usage": "28/36 px. Título de página (h1) no Hub, no login e nas configurações. Fonte (text.heading)."
+          },
+          {
+            "name": "heading-md",
+            "fontSize": "1.375rem",
+            "lineHeight": "1.75rem",
+            "fontWeight": 600,
+            "letterSpacing": "-0.01em",
+            "sample": "Taxa de erro por conector",
+            "usage": "22/28 px. Título de página nas listas compactas do admin e títulos de seção. Adição."
+          },
+          {
+            "name": "heading-sm",
+            "fontSize": "1.125rem",
+            "lineHeight": "1.5rem",
+            "fontWeight": 600,
+            "sample": "Legislativo",
+            "usage": "18/24 px. Título de card e de diálogo, nome do conector, título de EmptyState. Adição."
+          }
+        ]
+      },
+      {
+        "name": "Texto",
+        "family": "family-sans",
+        "note": "body (16px) é o corpo padrão no Hub, nos sites e no e-mail; body-sm (14px) no admin compacto. Prosa com no máximo 72ch.",
+        "styles": [
+          {
+            "name": "body-lg",
+            "fontSize": "1.125rem",
+            "lineHeight": "1.75rem",
+            "fontWeight": 400,
+            "sample": "Liga a IA da sua equipe aos sistemas e documentos da empresa, com permissão por pessoa e registro de cada acesso.",
+            "usage": "18/28 px. Parágrafo de abertura (hero, intro de seção). Adição."
+          },
+          {
+            "name": "body",
+            "fontSize": "1rem",
+            "lineHeight": "1.5rem",
+            "fontWeight": 400,
+            "sample": "Grátis. Informe seu e-mail, aceite os termos e confirme com o código que enviaremos.",
+            "usage": "16/24 px. Corpo no Hub, nos sites e no e-mail; campos no modo confortável. MUDANÇA: era 14px (abaixo de 16px o iOS dá zoom no campo)."
+          },
+          {
+            "name": "body-sm",
+            "fontSize": "0.875rem",
+            "lineHeight": "1.25rem",
+            "fontWeight": 400,
+            "sample": "Consultas aos dados abertos da Câmara dos Deputados e do Senado Federal.",
+            "usage": "14/20 px. Corpo do admin compacto, células de tabela, descrição de card, texto de toast e alerta. Adição (é o body antigo)."
+          },
+          {
+            "name": "caption",
+            "fontSize": "0.8125rem",
+            "lineHeight": "1.25rem",
+            "fontWeight": 400,
+            "sample": "Ativo · renova em 12/12/2026",
+            "usage": "13/20 px. Ajuda de campo, metadado, mensagem de erro, contagens. Adição."
+          },
+          {
+            "name": "label",
+            "fontSize": "0.875rem",
+            "lineHeight": "1.25rem",
+            "fontWeight": 500,
+            "sample": "E-mail",
+            "usage": "14/20 px 500. Rótulo de campo, item de menu e de aba, link sozinho. Adição."
+          },
+          {
+            "name": "button",
+            "fontSize": "0.875rem",
+            "lineHeight": "1.25rem",
+            "fontWeight": 600,
+            "letterSpacing": "-0.01em",
+            "sample": "Enviar código",
+            "usage": "14/20 px 600. Texto de botão md (36px). Fonte (lib)."
+          },
+          {
+            "name": "button-lg",
+            "fontSize": "1rem",
+            "lineHeight": "1.5rem",
+            "fontWeight": 600,
+            "letterSpacing": "-0.01em",
+            "sample": "Assinar por R$ 19,90/mês",
+            "usage": "16/24 px 600. Texto de botão lg (44px), padrão do modo confortável. Fonte (lib)."
+          },
+          {
+            "name": "badge",
+            "fontSize": "0.75rem",
+            "lineHeight": "1rem",
+            "fontWeight": 600,
+            "letterSpacing": "0.02em",
+            "sample": "Pagamento pendente",
+            "usage": "12/16 px 600. Badge e pill de contagem. Fonte."
+          },
+          {
+            "name": "overline",
+            "fontSize": "0.75rem",
+            "lineHeight": "1rem",
+            "fontWeight": 600,
+            "letterSpacing": "0.06em",
+            "sample": "ERRO 404",
+            "usage": "12/16 px 600, caixa alta (text-transform no bundle.css). Sobretítulo, rótulo de grupo da SideNav e de detalhe; nunca cabeçalho de tabela. Fonte (text.label), de 11 para 12px."
+          },
+          {
+            "name": "brand-label",
+            "fontSize": "1rem",
+            "lineHeight": "1.5rem",
+            "fontWeight": 700,
+            "letterSpacing": "0.06em",
+            "sample": "INTEGRAS HUB",
+            "usage": "16/24 px 700, caixa alta, com o espaçamento do logotipo. Só o nome do produto ao lado do símbolo (\"INTEGRAS HUB\"). Adição."
+          }
+        ]
+      },
+      {
+        "name": "Código",
+        "family": "family-mono",
+        "note": "JetBrains Mono para dado técnico: endereço do conector, códigos, IDs. Número comum fica em Plus Jakarta Sans com tabular-nums.",
+        "styles": [
+          {
+            "name": "code",
+            "fontSize": "0.8125rem",
+            "lineHeight": "1.25rem",
+            "fontWeight": 400,
+            "sample": "legislativo_parlamentar",
+            "usage": "13/20 px. Código e ID no meio do texto e em tabela. Fonte."
+          },
+          {
+            "name": "code-lg",
+            "fontSize": "1rem",
+            "lineHeight": "1.5rem",
+            "fontWeight": 500,
+            "sample": "https://hub.integras.digital/tse/mcp",
+            "usage": "16/24 px 500. Endereço do conector (CopyField) e chaves. Adição."
+          },
+          {
+            "name": "otp",
+            "fontSize": "2.25rem",
+            "lineHeight": "2.75rem",
+            "fontWeight": 700,
+            "letterSpacing": "8px",
+            "sample": "482913",
+            "usage": "36/44 px 700, letter-spacing 8px. Código de acesso no e-mail (partial code-block). Fonte. O campo OtpField da tela usa 24px."
+          }
+        ]
+      }
+    ]
+  },
+  "spacing": {
+    "note": "Grade de 4/8 (nomes e valores da fonte; o espaçamento se chama size). Proibido: escala própria por site e 2, 6 ou 10px soltos fora de um componente.",
+    "tokens": [
+      {
+        "name": "size-0",
+        "value": "0px",
+        "usage": "Zero."
+      },
+      {
+        "name": "size-1",
+        "value": "4px",
+        "usage": "Ícone↔texto, rótulo→campo, campo→ajuda."
+      },
+      {
+        "name": "size-2",
+        "value": "8px",
+        "usage": "Entre botões e entre chips; padding da SideNav."
+      },
+      {
+        "name": "size-3",
+        "value": "12px",
+        "usage": "Padding horizontal de campo e de item de menu; caixa→rótulo do checkbox."
+      },
+      {
+        "name": "size-4",
+        "value": "16px",
+        "usage": "Entre campos; padding de toast e de alerta; margem lateral no celular; gap da grade de cards."
+      },
+      {
+        "name": "size-5",
+        "value": "20px",
+        "usage": "Padding de card (= card-padding)."
+      },
+      {
+        "name": "size-6",
+        "value": "24px",
+        "usage": "Padding de diálogo; margem lateral a partir de 640px; entre grupos."
+      },
+      {
+        "name": "size-8",
+        "value": "32px",
+        "usage": "Entre seções do app; corpo do e-mail."
+      },
+      {
+        "name": "size-10",
+        "value": "40px",
+        "usage": "Respiro grande dentro de seção."
+      },
+      {
+        "name": "size-12",
+        "value": "48px",
+        "usage": "Topo das telas de entrada."
+      },
+      {
+        "name": "size-16",
+        "value": "64px",
+        "usage": "Seção de site no celular."
+      },
+      {
+        "name": "size-20",
+        "value": "80px",
+        "usage": "Seção de site intermediária."
+      },
+      {
+        "name": "size-24",
+        "value": "96px",
+        "usage": "Seção de site no desktop."
+      },
+      {
+        "name": "size-32",
+        "value": "128px",
+        "usage": "Hero."
+      },
+      {
+        "name": "card-padding",
+        "value": "20px",
+        "usage": "Padding interno do card (fonte)."
+      },
+      {
+        "name": "dialog-padding",
+        "value": "24px",
+        "usage": "Padding interno do diálogo (fonte)."
+      }
+    ]
+  },
+  "radius": {
+    "note": "8px em controles, 12px em contêineres, pílula só em badge, chip, avatar e medidor.",
+    "tokens": [
+      {
+        "name": "radius-none",
+        "value": "0px",
+        "usage": "Sem canto: banner em largura total."
+      },
+      {
+        "name": "radius-xs",
+        "value": "2px",
+        "usage": "Contorno de foco de link no meio do texto."
+      },
+      {
+        "name": "radius-sm",
+        "value": "6px",
+        "usage": "Checkbox, tooltip, código no meio do texto."
+      },
+      {
+        "name": "radius-md",
+        "value": "8px",
+        "usage": "Botão, campo, select, quadro do logo do conector, alerta, item de menu, avatar de organização."
+      },
+      {
+        "name": "radius-lg",
+        "value": "12px",
+        "usage": "Card, diálogo, menu, popover, toast, tour, tabela, cartão do e-mail, quadro do EmptyState."
+      },
+      {
+        "name": "radius-xl",
+        "value": "16px",
+        "usage": "Painel grande de site, bottom sheet."
+      },
+      {
+        "name": "radius-full",
+        "value": "9999px",
+        "usage": "Badge, chip, avatar de pessoa, medidor, rádio."
+      },
+      {
+        "name": "card-radius",
+        "value": "12px",
+        "usage": "Canto do card (fonte)."
+      },
+      {
+        "name": "dialog-radius",
+        "value": "12px",
+        "usage": "Canto do diálogo (fonte)."
+      },
+      {
+        "name": "button-radius",
+        "value": "8px",
+        "usage": "Canto do botão (fonte: button.primary.border-radius)."
+      },
+      {
+        "name": "input-radius",
+        "value": "8px",
+        "usage": "Canto do campo (fonte: input.border-radius)."
+      }
+    ]
+  },
+  "shadow": {
+    "note": "Um valor por tema (ADIÇÃO: hoje card e diálogo usam a sombra clara também no escuro). Sombra só no que flutua; botão não tem sombra.",
+    "tokens": [
+      {
+        "name": "shadow-xs",
+        "value": {
+          "light": "0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02)",
+          "dark": "0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.03)"
+        },
+        "usage": "Card em repouso."
+      },
+      {
+        "name": "shadow-sm",
+        "value": {
+          "light": "0 2px 4px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.03)",
+          "dark": "0 2px 6px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.03)"
+        },
+        "usage": "Cabeçalho fixo ao rolar."
+      },
+      {
+        "name": "shadow-md",
+        "value": {
+          "light": "0 4px 12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03)",
+          "dark": "0 4px 14px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04)"
+        },
+        "usage": "Card clicável em hover, menu, lista do select, popover, tour, quadro de captura."
+      },
+      {
+        "name": "shadow-lg",
+        "value": {
+          "light": "0 8px 24px rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.03)",
+          "dark": "0 8px 28px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04)"
+        },
+        "usage": "Toast."
+      },
+      {
+        "name": "shadow-xl",
+        "value": {
+          "light": "0 16px 48px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04)",
+          "dark": "0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)"
+        },
+        "usage": "Diálogo."
+      },
+      {
+        "name": "shadow-2xl",
+        "value": {
+          "light": "0 24px 64px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.04)",
+          "dark": "0 24px 64px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.05)"
+        },
+        "usage": "Reservado (item sendo arrastado)."
+      },
+      {
+        "name": "focus-ring",
+        "value": {
+          "light": "0 0 0 2px #ffffff, 0 0 0 4px #be3550",
+          "dark": "0 0 0 2px #261a21, 0 0 0 4px #fb7185"
+        },
+        "usage": "Só para partes do Vaadin que não aceitam outline, sempre junto de outline: 2px solid transparent (alto contraste do Windows). O padrão é outline 2px em color-border-focus."
+      },
+      {
+        "name": "input-focus-ring",
+        "value": {
+          "light": "0 0 0 2px #be3550",
+          "dark": "0 0 0 2px #fb7185"
+        },
+        "usage": "Anel do campo em foco (fonte: input.focus.ring), quando o outline não alcança a parte."
+      }
+    ]
+  },
+  "fontSize": {
+    "note": "Escala de tamanhos da fonte (o singularidade-website usa estes nomes). MUDANÇA: xs de 11 para 12px. Não é modular 1.125. Na implementação, em rem (px/16).",
+    "tokens": [
+      {
+        "name": "font-size-xs",
+        "value": "12px",
+        "usage": "Badge, overline. MUDANÇA v2: era 11px (11px em caixa alta é ilegível; o xs do Lumo já é 12)."
+      },
+      {
+        "name": "font-size-s",
+        "value": "13px",
+        "usage": "Caption, código, texto do botão sm."
+      },
+      {
+        "name": "font-size-m",
+        "value": "14px",
+        "usage": "body-sm, label, botão md; texto do modo compacto."
+      },
+      {
+        "name": "font-size-l",
+        "value": "16px",
+        "usage": "body, botão lg; texto do modo confortável e dos campos no celular."
+      },
+      {
+        "name": "font-size-xl",
+        "value": "18px",
+        "usage": "heading-sm, body-lg."
+      },
+      {
+        "name": "font-size-2xl",
+        "value": "22px",
+        "usage": "heading-md; título do e-mail."
+      },
+      {
+        "name": "font-size-3xl",
+        "value": "28px",
+        "usage": "heading; valor do Price em destaque."
+      },
+      {
+        "name": "font-size-4xl",
+        "value": "32px",
+        "usage": "heading-xl."
+      },
+      {
+        "name": "font-size-5xl",
+        "value": "40px",
+        "usage": "display."
+      },
+      {
+        "name": "font-size-6xl",
+        "value": "48px",
+        "usage": "Reservado (site)."
+      },
+      {
+        "name": "font-size-7xl",
+        "value": "56px",
+        "usage": "display-xl."
+      }
+    ]
+  },
+  "fontWeight": {
+    "note": "Pesos da fonte (o arquivo variável vai de 200 a 800; use só estes quatro).",
+    "tokens": [
+      {
+        "name": "font-weight-regular",
+        "value": "400",
+        "usage": "Corpo de texto."
+      },
+      {
+        "name": "font-weight-medium",
+        "value": "500",
+        "usage": "Rótulo de campo, item de menu, link sozinho."
+      },
+      {
+        "name": "font-weight-semibold",
+        "value": "600",
+        "usage": "Botão, badge, item atual, título de card."
+      },
+      {
+        "name": "font-weight-bold",
+        "value": "700",
+        "usage": "Títulos de página e display."
+      }
+    ]
+  },
+  "lineHeight": {
+    "note": "Entrelinhas relativas da fonte. Os estilos da v2 usam entrelinhas absolutas na grade de 4px (ver Tipografia).",
+    "tokens": [
+      {
+        "name": "font-line-height-tight",
+        "value": "1.1",
+        "usage": "Títulos display."
+      },
+      {
+        "name": "font-line-height-snug",
+        "value": "1.25",
+        "usage": "Títulos."
+      },
+      {
+        "name": "font-line-height-normal",
+        "value": "1.5",
+        "usage": "Corpo de texto (padrão do body)."
+      },
+      {
+        "name": "font-line-height-relaxed",
+        "value": "1.75",
+        "usage": "Prosa longa (termos, política)."
+      }
+    ]
+  },
+  "letterSpacing": {
+    "note": "Espaçamento entre letras (fonte).",
+    "tokens": [
+      {
+        "name": "font-letter-spacing-tighter",
+        "value": "-0.03em",
+        "usage": "display e display-xl."
+      },
+      {
+        "name": "font-letter-spacing-tight",
+        "value": "-0.02em",
+        "usage": "heading e heading-xl."
+      },
+      {
+        "name": "font-letter-spacing-normal",
+        "value": "0",
+        "usage": "Corpo de texto."
+      },
+      {
+        "name": "font-letter-spacing-wide",
+        "value": "0.04em",
+        "usage": "Reservado."
+      },
+      {
+        "name": "font-letter-spacing-wider",
+        "value": "0.06em",
+        "usage": "Caixa alta: overline e brand-label (o espaçamento do logotipo)."
+      }
+    ]
+  },
+  "duration": {
+    "note": "Durações (fonte). Na interface, até 200ms. Com prefers-reduced-motion, vão a 0 (opacidade até 100ms).",
+    "tokens": [
+      {
+        "name": "duration-instant",
+        "value": "0ms",
+        "usage": "Sem transição (movimento reduzido)."
+      },
+      {
+        "name": "duration-fast",
+        "value": "100ms",
+        "usage": "Hover, pressionar e foco (só cor); saída de menu, toast e diálogo."
+      },
+      {
+        "name": "duration-base",
+        "value": "200ms",
+        "usage": "Entrada de menu, toast e diálogo; medidor (scaleX)."
+      },
+      {
+        "name": "duration-slow",
+        "value": "400ms",
+        "usage": "Drawer no celular e bottom sheet."
+      }
+    ]
+  },
+  "easing": {
+    "note": "Curvas (fonte). Anime só transform e opacity; nunca transition: all.",
+    "tokens": [
+      {
+        "name": "easing-linear",
+        "value": "linear",
+        "usage": "Esqueleto (pulso de opacidade) e spinner."
+      },
+      {
+        "name": "easing-ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "usage": "Entradas e hover."
+      },
+      {
+        "name": "easing-ease-in",
+        "value": "cubic-bezier(0.4, 0, 1, 1)",
+        "usage": "Saídas."
+      },
+      {
+        "name": "easing-ease-in-out",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "usage": "Trocas de estado em lugar (aba, alternância)."
+      },
+      {
+        "name": "easing-spring",
+        "value": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+        "usage": "Fonte, mas proibida na interface do produto. Só em material de site, se tanto."
+      }
+    ]
+  },
+  "breakpoint": {
+    "note": "ADIÇÃO v2 (hoje há 20 breakpoints soltos). Mobile-first, os limites que os docs já citam.",
+    "tokens": [
+      {
+        "name": "bp-sm",
+        "value": "640px",
+        "usage": "A partir daqui: grade de 8 colunas com gutter size-6 (24px), margem lateral de 24px, diálogo deixa de ser tela cheia. Abaixo dele, 4 colunas com gutter size-4 (16px) e margem de 16px."
+      },
+      {
+        "name": "bp-md",
+        "value": "1024px",
+        "usage": "A partir daqui: grade de 12 colunas com gutter size-6 (24px), SideNav fixa, menu do site aberto."
+      },
+      {
+        "name": "bp-lg",
+        "value": "1280px",
+        "usage": "Largura do app (container-app)."
+      }
+    ]
+  },
+  "container": {
+    "note": "ADIÇÃO v2: larguras de coluna (hoje há 6 soltas).",
+    "tokens": [
+      {
+        "name": "container-auth",
+        "value": "440px",
+        "usage": "Login, cadastro e código (une 360 e 480)."
+      },
+      {
+        "name": "container-prose",
+        "value": "720px",
+        "usage": "Texto corrido: termos, política, ajuda."
+      },
+      {
+        "name": "container-settings",
+        "value": "720px",
+        "usage": "Conteúdo de Minha conta e configurações."
+      },
+      {
+        "name": "container-content",
+        "value": "1200px",
+        "usage": "Vitrine, páginas de site (une 1000, 1100 e 1180)."
+      },
+      {
+        "name": "container-app",
+        "value": "1280px",
+        "usage": "Largura máxima do app."
+      },
+      {
+        "name": "dialog-width-sm",
+        "value": "400px",
+        "usage": "Diálogo de confirmação."
+      },
+      {
+        "name": "dialog-max-width",
+        "value": "560px",
+        "usage": "Diálogo padrão (fonte: dialog.max-width)."
+      },
+      {
+        "name": "dialog-width-lg",
+        "value": "800px",
+        "usage": "Diálogo de formulário e detalhe do conector."
+      }
+    ]
+  },
+  "control": {
+    "note": "ADIÇÃO v2: alturas de controle (as do Lumo), alvos, ícones e medidas fixas.",
+    "tokens": [
+      {
+        "name": "control-xs",
+        "value": "24px",
+        "usage": "Botão de remover chip; nunca abaixo disto."
+      },
+      {
+        "name": "control-sm",
+        "value": "30px",
+        "usage": "Botão sm."
+      },
+      {
+        "name": "control-md",
+        "value": "36px",
+        "usage": "Botão e campo no modo compacto (admin)."
+      },
+      {
+        "name": "control-lg",
+        "value": "44px",
+        "usage": "Botão e campo no modo confortável (Hub, sites, toque)."
+      },
+      {
+        "name": "control-xl",
+        "value": "56px",
+        "usage": "Reservado."
+      },
+      {
+        "name": "target-min",
+        "value": "24px",
+        "usage": "Alvo mínimo (WCAG 2.5.8)."
+      },
+      {
+        "name": "target-touch",
+        "value": "44px",
+        "usage": "Alvo de toque no modo confortável."
+      },
+      {
+        "name": "icon-sm",
+        "value": "16px",
+        "usage": "Ícone em botão sm/md, campo, chip, spinner."
+      },
+      {
+        "name": "icon-md",
+        "value": "20px",
+        "usage": "Ícone em botão lg, menu, alerta, toast, SideNav."
+      },
+      {
+        "name": "icon-lg",
+        "value": "24px",
+        "usage": "Ícone grande; símbolo da marca no cabeçalho do app."
+      },
+      {
+        "name": "icon-xl",
+        "value": "32px",
+        "usage": "Ícone do EmptyState."
+      },
+      {
+        "name": "icon-2xl",
+        "value": "48px",
+        "usage": "Símbolo no shell de carregamento."
+      },
+      {
+        "name": "header-height-app",
+        "value": "56px",
+        "usage": "Altura do cabeçalho do app; scroll-padding-top."
+      },
+      {
+        "name": "header-height-site",
+        "value": "64px",
+        "usage": "Altura do cabeçalho do site."
+      },
+      {
+        "name": "sidenav-width",
+        "value": "240px",
+        "usage": "Largura fixa da SideNav (antes max-content)."
+      }
+    ]
+  },
+  "zIndex": {
+    "note": "ADIÇÃO v2, para os sites (o Vaadin empilha os próprios overlays).",
+    "tokens": [
+      {
+        "name": "z-dropdown",
+        "value": "1000",
+        "usage": "Menu e lista aberta."
+      },
+      {
+        "name": "z-sticky",
+        "value": "1100",
+        "usage": "Cabeçalho fixo."
+      },
+      {
+        "name": "z-overlay",
+        "value": "1200",
+        "usage": "Véu."
+      },
+      {
+        "name": "z-dialog",
+        "value": "1300",
+        "usage": "Diálogo."
+      },
+      {
+        "name": "z-popover",
+        "value": "1400",
+        "usage": "Popover e tour."
+      },
+      {
+        "name": "z-toast",
+        "value": "1500",
+        "usage": "Toast."
+      },
+      {
+        "name": "z-tooltip",
+        "value": "1600",
+        "usage": "Tooltip."
+      },
+      {
+        "name": "z-skip-link",
+        "value": "1700",
+        "usage": "Link \"Pular para o conteúdo\"."
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "card": {
+    "border": {
+      "$value": "{color.border.subtle}",
+      "$type": "color",
+      "$description": "Borda de 1px do card: subtle no claro, default no escuro (no escuro, α .08 some)."
+    }
+  }
+}

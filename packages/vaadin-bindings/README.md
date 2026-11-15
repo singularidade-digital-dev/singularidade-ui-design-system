@@ -14,7 +14,7 @@ Vaadin Flow apps usam o sistema de [parent themes](https://vaadin.com/docs/lates
 { "parent": "singularidade-base" }
 ```
 
-O `singularidade-base` carrega tokens, fontes e mapeia automaticamente todos os `--lumo-*` usados pelos componentes Vaadin para os `--color-*` semantic dos tokens — incluindo light/dark e brand override em runtime.
+O `singularidade-base` carrega o tema gerado dos tokens (`tokens/theme.css`), as fontes, e mapeia os `--lumo-*` usados pelos componentes Vaadin e as style properties do Vaadin 25 (`--vaadin-*`) para os tokens semânticos — claro e escuro, com o Integras como marca padrão.
 
 ## Instalação
 
@@ -58,35 +58,51 @@ UI.getCurrent().getElement().removeAttribute("theme");
 UI.getCurrent().getElement().setAttribute("theme", "dark");
 ```
 
-### 4. (Opcional) Trocar brand em runtime
+### 4. (Opcional) Marca Singularidade
+
+O Integras é a marca padrão. `data-brand="singularidade"` troca só as três cores da marca (`--color-brand-primary`, `-secondary` e `-tertiary`) para a paleta original da Singularidade; o resto do tema é igual nas duas marcas.
 
 ```java
-UI.getCurrent().getElement().setAttribute("data-brand", "integras");
-UI.getCurrent().getElement().setAttribute("data-theme", "dark");
+UI.getCurrent().getElement().setAttribute("data-brand", "singularidade");
 ```
 
 ## Como funciona
 
 ```
 themes/singularidade-base/
-├── styles.css                  — bridge (--color-* → --lumo-*) + dark overrides
+├── styles.css                  — ponte: tokens → --lumo-* e --vaadin-*
 ├── theme.json                  — config Vaadin (sem lumoImports; parent serve tudo)
 ├── tokens/
-│   ├── defaults.css            — token semantic baseline (Singularidade light + dark overrides)
-│   └── {brand}.{theme}.css     — gerado de @singularidade/tokens em build time
+│   └── theme.css               — gerado de @singularidade/tokens em build time
 └── fonts/                      — copiado de @singularidade/brand-assets em build time
 ```
 
-O `pom.xml` puxa `tokens/build/css/*` e `brand-assets/src/fonts/*` dos pacotes-irmãos no `process-resources`, então não há duplicação de source-of-truth: tokens vivem em `@singularidade/tokens`, fontes em `@singularidade/brand-assets`. Apenas `defaults.css` (mapping semantic → Lumo) é hand-crafted.
+O `pom.xml` puxa `tokens/build/css/theme.css` e `brand-assets/src/fonts/*` dos pacotes-irmãos no `process-resources`, então não há duplicação de source-of-truth: tokens vivem em `@singularidade/tokens`, fontes em `@singularidade/brand-assets`. As cores do `styles.css` vêm dos tokens, inclusive os degraus de transparência do Lumo (`color-mix()` sobre o token); só os degraus de branco (claro) e de preto (escuro) do Lumo ficam fixos. Os quatro `{marca}.{tema}.css` do pacote de tokens ficam de fora do JAR: dependem de `data-brand` + `data-theme` e servem os sites.
+
+### O que a ponte mapeia
+
+| Vaadin / Lumo                                                                          | Token                                                                 |
+| -------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `--lumo-primary-color`, `--lumo-primary-text-color`                                    | `--color-interactive-primary`                                         |
+| `--lumo-primary-contrast-color`                                                        | `--color-on-primary`                                                  |
+| `--lumo-{error,success,warning}-color`                                                 | `--color-feedback-*-solid`                                            |
+| `--lumo-{error,success,warning}-text-color`                                            | `--color-feedback-*-text`                                             |
+| `--lumo-{error,success,warning}-contrast-color`                                        | `--color-on-status`                                                   |
+| `--lumo-link-color`                                                                    | `--color-link`                                                        |
+| `--lumo-box-shadow-{xs,s,m,l,xl}`                                                      | `--shadow-{xs,sm,md,lg,xl}` (um valor por tema)                       |
+| `--lumo-*-text-color`, `--lumo-contrast-*`, `--lumo-base-color`                        | `--color-text-*`, `--color-surface-base`                              |
+| `--vaadin-focus-ring-color` (largura 2px)                                              | `--color-border-focus`                                                |
+| `--vaadin-input-field-border-color` (largura 1px), `-background`                       | `--input-border` (= `--color-border-control`), `--input-background`   |
+| `--lumo-font-family`, `--lumo-font-size-*`, `--lumo-border-radius-*`, `--lumo-space-*` | `--font-family-sans`, `--font-size-*` (rem), `--radius-*`, `--size-*` |
 
 ## Trigger de dark mode
 
 Suportado via dois seletores (conviventes):
 
-| Seletor               | Quando usar                                                         |
-| --------------------- | ------------------------------------------------------------------- |
-| `[theme~='dark']`     | Vaadin Flow padrão (`element.setAttribute('theme', 'dark')`)        |
-| `[data-theme='dark']` | Apps que controlam brand+theme via `data-*` attrs (multi-brand SPA) |
+| Seletor               | Quando usar                                                                                                                           |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `[theme~='dark']`     | Vaadin Flow padrão (`element.setAttribute('theme', 'dark')`)                                                                          |
+| `[data-theme='dark']` | Páginas e regiões que trocam o tema via `data-theme` (inclusive uma faixa clara com `data-theme='light'` dentro de uma página escura) |
 
 ## Cobertura de componentes
 

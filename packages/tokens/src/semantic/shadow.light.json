@@ -1,0 +1,35 @@
+{
+  "shadow": {
+    "$description": "Um valor por tema. Sombra só no que flutua; botão não tem sombra.",
+    "xs": {
+      "$value": "{shadow.light.xs}",
+      "$type": "shadow",
+      "$description": "Card em repouso."
+    },
+    "sm": {
+      "$value": "{shadow.light.sm}",
+      "$type": "shadow",
+      "$description": "Elevação baixa."
+    },
+    "md": {
+      "$value": "{shadow.light.md}",
+      "$type": "shadow",
+      "$description": "Menu, popover, tour e card clicável em hover."
+    },
+    "lg": {
+      "$value": "{shadow.light.lg}",
+      "$type": "shadow",
+      "$description": "Toast."
+    },
+    "xl": {
+      "$value": "{shadow.light.xl}",
+      "$type": "shadow",
+      "$description": "Diálogo."
+    },
+    "2xl": {
+      "$value": "{shadow.light.2xl}",
+      "$type": "shadow",
+      "$description": "Elevação máxima (raro)."
+    }
+  }
+}

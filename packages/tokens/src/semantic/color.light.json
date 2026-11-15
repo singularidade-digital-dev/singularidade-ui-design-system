@@ -1,97 +1,206 @@
 {
   "color": {
-    "brand": {
-      "primary": {
-        "$value": "{color.brand.magenta.500}",
+    "surface": {
+      "base": {
+        "$value": "{color.neutral.50}",
         "$type": "color",
-        "$description": "Brand pure — logo, hero, branded surfaces"
+        "$description": "Fundo da página e do shell que aparece antes do JS (#fdfafc | #1a1517)."
       },
-      "secondary": { "$value": "{color.brand.coral.500}", "$type": "color" },
-      "tertiary": { "$value": "{color.brand.orange.500}", "$type": "color" },
-      "gradient": {
-        "$value": "linear-gradient(160deg, {color.brand.magenta.500} 0%, {color.brand.coral.500} 50%, {color.brand.orange.500} 100%)",
+      "raised": {
+        "$value": "{color.neutral.0}",
         "$type": "color",
-        "$description": "Gradient brand canônico"
+        "$description": "Cards, campos, diálogos, menus, toasts (#ffffff | #261a21). No escuro, o que está mais perto é mais claro."
+      },
+      "sunken": {
+        "$value": "{color.neutral.100}",
+        "$type": "color",
+        "$description": "Poços: código, cabeçalho de tabela, SideNav no claro, campo somente leitura, fundo externo do e-mail (#f5f0f4 | #1a111a)."
+      },
+      "overlay": {
+        "$value": "rgba(38, 26, 33, 0.4)",
+        "$type": "color",
+        "$description": "Véu atrás do diálogo, do drawer no celular e do tour."
+      },
+      "inverse": {
+        "$value": "{color.neutral.800}",
+        "$type": "color",
+        "$description": "ADIÇÃO v2, só para tooltip (texto em color-text-on-inverse). Faixa escura de site não usa este token: aplique data-theme=\"dark\" na seção."
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "{color.neutral.800}",
+        "$type": "color",
+        "$description": "Texto principal sobre base, raised e sunken: 14,90 a 16,77:1 no claro; 16,18 a 17,78:1 no escuro. Também sobre as superfícies de feedback e primary-subtle."
+      },
+      "secondary": {
+        "$value": "{color.neutral.600}",
+        "$type": "color",
+        "$description": "Texto de apoio, ajuda, descrição, rótulo de menu, cabeçalho de tabela, sobre base, raised, sunken e interactive-secondary: 8,52 a 9,60:1 no claro; 9,14 a 10,05:1 no escuro (7,76 | 7,21 sobre interactive-secondary). Em gráfico: a série de comparação (passa 3:1 em todas as superfícies), o rótulo direto e a legenda."
+      },
+      "muted": {
+        "$value": "{color.neutral.500}",
+        "$type": "color",
+        "$description": "Placeholder, metadado, rótulo de grupo, aviso de órgão público, sobre base, raised e sunken: 5,21 a 5,87:1 no claro; 6,04 a 6,64:1 no escuro. Em gráfico: eixos e marcações, nunca uma série (ao lado do primário, ΔE 5,0 com protanopia simulada)."
+      },
+      "disabled": {
+        "$value": "{color.neutral.400}",
+        "$type": "color",
+        "$description": "Texto de controle desabilitado (isento de contraste pela WCAG). MUDANÇA v2 no escuro: era #524049 (1,38:1); agora 2,25 a 2,86:1, em paridade com o claro."
+      },
+      "inverse": {
+        "$value": "{color.neutral.0}",
+        "$type": "color",
+        "$description": "Texto sobre preenchimento de ação ou de status (#ffffff | #1a111a). Prefira os aliases color-on-primary e color-on-status."
+      },
+      "on-inverse": {
+        "$value": "{color.neutral.50}",
+        "$type": "color",
+        "$description": "ADIÇÃO v2: texto sobre color-surface-inverse (tooltip): 16,18:1 | 13,56:1."
       }
     },
     "interactive": {
       "primary": {
         "$value": "{color.brand.coral.600}",
         "$type": "color",
-        "$description": "CTA UI principal — coral.600 mais sóbrio em light"
+        "$description": "A ÚNICA cor de ação: botão primário, link, controle marcado, item selecionado, indicador de aba, preenchimento do medidor. Como texto sobre base, raised e sunken: 4,89 a 5,51 | 6,23 a 6,85. Um primário por tela. Em gráfico: a série principal."
       },
       "primary-hover": {
         "$value": "{color.brand.coral.700}",
-        "$type": "color"
+        "$type": "color",
+        "$description": "Hover do primário e do link; texto do terciário em hover (sobre primary-subtle: 7,30 | 6,84)."
       },
       "primary-active": {
-        "$value": "{color.brand.coral.500}",
+        "$value": "{color.brand.coral.800}",
         "$type": "color",
-        "$description": "Volta pro brand pure no click"
+        "$description": "Primário pressionado. MUDANÇA v2 no claro: #791832 (10,55:1 com branco) no lugar do #e8606a (3,33:1)."
       },
-      "secondary": { "$value": "{color.neutral.200}", "$type": "color" },
-      "secondary-hover": { "$value": "{color.neutral.300}", "$type": "color" },
-      "secondary-active": { "$value": "{color.neutral.400}", "$type": "color" }
-    },
-    "surface": {
-      "base": {
-        "$value": "{color.neutral.50}",
+      "primary-subtle": {
+        "$value": "{color.brand.coral.50}",
         "$type": "color",
-        "$description": "Fundo principal"
+        "$description": "ADIÇÃO v2: item de menu ativo, hover do terciário, chip e linha selecionados, badge brand. color-interactive-primary sobre ele: 5,01 | 4,81 sobre raised e 5,25 sobre base."
       },
-      "raised": {
-        "$value": "{color.neutral.0}",
+      "primary-subtle-hover": {
+        "$value": "{color.brand.coral.100}",
         "$type": "color",
-        "$description": "Cards, dialogs"
+        "$description": "ADIÇÃO v2: terciário pressionado, com texto em color-interactive-primary-hover (6,68 | 5,88)."
       },
-      "sunken": {
-        "$value": "{color.neutral.100}",
+      "secondary": {
+        "$value": "{color.neutral.200}",
         "$type": "color",
-        "$description": "Drawer, navbar"
+        "$description": "Hover do secundário e de item de lista, badge neutro, trilho do medidor, quadro do EmptyState, esqueleto, botão desabilitado. Texto sobre ele: color-text-primary ou color-text-secondary (7,76 | 7,21). \"Sem uso\" no mapa de calor."
       },
-      "overlay": {
-        "$value": "rgba(38, 26, 33, 0.4)",
+      "secondary-hover": {
+        "$value": "{color.neutral.300}",
         "$type": "color",
-        "$description": "Backdrop de modais"
+        "$description": "Secundário pressionado."
+      },
+      "secondary-active": {
+        "$value": "{color.neutral.400}",
+        "$type": "color",
+        "$description": "Estado ativo forte de controles neutros (raro)."
       }
     },
     "border": {
-      "subtle": { "$value": "{color.neutral.200}", "$type": "color" },
-      "default": { "$value": "{color.neutral.300}", "$type": "color" },
-      "strong": { "$value": "{color.neutral.400}", "$type": "color" },
-      "focus": { "$value": "{color.brand.coral.600}", "$type": "color" }
-    },
-    "text": {
-      "primary": { "$value": "{color.neutral.800}", "$type": "color" },
-      "secondary": { "$value": "{color.neutral.600}", "$type": "color" },
-      "muted": { "$value": "{color.neutral.500}", "$type": "color" },
-      "disabled": { "$value": "{color.neutral.400}", "$type": "color" },
-      "inverse": { "$value": "{color.neutral.0}", "$type": "color" }
+      "subtle": {
+        "$value": "{color.neutral.200}",
+        "$type": "color",
+        "$description": "Divisórias, borda de card no claro, de diálogo, menu e toast. Decorativa (1,19:1): nunca a única pista de um controle. Linhas de grade do gráfico."
+      },
+      "default": {
+        "$value": "{color.neutral.300}",
+        "$type": "color",
+        "$description": "Contêineres (tabela, painel), borda de card no escuro e de card clicável em hover, linha do Stepper. Decorativa (1,77:1)."
+      },
+      "strong": {
+        "$value": "{color.neutral.400}",
+        "$type": "color",
+        "$description": "Ênfase decorativa e tracejado do campo somente leitura. Não serve para controle: 2,78:1."
+      },
+      "focus": {
+        "$value": "{color.brand.coral.600}",
+        "$type": "color",
+        "$description": "Anel de foco: outline 2px, offset 2px. Pelo menos 4,89:1 | 6,23:1 sobre base, raised e sunken; 5,01 | 4,81 sobre primary-subtle."
+      }
     },
     "feedback": {
       "success": {
-        "solid": { "$value": "{color.feedback.success.700}", "$type": "color" },
-        "surface": { "$value": "{color.feedback.success.50}", "$type": "color" },
-        "border": { "$value": "{color.feedback.success.300}", "$type": "color" }
+        "solid": {
+          "$value": "{color.feedback.success.700}",
+          "$type": "color",
+          "$description": "Ícone, preenchimento e borda de sucesso. Sobre base, raised e sunken passa 3:1. Com color-on-status por cima: 5,48 | 12,10."
+        },
+        "surface": {
+          "$value": "{color.feedback.success.50}",
+          "$type": "color",
+          "$description": "Fundo tingido de sucesso: Alert, Banner, badge, quadro de tela de resultado. Texto sobre ele: color-text-primary ou color-feedback-success-text."
+        },
+        "border": {
+          "$value": "{color.feedback.success.300}",
+          "$type": "color",
+          "$description": "Borda inteira de 1px do Alert e do Banner de sucesso. Decorativa: o tom também vem na palavra e no ícone."
+        }
       },
       "error": {
         "solid": {
           "$value": "{color.feedback.error.600}",
           "$type": "color",
-          "$description": "Red puro (#DC2626) — distingue de coral primary"
+          "$description": "Ícone, preenchimento e borda de erro. Também a borda do campo inválido. Sobre base, raised e sunken passa 3:1. Com color-on-status por cima: 4,83 | 6,67. Quase a mesma cor de color-interactive-primary (1,14:1 no claro, 1,03:1 no escuro, de 9° a 12° de matiz): o botão danger nunca divide a tela com um primário, e o erro sempre leva palavra e ícone."
         },
-        "surface": { "$value": "{color.feedback.error.50}", "$type": "color" },
-        "border": { "$value": "{color.feedback.error.300}", "$type": "color" }
+        "text": {
+          "$value": "{color.feedback.error.700}",
+          "$type": "color",
+          "$description": "ADIÇÃO v2: texto de erro (mensagem do campo inválido) sobre color-feedback-error-surface (5,91 | 4,87) e direto sobre base ou raised (6,24 a 6,52). MUDANÇA no claro: #dc2626 sobre #fef2f2 dava 4,41:1; o error-700 dá 5,91."
+        },
+        "surface": {
+          "$value": "{color.feedback.error.50}",
+          "$type": "color",
+          "$description": "Fundo tingido de erro: Alert, Banner, badge, quadro de tela de resultado. Texto sobre ele: color-text-primary ou color-feedback-error-text."
+        },
+        "border": {
+          "$value": "{color.feedback.error.300}",
+          "$type": "color",
+          "$description": "Borda inteira de 1px do Alert e do Banner de erro. Decorativa: o tom também vem na palavra e no ícone."
+        },
+        "hover": {
+          "$value": "{color.feedback.error.700}",
+          "$type": "color",
+          "$description": "ADIÇÃO v2: hover do botão danger, com color-on-status (6,47 | 9,71)."
+        }
       },
       "warning": {
-        "solid": { "$value": "{color.feedback.warning.700}", "$type": "color" },
-        "surface": { "$value": "{color.feedback.warning.50}", "$type": "color" },
-        "border": { "$value": "{color.feedback.warning.300}", "$type": "color" }
+        "solid": {
+          "$value": "{color.feedback.warning.700}",
+          "$type": "color",
+          "$description": "Ícone, preenchimento e borda de aviso. Sobre base, raised e sunken passa 3:1. Com color-on-status por cima: 5,02 | 11,04."
+        },
+        "surface": {
+          "$value": "{color.feedback.warning.50}",
+          "$type": "color",
+          "$description": "Fundo tingido de aviso: Alert, Banner, badge, quadro de tela de resultado. Texto sobre ele: color-text-primary ou color-feedback-warning-text."
+        },
+        "border": {
+          "$value": "{color.feedback.warning.300}",
+          "$type": "color",
+          "$description": "Borda inteira de 1px do Alert e do Banner de aviso. Decorativa: o tom também vem na palavra e no ícone."
+        }
       },
       "info": {
-        "solid": { "$value": "{color.feedback.info.700}", "$type": "color" },
-        "surface": { "$value": "{color.feedback.info.50}", "$type": "color" },
-        "border": { "$value": "{color.feedback.info.300}", "$type": "color" }
+        "solid": {
+          "$value": "{color.feedback.info.700}",
+          "$type": "color",
+          "$description": "Ícone, preenchimento e borda de informação. Substitui o #2f80ed do selo \"verificado\". Sobre base, raised e sunken passa 3:1. Com color-on-status por cima: 6,70 | 7,25."
+        },
+        "surface": {
+          "$value": "{color.feedback.info.50}",
+          "$type": "color",
+          "$description": "Fundo tingido de informação: Alert, Banner, badge, quadro de tela de resultado. Texto sobre ele: color-text-primary ou color-feedback-info-text."
+        },
+        "border": {
+          "$value": "{color.feedback.info.300}",
+          "$type": "color",
+          "$description": "Borda inteira de 1px do Alert e do Banner de informação. Decorativa: o tom também vem na palavra e no ícone."
+        }
       }
     }
   }

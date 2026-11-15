@@ -1,1 +1,21 @@
-{}
+{
+  "color": {
+    "brand": {
+      "primary": {
+        "$value": "{color.brand.singularidade.magenta}",
+        "$type": "color",
+        "$description": "Com data-brand=\"singularidade\", a marca usa o magenta original da Singularidade."
+      },
+      "secondary": {
+        "$value": "{color.brand.singularidade.coral}",
+        "$type": "color",
+        "$description": "Coral original da Singularidade."
+      },
+      "tertiary": {
+        "$value": "{color.brand.singularidade.orange}",
+        "$type": "color",
+        "$description": "Laranja original da Singularidade."
+      }
+    }
+  }
+}

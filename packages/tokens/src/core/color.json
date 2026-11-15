@@ -5,16 +5,12 @@
         "50": { "$value": "#FCE7F3", "$type": "color", "$description": "Magenta 50" },
         "100": { "$value": "#FBCFE8", "$type": "color" },
         "200": { "$value": "#F9A8D4", "$type": "color" },
-        "300": {
-          "$value": "#F472B6",
-          "$type": "color",
-          "$description": "Magenta 300 — primary em dark mode"
-        },
+        "300": { "$value": "#F472B6", "$type": "color" },
         "400": { "$value": "#EC4899", "$type": "color" },
         "500": {
           "$value": "#E91E8B",
           "$type": "color",
-          "$description": "Brand primary — Singularidade magenta (oficial)"
+          "$description": "Magenta do símbolo do Integras (= color.brand.integras.magenta). Cor de marca, nunca de interface: 4,18:1 no branco."
         },
         "600": { "$value": "#C41776", "$type": "color" },
         "700": { "$value": "#9D174D", "$type": "color" },
@@ -39,7 +35,7 @@
         "500": {
           "$value": "#E8606A",
           "$type": "color",
-          "$description": "Brand secondary — Singularidade coral (oficial)"
+          "$description": "Coral do símbolo do Integras (= color.brand.integras.coral). Com texto branco dá 3,33:1: nunca fundo de texto no claro."
         },
         "600": {
           "$value": "#BE3550",
@@ -51,7 +47,11 @@
           "$type": "color",
           "$description": "Coral 700 — interactive hover em light"
         },
-        "800": { "$value": "#791832", "$type": "color" },
+        "800": {
+          "$value": "#791832",
+          "$type": "color",
+          "$description": "Coral 800 — interactive primary-active em light (10,55:1 com branco)"
+        },
         "900": { "$value": "#571520", "$type": "color" },
         "950": { "$value": "#2C0A10", "$type": "color" }
       },
@@ -68,13 +68,25 @@
         "500": {
           "$value": "#F5A623",
           "$type": "color",
-          "$description": "Brand tertiary — Singularidade orange (oficial)"
+          "$description": "Laranja do símbolo do Integras (= color.brand.integras.orange). 2,03:1 no branco: nunca texto nem ícone sobre claro."
         },
         "600": { "$value": "#DD8E0E", "$type": "color" },
         "700": { "$value": "#A86B0B", "$type": "color" },
         "800": { "$value": "#784D08", "$type": "color" },
         "900": { "$value": "#483006", "$type": "color" },
         "950": { "$value": "#2A1B03", "$type": "color" }
+      },
+      "integras": {
+        "$description": "Cores do símbolo do Integras, iguais nos dois temas. Marca padrão: color.brand.primary/secondary/tertiary apontam para elas.",
+        "magenta": { "$value": "{color.brand.magenta.500}", "$type": "color" },
+        "coral": { "$value": "{color.brand.coral.500}", "$type": "color" },
+        "orange": { "$value": "{color.brand.orange.500}", "$type": "color" }
+      },
+      "singularidade": {
+        "$description": "Cores originais da Singularidade (folha da marca). Com data-brand=\"singularidade\", color.brand.primary/secondary/tertiary apontam para elas. Uso de marca, não de interface.",
+        "magenta": { "$value": "#ED1E79", "$type": "color" },
+        "coral": { "$value": "#F15052", "$type": "color" },
+        "orange": { "$value": "#F7931E", "$type": "color" }
       }
     },
     "neutral": {
@@ -92,6 +104,11 @@
       },
       "300": { "$value": "#C8BCC4", "$type": "color" },
       "400": { "$value": "#A697A1", "$type": "color" },
+      "450": {
+        "$value": "#8C7B86",
+        "$type": "color",
+        "$description": "Ponto médio entre 400 e 500: color.border.control, a borda de controle que passa 3:1 nos dois temas"
+      },
       "500": { "$value": "#735F6B", "$type": "color", "$description": "Text muted" },
       "600": { "$value": "#524049", "$type": "color" },
       "700": { "$value": "#3A2C33", "$type": "color" },
@@ -100,11 +117,15 @@
         "$type": "color",
         "$description": "Text primary light"
       },
-      "900": { "$value": "#1A111A", "$type": "color" },
-      "950": {
+      "900": {
         "$value": "#1A1517",
         "$type": "color",
-        "$description": "Surface base dark"
+        "$description": "Surface base dark (v2: troca de nome com 950, valor mantido, para a rampa ficar em ordem)"
+      },
+      "950": {
+        "$value": "#1A111A",
+        "$type": "color",
+        "$description": "Surface sunken e text inverse no escuro (v2: troca de nome com 900, valor mantido)"
       },
       "1000": { "$value": "#000000", "$type": "color" }
     },

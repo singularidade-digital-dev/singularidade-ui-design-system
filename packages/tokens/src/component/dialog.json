@@ -1,11 +1,47 @@
 {
   "dialog": {
-    "background": { "$value": "{color.surface.raised}", "$type": "color" },
-    "border": { "$value": "{color.border.subtle}", "$type": "color" },
-    "radius": { "$value": "{radius.lg}", "$type": "dimension" },
-    "padding": { "$value": "{size.6}", "$type": "dimension" },
-    "shadow": { "$value": "{shadow.light.xl}", "$type": "shadow" },
-    "backdrop": { "$value": "{color.surface.overlay}", "$type": "color" },
-    "max-width": { "$value": "560px", "$type": "dimension" }
+    "background": {
+      "$value": "{color.surface.raised}",
+      "$type": "color",
+      "$description": "Fundo do diálogo."
+    },
+    "border": {
+      "$value": "{color.border.subtle}",
+      "$type": "color",
+      "$description": "Borda de 1px do diálogo."
+    },
+    "backdrop": {
+      "$value": "{color.surface.overlay}",
+      "$type": "color",
+      "$description": "Véu atrás do diálogo."
+    },
+    "radius": {
+      "$value": "{radius.lg}",
+      "$type": "dimension"
+    },
+    "padding": {
+      "$value": "{size.6}",
+      "$type": "dimension"
+    },
+    "width-sm": {
+      "$value": "400px",
+      "$type": "dimension",
+      "$description": "Diálogo pequeno (confirmação)."
+    },
+    "max-width": {
+      "$value": "560px",
+      "$type": "dimension",
+      "$description": "Diálogo padrão."
+    },
+    "width-lg": {
+      "$value": "800px",
+      "$type": "dimension",
+      "$description": "Diálogo grande."
+    },
+    "shadow": {
+      "$value": "{shadow.xl}",
+      "$type": "shadow",
+      "$deprecated": "use --shadow-xl (per theme); removed in 1.2"
+    }
   }
 }

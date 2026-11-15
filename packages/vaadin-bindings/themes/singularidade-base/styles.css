@@ -1,9 +1,15 @@
 /*
  * @singularidade/vaadin-bindings — Vaadin Flow theme bridge.
  *
- * Maps @singularidade/tokens semantic vars (--color-*) onto Vaadin Lumo tokens
- * (--lumo-*). Built against Vaadin Flow 25.2; Lumo and its --lumo-* tokens are
+ * Maps the @singularidade/tokens theme (tokens/theme.css: --color-*, --shadow-*,
+ * --font-*, …) onto the Lumo tokens (--lumo-*) and the Vaadin 25 style properties
+ * (--vaadin-*). Built against Vaadin Flow 25.2; Lumo and its --lumo-* tokens are
  * still the theming API in 25.x (25.0 removed Material, not Lumo).
+ *
+ * tokens/theme.css is generated from the design tokens and carries both themes:
+ * light on :root, dark on [theme~='dark'] (the attribute Vaadin sets on <html>)
+ * and on [data-theme='dark']. Integras is the default brand; data-brand="singularidade"
+ * swaps only the brand colours.
  *
  * Tokens and fonts are bundled inside this theme (tokens/, fonts/) — Vaadin
  * theme loader copies them to the frontend bundle, while Spring Security only
@@ -12,36 +18,27 @@
  */
 
 /* ---- Tokens + fonts (theme-relative, copied by Vaadin theme handler) ---- */
-/* Defaults first (brand-agnostic, Singularidade as the default brand). */
-@import url('./tokens/defaults.css');
-/* Brand×theme-specific tokens — activate when both data-brand + data-theme are set. */
-@import url('./tokens/singularidade.light.css');
-@import url('./tokens/singularidade.dark.css');
-@import url('./tokens/integras.light.css');
-@import url('./tokens/integras.dark.css');
+@import url('./tokens/theme.css');
 @import url('./fonts/plus-jakarta-sans.css');
 @import url('./fonts/jetbrains-mono.css');
 
-/* ---- Default = Singularidade light when no data-brand/data-theme set ---- */
+/* ---- Same in both themes: typography, radius, sizing, spacing ---- */
 :root {
-  /* Typography */
-  --lumo-font-family:
-    'Plus Jakarta Sans Variable', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
-  --lumo-font-size-xxxl: 1.75rem;
-  --lumo-font-size-xxl: 1.375rem;
-  --lumo-font-size-xl: 1.125rem;
-  --lumo-font-size-l: 1rem;
-  --lumo-font-size-m: 0.875rem;
-  --lumo-font-size-s: 0.8125rem;
-  --lumo-font-size-xs: 0.75rem;
+  --lumo-font-family: var(--font-family-sans);
+  --lumo-font-size-xxxl: var(--font-size-3xl);
+  --lumo-font-size-xxl: var(--font-size-2xl);
+  --lumo-font-size-xl: var(--font-size-xl);
+  --lumo-font-size-l: var(--font-size-l);
+  --lumo-font-size-m: var(--font-size-m);
+  --lumo-font-size-s: var(--font-size-s);
+  --lumo-font-size-xs: var(--font-size-xs);
 
   /* Border radius — match @singularidade/tokens scale */
   --lumo-border-radius-s: var(--radius-sm);
   --lumo-border-radius-m: var(--radius-md);
   --lumo-border-radius-l: var(--radius-lg);
 
-  /* Sizes */
+  /* Sizes: the control-* heights (24/30/36/44/56px) in rem, so they follow text zoom */
   --lumo-size-xs: 1.5rem;
   --lumo-size-s: 1.875rem;
   --lumo-size-m: 2.25rem;
@@ -54,193 +51,21 @@
   --lumo-space-m: var(--size-4);
   --lumo-space-l: var(--size-6);
   --lumo-space-xl: var(--size-10);
+
+  /* Vaadin 25: one focus ring, and a 1px border on every field, checkbox and radio */
+  --vaadin-focus-ring-width: 2px;
+  --vaadin-input-field-border-width: 1px;
 }
 
-/* ---- Light theme — applies for any brand on data-theme=light or default ---- */
+/* ---- Colours and shadows ----
+   A var() is resolved where it is declared, and the result is what descendants
+   inherit. So the mapping is declared again on every element that switches the
+   theme (Vaadin's theme="dark" on <html>, a region with data-theme) and on the
+   overlays of the dark theme (see the note further down): each one then reads the
+   tokens of its own theme instead of the values computed on :root. */
 :root,
-[data-theme='light'],
-[data-brand][data-theme='light'] {
-  /* Primary — coral.600 (sober) in light */
-  --lumo-primary-color: var(--color-interactive-primary);
-  --lumo-primary-color-50pct: rgba(190, 53, 80, 0.5);
-  --lumo-primary-color-10pct: rgba(190, 53, 80, 0.08);
-  --lumo-primary-text-color: var(--color-interactive-primary);
-  --lumo-primary-contrast-color: var(--color-text-inverse);
-
-  /* Feedback — emerald, red puro, amber, blue */
-  --lumo-error-color: var(--color-feedback-error-solid);
-  --lumo-error-color-50pct: rgba(220, 38, 38, 0.5);
-  --lumo-error-color-10pct: rgba(220, 38, 38, 0.08);
-  --lumo-error-text-color: var(--color-feedback-error-solid);
-  --lumo-error-contrast-color: var(--color-text-inverse);
-
-  --lumo-success-color: var(--color-feedback-success-solid);
-  --lumo-success-color-50pct: rgba(4, 120, 87, 0.5);
-  --lumo-success-color-10pct: rgba(4, 120, 87, 0.1);
-  --lumo-success-text-color: var(--color-feedback-success-solid);
-  --lumo-success-contrast-color: var(--color-text-inverse);
-
-  --lumo-warning-color: var(--color-feedback-warning-solid);
-  --lumo-warning-color-50pct: rgba(180, 83, 9, 0.5);
-  --lumo-warning-color-10pct: rgba(180, 83, 9, 0.1);
-  --lumo-warning-text-color: var(--color-feedback-warning-solid);
-  --lumo-warning-contrast-color: var(--color-text-inverse);
-
-  /* Base + neutrals */
-  --lumo-base-color: var(--color-surface-base);
-
-  --lumo-tint: #ffffff;
-  --lumo-tint-5pct: rgba(255, 255, 255, 0.3);
-  --lumo-tint-10pct: rgba(255, 255, 255, 0.37);
-  --lumo-tint-20pct: rgba(255, 255, 255, 0.44);
-  --lumo-tint-30pct: rgba(255, 255, 255, 0.5);
-  --lumo-tint-40pct: rgba(255, 255, 255, 0.57);
-  --lumo-tint-50pct: rgba(255, 255, 255, 0.64);
-  --lumo-tint-60pct: rgba(255, 255, 255, 0.7);
-  --lumo-tint-70pct: rgba(255, 255, 255, 0.77);
-  --lumo-tint-80pct: rgba(255, 255, 255, 0.84);
-  --lumo-tint-90pct: rgba(255, 255, 255, 0.9);
-
-  --lumo-shade: #1a111a;
-  --lumo-shade-5pct: rgba(38, 26, 33, 0.05);
-  --lumo-shade-10pct: rgba(38, 26, 33, 0.1);
-  --lumo-shade-20pct: rgba(38, 26, 33, 0.16);
-  --lumo-shade-30pct: rgba(38, 26, 33, 0.24);
-  --lumo-shade-40pct: rgba(38, 26, 33, 0.34);
-  --lumo-shade-50pct: rgba(38, 26, 33, 0.45);
-  --lumo-shade-60pct: rgba(38, 26, 33, 0.57);
-  --lumo-shade-70pct: rgba(38, 26, 33, 0.69);
-  --lumo-shade-80pct: rgba(38, 26, 33, 0.81);
-  --lumo-shade-90pct: rgba(38, 26, 33, 0.9);
-
-  --lumo-contrast: var(--color-text-primary);
-  --lumo-contrast-5pct: rgba(38, 26, 33, 0.05);
-  --lumo-contrast-10pct: rgba(38, 26, 33, 0.1);
-  --lumo-contrast-20pct: rgba(38, 26, 33, 0.16);
-  --lumo-contrast-30pct: rgba(38, 26, 33, 0.24);
-  --lumo-contrast-40pct: rgba(38, 26, 33, 0.34);
-  --lumo-contrast-50pct: rgba(38, 26, 33, 0.45);
-  --lumo-contrast-60pct: rgba(38, 26, 33, 0.57);
-  --lumo-contrast-70pct: rgba(38, 26, 33, 0.69);
-  --lumo-contrast-80pct: rgba(38, 26, 33, 0.81);
-  --lumo-contrast-90pct: rgba(38, 26, 33, 0.9);
-
-  /* Text */
-  --lumo-header-text-color: var(--color-text-primary);
-  --lumo-body-text-color: var(--color-text-primary);
-  --lumo-secondary-text-color: var(--color-text-secondary);
-  --lumo-tertiary-text-color: var(--color-text-muted);
-  --lumo-disabled-text-color: var(--color-text-disabled);
-  --lumo-link-color: var(--color-interactive-primary);
-
-  /* Shadows */
-  --lumo-box-shadow-xs: var(--shadow-light-xs);
-  --lumo-box-shadow-s: var(--shadow-light-sm);
-  --lumo-box-shadow-m: var(--shadow-light-md);
-  --lumo-box-shadow-l: var(--shadow-light-lg);
-  --lumo-box-shadow-xl: var(--shadow-light-xl);
-}
-
-/* ---- Dark theme ----
-   Two trigger forms:
-   - Vaadin Flow apps use the standard `theme="dark"` attribute on <html>
-     (matched via `[theme~='dark']`) — that's the most common case.
-   - Apps that switch brand at runtime set `data-brand` + `data-theme='dark'`
-     (matched via `[data-theme='dark']`).
-   Both selectors apply the same full dark token set. */
+[data-theme],
 [theme~='dark'],
-[data-theme='dark'],
-[data-brand][data-theme='dark'] {
-  /* Primary — coral.400 brighter in dark */
-  --lumo-primary-color: var(--color-interactive-primary);
-  --lumo-primary-color-50pct: rgba(251, 113, 133, 0.5);
-  --lumo-primary-color-10pct: rgba(251, 113, 133, 0.16);
-  --lumo-primary-text-color: var(--color-interactive-primary);
-  --lumo-primary-contrast-color: var(--color-text-inverse);
-
-  /* Feedback */
-  --lumo-error-color: var(--color-feedback-error-solid);
-  --lumo-error-color-50pct: rgba(248, 113, 113, 0.5);
-  --lumo-error-color-10pct: rgba(248, 113, 113, 0.16);
-  --lumo-error-text-color: var(--color-feedback-error-solid);
-
-  --lumo-success-color: var(--color-feedback-success-solid);
-  --lumo-success-color-50pct: rgba(110, 231, 183, 0.5);
-  --lumo-success-color-10pct: rgba(110, 231, 183, 0.16);
-  --lumo-success-text-color: var(--color-feedback-success-solid);
-
-  --lumo-warning-color: var(--color-feedback-warning-solid);
-  --lumo-warning-color-50pct: rgba(251, 191, 36, 0.5);
-  --lumo-warning-color-10pct: rgba(251, 191, 36, 0.16);
-  --lumo-warning-text-color: var(--color-feedback-warning-solid);
-
-  /* Base + neutrals */
-  --lumo-base-color: var(--color-surface-base);
-
-  --lumo-tint: #fdfafc;
-  --lumo-tint-5pct: rgba(253, 250, 252, 0.05);
-  --lumo-tint-10pct: rgba(253, 250, 252, 0.1);
-  --lumo-tint-20pct: rgba(253, 250, 252, 0.16);
-  --lumo-tint-30pct: rgba(253, 250, 252, 0.24);
-  --lumo-tint-40pct: rgba(253, 250, 252, 0.34);
-  --lumo-tint-50pct: rgba(253, 250, 252, 0.45);
-  --lumo-tint-60pct: rgba(253, 250, 252, 0.57);
-  --lumo-tint-70pct: rgba(253, 250, 252, 0.69);
-  --lumo-tint-80pct: rgba(253, 250, 252, 0.81);
-  --lumo-tint-90pct: rgba(253, 250, 252, 0.9);
-
-  --lumo-shade: #000000;
-  --lumo-shade-5pct: rgba(0, 0, 0, 0.05);
-  --lumo-shade-10pct: rgba(0, 0, 0, 0.1);
-  --lumo-shade-20pct: rgba(0, 0, 0, 0.16);
-  --lumo-shade-30pct: rgba(0, 0, 0, 0.24);
-  --lumo-shade-40pct: rgba(0, 0, 0, 0.34);
-  --lumo-shade-50pct: rgba(0, 0, 0, 0.45);
-  --lumo-shade-60pct: rgba(0, 0, 0, 0.57);
-  --lumo-shade-70pct: rgba(0, 0, 0, 0.69);
-  --lumo-shade-80pct: rgba(0, 0, 0, 0.81);
-  --lumo-shade-90pct: rgba(0, 0, 0, 0.9);
-
-  --lumo-contrast: var(--color-text-primary);
-  --lumo-contrast-5pct: rgba(253, 250, 252, 0.05);
-  --lumo-contrast-10pct: rgba(253, 250, 252, 0.1);
-  --lumo-contrast-20pct: rgba(253, 250, 252, 0.16);
-  --lumo-contrast-30pct: rgba(253, 250, 252, 0.24);
-  --lumo-contrast-40pct: rgba(253, 250, 252, 0.34);
-  --lumo-contrast-50pct: rgba(253, 250, 252, 0.45);
-  --lumo-contrast-60pct: rgba(253, 250, 252, 0.57);
-  --lumo-contrast-70pct: rgba(253, 250, 252, 0.69);
-  --lumo-contrast-80pct: rgba(253, 250, 252, 0.81);
-  --lumo-contrast-90pct: rgba(253, 250, 252, 0.9);
-
-  --lumo-header-text-color: var(--color-text-primary);
-  --lumo-body-text-color: var(--color-text-primary);
-  --lumo-secondary-text-color: var(--color-text-secondary);
-  --lumo-tertiary-text-color: var(--color-text-muted);
-  --lumo-disabled-text-color: var(--color-text-disabled);
-  --lumo-link-color: var(--color-interactive-primary);
-
-  /* Shadows (dark variants) */
-  --lumo-box-shadow-xs: var(--shadow-dark-xs);
-  --lumo-box-shadow-s: var(--shadow-dark-sm);
-  --lumo-box-shadow-m: var(--shadow-dark-md);
-  --lumo-box-shadow-l: var(--shadow-dark-lg);
-  --lumo-box-shadow-xl: var(--shadow-dark-xl);
-}
-
-/* ---- Dark-mode fix for body-appended overlays ----
-   Vaadin appends overlay containers (notifications, dialogs, date pickers,
-   combo-boxes, popovers, etc.) directly to document.body, bypassing the
-   layout's shadow-DOM context. Some Lumo overlay components declare their
-   own --lumo-* defaults on :host, which shadow-blocks the values inherited
-   from <html theme="dark">. Result: overlays render with light/Lumo-default
-   colors even when the rest of the page is dark.
-
-   Re-pin the same dark token set directly on the overlay elements, scoped
-   via html[theme~="dark"]. The values are identical to the [theme~='dark']
-   block above — single source of truth via --color-* — so any consumer of
-   singularidade-base (singularidade-ui-vaadin, downstream apps, future libs)
-   gets correct overlay colors automatically. */
 html[theme~='dark'] vaadin-notification-card,
 html[theme~='dark'] vaadin-dialog-overlay,
 html[theme~='dark'] vaadin-date-picker-overlay,
@@ -253,20 +78,178 @@ html[theme~='dark'] vaadin-confirm-dialog-overlay {
   /* Base */
   --lumo-base-color: var(--color-surface-base);
 
-  /* Tint (white-derived, brighter spots in dark mode) */
-  --lumo-tint: #fdfafc;
-  --lumo-tint-5pct: rgba(253, 250, 252, 0.05);
-  --lumo-tint-10pct: rgba(253, 250, 252, 0.1);
-  --lumo-tint-20pct: rgba(253, 250, 252, 0.16);
-  --lumo-tint-30pct: rgba(253, 250, 252, 0.24);
-  --lumo-tint-40pct: rgba(253, 250, 252, 0.34);
-  --lumo-tint-50pct: rgba(253, 250, 252, 0.45);
-  --lumo-tint-60pct: rgba(253, 250, 252, 0.57);
-  --lumo-tint-70pct: rgba(253, 250, 252, 0.69);
-  --lumo-tint-80pct: rgba(253, 250, 252, 0.81);
-  --lumo-tint-90pct: rgba(253, 250, 252, 0.9);
+  /* Primary — coral.600 in light, coral.400 in dark; text on it in on-primary */
+  --lumo-primary-color: var(--color-interactive-primary);
+  --lumo-primary-color-50pct: color-mix(in srgb, var(--color-interactive-primary) 50%, transparent);
+  --lumo-primary-text-color: var(--color-interactive-primary);
+  --lumo-primary-contrast-color: var(--color-on-primary);
 
-  /* Shade (black-derived, deepens dark surfaces) */
+  /* Feedback — -solid for icons and fills, -text for text, on-status on a fill */
+  --lumo-error-color: var(--color-feedback-error-solid);
+  --lumo-error-color-50pct: color-mix(in srgb, var(--color-feedback-error-solid) 50%, transparent);
+  --lumo-error-text-color: var(--color-feedback-error-text);
+  --lumo-error-contrast-color: var(--color-on-status);
+
+  --lumo-success-color: var(--color-feedback-success-solid);
+  --lumo-success-color-50pct: color-mix(
+    in srgb,
+    var(--color-feedback-success-solid) 50%,
+    transparent
+  );
+  --lumo-success-text-color: var(--color-feedback-success-text);
+  --lumo-success-contrast-color: var(--color-on-status);
+
+  --lumo-warning-color: var(--color-feedback-warning-solid);
+  --lumo-warning-color-50pct: color-mix(
+    in srgb,
+    var(--color-feedback-warning-solid) 50%,
+    transparent
+  );
+  --lumo-warning-text-color: var(--color-feedback-warning-text);
+  --lumo-warning-contrast-color: var(--color-on-status);
+
+  /* Contrast — the text colour at Lumo's steps (warm, never Lumo's cold blue) */
+  --lumo-contrast: var(--color-text-primary);
+  --lumo-contrast-5pct: color-mix(in srgb, var(--color-text-primary) 5%, transparent);
+  --lumo-contrast-10pct: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
+  --lumo-contrast-20pct: color-mix(in srgb, var(--color-text-primary) 16%, transparent);
+  --lumo-contrast-30pct: color-mix(in srgb, var(--color-text-primary) 24%, transparent);
+  --lumo-contrast-40pct: color-mix(in srgb, var(--color-text-primary) 34%, transparent);
+  --lumo-contrast-50pct: color-mix(in srgb, var(--color-text-primary) 45%, transparent);
+  --lumo-contrast-60pct: color-mix(in srgb, var(--color-text-primary) 57%, transparent);
+  --lumo-contrast-70pct: color-mix(in srgb, var(--color-text-primary) 69%, transparent);
+  --lumo-contrast-80pct: color-mix(in srgb, var(--color-text-primary) 81%, transparent);
+  --lumo-contrast-90pct: color-mix(in srgb, var(--color-text-primary) 90%, transparent);
+
+  /* Text */
+  --lumo-header-text-color: var(--color-text-primary);
+  --lumo-body-text-color: var(--color-text-primary);
+  --lumo-secondary-text-color: var(--color-text-secondary);
+  --lumo-tertiary-text-color: var(--color-text-muted);
+  --lumo-disabled-text-color: var(--color-text-disabled);
+  --lumo-link-color: var(--color-link);
+
+  /* Shadows — one value per theme */
+  --lumo-box-shadow-xs: var(--shadow-xs);
+  --lumo-box-shadow-s: var(--shadow-sm);
+  --lumo-box-shadow-m: var(--shadow-md);
+  --lumo-box-shadow-l: var(--shadow-lg);
+  --lumo-box-shadow-xl: var(--shadow-xl);
+}
+
+/* ---- Vaadin 25: focus ring and fields ----
+   Focus ring in border-focus (Lumo's 50% primary gave 2.23:1); fields on the raised
+   surface with a border-control edge, which passes 3:1 (WCAG 1.4.11). Inherited,
+   never set on a component: Lumo re-points these on the component's own host
+   (read-only, disabled, invalid and checked controls; the ring of a coloured
+   notification), and a rule on the element itself would win over that. */
+:root,
+[data-theme],
+[theme~='dark'] {
+  --vaadin-focus-ring-color: var(--color-border-focus);
+  --vaadin-input-field-background: var(--input-background);
+  --vaadin-input-field-border-color: var(--input-border);
+  --vaadin-input-field-readonly-border: 1px dashed var(--color-border-strong);
+}
+
+/* ---- Light: Lumo's steps that differ per theme ---- */
+:root,
+[data-theme='light'] {
+  --lumo-primary-color-10pct: color-mix(in srgb, var(--color-interactive-primary) 8%, transparent);
+  --lumo-error-color-10pct: color-mix(in srgb, var(--color-feedback-error-solid) 8%, transparent);
+  --lumo-success-color-10pct: color-mix(
+    in srgb,
+    var(--color-feedback-success-solid) 10%,
+    transparent
+  );
+  --lumo-warning-color-10pct: color-mix(
+    in srgb,
+    var(--color-feedback-warning-solid) 10%,
+    transparent
+  );
+
+  /* Tint: white at Lumo's light steps */
+  --lumo-tint: #ffffff;
+  --lumo-tint-5pct: rgba(255, 255, 255, 0.3);
+  --lumo-tint-10pct: rgba(255, 255, 255, 0.37);
+  --lumo-tint-20pct: rgba(255, 255, 255, 0.44);
+  --lumo-tint-30pct: rgba(255, 255, 255, 0.5);
+  --lumo-tint-40pct: rgba(255, 255, 255, 0.57);
+  --lumo-tint-50pct: rgba(255, 255, 255, 0.64);
+  --lumo-tint-60pct: rgba(255, 255, 255, 0.7);
+  --lumo-tint-70pct: rgba(255, 255, 255, 0.77);
+  --lumo-tint-80pct: rgba(255, 255, 255, 0.84);
+  --lumo-tint-90pct: rgba(255, 255, 255, 0.9);
+
+  /* Shade: the text colour, like the contrast steps */
+  --lumo-shade: #1a111a;
+  --lumo-shade-5pct: color-mix(in srgb, var(--color-text-primary) 5%, transparent);
+  --lumo-shade-10pct: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
+  --lumo-shade-20pct: color-mix(in srgb, var(--color-text-primary) 16%, transparent);
+  --lumo-shade-30pct: color-mix(in srgb, var(--color-text-primary) 24%, transparent);
+  --lumo-shade-40pct: color-mix(in srgb, var(--color-text-primary) 34%, transparent);
+  --lumo-shade-50pct: color-mix(in srgb, var(--color-text-primary) 45%, transparent);
+  --lumo-shade-60pct: color-mix(in srgb, var(--color-text-primary) 57%, transparent);
+  --lumo-shade-70pct: color-mix(in srgb, var(--color-text-primary) 69%, transparent);
+  --lumo-shade-80pct: color-mix(in srgb, var(--color-text-primary) 81%, transparent);
+  --lumo-shade-90pct: color-mix(in srgb, var(--color-text-primary) 90%, transparent);
+}
+
+/* ---- Dark ----
+   Two trigger forms:
+   - Vaadin Flow apps use the standard `theme="dark"` attribute on <html>
+     (matched via `[theme~='dark']`) — that's the most common case.
+   - Pages and regions that switch theme with `data-theme='dark'`.
+   Both apply the same dark tokens (tokens/theme.css) and the steps below.
+
+   Dark-mode fix for body-appended overlays: Vaadin appends overlay containers
+   (notifications, dialogs, date pickers, combo-boxes, popovers, etc.) outside the
+   layout, and some Lumo overlay components declare their own --lumo-* defaults on
+   :host, which shadow-blocks the values inherited from <html theme="dark">.
+   Result: overlays render with light/Lumo-default colours even when the rest of
+   the page is dark. The html[theme~='dark'] vaadin-*-overlay selectors here and in
+   the colour block above re-pin the dark set directly on the overlay elements —
+   single source of truth via the tokens — so any consumer of singularidade-base
+   (singularidade-ui-vaadin, downstream apps, future libs) gets correct overlay
+   colours automatically. */
+[theme~='dark'],
+[data-theme='dark'],
+html[theme~='dark'] vaadin-notification-card,
+html[theme~='dark'] vaadin-dialog-overlay,
+html[theme~='dark'] vaadin-date-picker-overlay,
+html[theme~='dark'] vaadin-combo-box-overlay,
+html[theme~='dark'] vaadin-select-overlay,
+html[theme~='dark'] vaadin-context-menu-overlay,
+html[theme~='dark'] vaadin-multi-select-combo-box-overlay,
+html[theme~='dark'] vaadin-popover-overlay,
+html[theme~='dark'] vaadin-confirm-dialog-overlay {
+  --lumo-primary-color-10pct: color-mix(in srgb, var(--color-interactive-primary) 16%, transparent);
+  --lumo-error-color-10pct: color-mix(in srgb, var(--color-feedback-error-solid) 16%, transparent);
+  --lumo-success-color-10pct: color-mix(
+    in srgb,
+    var(--color-feedback-success-solid) 16%,
+    transparent
+  );
+  --lumo-warning-color-10pct: color-mix(
+    in srgb,
+    var(--color-feedback-warning-solid) 16%,
+    transparent
+  );
+
+  /* Tint: the text colour (white-derived, brighter spots in dark mode) */
+  --lumo-tint: var(--color-text-primary);
+  --lumo-tint-5pct: color-mix(in srgb, var(--color-text-primary) 5%, transparent);
+  --lumo-tint-10pct: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
+  --lumo-tint-20pct: color-mix(in srgb, var(--color-text-primary) 16%, transparent);
+  --lumo-tint-30pct: color-mix(in srgb, var(--color-text-primary) 24%, transparent);
+  --lumo-tint-40pct: color-mix(in srgb, var(--color-text-primary) 34%, transparent);
+  --lumo-tint-50pct: color-mix(in srgb, var(--color-text-primary) 45%, transparent);
+  --lumo-tint-60pct: color-mix(in srgb, var(--color-text-primary) 57%, transparent);
+  --lumo-tint-70pct: color-mix(in srgb, var(--color-text-primary) 69%, transparent);
+  --lumo-tint-80pct: color-mix(in srgb, var(--color-text-primary) 81%, transparent);
+  --lumo-tint-90pct: color-mix(in srgb, var(--color-text-primary) 90%, transparent);
+
+  /* Shade: black (black-derived, deepens dark surfaces) */
   --lumo-shade: #000000;
   --lumo-shade-5pct: rgba(0, 0, 0, 0.05);
   --lumo-shade-10pct: rgba(0, 0, 0, 0.1);
@@ -278,48 +261,4 @@ html[theme~='dark'] vaadin-confirm-dialog-overlay {
   --lumo-shade-70pct: rgba(0, 0, 0, 0.69);
   --lumo-shade-80pct: rgba(0, 0, 0, 0.81);
   --lumo-shade-90pct: rgba(0, 0, 0, 0.9);
-
-  /* Contrast (in dark mode, tracks tint = white-derived) */
-  --lumo-contrast: var(--color-text-primary);
-  --lumo-contrast-5pct: rgba(253, 250, 252, 0.05);
-  --lumo-contrast-10pct: rgba(253, 250, 252, 0.1);
-  --lumo-contrast-20pct: rgba(253, 250, 252, 0.16);
-  --lumo-contrast-30pct: rgba(253, 250, 252, 0.24);
-  --lumo-contrast-40pct: rgba(253, 250, 252, 0.34);
-  --lumo-contrast-50pct: rgba(253, 250, 252, 0.45);
-  --lumo-contrast-60pct: rgba(253, 250, 252, 0.57);
-  --lumo-contrast-70pct: rgba(253, 250, 252, 0.69);
-  --lumo-contrast-80pct: rgba(253, 250, 252, 0.81);
-  --lumo-contrast-90pct: rgba(253, 250, 252, 0.9);
-
-  /* Text */
-  --lumo-header-text-color: var(--color-text-primary);
-  --lumo-body-text-color: var(--color-text-primary);
-  --lumo-secondary-text-color: var(--color-text-secondary);
-  --lumo-tertiary-text-color: var(--color-text-muted);
-  --lumo-disabled-text-color: var(--color-text-disabled);
-
-  /* Primary (coral.400 brighter in dark) */
-  --lumo-primary-color: var(--color-interactive-primary);
-  --lumo-primary-color-50pct: rgba(251, 113, 133, 0.5);
-  --lumo-primary-color-10pct: rgba(251, 113, 133, 0.16);
-  --lumo-primary-text-color: var(--color-interactive-primary);
-  --lumo-primary-contrast-color: var(--color-text-inverse);
-
-  /* Feedback (semantic tokens) */
-  --lumo-error-color: var(--color-feedback-error-solid);
-  --lumo-error-color-50pct: rgba(248, 113, 113, 0.5);
-  --lumo-error-color-10pct: rgba(248, 113, 113, 0.16);
-  --lumo-error-text-color: var(--color-feedback-error-solid);
-
-  --lumo-success-color: var(--color-feedback-success-solid);
-  --lumo-success-color-50pct: rgba(110, 231, 183, 0.5);
-  --lumo-success-color-10pct: rgba(110, 231, 183, 0.16);
-  --lumo-success-text-color: var(--color-feedback-success-solid);
-
-  --lumo-warning-color: var(--color-feedback-warning-solid);
-  --lumo-warning-color-50pct: rgba(251, 191, 36, 0.5);
-  --lumo-warning-color-10pct: rgba(251, 191, 36, 0.16);
-  --lumo-warning-text-color: var(--color-feedback-warning-solid);
-  --lumo-warning-contrast-color: var(--lumo-shade-90pct);
 }

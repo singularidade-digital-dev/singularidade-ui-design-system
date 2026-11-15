@@ -1,0 +1,7 @@
+{
+  "focus-ring": {
+    "$value": "0 0 0 2px {color.surface.raised}, 0 0 0 4px {color.border.focus}",
+    "$type": "shadow",
+    "$description": "Anel de foco em box-shadow, só nas partes do Vaadin que não aceitam outline, sempre com outline: 2px solid transparent para o alto contraste do Windows. A regra geral é outline 2px em color-border-focus."
+  }
+}
