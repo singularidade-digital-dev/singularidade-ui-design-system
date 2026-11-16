@@ -1,0 +1,82 @@
+<!doctype html>
+<!--
+  Source of public/og.png, the 1200×630 share image (og:image and twitter:image).
+  Colours, type and logo come from the design system itself, so build the tokens
+  first and render with scripts/render-og.mjs. On each release, update the version
+  below and in ogImageAlt (astro.config.mjs).
+  No data-brand, like the docs site: data-brand="singularidade" swaps only the
+  three --color-brand-* tokens, and the card uses none of them.
+-->
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Singularidade Design System — og:image</title>
+    <link rel="stylesheet" href="../../../packages/tokens/build/css/theme.css" />
+    <link rel="stylesheet" href="../../../packages/tokens/build/css/text-styles.css" />
+    <link rel="stylesheet" href="../../../packages/brand-assets/src/fonts/plus-jakarta-sans.css" />
+    <link rel="stylesheet" href="../../../packages/brand-assets/src/fonts/jetbrains-mono.css" />
+    <style>
+      /* The text styles are in rem: a 24px root turns .display-xl into 84px. */
+      html {
+        font-size: 24px;
+      }
+
+      body {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 72px;
+        width: 1200px;
+        height: 630px;
+        margin: 0;
+        padding: 0 80px;
+        overflow: hidden;
+        background: var(--color-surface-base);
+        color: var(--color-text-primary);
+        font-family: var(--font-family-sans);
+      }
+
+      .symbol {
+        flex: none;
+        height: 330px;
+      }
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .overline {
+        margin: 0 0 28px;
+        color: var(--color-text-muted);
+        text-transform: uppercase;
+      }
+
+      .display-xl {
+        margin: 0;
+      }
+
+      .version {
+        margin: 40px 0 0;
+        padding: 6px 22px;
+        border-radius: var(--radius-full);
+        background: var(--color-interactive-primary-subtle);
+        color: var(--color-link);
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      class="symbol"
+      src="../../../packages/brand-assets/src/logos/singularidade/symbol.svg"
+      alt=""
+    />
+    <div class="text">
+      <p class="overline">ds.singularidade.digital</p>
+      <h1 class="display-xl">Singularidade<br />Design System</h1>
+      <p class="version code-lg">1.0.0</p>
+    </div>
+  </body>
+</html>

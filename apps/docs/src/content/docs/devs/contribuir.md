@@ -2,6 +2,7 @@
 title: Como contribuir
 description: Fluxos de contribuição (token, ícone, componente)
 sidebar: { order: 3 }
+next: { link: /releases/v0-1-0/, label: v0.1.0 }
 ---
 
 ## Setup local
