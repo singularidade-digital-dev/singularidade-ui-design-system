@@ -1,6 +1,6 @@
 {
   "name": "@singularidade/vaadin-bindings",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Singularidade Design System — Vaadin Flow parent theme (tokens → --lumo-*)",
   "license": "Apache-2.0",
   "type": "module",
