@@ -1,0 +1,51 @@
+---
+title: PageSite
+description: Modelo de página de site para integras.digital e singularidade.digital, com hero, seções em tipografia, faixa escura, preços, perguntas e rodapé.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Modelo de página de site para integras.digital e singularidade.digital: hero com captura do produto, seções em tipografia, uma faixa escura, preços, perguntas e rodapé.
+
+<DsPreview name="PageSite" title="Prévia da PageSite: seções de site do Integras" height={3120} page />
+
+## Ordem das seções
+
+1. Cabeçalho de site (64px) com "Entrar" e "Criar conta".
+2. Hero: título em `display-xl` ("Sua IA consulta os sistemas da empresa. Você decide quem vê o quê."), parágrafo em `body-lg`, "Criar conta" e "Ver como funciona", e uma captura real do produto num quadro neutro.
+3. No singularidade.digital, a faixa de logos de clientes, só com logos autorizados, em tons de cinza (`filter: grayscale(1)` sobre o arquivo original, sem mudar o desenho), cada um num quadro `color-neutral-0`, também no escuro, como os logos de conector. No integras.digital, a faixa só entra com logos autorizados de clientes do Integras; por isso esta prévia não a mostra.
+4. Seções em `heading-xl`, com pontos em tipografia e espaço: sem cards de ícone.
+5. No máximo uma faixa escura, feita com `data-theme="dark"` na seção (não com `color-surface-inverse`, onde o coral claro cai para 3,05:1).
+6. Preços, com um só "Recomendado" e "Renova todo mês. Cancele quando quiser."
+7. Perguntas frequentes.
+8. Rodapé com o símbolo e o link "Acessibilidade" com o ícone da LBI.
+
+- Banner de cookies embaixo, sem bloquear a página, só em site com analytics: "Aceitar todos", "Apenas essenciais" e "Configurar" com o mesmo estilo.
+
+## Medidas e regras
+
+- Padding das seções: 64px no celular e 96px no desktop. Contêiner de 1200px.
+- O botão principal é coral, como no app.
+- Sem glows, grade de fundo, ponto que brilha, texto em degradê (`.gradient-text`) e sobretítulo numerado.
+- Na captura, use uma imagem real do produto que a página vende. Neste modelo, o quadro mostra a interface das empresas montada com o próprio sistema: o conector ORGEN-AI e o que cada papel pode consultar, que é a promessa do título. Captura do Hub vai na página do Hub, nunca na das empresas.
+- Os planos e os preços da prévia seguem os do integras.digital (R$ 399, 499 e 899 por mês). A prévia é um modelo de seções: o texto de cada site manda.
+
+## Nos sites
+
+A prévia é o modelo de seções. Os dois sites abrem com a banda das [Faixas](/componentes/faixas/) no topo da home.
+
+**integras.digital**
+
+- A home: a banda das Faixas, a frase "A sua IA consulta os dados antes de responder." e, logo abaixo, as portas Empresas e Pessoas · Integras Hub. A banda usa `size="narrow"` até 900px e `size="wide"` a partir de 900px.
+- Páginas por conector, também em inglês e espanhol, com hreflang entre os três idiomas; o seletor PT/EN/ES leva à mesma página no outro idioma. Preços numa página só; cartões sociais no tema das Faixas.
+- Itens sob linhas finas, passos numerados e texto corrido, no lugar de rótulos em mono e caixa alta, cartões com ícone, botão em degradê e animação de entrada.
+- As ferramentas de cada conector aparecem com os títulos e grupos que o produto tem, com uma frase que diz o idioma deles.
+- Rodapé com razão social, CNPJ, endereço e e-mail.
+- Sem banner de cookies: o site não tem analytics nem cookie que não seja essencial, e a Política de Privacidade diz o que fica no navegador.
+- "Entrar" tem dois destinos, "Conta da empresa" e "Integras Hub" (veja [Header](/componentes/header/#site)).
+
+**singularidade.digital**
+
+- As Faixas no topo da home, nas cores da Singularidade, em banda espelhada.
+- Topo: o sobretítulo "Engenharia de software · desde 2015", o título no tipo de vitrine (Plus Jakarta Sans 700, −0,03em, entrelinha 0,95, de 40 a 80px, sem degradê), "Falar com a equipe" e "Quem somos". À direita (no celular, abaixo dos botões), três números: 10+ anos no mercado, 50+ projetos entregues e 3 idiomas atendidos.
+- Nenhuma página rola de lado de 320 a 1920px.

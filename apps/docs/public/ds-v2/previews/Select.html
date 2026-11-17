@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Select</title>
+<style>
+  .sl-open { display: flex; flex-direction: column; gap: var(--size-1); max-width: 320px; }
+  .sl-themes { display: flex; flex-wrap: wrap; gap: var(--size-2) var(--size-6); }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+  <div class="ss-demo-grid ss-demo-grid--2">
+
+    <section class="ss-demo-col ss-comfortable">
+      <div class="ss-demo-head"><h2 class="overline ss-demo-title">5 a 10 opções: Select</h2></div>
+      <div class="ss-field">
+        <span class="ss-field__label label" id="s1l">Idioma</span>
+        <button class="ss-input ss-select" type="button" aria-haspopup="listbox" aria-labelledby="s1l s1v"><span class="ss-select__value ss-select__placeholder" id="s1v">Selecione</span><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+      </div>
+      <div class="ss-field">
+        <span class="ss-field__label label" id="s2l">País</span>
+        <button class="ss-input ss-select is-focus" type="button" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="s2l s2v"><span class="ss-select__value" id="s2v">Brasil</span><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+      </div>
+      <div class="sl-open">
+        <div class="ss-listbox" role="listbox" aria-label="Idioma">
+          <div class="ss-option" role="option" aria-selected="true">Português<svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div class="ss-option is-hover" role="option" aria-selected="false">English</div>
+          <div class="ss-option" role="option" aria-selected="false">Español</div>
+        </div>
+        <p class="caption ss-demo-note">Nomes nativos; funciona pelo teclado, inclusive digitando o nome.</p>
+      </div>
+    </section>
+
+    <section class="ss-demo-col ss-compact">
+      <div class="ss-demo-head"><h2 class="overline ss-demo-title">Estados</h2><span class="caption ss-demo-note">compacto</span></div>
+      <div class="ss-field">
+        <span class="ss-field__label label" id="s3l">Moeda</span>
+        <button class="ss-input ss-select is-hover" type="button" aria-haspopup="listbox" aria-labelledby="s3l s3v"><span class="ss-select__value" id="s3v">Real (R$)</span><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+      </div>
+      <div class="ss-field">
+        <span class="ss-field__label label" id="s4l">Fuso da tabela</span>
+        <button class="ss-input ss-select is-invalid" type="button" aria-haspopup="listbox" aria-invalid="true" aria-describedby="s4e" aria-labelledby="s4l s4v"><span class="ss-select__value ss-select__placeholder" id="s4v">Selecione</span><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+        <p class="ss-field__error caption" id="s4e"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <line x1="12" x2="12" y1="8" y2="12"/> <line x1="12" x2="12.01" y1="16" y2="16"/></svg>Escolha o fuso para ver as datas.</p>
+      </div>
+      <div class="ss-field">
+        <span class="ss-field__label label is-disabled" id="s5l">Plano</span>
+        <button class="ss-input ss-select is-disabled" type="button" disabled aria-labelledby="s5l s5v" aria-describedby="s5h"><span class="ss-select__value" id="s5v">Hub pessoal</span><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+        <p class="ss-field__help caption" id="s5h">O plano muda pela assinatura, em Pagamento.</p>
+      </div>
+
+      <div class="ss-demo-head" style="margin-top:var(--size-2)"><h2 class="overline ss-demo-title">2 a 4 opções: rádio visível</h2></div>
+      <fieldset class="ss-fieldset">
+        <legend class="label">Tema</legend>
+        <div class="sl-themes body-sm">
+          <label class="ss-check ss-radio"><input type="radio" name="tema"><span class="ss-check__box"><span class="ss-radio__dot"></span></span><span class="ss-check__text">Claro</span></label>
+          <label class="ss-check ss-radio"><input type="radio" name="tema"><span class="ss-check__box"><span class="ss-radio__dot"></span></span><span class="ss-check__text">Escuro</span></label>
+          <label class="ss-check ss-radio"><input type="radio" name="tema" checked><span class="ss-check__box"><span class="ss-radio__dot"></span></span><span class="ss-check__text">Sistema</span></label>
+        </div>
+      </fieldset>
+
+      <div class="ss-demo-head" style="margin-top:var(--size-2)"><h2 class="overline ss-demo-title">Idioma compacto</h2></div>
+      <div class="ss-demo-row">
+        <button class="ss-btn ss-btn--ghost ss-lang button" type="button" aria-label="Idioma" aria-haspopup="menu"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/> <path d="M2 12h20"/></svg>PT<svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+        <span class="caption ss-demo-note">Mais de 10 opções (países): ComboBox com busca. Nos sites, &lt;select&gt; nativo.</span>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Avatar</title></head>
+<body>
+<main class="ss-demo">
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Pessoa</h2><span class="caption ss-demo-note">24 · 32 · 40 · 64 · 96 · iniciais em text-secondary sobre interactive-secondary, sem cor aleatória</span></div>
+    <div class="ss-demo-row ss-demo-row--loose">
+      <span class="ss-avatar ss-avatar--24" role="img" aria-label="Ana Souza">AS</span>
+      <span class="ss-avatar" role="img" aria-label="Ana Souza">AS</span>
+      <span class="ss-avatar ss-avatar--40" role="img" aria-label="Rafael Costa">RC</span>
+      <span class="ss-avatar ss-avatar--64" role="img" aria-label="Rafael Costa">RC</span>
+      <span class="ss-avatar ss-avatar--96" role="img" aria-label="Ana Souza">AS</span>
+      <span class="ss-avatar ss-avatar--40" role="img" aria-label="Pessoa sem nome"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/> <circle cx="12" cy="7" r="4"/></svg></span>
+    </div>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Organização</h2><span class="caption ss-demo-note">quadrado com raio md; instituição sem logo usa as iniciais</span></div>
+    <div class="ss-demo-row ss-demo-row--loose">
+      <span class="ss-avatar ss-avatar--org" role="img" aria-label="Singularidade Digital">SD</span>
+      <span class="ss-avatar ss-avatar--40 ss-avatar--org" role="img" aria-label="Singularidade Digital">SD</span>
+      <span class="ss-avatar ss-avatar--64 ss-avatar--org" role="img" aria-label="Singularidade Digital">SD</span>
+      <span class="caption ss-demo-note">Ordem: foto (com borda interna subtle), iniciais, ícone user. Nunca o círculo azul com “I” ou “S” em Arial.</span>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

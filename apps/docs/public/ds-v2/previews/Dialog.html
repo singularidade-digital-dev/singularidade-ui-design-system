@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Dialog</title>
+<style>
+  .dl-stage { border-radius: var(--radius-lg); overflow: hidden; }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Destrutivo · sm 400px</h2><span class="caption ss-demo-note">título em pergunta, consequência com datas, botões com verbo; foco inicial em “Manter”</span></div>
+    <div class="dl-stage ss-overlay">
+      <div class="ss-dialog ss-dialog--sm" role="alertdialog" aria-modal="true" aria-labelledby="d1t" aria-describedby="d1d">
+        <div class="ss-dialog__head">
+          <h2 class="heading-sm" id="d1t">Cancelar Legislativo?</h2>
+          <button class="ss-btn ss-btn--icon ss-btn--32 ss-btn--ghost ss-dialog__close" type="button" aria-label="Fechar"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button>
+        </div>
+        <div class="ss-dialog__body body-sm" id="d1d">
+          <p>O acesso continua até 30/11, o fim do mês já pago. Não há reembolso proporcional, e nada mais é cobrado depois.</p>
+        </div>
+        <div class="ss-dialog__foot">
+          <button class="ss-btn ss-btn--secondary button is-focus" type="button">Manter</button>
+          <button class="ss-btn ss-btn--danger button" type="button">Cancelar assinatura</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Formulário · md 560px</h2><span class="caption ss-demo-note">resumo antes de pagar; primário com spinner durante o envio</span></div>
+    <div class="dl-stage ss-overlay">
+      <div class="ss-dialog ss-comfortable" role="dialog" aria-modal="true" aria-labelledby="d2t">
+        <div class="ss-dialog__head">
+          <h2 class="heading-sm" id="d2t">Assinar IBGE</h2>
+          <button class="ss-btn ss-btn--icon ss-btn--32 ss-btn--ghost ss-dialog__close" type="button" aria-label="Fechar"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button>
+        </div>
+        <div class="ss-dialog__body body-sm">
+          <p><strong>R$&nbsp;19,90 por mês.</strong> Renovação automática todo mês; cancele quando quiser.</p>
+          <p>Primeira compra: o pagamento com cartão fica no Stripe e nunca passa por nós. No Brasil, o CPF é exigido para a nota.</p>
+          <div class="ss-field">
+            <label class="ss-field__label label" for="d2c">CPF</label>
+            <div class="ss-input"><input id="d2c" type="text" inputmode="numeric" autocomplete="off" value="123.456.789-09" aria-describedby="d2h"></div>
+            <p class="ss-field__help caption" id="d2h">Obrigatório para quem compra no Brasil</p>
+          </div>
+        </div>
+        <div class="ss-dialog__foot">
+          <button class="ss-btn ss-btn--lg ss-btn--secondary button-lg" type="button" disabled>Voltar</button>
+          <button class="ss-btn ss-btn--lg ss-btn--primary button-lg" type="button" aria-busy="true"><svg class="ss-icon ss-spin" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>Abrindo o pagamento…</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

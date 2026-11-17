@@ -1,0 +1,83 @@
+---
+title: Iconografia
+description: Uma família só, Lucide mais os 10 ícones ss:*, com tamanhos, cores e regras de acessibilidade
+sidebar: { order: 7 }
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## Uma família só
+
+| Origem            | Quantidade        | Quando usar                                                     |
+| ----------------- | ----------------- | --------------------------------------------------------------- |
+| **Lucide**        | 85 ícones curados | Ações comuns (search, edit, settings, user)                     |
+| **Próprios `ss:*`** | 10 ícones         | Domínio da Singularidade (tenant, mcp-server, eula, billing-cycle) |
+
+- Lucide (lucide-static 0.469.0, em `@singularidade/brand-assets`) mais os 10 ícones `ss:*` próprios.
+- Traço 2, viewBox 24, pontas arredondadas, cor em `currentColor`. Os 10 `ss:*` do pacote ainda têm traço 1.5; na v2, passam a 2.
+- Como `<img>`, um ícone sai preto. No produto, use o SVG inline, com a cor do texto: `color-text-secondary` em ícone neutro, a cor `-text` ou `-solid` do tom em status, `color-interactive-primary` no item atual. Se só puder usar `<img>`, a tinta é #261a21 sobre claro e #ffffff sobre escuro.
+
+## Tamanhos
+
+- `icon-sm` (16) em botão, campo e chip.
+- `icon-md` (20) em menu, alerta, toast e SideNav.
+- `icon-lg` (24) no símbolo do cabeçalho.
+- `icon-xl` (32) no EmptyState.
+- `icon-2xl` (48) no shell de carregamento.
+- Dentro de badge, 12px; em metadado, 14px.
+
+## Regras
+
+- Ícone com significado leva texto visível ou `aria-label`; ícone decorativo leva `aria-hidden`.
+- Não misture duas famílias na mesma tela. Nos apps Vaadin, troque VaadinIcon por Lucide tela a tela.
+- O símbolo de acessibilidade da LBI é o ícone `accessibility` com o texto "Acessibilidade": no rodapé dos sites, do login e das telas do Hub.
+- Carregando é o ícone `loader-circle` girando (`ss-spin`), no lugar do ícone do controle.
+
+## Os ícones dos componentes
+
+- Navegação: `house`, `menu`, `chevron-down`, `chevron-up`, `chevron-right`, `arrow-up`, `arrow-right` (no lugar do “→” em texto), `external-link`, `log-out`, `globe`, `sun`, `moon`.
+- Ações: `plus`, `pencil`, `trash-2`, `copy`, `upload`, `refresh-cw`, `search`, `x`, `check`, `minus`, `eye`, `eye-off`, `ellipsis`, `ellipsis-vertical`, `sliders-horizontal`.
+- Status: `circle-check`, `circle-alert`, `circle-x`, `triangle-alert`, `info`, `circle-help`, `loader-circle` (girando, no carregamento), `badge-check` (editor oficial).
+- Conteúdo e menus: `user`, `users`, `user-check`, `building-2`, `layers`, `database`, `server`, `server-off`, `file-text`, `folder-open`, `list-checks` (roteiros), `cog` (ferramentas), `key-round` (chaves de API), `credit-card` (Pagamento), `shield-check` (Privacidade), `mail`, `bell`, `chart-column`, `chart-pie`.
+- Acessibilidade (LBI): `accessibility`, sempre com o texto "Acessibilidade".
+
+`accessibility` e `credit-card` vêm do lucide-static 0.469.0 e ainda não estão no subconjunto do pacote.
+
+## Próprios (ss:\*)
+
+Ícones de domínio desenhados no padrão Lucide:
+
+| Nome                     | Conceito                      |
+| ------------------------ | ----------------------------- |
+| `ss:tenant`              | Prédio (organização)          |
+| `ss:mcp-server`          | Rack servidor com indicadores |
+| `ss:tool`                | Chave inglesa                 |
+| `ss:eula-signed`         | Documento + check             |
+| `ss:eula-pending`        | Documento + relógio           |
+| `ss:provisioning`        | Loader em curso               |
+| `ss:billing-cycle`       | Relógio + ticks de cobrança   |
+| `ss:tax-id`              | Cartão de identificação       |
+| `ss:integration-pending` | 2 caixas conectadas tracejado |
+| `ss:compliance`          | Escudo + check                |
+
+## Uso no Vaadin Flow
+
+O build do `brand-assets` gera `build/vaadin-iconset.js`, que registra o iconset `ss` no `<vaadin-icon>`. Dentro do monorepo, o pacote resolve pelo workspace do pnpm:
+
+```js
+import '@singularidade/brand-assets/build/vaadin-iconset.js';
+```
+
+```html
+<vaadin-icon icon="ss:tenant"></vaadin-icon>
+```
+
+<Aside type="caution">
+  Fora do monorepo, o iconset ainda não tem como ser importado: `@singularidade/brand-assets` não
+  está no npm, e o JAR leva o arquivo em `META-INF/resources/brand-assets/vaadin-iconset.js`, fora
+  das pastas de onde o Vaadin importa JavaScript de um JAR. Veja [Vaadin Flow](/devs/vaadin-flow/).
+</Aside>
+
+## Adicionar um ícone próprio
+
+O SVG novo entra em `packages/brand-assets/src/icons/custom/<nome>.svg`, no padrão Lucide (traço 2), otimizado com o SVGO, que já é dependência do pacote. O build regenera o sprite, o iconset e o catálogo JSON. Veja [Como contribuir](/devs/contribuir/).

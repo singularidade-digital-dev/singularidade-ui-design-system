@@ -3,3 +3,5 @@ dist/
 node_modules/
 *.log
 public/logos/
+public/ds-v2/tokens/
+public/ds-v2/fonts/

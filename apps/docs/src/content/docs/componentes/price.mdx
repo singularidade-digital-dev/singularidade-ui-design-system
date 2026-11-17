@@ -1,0 +1,26 @@
+---
+title: Price
+description: Preço sempre exato, com período, renovação e forma de cancelar visíveis antes de pagar.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Preço sempre exato, com período, renovação e forma de cancelar visíveis antes de pagar.
+
+<DsPreview name="Price" title="Prévia do Price: inline, destaque, com código de parceiro e carregando" height={340} />
+
+## Formatos
+
+- Inline (`ss-price`): "R$ 19,90 por mês". O valor em `body-sm` 600 `color-text-primary`; o período em `color-text-secondary`.
+- Destaque (`ss-price--display`): valor em `heading` (28/36 700) com tabular-nums e a moeda na mesma linha de base; "/mês" em 14/20 `color-text-secondary`; embaixo, "Renova todo mês. Cancele quando quiser."
+
+## Estados
+
+- Grátis. Com teste: badge brand "5 consultas grátis".
+- Com código de parceiro real: o preço antigo riscado (`ss-price__old`, com o texto oculto "preço original"), o valor novo e o prazo ("no 1º mês").
+- Fora de venda: badge neutro. Carregando: esqueleto de 80×28px.
+
+## Regras
+
+- Formate com Intl, moeda BRL e espaço inseparável. Período: "por mês" (pt), "per month" (en), "al mes" (es).
+- Proibido: "a partir de" que esconde o preço real, contagem regressiva, desconto sem código real. Veja [Ética](/principios/etica/#preço).

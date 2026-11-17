@@ -1,0 +1,27 @@
+---
+title: Stepper
+description: Passos numerados para fluxos de mais de uma tela, com o passo atual em destaque e "Voltar" que mantém os dados.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Passos numerados para fluxos de mais de uma tela, como o cadastro de empresa, com o passo atual em destaque e "Voltar" que mantém os dados.
+
+<DsPreview name="Stepper" title="Prévia do Stepper: passo 2 de 3" height={290} />
+
+## Medidas
+
+- Círculos de 24px (`size-6`). Atual: fundo `color-interactive-primary` e número em `color-on-primary`. Feito: check em `color-interactive-primary`. Próximo: borda `color-border-control` e número em `color-text-secondary`.
+- Linha de 2px em `color-border-default` entre os passos; rótulo abaixo do círculo.
+- Acima, "Passo 2 de 3" em `caption`.
+
+## Acessibilidade
+
+Lista ordenada com `aria-current="step"` no atual e o estado em texto oculto (", concluído", ", atual").
+
+## Regras
+
+- "Voltar" mantém o que foi digitado.
+- Passos são Stepper, nunca [Tabs](/componentes/tabs/).
+- Os passos reais do cadastro de empresa: Empresa, Fiscal, Pagamento.
+- Telas de sucesso e de erro: o ícone num quadro tingido (`color-feedback-*-surface`), na cor `color-feedback-*-text`, nunca o ✓ ou o ✗ brancos sobre um círculo saturado.

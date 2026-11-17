@@ -1,0 +1,27 @@
+---
+title: Toast
+description: Confirmação breve do que a pessoa acabou de fazer, com "Desfazer" quando a ação é reversível.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Confirmação breve do que a pessoa acabou de fazer, com "Desfazer" quando a ação é reversível.
+
+<DsPreview name="Toast" title="Prévia do Toast: sucesso, com Desfazer, aviso e erro" height={410} />
+
+## Aparência
+
+- Largura de 360px (no máximo 100vw − 32px), padding de 12px 16px, raio `radius-lg`, fundo raised, borda de 1px subtle, `shadow-lg`.
+- Ícone de 20px na cor `-solid` do tom; texto em `body-sm`.
+- Ação terciária opcional ("Desfazer") e botão fechar de 32px.
+
+## Posição e duração
+
+- Desktop: canto superior direito. Celular: embaixo, em largura total. No máximo 3 ao mesmo tempo.
+- Sucesso e info: 5s, ou 8s com ação. Aviso: 8s. Erro: fica até a pessoa fechar.
+- Pausa com o ponteiro em cima ou com o foco. `role="status"`; no erro, `role="alert"`.
+
+## Quando usar
+
+- Só para confirmar o que a pessoa fez: "Perfil atualizado", "Endereço copiado", "Movido para a lixeira. Desfazer".
+- Erro de formulário fica no campo. Aviso que pede ação vira [Alert](/componentes/alert/).

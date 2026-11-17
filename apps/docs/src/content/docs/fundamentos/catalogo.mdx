@@ -1,0 +1,78 @@
+---
+title: Catálogo de tokens
+description: Todos os tokens do Design System v2, com o valor no claro e no escuro e o uso de cada um
+sidebar: { order: 11 }
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import TokenTables from '../../../components/TokenTables.astro';
+
+Esta página lê o `tokens.json` do Design System v2, que o repositório guarda byte a byte em `packages/tokens/reference/ds-v2.tokens.json`. O pacote `@singularidade/tokens` publicado (1.0.0) é o port desse arquivo, e os testes do pacote conferem cada token nos dois temas em todas as saídas (`tests/v2-parity.test.ts`). Os nomes da tabela são as variáveis CSS, com `--` na frente: `color-surface-base` é `var(--color-surface-base)`.
+
+<Aside title="O que muda entre o tokens.json e o pacote">
+  Nenhum valor diverge. Há três diferenças de forma: as famílias de fonte se chamam `family-sans`,
+  `family-mono` e `family-email` no `tokens.json` e `--font-family-*` no CSS; os tamanhos de fonte
+  estão em px no `tokens.json` (e no JS, no JSON e no Java) e saem em rem no CSS; e o pacote
+  declara também os nomes da v1, como aliases deprecados, até a 1.2. "Novo na v2" e "Mudou na v2",
+  nos textos de uso, comparam com os tokens da versão anterior.
+</Aside>
+
+## Cor: tokens semânticos
+
+O que os componentes leem. O quadro de cada valor mostra a cor sobre a superfície base do tema.
+
+<TokenTables section="semantic" />
+
+## Cor: aliases de componente
+
+<TokenTables section="component" />
+
+## Cor: marca
+
+<TokenTables section="brand" />
+
+## Cor: rampas
+
+<TokenTables section="ramps" />
+
+## Tipografia
+
+<TokenTables section="type" />
+
+<TokenTables section="fontSize" />
+
+<TokenTables section="fontWeight" />
+
+<TokenTables section="lineHeight" />
+
+<TokenTables section="letterSpacing" />
+
+## Espaço
+
+<TokenTables section="spacing" />
+
+## Raio
+
+<TokenTables section="radius" />
+
+## Sombra
+
+<TokenTables section="shadow" />
+
+## Movimento
+
+<TokenTables section="duration" />
+
+<TokenTables section="easing" />
+
+## Layout
+
+<TokenTables section="breakpoint" />
+
+<TokenTables section="container" />
+
+<TokenTables section="control" />
+
+## Camadas
+
+<TokenTables section="zIndex" />

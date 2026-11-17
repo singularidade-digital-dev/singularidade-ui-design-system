@@ -1,0 +1,52 @@
+---
+title: Checkbox
+description: Caixa de seleção de 20px com rótulo clicável, que também é a linha de termos e de consentimento opcional do cadastro.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Caixa de seleção de 20px com rótulo clicável; também é a linha de termos e de consentimento opcional do cadastro.
+
+<DsPreview name="Checkbox" title="Prévia do Checkbox: estados, termos obrigatórios e consentimento opcional" height={516} />
+
+## Caixa
+
+- 20×20px, raio `radius-sm` (6px), borda de 1px `color-border-control` sobre `color-surface-raised`.
+- Marcado: fundo `color-interactive-primary` e check em `color-on-primary`. Indeterminado: um traço.
+- Hover: borda em `color-text-muted`. Foco: outline de 2px com offset de 2px na caixa.
+- Desabilitado: borda subtle, fundo sunken, rótulo em `color-text-disabled`.
+- Somente leitura: check em `color-text-secondary` e borda tracejada, sem opacidade reduzida.
+- Erro: borda `color-feedback-error-solid` e a mensagem abaixo da linha.
+
+## Rótulo
+
+- 14/20 no compacto ou 16/24 no confortável, em `color-text-primary`, a 12px da caixa (`size-3`), e clicável.
+- A caixa alinha com a primeira linha do rótulo. No confortável, a linha toda tem pelo menos 44px.
+
+## O que você fornece
+
+```html
+<label class="ss-check">
+  <input type="checkbox" />
+  <span class="ss-check__box"><!-- ícones check e minus --></span>
+  <span class="ss-check__text">Rótulo</span>
+</label>
+```
+
+O input real fica sobre a caixa: clique, teclado e leitor de tela funcionam sem JS.
+
+## Linha de consentimento opcional
+
+- A caixa, o texto "Personalizar ofertas com base no meu uso" e "(opcional)" em `color-text-secondary`; na linha de baixo, alinhado ao rótulo, o link "Como funciona", que abre um [Dialog](/componentes/dialog/) com o texto completo.
+- Desmarcada por padrão. Sem moldura, sem fundo, sem selo, com o mesmo peso das outras linhas. Separada dos obrigatórios por 16px. Nunca condiciona o cadastro.
+
+## Termos obrigatórios
+
+- Sem ponto vermelho. Se faltar o aceite, o erro aparece no envio: "Para usar o Integras Hub, aceite os Termos de Uso e a Política de Privacidade."
+- O aceite dos termos não desabilita o botão primário: o erro aparece no envio.
+
+## Vaadin 25
+
+`--vaadin-checkbox-size: 20px`, `--vaadin-checkbox-border-radius: 6px`, `--vaadin-checkbox-background` e `--vaadin-checkbox-checkmark-color: var(--color-on-primary)`; a borda vem de `::part(checkbox)` com `box-shadow: inset 0 0 0 1px var(--color-border-control)`.
+
+- No `vaadin-bindings` 1.0.0: borda de 1px em `color-border-control` sobre `input-background` e um anel de foco só, em `color-border-focus`, também no rádio.

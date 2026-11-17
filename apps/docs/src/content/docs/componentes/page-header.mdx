@@ -1,0 +1,24 @@
+---
+title: PageHeader
+description: Cabeçalho de página com trilha opcional, h1, descrição, ações e abas, que tira o título da barra do topo.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Cabeçalho de página com trilha opcional, h1, descrição, ações e abas; tira o título da barra do topo.
+
+<DsPreview name="PageHeader" title="Prévia do PageHeader: Hub e admin compacto" height={380} />
+
+## Conteúdo
+
+- Trilha (`ss-crumbs`), só a partir do 3º nível.
+- h1 em `heading` (`heading-xl` a partir de 640px no Hub); `heading-md` nas listas compactas do admin.
+- Descrição em `body` `color-text-secondary`, até 72ch.
+- Ações à direita. Nas telas com tour, o botão de ajuda: só o ícone circle-help, ghost, com `aria-label` e o tooltip "Ver o tour desta página". Abas opcionais embaixo.
+
+## Regras
+
+- O título quebra em até 2 linhas, sem reticências.
+- Nada de texto fixo sob o título. A exceção é o Meu espaço do Hub no celular, que mantém o nome do recurso sob o nome da pessoa.
+- Um só componente para todo cabeçalho de página, no lugar dos cabeçalhos próprios de cada tela e de diálogo.
+- O botão de ajuda fica sempre no mesmo lugar, no fim do PageHeader (WCAG 3.2.6). Veja [Tour](/componentes/tour/).

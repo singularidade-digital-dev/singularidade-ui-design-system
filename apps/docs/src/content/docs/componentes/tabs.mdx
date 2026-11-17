@@ -1,0 +1,27 @@
+---
+title: Tabs
+description: Abas para trocar de vista dentro da mesma página, com indicador de 2px na aba atual.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Abas para trocar de vista dentro da mesma página, com indicador de 2px na aba atual.
+
+<DsPreview name="Tabs" title="Prévia das Tabs: confortável e compacta, com contagem" height={300} />
+
+## Medidas
+
+- Altura de 44px no confortável e de 40px no compacto; rótulo `label` (14/20 500) em `color-text-secondary`.
+- Selecionada: peso 600, `color-text-primary` e indicador de 2px em `color-interactive-primary` embaixo. Hover: `color-text-primary`.
+- Trilho de 1px em `color-border-subtle`.
+- Contagem como pill neutra (`ss-count badge`): "Catálogo 5", "Assinados 2".
+
+## Comportamento
+
+- `role` tablist, tab e tabpanel; as setas do teclado trocam de aba.
+- Sem espaço, as abas rolam de lado, sem esmaecimento nas bordas.
+- Abaixo de 1024px, a navegação de Minha conta vira abas.
+
+## Regras
+
+Tabs não servem para passos: para isso existe o [Stepper](/componentes/stepper/).

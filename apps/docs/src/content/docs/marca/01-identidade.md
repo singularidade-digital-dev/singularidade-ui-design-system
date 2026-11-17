@@ -1,23 +1,25 @@
 ---
-title: 1 · Identidade & manifesto
-description: Quem é a Singularidade Digital, missão, propósito
+title: 1 · Identidade e manifesto
+description: Quem é a Singularidade Digital, as duas marcas e os quatro valores do manifesto
 sidebar: { order: 1 }
 ---
 
-A **Singularidade Digital** é a empresa-matriz que constrói SaaS para automação de operações. O primeiro produto é a **integras.digital** — MCP Server as a Service.
+A **Singularidade Digital** é a empresa que faz o **Integras**: conectores de IA para empresas, mais o **Integras Hub**, para pessoas. "integras.digital" é o domínio, não o nome do produto.
 
 ## Manifesto
 
 **Direto.** Produtos resolvem problemas reais de quem opera o negócio, não impressionam quem nunca usou.
 
-**Respeitoso.** Tecnologia complexa com interface simples; não punimos o usuário pela curva de aprendizado.
+**Respeitoso.** Tecnologia complexa com interface simples; ninguém é punido pela curva de aprendizado.
 
-**Confiante mas humano.** Tom assertivo nas affirmations, empático nos erros. Em PT-BR primeira classe — não tradução literal de inglês.
+**Confiante, mas humano.** Firme nas afirmações e acolhedor no erro. O português do Brasil é escrito na origem, não traduzido do inglês.
 
-**Aberto.** Tokens, brand book e código são públicos sob Apache-2.0. Decisões em ADRs.
+**Aberto.** Tokens, documentação e código são públicos, sob a licença Apache-2.0, e as decisões ficam registradas em ADRs.
 
-## Sub-marcas
+Na interface, os quatro valores viram regra de tela: veja [Norte e assinatura visual](/principios/norte/).
 
-Singularidade é a matriz. Cada produto (integras.digital, futuros) é **endosso** com mesma DNA visual — tipografia, neutros, cor de ação, princípios. Diferenciação por logo próprio e pelas três cores da marca: o Integras é a marca padrão, e a Singularidade usa a sua paleta original. Veja [Multi-marca](/foundations/multi-marca/).
+## Duas marcas, um sistema
 
-Em código, isso é overlay fino: `identity.json` aponta path do logo, `overrides.json` fica vazio quando segue padrão (o da Singularidade troca só as três cores da marca).
+A Singularidade é a matriz, e o Integras é a marca padrão dos tokens. As duas dividem tipografia, neutros, cor de ação e princípios. Muda o logo, o nome e as três cores da marca: a Singularidade usa a sua paleta original. Veja [Multi-marca](/fundamentos/multi-marca/).
+
+Em código, isso é uma camada fina: o `identity.json` de cada marca aponta o caminho do logo, e o `overrides.json` guarda só o que a marca troca (vazio no Integras; as três cores da marca na Singularidade).

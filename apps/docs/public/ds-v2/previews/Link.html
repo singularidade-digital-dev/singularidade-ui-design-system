@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Link</title></head>
+<body>
+<main class="ss-demo">
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">No meio do texto</h2><span class="caption ss-demo-note">sempre sublinhado; o texto diz o destino</span></div>
+    <p class="body" style="max-width:72ch">Ao criar a conta, você aceita os <a class="ss-link" href="#termos">Termos de Uso</a> e a <a class="ss-link" href="#privacidade">Política de Privacidade</a>. Dúvidas sobre os seus dados: <a class="ss-link" href="#contato">fale com a gente</a>.</p>
+    <div class="ss-demo-row ss-demo-row--loose">
+      <span class="caption ss-demo-note">Padrão</span><a class="ss-link body" href="#a">Termos de Uso</a>
+      <span class="caption ss-demo-note">Hover</span><a class="ss-link body is-hover" href="#b">Termos de Uso</a>
+      <span class="caption ss-demo-note">Foco</span><a class="ss-link body is-focus" href="#c">Termos de Uso</a>
+    </div>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Sozinho</h2><span class="caption ss-demo-note">label 14/20 500; sublinha só no hover</span></div>
+    <div class="ss-demo-row ss-demo-row--loose">
+      <a class="ss-link ss-link--standalone label" href="#entrar">Já tenho conta: entrar</a>
+      <a class="ss-link ss-link--standalone label is-hover" href="#como">Como funciona</a>
+      <a class="ss-link ss-link--standalone label" href="#ajuda" target="_blank" rel="noopener">Central de ajuda do Claude<svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/> <path d="M10 14 21 3"/> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><span class="ss-sr-only"> (abre em nova aba)</span></a>
+    </div>
+    <p class="caption ss-demo-note">Externo: ícone external-link de 14px e o texto oculto “(abre em nova aba)”. Nova aba só ao sair do fluxo; os termos, durante o cadastro, abrem num Dialog.</p>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Dentro de Alert</h2><span class="caption ss-demo-note">color-text-primary, sublinhado</span></div>
+    <div class="ss-alert ss-alert--warning" role="status">
+      <svg class="ss-icon ss-alert__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/> <path d="M12 9v4"/> <path d="M12 17h.01"/></svg>
+      <div class="ss-alert__body body-sm">
+        <p class="ss-alert__title">Pagamento pendente</p>
+        <p>O acesso ao TSE continua até 15/11. <a class="ss-link ss-link--alert" href="#pagamento">Atualizar pagamento</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Header</title>
+<style>
+  .hd-frame { border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface-base); }
+  .hd-menuwrap { display: flex; justify-content: flex-end; padding: var(--size-2) var(--size-4) var(--size-4); }
+  .hd-themes { padding: var(--size-1) var(--size-3) var(--size-2); }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">App · Integras Hub</h2><span class="caption ss-demo-note">56px · logo leva ao início · “Conectores” e “Meu espaço” · à direita, só o menu da pessoa</span></div>
+    <div class="hd-frame">
+      <header class="ss-appbar">
+        <div class="ss-appbar__start">
+          <a class="ss-brandlink" href="#inicio"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii05My42NyAxNC4xMyAxMDU1LjAyIDEwNTUuMDIiIHZlcnNpb249IjEuMSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImludGVncmFzLWJyYW5kIiB4MT0iMC41IiB5MT0iMCIgeDI9IjAuNSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTkxRThCIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjRTg2MDZBIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Y1QTYyMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBhdGggZmlsbD0idXJsKCNpbnRlZ3Jhcy1icmFuZCkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTE0MCA2OS40Yy0zIDEuNC02LjYgMi41LTggMi42LTIuNyAwLTExIDQuMS0yMCA5LjhhMTA2IDEwNiAwIDAgMC0yNC41IDI1TDg0IDExM2MtNS41IDguNy04IDIyLjMtOCA0NC4xIDAgMjIuMyAxLjIgMzEuNSA1LjEgMzguOCA2IDExIDcuOSAxMy43IDE0IDE5LjFhNjY4IDY2OCAwIDAgMSAyMS4yIDE5LjFjNSA0LjYgMTguNCAxNy41IDI5LjcgMjguNmE5NDcgOTQ3IDAgMCAwIDMyLjUgMzAuOGw1NSA1Mi42YTk0OCA5NDggMCAwIDAgMzYgMzMuNGwxNiAxNWM3LjcgNy4yIDIxLjQgMjAuMyAzMC41IDI5LjIgMzMgMzIuMiA2OS4xIDY0LjcgNzYuMiA2OC40YTkwIDkwIDAgMCAwIDg1LjYuMXE1LjMtMi42IDIyLTE5YTI0MTQgMjQxNCAwIDAgMSA4OS43LTg1LjZjMS43LTEuOCA0Ny4yLTQ1LjYgNTQuMi01Mi4zbDE2LjUtMTUuNSAyNy44LTI2LjMgMzMtMzEuNSAyMi41LTIxLjUgMTEuNi0xMC41YzI0LjItMjEuNCAyOC0yNi42IDMzLjUtNDYuOCAzLjgtMTMuOCA0LjctMzguNiAxLjYtNDguOWwtMi42LTkuN2MtMy45LTE2LjctMjQuNS00MC41LTQyLjYtNDguOS0xNi42LTcuNy0xOS4zLTguMi00NS41LTguMi0yMi41IDAtMjQuNC4xLTI5LjggMi4zYTM0IDM0IDAgMCAxLTggMi4yYy0zLjcgMC0xNS45IDYuNS0yMC45IDExLjJsLTkuNSA4LjgtMTQuOCAxNC0xOC41IDE3LjRhNjU2NiA2NTY2IDAgMCAwLTcyLjEgNjkuNmMtNDEgNDAuNC03Ny4xIDc0LjUtODEuOCA3N2EzMSAzMSAwIDAgMS0xNi4xLjJjLTEuNC0uNS0xNi4zLTE0LTMzLTI5LjhsLTM1LTMyLjljLTguMy03LjYtMjEuNC0yMC0zOC0zNmExODE4IDE4MTggMCAwIDAtNDktNDZsLTEwLjUtMTAtMTIuNi0xMS45LTEzLjQtMTIuNUMyMjUuMSA4MCAyMTIuOCA3MiAyMDcuOCA3MmMtLjggMC00LjEtMS03LjQtMi4xLTUuMy0yLTguNC0yLjItMzAuNC0yLjYtMjQuMy0uMy0yNC41LS4zLTMwIDIuMW0yODQuMyA1MDcuN2E1MCA1MCAwIDAgMC0yMC4xIDUuNGMtOS44IDMuMi0yOS40IDIwLjMtNzUuNyA2Ni4xLTEyLjEgMTItMzAuMyAyOS42LTQwLjUgMzkuM0wyNTcuNSA3MTcgMjIwIDc1M2wtNTIuNSA1MC41TDEzNiA4MzRjLTUwLjUgNDguMi01MCA0Ny42LTU0LjYgNjMuNi00LjIgMTQuOC00LjggNTIuMy0xIDYyLjRsMy4yIDguOWMuNCAxLjMgMS44IDMuOSAzLjEgNS44czIuNCA0IDIuNCA0LjRjMCA1IDIxIDI0LjQgMzIgMjkuNSAxNiA3LjQgMTguOSA3LjkgNDkgNy45aDI3LjVsOS0zYzEzLTQuMSAxNi42LTcgNDAtMzAuMiAxMS42LTExLjQgMjUuOC0yNS4xIDMxLjUtMzAuNGExNzk4IDE3OTggMCAwIDAgNDkuNi00Ni4zYzUuNi01LjYgMTYuNC0xNiAyNC0yMy4xbDIyLjgtMjEuNWMzNS0zMy40IDQ4LTQ1LjYgNTAtNDcgMy0yLjEgMTguMy0yIDIxLjUuMiAxLjMuOSA5LjQgOC41IDE4IDE3czIwLjggMjAgMjcuMSAyNmMxMyAxMiAyNy4zIDI1LjggNTMuNSA1MS43IDkuOSA5LjggMjEuOCAyMS4xIDI2LjUgMjUuMnMyMi45IDIxLjYgNDAuNSAzOWMzMi42IDMyLjEgMzguNCAzNi44IDQ2LjcgMzguMyAyIC40IDUuOSAxLjYgOC41IDIuOCA0LjYgMiA2LjEgMi4yIDMwLjggMmwyNi0uMSA5LjMtM2E4NSA4NSAwIDAgMCA1MC4xLTQ0YzguNC0xNi42IDguNS01OC42LjMtODEtMy04LTYuOS0xMi4zLTM3LjQtNDEuNi0zNy41LTM2LTYwLjgtNTguNC03OS44LTc3LTExLjgtMTEuNy0yNC45LTI0LjMtMjktMjhzLTE4LTE3LjMtMzEtMzAtMjcuNS0yNy0zMi41LTMxLjZjLTIxLjktMjAuNS0zMC4xLTI4LjQtNDcuNS00NS40YTc1OCA3NTggMCAwIDAtNTEuOS00Ny43IDY3IDY3IDAgMCAwLTI2LjEtMTAuMyA5NCA5NCAwIDAgMC0yMy43LS40Ii8+Cjwvc3ZnPgo=" alt=""><span class="brand-label">Integras Hub</span></a>
+        </div>
+        <nav class="ss-appbar__nav" aria-label="Principal">
+          <a class="ss-navlink label" href="#conectores" aria-current="page">Conectores</a>
+          <a class="ss-navlink label" href="#meu-espaco">Meu espaço</a>
+        </nav>
+        <div class="ss-appbar__end">
+          <button class="ss-usermenu" type="button" aria-haspopup="menu" aria-expanded="true"><span class="ss-avatar" aria-hidden="true">AS</span><span class="ss-usermenu__name label">Ana Souza</span><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+      </header>
+      <div class="hd-menuwrap">
+        <div class="ss-menu" role="menu" aria-label="Conta">
+          <div class="ss-menu__who" title="Ana Souza · ana.souza@empresa.com.br"><span class="label">Ana Souza</span><span class="caption ss-secondary">ana.souza@empresa.com.br</span></div>
+          <div class="ss-menu__sep" role="separator"></div>
+          <a class="ss-menu__item label" role="menuitem" href="#conta"><svg class="ss-icon ss-icon--md" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/> <circle cx="12" cy="7" r="4"/></svg>Minha conta</a>
+          <a class="ss-menu__item label is-hover" role="menuitem" href="#pagamento"><svg class="ss-icon ss-icon--md" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="20" height="14" x="2" y="5" rx="2"/> <line x1="2" x2="22" y1="10" y2="10"/></svg>Pagamento</a>
+          <a class="ss-menu__item label" role="menuitem" href="#armazenamento"><svg class="ss-icon ss-icon--md" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><ellipse cx="12" cy="5" rx="9" ry="3"/> <path d="M3 5V19A9 3 0 0 0 21 19V5"/> <path d="M3 12A9 3 0 0 0 21 12"/></svg>Armazenamento</a>
+          <a class="ss-menu__item label" role="menuitem" href="#privacidade"><svg class="ss-icon ss-icon--md" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/> <path d="m9 12 2 2 4-4"/></svg>Privacidade</a>
+          <div class="ss-menu__sep" role="separator"></div>
+          <p class="ss-menu__label overline">Preferências</p>
+          <div class="ss-menu__item label" role="menuitem"><svg class="ss-icon ss-icon--md" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/> <path d="M2 12h20"/></svg>Idioma<span class="ss-menu__meta caption">Português</span></div>
+          <div class="hd-themes">
+            <div class="ss-seg" role="radiogroup" aria-label="Tema">
+              <button class="ss-seg__opt caption" role="radio" aria-checked="false" type="button">Claro</button>
+              <button class="ss-seg__opt caption" role="radio" aria-checked="false" type="button">Escuro</button>
+              <button class="ss-seg__opt caption" role="radio" aria-checked="true" type="button">Sistema</button>
+            </div>
+          </div>
+          <div class="ss-menu__sep" role="separator"></div>
+          <a class="ss-menu__item ss-menu__item--danger label" role="menuitem" href="#excluir"><svg class="ss-icon ss-icon--md" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18"/> <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/> <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/> <line x1="10" x2="10" y1="11" y2="17"/> <line x1="14" x2="14" y1="11" y2="17"/></svg>Excluir a conta</a>
+          <button class="ss-menu__item label" role="menuitem" type="button"><svg class="ss-icon ss-icon--md" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/> <polyline points="16 17 21 12 16 7"/> <line x1="21" x2="9" y1="12" y2="12"/></svg>Sair</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">App com menu lateral</h2><span class="caption ss-demo-note">botão de menu de 44px separado do link do logo; o título da página vai para o PageHeader</span></div>
+    <div class="hd-frame">
+      <header class="ss-appbar">
+        <div class="ss-appbar__start">
+          <button class="ss-btn ss-btn--icon ss-btn--lg ss-btn--ghost" type="button" aria-label="Abrir menu" aria-expanded="false"><svg class="ss-icon ss-icon--md" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><line x1="4" x2="20" y1="12" y2="12"/> <line x1="4" x2="20" y1="6" y2="6"/> <line x1="4" x2="20" y1="18" y2="18"/></svg></button>
+          <a class="ss-brandlink is-focus" href="#inicio"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii05My42NyAxNC4xMyAxMDU1LjAyIDEwNTUuMDIiIHZlcnNpb249IjEuMSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImludGVncmFzLWJyYW5kIiB4MT0iMC41IiB5MT0iMCIgeDI9IjAuNSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTkxRThCIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjRTg2MDZBIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Y1QTYyMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBhdGggZmlsbD0idXJsKCNpbnRlZ3Jhcy1icmFuZCkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTE0MCA2OS40Yy0zIDEuNC02LjYgMi41LTggMi42LTIuNyAwLTExIDQuMS0yMCA5LjhhMTA2IDEwNiAwIDAgMC0yNC41IDI1TDg0IDExM2MtNS41IDguNy04IDIyLjMtOCA0NC4xIDAgMjIuMyAxLjIgMzEuNSA1LjEgMzguOCA2IDExIDcuOSAxMy43IDE0IDE5LjFhNjY4IDY2OCAwIDAgMSAyMS4yIDE5LjFjNSA0LjYgMTguNCAxNy41IDI5LjcgMjguNmE5NDcgOTQ3IDAgMCAwIDMyLjUgMzAuOGw1NSA1Mi42YTk0OCA5NDggMCAwIDAgMzYgMzMuNGwxNiAxNWM3LjcgNy4yIDIxLjQgMjAuMyAzMC41IDI5LjIgMzMgMzIuMiA2OS4xIDY0LjcgNzYuMiA2OC40YTkwIDkwIDAgMCAwIDg1LjYuMXE1LjMtMi42IDIyLTE5YTI0MTQgMjQxNCAwIDAgMSA4OS43LTg1LjZjMS43LTEuOCA0Ny4yLTQ1LjYgNTQuMi01Mi4zbDE2LjUtMTUuNSAyNy44LTI2LjMgMzMtMzEuNSAyMi41LTIxLjUgMTEuNi0xMC41YzI0LjItMjEuNCAyOC0yNi42IDMzLjUtNDYuOCAzLjgtMTMuOCA0LjctMzguNiAxLjYtNDguOWwtMi42LTkuN2MtMy45LTE2LjctMjQuNS00MC41LTQyLjYtNDguOS0xNi42LTcuNy0xOS4zLTguMi00NS41LTguMi0yMi41IDAtMjQuNC4xLTI5LjggMi4zYTM0IDM0IDAgMCAxLTggMi4yYy0zLjcgMC0xNS45IDYuNS0yMC45IDExLjJsLTkuNSA4LjgtMTQuOCAxNC0xOC41IDE3LjRhNjU2NiA2NTY2IDAgMCAwLTcyLjEgNjkuNmMtNDEgNDAuNC03Ny4xIDc0LjUtODEuOCA3N2EzMSAzMSAwIDAgMS0xNi4xLjJjLTEuNC0uNS0xNi4zLTE0LTMzLTI5LjhsLTM1LTMyLjljLTguMy03LjYtMjEuNC0yMC0zOC0zNmExODE4IDE4MTggMCAwIDAtNDktNDZsLTEwLjUtMTAtMTIuNi0xMS45LTEzLjQtMTIuNUMyMjUuMSA4MCAyMTIuOCA3MiAyMDcuOCA3MmMtLjggMC00LjEtMS03LjQtMi4xLTUuMy0yLTguNC0yLjItMzAuNC0yLjYtMjQuMy0uMy0yNC41LS4zLTMwIDIuMW0yODQuMyA1MDcuN2E1MCA1MCAwIDAgMC0yMC4xIDUuNGMtOS44IDMuMi0yOS40IDIwLjMtNzUuNyA2Ni4xLTEyLjEgMTItMzAuMyAyOS42LTQwLjUgMzkuM0wyNTcuNSA3MTcgMjIwIDc1M2wtNTIuNSA1MC41TDEzNiA4MzRjLTUwLjUgNDguMi01MCA0Ny42LTU0LjYgNjMuNi00LjIgMTQuOC00LjggNTIuMy0xIDYyLjRsMy4yIDguOWMuNCAxLjMgMS44IDMuOSAzLjEgNS44czIuNCA0IDIuNCA0LjRjMCA1IDIxIDI0LjQgMzIgMjkuNSAxNiA3LjQgMTguOSA3LjkgNDkgNy45aDI3LjVsOS0zYzEzLTQuMSAxNi42LTcgNDAtMzAuMiAxMS42LTExLjQgMjUuOC0yNS4xIDMxLjUtMzAuNGExNzk4IDE3OTggMCAwIDAgNDkuNi00Ni4zYzUuNi01LjYgMTYuNC0xNiAyNC0yMy4xbDIyLjgtMjEuNWMzNS0zMy40IDQ4LTQ1LjYgNTAtNDcgMy0yLjEgMTguMy0yIDIxLjUuMiAxLjMuOSA5LjQgOC41IDE4IDE3czIwLjggMjAgMjcuMSAyNmMxMyAxMiAyNy4zIDI1LjggNTMuNSA1MS43IDkuOSA5LjggMjEuOCAyMS4xIDI2LjUgMjUuMnMyMi45IDIxLjYgNDAuNSAzOWMzMi42IDMyLjEgMzguNCAzNi44IDQ2LjcgMzguMyAyIC40IDUuOSAxLjYgOC41IDIuOCA0LjYgMiA2LjEgMi4yIDMwLjggMmwyNi0uMSA5LjMtM2E4NSA4NSAwIDAgMCA1MC4xLTQ0YzguNC0xNi42IDguNS01OC42LjMtODEtMy04LTYuOS0xMi4zLTM3LjQtNDEuNi0zNy41LTM2LTYwLjgtNTguNC03OS44LTc3LTExLjgtMTEuNy0yNC45LTI0LjMtMjktMjhzLTE4LTE3LjMtMzEtMzAtMjcuNS0yNy0zMi41LTMxLjZjLTIxLjktMjAuNS0zMC4xLTI4LjQtNDcuNS00NS40YTc1OCA3NTggMCAwIDAtNTEuOS00Ny43IDY3IDY3IDAgMCAwLTI2LjEtMTAuMyA5NCA5NCAwIDAgMC0yMy43LS40Ii8+Cjwvc3ZnPgo=" alt=""><span class="brand-label">Integras</span></a>
+        </div>
+        <div class="ss-appbar__end">
+          <button class="ss-usermenu" type="button" aria-haspopup="menu" aria-expanded="false"><span class="ss-avatar" aria-hidden="true">RC</span><span class="ss-usermenu__name label">Rafael Costa</span><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+      </header>
+    </div>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Site</h2><span class="caption ss-demo-note">64px · contêiner de 1200px · “Entrar” terciário, “Criar conta” primário · abaixo de 1024px, menu de 44px</span></div>
+    <div class="hd-frame">
+      <header class="ss-sitebar">
+        <div class="ss-sitebar__inner">
+          <a class="ss-brandlink" href="#inicio"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii05My42NyAxNC4xMyAxMDU1LjAyIDEwNTUuMDIiIHZlcnNpb249IjEuMSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImludGVncmFzLWJyYW5kIiB4MT0iMC41IiB5MT0iMCIgeDI9IjAuNSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTkxRThCIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjRTg2MDZBIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Y1QTYyMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBhdGggZmlsbD0idXJsKCNpbnRlZ3Jhcy1icmFuZCkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTE0MCA2OS40Yy0zIDEuNC02LjYgMi41LTggMi42LTIuNyAwLTExIDQuMS0yMCA5LjhhMTA2IDEwNiAwIDAgMC0yNC41IDI1TDg0IDExM2MtNS41IDguNy04IDIyLjMtOCA0NC4xIDAgMjIuMyAxLjIgMzEuNSA1LjEgMzguOCA2IDExIDcuOSAxMy43IDE0IDE5LjFhNjY4IDY2OCAwIDAgMSAyMS4yIDE5LjFjNSA0LjYgMTguNCAxNy41IDI5LjcgMjguNmE5NDcgOTQ3IDAgMCAwIDMyLjUgMzAuOGw1NSA1Mi42YTk0OCA5NDggMCAwIDAgMzYgMzMuNGwxNiAxNWM3LjcgNy4yIDIxLjQgMjAuMyAzMC41IDI5LjIgMzMgMzIuMiA2OS4xIDY0LjcgNzYuMiA2OC40YTkwIDkwIDAgMCAwIDg1LjYuMXE1LjMtMi42IDIyLTE5YTI0MTQgMjQxNCAwIDAgMSA4OS43LTg1LjZjMS43LTEuOCA0Ny4yLTQ1LjYgNTQuMi01Mi4zbDE2LjUtMTUuNSAyNy44LTI2LjMgMzMtMzEuNSAyMi41LTIxLjUgMTEuNi0xMC41YzI0LjItMjEuNCAyOC0yNi42IDMzLjUtNDYuOCAzLjgtMTMuOCA0LjctMzguNiAxLjYtNDguOWwtMi42LTkuN2MtMy45LTE2LjctMjQuNS00MC41LTQyLjYtNDguOS0xNi42LTcuNy0xOS4zLTguMi00NS41LTguMi0yMi41IDAtMjQuNC4xLTI5LjggMi4zYTM0IDM0IDAgMCAxLTggMi4yYy0zLjcgMC0xNS45IDYuNS0yMC45IDExLjJsLTkuNSA4LjgtMTQuOCAxNC0xOC41IDE3LjRhNjU2NiA2NTY2IDAgMCAwLTcyLjEgNjkuNmMtNDEgNDAuNC03Ny4xIDc0LjUtODEuOCA3N2EzMSAzMSAwIDAgMS0xNi4xLjJjLTEuNC0uNS0xNi4zLTE0LTMzLTI5LjhsLTM1LTMyLjljLTguMy03LjYtMjEuNC0yMC0zOC0zNmExODE4IDE4MTggMCAwIDAtNDktNDZsLTEwLjUtMTAtMTIuNi0xMS45LTEzLjQtMTIuNUMyMjUuMSA4MCAyMTIuOCA3MiAyMDcuOCA3MmMtLjggMC00LjEtMS03LjQtMi4xLTUuMy0yLTguNC0yLjItMzAuNC0yLjYtMjQuMy0uMy0yNC41LS4zLTMwIDIuMW0yODQuMyA1MDcuN2E1MCA1MCAwIDAgMC0yMC4xIDUuNGMtOS44IDMuMi0yOS40IDIwLjMtNzUuNyA2Ni4xLTEyLjEgMTItMzAuMyAyOS42LTQwLjUgMzkuM0wyNTcuNSA3MTcgMjIwIDc1M2wtNTIuNSA1MC41TDEzNiA4MzRjLTUwLjUgNDguMi01MCA0Ny42LTU0LjYgNjMuNi00LjIgMTQuOC00LjggNTIuMy0xIDYyLjRsMy4yIDguOWMuNCAxLjMgMS44IDMuOSAzLjEgNS44czIuNCA0IDIuNCA0LjRjMCA1IDIxIDI0LjQgMzIgMjkuNSAxNiA3LjQgMTguOSA3LjkgNDkgNy45aDI3LjVsOS0zYzEzLTQuMSAxNi42LTcgNDAtMzAuMiAxMS42LTExLjQgMjUuOC0yNS4xIDMxLjUtMzAuNGExNzk4IDE3OTggMCAwIDAgNDkuNi00Ni4zYzUuNi01LjYgMTYuNC0xNiAyNC0yMy4xbDIyLjgtMjEuNWMzNS0zMy40IDQ4LTQ1LjYgNTAtNDcgMy0yLjEgMTguMy0yIDIxLjUuMiAxLjMuOSA5LjQgOC41IDE4IDE3czIwLjggMjAgMjcuMSAyNmMxMyAxMiAyNy4zIDI1LjggNTMuNSA1MS43IDkuOSA5LjggMjEuOCAyMS4xIDI2LjUgMjUuMnMyMi45IDIxLjYgNDAuNSAzOWMzMi42IDMyLjEgMzguNCAzNi44IDQ2LjcgMzguMyAyIC40IDUuOSAxLjYgOC41IDIuOCA0LjYgMiA2LjEgMi4yIDMwLjggMmwyNi0uMSA5LjMtM2E4NSA4NSAwIDAgMCA1MC4xLTQ0YzguNC0xNi42IDguNS01OC42LjMtODEtMy04LTYuOS0xMi4zLTM3LjQtNDEuNi0zNy41LTM2LTYwLjgtNTguNC03OS44LTc3LTExLjgtMTEuNy0yNC45LTI0LjMtMjktMjhzLTE4LTE3LjMtMzEtMzAtMjcuNS0yNy0zMi41LTMxLjZjLTIxLjktMjAuNS0zMC4xLTI4LjQtNDcuNS00NS40YTc1OCA3NTggMCAwIDAtNTEuOS00Ny43IDY3IDY3IDAgMCAwLTI2LjEtMTAuMyA5NCA5NCAwIDAgMC0yMy43LS40Ii8+Cjwvc3ZnPgo=" alt="" style="width:28px;height:28px"><span class="brand-label">Integras</span></a>
+          <nav class="ss-sitebar__nav label" aria-label="Principal">
+            <a href="#produto">Produto</a><a href="#precos">Preços</a><a href="#seguranca">Segurança</a><a href="#sobre">Sobre</a>
+          </nav>
+          <div class="ss-sitebar__end">
+            <a class="ss-btn ss-btn--tertiary button" href="#entrar">Entrar</a>
+            <a class="ss-btn ss-btn--primary button" href="#criar">Criar conta</a>
+          </div>
+        </div>
+      </header>
+    </div>
+    <p class="caption ss-demo-note">O logo do produto é o símbolo com o nome em brand-label. O primeiro foco da página é “Pular para o conteúdo”.</p>
+  </section>
+
+</main>
+</body>
+</html>

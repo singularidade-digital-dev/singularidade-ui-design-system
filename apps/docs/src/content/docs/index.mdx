@@ -1,18 +1,21 @@
 ---
 title: Singularidade Design System
-description: Design system unificado da Singularidade Digital — tokens, brand book, componentes
+description: Design system da Singularidade Digital, com princípios, conteúdo, fundamentos, componentes e tokens do Design System v2
 template: splash
 hero:
-  tagline: Tokens, brand book e componentes da Singularidade Digital — para apps SaaS construídos com Vaadin Flow.
+  tagline: A interface do Integras, do Integras Hub e da Singularidade Digital. Profissional, funcional e sem cara de IA, com tokens, componentes e páginas-modelo para apps, sites e e-mails.
   actions:
     - text: Começar
       link: /comecar/visao-geral/
       icon: right-arrow
       variant: primary
+    - text: Ver os componentes
+      link: /componentes/
+      variant: secondary
     - text: Ver no GitHub
       link: https://github.com/singularidade-digital-dev/singularidade-ui-design-system
       icon: external
-      variant: secondary
+      variant: minimal
 ---
 
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
@@ -21,40 +24,61 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
 <CardGrid>
   <LinkCard
-    title="Marca"
-    href="/marca/01-identidade/"
-    description="Logo, cor, tipografia, voz e tom, movimento. Brand book em 10 capítulos."
+    title="Princípios"
+    href="/principios/norte/"
+    description="O norte, a assinatura visual, as heurísticas, as leis de UX e a ética: o porquê de cada regra."
   />
   <LinkCard
-    title="Foundations"
-    href="/foundations/tokens/"
-    description="Tokens no formato W3C DTF, tema claro e escuro, sub-marcas e saída para CSS, JS, JSON e Java."
+    title="Conteúdo"
+    href="/conteudo/voz-e-tom/"
+    description="Voz e tom, regras de texto nas três línguas, glossário e exemplos reais do produto."
+  />
+  <LinkCard
+    title="Fundamentos"
+    href="/fundamentos/cor/"
+    description="Cor, tipografia, espaço, raio, sombra, foco, movimento, estados, ícones, gráficos e tokens."
   />
   <LinkCard
     title="Componentes"
-    href="/componentes/primitivos/"
-    description="Componentes Vaadin com o tema da marca aplicado."
+    href="/componentes/"
+    description="Os 24 componentes da v2, cada um com a prévia ao vivo no claro e no escuro."
+  />
+  <LinkCard
+    title="Páginas-modelo"
+    href="/paginas-modelo/padroes/"
+    description="Os padrões de tela e os 7 modelos de página: vitrine, login, cadastro, configurações, vazio, e-mail e site."
+  />
+  <LinkCard
+    title="Acessibilidade"
+    href="/acessibilidade/meta-e-base-legal/"
+    description="A meta WCAG 2.2 AA, a LBI na prática e o que o sistema garante, critério a critério."
+  />
+  <LinkCard
+    title="Marca"
+    href="/marca/01-identidade/"
+    description="Identidade, logo e cores das duas marcas, o Integras e a Singularidade."
   />
   <LinkCard
     title="Devs"
-    href="/devs/arquitetura/"
+    href="/devs/vaadin-flow/"
     description="Integração com Vaadin Flow, decisões de arquitetura e como contribuir."
   />
 </CardGrid>
 
-## Paleta brand
+## Paleta da marca
 
-Cores do símbolo do Integras, a marca padrão. A Singularidade usa a paleta original: veja [Cor](/marca/03-cor/).
+As cores do símbolo do Integras, a marca padrão. São cores de marca, não de interface: a cor de ação é o coral-vinho `color-interactive-primary`. A Singularidade usa a paleta original: veja [Cores da marca](/marca/03-cor/).
 
 <div class="ds-palette">
-  <div style="background:#E91E8B">magenta · #E91E8B</div>
-  <div style="background:#E8606A">coral · #E8606A</div>
-  <div style="background:#F5A623">orange · #F5A623</div>
+  <div style="background:#E91E8B"><span>magenta · #E91E8B</span></div>
+  <div style="background:#E8606A"><span>coral · #E8606A</span></div>
+  <div style="background:#F5A623"><span>laranja · #F5A623</span></div>
 </div>
 
-## Status
+## Versões
 
-- Versão **1.0.0** (Design System v2), publicada no AWS CodeArtifact: `digital.singularidade:tokens`, `digital.singularidade:brand-assets` e `digital.singularidade:vaadin-bindings`. Ainda não há pacote no npm. Veja a [v1.0.0](/releases/v1-0-0/).
-- `theme.css` com claro e escuro (Integras como marca padrão; `data-brand="singularidade"` troca só as três cores da marca) e os quatro `{marca}.{tema}.css` dos sites
-- 95 ícones (85 Lucide + 10 ss:\* de domínio)
-- Tema Vaadin `singularidade-base` gerado dos tokens, para Vaadin Flow 25
+- **Design System v2** nos pacotes **1.0.0**: `digital.singularidade:tokens`, `digital.singularidade:brand-assets` e `digital.singularidade:vaadin-bindings`, no Maven. Ainda não há pacote no npm. Veja [Versões](/releases/).
+- `theme.css` com claro e escuro (o Integras como marca padrão; `data-brand="singularidade"` troca só as três cores da marca) e os quatro `{marca}.{tema}.css` dos sites.
+- 24 componentes e 7 páginas-modelo, com prévias ao vivo.
+- 95 ícones (85 Lucide e 10 `ss:*` de domínio).
+- Tema Vaadin `singularidade-base` gerado dos tokens, para Vaadin Flow 25.

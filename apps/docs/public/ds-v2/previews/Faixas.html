@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Faixas</title>
+<style>
+  
+  .fx-mag, .fx-dot { fill: var(--color-brand-primary); }
+  .fx-cor { fill: var(--color-brand-secondary); }
+  .fx-ora { fill: var(--color-brand-tertiary); }
+  .fx-deep { fill: var(--color-neutral-800); }
+  .fx-tint { fill: var(--color-brand-coral-100); }
+  [data-theme="dark"] .fx-deep { fill: var(--color-neutral-600); }
+  [data-theme="dark"] .fx-tint { fill: var(--color-interactive-primary-subtle); }
+
+  
+  .fx-success { position: relative; display: grid; overflow: hidden; background: var(--color-surface-raised); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-xs); }
+  [data-theme="dark"] .fx-success { border-color: var(--color-border-default); }
+  .fx-success > * { grid-area: 1 / 1; }
+  .fx-corner { justify-self: end; align-self: start; width: 96px; height: 56px; line-height: 0; pointer-events: none; }
+  .fx-corner svg { display: block; }
+  .fx-success__head { display: flex; gap: var(--size-4); align-items: flex-start; padding: var(--size-6); }
+  .fx-success__words { display: flex; flex-direction: column; align-items: flex-start; gap: var(--size-1); min-width: 0; }
+  .fx-success__title { padding-right: 88px; }
+  .fx-success__text { color: var(--color-text-secondary); }
+  .fx-success .ss-btn { margin-top: var(--size-3); }
+
+  
+  .fx-emblem { display: flex; flex-direction: column; gap: var(--size-1); width: 56px; flex: none; }
+  .fx-emblem span { display: block; border-radius: var(--radius-sm); }
+  .fx-emblem .m { height: 28px; background: var(--color-brand-primary); }
+  .fx-emblem .c { height: var(--size-4); background: var(--color-brand-secondary); }
+  .fx-emblem .o { height: var(--size-3); background: var(--color-brand-tertiary); }
+  .fx-emblem-row { display: flex; align-items: center; gap: var(--size-6); }
+
+  
+  .fx-bandbox { overflow: hidden; height: 112px; border-radius: var(--radius-lg); background: var(--color-surface-base); border: 1px solid var(--color-border-subtle); }
+  .fx-bandbox svg { display: block; overflow: visible; }
+  .fx-bandbox--end svg { margin-left: auto; }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Canto · momento de sucesso</h2><span class="caption ss-demo-note">Hub, volta do checkout: as faixas saem pela borda de cima e pela da direita, e o cartão recorta</span></div>
+    <div class="fx-success" role="status">
+      <span class="fx-corner" aria-hidden="true"><svg viewBox="0 0 96 56" width="96" height="56" aria-hidden="true" focusable="false"><rect class="fx-mag" x="0" y="-8" width="112" height="28" rx="6"/><rect class="fx-cor" x="0" y="24" width="112" height="16" rx="6"/><rect class="fx-ora" x="0" y="44" width="112" height="12" rx="6"/></svg></span>
+      <div class="fx-success__head">
+        <span class="ss-logoframe"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSItOS42IC05LjYgMTE1LjIgMTE1LjIiPgogIDwhLS0gU8OtbWJvbG8gb2ZpY2lhbCBkbyBQb3J0YWwgTmFjaW9uYWwgZGUgQ29udHJhdGHDp8O1ZXMgUMO6YmxpY2FzIChQTkNQKSwgcmVjb3J0YWRvIHNlbSByZWRlc2VuaG8gZG8gbG9nbyBkbwogICAgICAgcHLDs3ByaW8gcG9ydGFsOiBodHRwczovL3BuY3AuZ292LmJyL2FwcC9hc3NldHMvaW1hZ2VzL2xvZ28tcG5jcC5zdmcgKG9idGlkbyBlbSAwNy8xMS8yMDI2LCBTSEEtMjU2CiAgICAgICBmNGQ5NDBiNmMzYTg3Mzk4MGQwOTYwZjY1NmM2ZjdjNTVhNmU0ZWVhNjM2ZTI5NWRkYzQ1ODhjNjVkZjQ1NjY0KS4gU8OzIG8gcXVhZHJvIGRvIHPDrW1ib2xvLCBjb20gYXMgY29yZXMKICAgICAgIGUgb3MgdHJhw6dvcyBvcmlnaW5haXMsIHNlbSBvIG5vbWUgYW8gbGFkbywgbnVtIHF1YWRybyBkZSA1MTJ4NTEyIGNvbSBtYXJnZW0uIFVzbyBub21pbmF0aXZvOiBvIGNvbmVjdG9yCiAgICAgICBuw6NvIMOpIHVtIHNlcnZpw6dvIG9maWNpYWwgZG8gUE5DUC4gLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMC4wOTIpIj4KICAgIDxyZWN0IGlkPSJSZWN0YW5nbGVfMTA0IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSAxMDQiIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgcng9IjUuNTMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMC4wOTIpIiBmaWxsPSIjNDZhZDQ0Ii8+CiAgICA8cGF0aCBpZD0iUGF0aF80NzciIGRhdGEtbmFtZT0iUGF0aCA0NzciIGQ9Ik0xLjYyLDk0LjM2NGE1LjcyNCw1LjcyNCwwLDAsMCw0LjA0LDEuNjc0SDkwLjMyNGE1LjczNSw1LjczNSwwLDAsMCw1LjcxNC01LjcxNFY1LjY2YTUuNjgzLDUuNjgzLDAsMCwwLTEuNjc0LTQuMDMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDU0IDAuMDU0KSIgZmlsbD0iI2ZhYmQxMCIvPgogICAgPHBhdGggaWQ9IlBhdGhfNDc4IiBkYXRhLW5hbWU9IlBhdGggNDc4IiBkPSJNOTQuNTE3LDQ3LjM3aC0uMTc2QTQ2Ljk4Miw0Ni45ODIsMCwwLDAsNDcuMzYsOTQuMzQxdi4xNzZIODguNzkzQTUuNzM0LDUuNzM0LDAsMCwwLDk0LjUxNyw4OC44WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMS40OTMgMS41NzUpIiBmaWxsPSIjMjg2NGFlIi8+CiAgICA8cGF0aCBpZD0iUGF0aF80NzkiIGRhdGEtbmFtZT0iUGF0aCA0NzkiIGQ9Ik04OC40NjgsODYuOTcyYS43MjMuNzIzLDAsMCwwLDAtMS4wMzNsLTQuNDk1LTQuNDk1YS40LjQsMCwwLDEsLjE2NS0uNzM0bDQuMTMzLTEuMzk1Yy4zNzItLjEyNC4zNzItLjMzMSwwLS40NjVMNzQuNCw3My44OTFjLS4zNzItLjEzNC0uNTY4LjA2Mi0uNDM0LjQzNGw0Ljk2LDEzLjg2NmMuMTM0LjM3Mi4zNTEuMzcyLjQ3NSwwbDEuMzg1LTQuMTMzYS40LjQsMCwwLDEsLjczNC0uMTY1bDQuNDk1LDQuNDg0YS43MTMuNzEzLDAsMCwwLDEuMDMzLDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyLjM0NCAyLjQ1NSkiIGZpbGw9IiNmZmYiLz4KICA8L2c+Cjwvc3ZnPgo=" alt=""></span>
+        <div class="fx-success__words">
+          <h3 class="fx-success__title heading-md">PNCP está na sua conta</h3>
+          <p class="fx-success__text body-sm">Adicione ao Claude e faça a primeira pergunta.</p>
+          <a class="ss-btn ss-btn--primary ss-btn--lg button-lg" href="#claude" target="_blank" rel="noopener">Adicionar ao Claude<svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/> <path d="M10 14 21 3"/> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><span class="ss-sr-only"> (abre em nova aba)</span></a>
+        </div>
+      </div>
+    </div>
+    <p class="caption ss-demo-note">Canto de 96 × 56: faixas de 112 de largura, raio 6, magenta com 28 de altura, coral com 16 e laranja com 12. O título reserva 88px à direita (80px no celular) para não encostar nelas. O balão do tour leva o mesmo canto.</p>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Emblema · estado vazio</h2><span class="caption ss-demo-note">no lugar do ícone, sem ladrilho</span></div>
+    <div class="fx-emblem-row">
+      <span class="fx-emblem" aria-hidden="true"><span class="m"></span><span class="c"></span><span class="o"></span></span>
+      <p class="caption ss-demo-note">Blocos de 28, 16 e 12px, 4px entre eles, 56px de largura e raio 6. Uso: Assinados sem assinatura, no Hub (ver EmptyState).</p>
+    </div>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Banda · topo do integras.digital</h2><span class="caption ss-demo-note">a partir de 900px; faixas e laje sangram pelo topo, a tira sai pela borda direita</span></div>
+    <div class="fx-bandbox" aria-hidden="true">
+      <svg viewBox="0 0 736 112" width="736" height="112" aria-hidden="true" focusable="false">
+        <rect class="fx-mag" x="0" y="-16" width="282" height="56" rx="8"/>
+        <rect class="fx-cor" x="0" y="48" width="282" height="32" rx="8"/>
+        <rect class="fx-ora" x="0" y="88" width="282" height="24" rx="8"/>
+        <rect class="fx-deep" x="306" y="-16" width="180" height="128" rx="12"/>
+        <rect class="fx-tint" x="510" y="24" width="1200" height="88" rx="12"/>
+        <g class="fx-dot">
+          <circle cx="534" cy="48" r="2"/><circle cx="550" cy="48" r="2"/><circle cx="566" cy="48" r="2"/><circle cx="582" cy="48" r="2"/><circle cx="598" cy="48" r="2"/><circle cx="614" cy="48" r="2"/><circle cx="630" cy="48" r="2"/><circle cx="646" cy="48" r="2"/><circle cx="662" cy="48" r="2"/><circle cx="678" cy="48" r="2"/><circle cx="694" cy="48" r="2"/><circle cx="710" cy="48" r="2"/>
+          <circle cx="534" cy="64" r="2"/><circle cx="550" cy="64" r="2"/><circle cx="566" cy="64" r="2"/><circle cx="582" cy="64" r="2"/><circle cx="598" cy="64" r="2"/><circle cx="614" cy="64" r="2"/><circle cx="630" cy="64" r="2"/><circle cx="646" cy="64" r="2"/><circle cx="662" cy="64" r="2"/><circle cx="678" cy="64" r="2"/><circle cx="694" cy="64" r="2"/><circle cx="710" cy="64" r="2"/>
+          <circle cx="534" cy="80" r="2"/><circle cx="550" cy="80" r="2"/><circle cx="566" cy="80" r="2"/><circle cx="582" cy="80" r="2"/><circle cx="598" cy="80" r="2"/><circle cx="614" cy="80" r="2"/><circle cx="630" cy="80" r="2"/><circle cx="646" cy="80" r="2"/><circle cx="662" cy="80" r="2"/><circle cx="678" cy="80" r="2"/><circle cx="694" cy="80" r="2"/><circle cx="710" cy="80" r="2"/>
+          <circle cx="534" cy="96" r="2"/><circle cx="550" cy="96" r="2"/><circle cx="566" cy="96" r="2"/><circle cx="582" cy="96" r="2"/><circle cx="598" cy="96" r="2"/><circle cx="614" cy="96" r="2"/><circle cx="630" cy="96" r="2"/><circle cx="646" cy="96" r="2"/><circle cx="662" cy="96" r="2"/><circle cx="678" cy="96" r="2"/><circle cx="694" cy="96" r="2"/><circle cx="710" cy="96" r="2"/>
+        </g>
+      </svg>
+    </div>
+    <p class="caption ss-demo-note">Faixas de 282, laje de 180 e 24 entre as formas, numa caixa de 736 × 112. As três terminam na mesma linha, a base da laranja. Abaixo de 900px: faixas de 160, laje de 96 e 16 entre elas.</p>
+  </section>
+
+  <section class="ss-demo-col" data-brand="singularidade">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Banda espelhada · topo do singularidade.digital</h2><span class="caption ss-demo-note">data-brand="singularidade": faixas na borda direita do conteúdo, a tira sai pela borda esquerda da tela</span></div>
+    <div class="fx-bandbox fx-bandbox--end" aria-hidden="true">
+      <svg viewBox="0 0 736 112" width="736" height="112" aria-hidden="true" focusable="false">
+        <rect class="fx-tint" x="-1200" y="24" width="1426" height="88" rx="12"/>
+        <rect class="fx-deep" x="250" y="-16" width="180" height="128" rx="12"/>
+        <rect class="fx-mag" x="454" y="-16" width="282" height="56" rx="8"/>
+        <rect class="fx-cor" x="454" y="48" width="282" height="32" rx="8"/>
+        <rect class="fx-ora" x="454" y="88" width="282" height="24" rx="8"/>
+        <g class="fx-dot">
+          <circle cx="202" cy="48" r="2"/><circle cx="186" cy="48" r="2"/><circle cx="170" cy="48" r="2"/><circle cx="154" cy="48" r="2"/><circle cx="138" cy="48" r="2"/><circle cx="122" cy="48" r="2"/><circle cx="106" cy="48" r="2"/><circle cx="90" cy="48" r="2"/><circle cx="74" cy="48" r="2"/><circle cx="58" cy="48" r="2"/><circle cx="42" cy="48" r="2"/><circle cx="26" cy="48" r="2"/>
+          <circle cx="202" cy="64" r="2"/><circle cx="186" cy="64" r="2"/><circle cx="170" cy="64" r="2"/><circle cx="154" cy="64" r="2"/><circle cx="138" cy="64" r="2"/><circle cx="122" cy="64" r="2"/><circle cx="106" cy="64" r="2"/><circle cx="90" cy="64" r="2"/><circle cx="74" cy="64" r="2"/><circle cx="58" cy="64" r="2"/><circle cx="42" cy="64" r="2"/><circle cx="26" cy="64" r="2"/>
+          <circle cx="202" cy="80" r="2"/><circle cx="186" cy="80" r="2"/><circle cx="170" cy="80" r="2"/><circle cx="154" cy="80" r="2"/><circle cx="138" cy="80" r="2"/><circle cx="122" cy="80" r="2"/><circle cx="106" cy="80" r="2"/><circle cx="90" cy="80" r="2"/><circle cx="74" cy="80" r="2"/><circle cx="58" cy="80" r="2"/><circle cx="42" cy="80" r="2"/><circle cx="26" cy="80" r="2"/>
+          <circle cx="202" cy="96" r="2"/><circle cx="186" cy="96" r="2"/><circle cx="170" cy="96" r="2"/><circle cx="154" cy="96" r="2"/><circle cx="138" cy="96" r="2"/><circle cx="122" cy="96" r="2"/><circle cx="106" cy="96" r="2"/><circle cx="90" cy="96" r="2"/><circle cx="74" cy="96" r="2"/><circle cx="58" cy="96" r="2"/><circle cx="42" cy="96" r="2"/><circle cx="26" cy="96" r="2"/>
+        </g>
+      </svg>
+    </div>
+    <p class="caption ss-demo-note">Só decoração: aria-hidden, nunca texto em cima e uma composição por tela; nos sites, SVG no HTML, sem script. No escuro, as faixas não mudam; a laje vai a neutral-600 e a tira ao rosa de 16%.</p>
+  </section>
+
+</main>
+</body>
+</html>

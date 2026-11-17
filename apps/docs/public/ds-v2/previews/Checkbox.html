@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Checkbox</title>
+<style>
+  .cb-states { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--size-4) var(--size-6); }
+  .cb-state { display: flex; flex-direction: column; gap: var(--size-2); }
+  .cb-consent { max-width: 440px; }
+  .cb-sub { margin-left: calc(20px + var(--size-3)); }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+
+  <section class="ss-demo-col ss-compact">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Estados</h2><span class="caption ss-demo-note">caixa de 20px, raio 6px, borda border-control; o rótulo também é clicável</span></div>
+    <div class="cb-states body-sm">
+      <div class="cb-state"><span class="caption ss-demo-note">Padrão</span><label class="ss-check"><input type="checkbox"><span class="ss-check__box"><svg class="ss-icon ss-icon--check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="ss-icon ss-icon--minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></span><span class="ss-check__text">Lembrar filtros</span></label></div>
+      <div class="cb-state"><span class="caption ss-demo-note">Hover</span><label class="ss-check is-hover"><input type="checkbox"><span class="ss-check__box"><svg class="ss-icon ss-icon--check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="ss-icon ss-icon--minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></span><span class="ss-check__text">Lembrar filtros</span></label></div>
+      <div class="cb-state"><span class="caption ss-demo-note">Foco</span><label class="ss-check is-focus"><input type="checkbox"><span class="ss-check__box"><svg class="ss-icon ss-icon--check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="ss-icon ss-icon--minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></span><span class="ss-check__text">Lembrar filtros</span></label></div>
+      <div class="cb-state"><span class="caption ss-demo-note">Marcado</span><label class="ss-check"><input type="checkbox" checked><span class="ss-check__box"><svg class="ss-icon ss-icon--check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="ss-icon ss-icon--minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></span><span class="ss-check__text">Lembrar filtros</span></label></div>
+      <div class="cb-state"><span class="caption ss-demo-note">Indeterminado</span><label class="ss-check is-indeterminate"><input type="checkbox" aria-checked="mixed"><span class="ss-check__box"><svg class="ss-icon ss-icon--minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></span><span class="ss-check__text">Selecionar todos</span></label></div>
+      <div class="cb-state"><span class="caption ss-demo-note">Desabilitado</span><label class="ss-check is-disabled"><input type="checkbox" disabled><span class="ss-check__box"><svg class="ss-icon ss-icon--check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="ss-icon ss-icon--minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></span><span class="ss-check__text">Exportar para CSV</span></label></div>
+      <div class="cb-state"><span class="caption ss-demo-note">Somente leitura</span><label class="ss-check is-readonly"><input type="checkbox" checked readonly aria-readonly="true"><span class="ss-check__box"><svg class="ss-icon ss-icon--check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="ss-check__text">Termos aceitos</span></label></div>
+      <div class="cb-state"><span class="caption ss-demo-note">Erro</span><label class="ss-check is-invalid"><input type="checkbox" aria-invalid="true"><span class="ss-check__box"><svg class="ss-icon ss-icon--check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="ss-icon ss-icon--minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></span><span class="ss-check__text">Li e aceito</span></label></div>
+    </div>
+  </section>
+
+  <section class="ss-demo-col ss-comfortable">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Termos e consentimento no cadastro</h2><span class="caption ss-demo-note">obrigatórios sem ponto vermelho; o opcional desmarcado, 16px abaixo, com o mesmo peso</span></div>
+    <div class="cb-consent body">
+      <div class="ss-checks">
+        <label class="ss-check is-invalid"><input type="checkbox" aria-invalid="true" aria-describedby="cbe"><span class="ss-check__box"><svg class="ss-icon ss-icon--check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="ss-icon ss-icon--minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></span><span class="ss-check__text">Tenho 18 anos ou mais e aceito os <a class="ss-link" href="#termos">Termos de Uso</a></span></label>
+        <label class="ss-check"><input type="checkbox" checked><span class="ss-check__box"><svg class="ss-icon ss-icon--check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="ss-icon ss-icon--minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></span><span class="ss-check__text">Li e aceito a <a class="ss-link" href="#privacidade">Política de Privacidade</a></span></label>
+      </div>
+      <p class="ss-field__error caption cb-sub" id="cbe"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <line x1="12" x2="12" y1="8" y2="12"/> <line x1="12" x2="12.01" y1="16" y2="16"/></svg>Para usar o Integras Hub, aceite os Termos de Uso e a Política de Privacidade.</p>
+      <div class="ss-checks__sep" aria-hidden="true"></div>
+      <label class="ss-check"><input type="checkbox"><span class="ss-check__box"><svg class="ss-icon ss-icon--check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><svg class="ss-icon ss-icon--minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></span><span class="ss-check__text"><span>Personalizar ofertas com base no meu uso <span class="ss-check__optional">(opcional)</span></span></span></label>
+      <a class="ss-link ss-link--standalone label cb-sub" href="#como-funciona">Como funciona</a>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

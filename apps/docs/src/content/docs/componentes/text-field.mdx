@@ -1,0 +1,51 @@
+---
+title: TextField
+description: Campo de texto com rótulo sempre visível, borda que passa 3:1 e erro junto do campo, com as variantes CopyField e OtpField.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Campo de texto com rótulo sempre visível, borda que passa 3:1 e erro junto do campo; inclui as variantes CopyField e OtpField.
+
+<DsPreview name="TextField" title="Prévia do TextField: estados, densidades, CopyField e OtpField" height={760} />
+
+## Anatomia
+
+- Rótulo (`ss-field__label`, estilo `label` 14/20 500, `color-text-primary`).
+- 4px abaixo (`size-1`), o campo (`ss-input`): altura `control-md` (36px) no compacto ou `control-lg` (44px) no confortável, texto de 14 ou 16px, fundo `input-background`, borda de 1px `input-border` (`color-border-control`), raio `input-radius`, padding 0 12px.
+- 4px abaixo, a ajuda (`ss-field__help`, `caption` em `color-text-secondary`) ou o erro.
+
+## Estados
+
+- Hover: borda em `color-text-muted`.
+- Foco: outline de 2px em `input-focus-border`, com offset de −1px.
+- Desabilitado: fundo `input-disabled-background`, borda subtle, texto `input-disabled-foreground` e rótulo com `is-disabled`. A ajuda continua legível e diz o motivo.
+- Somente leitura (`is-readonly`): fundo `color-surface-sunken`, borda tracejada em `color-border-strong`, texto `color-text-primary`, focável para copiar.
+- Erro (`is-invalid`): borda `color-feedback-error-solid`; a mensagem em `caption`, `color-feedback-error-text`, com o ícone circle-alert de 16px, no lugar da ajuda; `aria-invalid` e `aria-describedby`.
+- Carregando: loader-circle no fim do campo e `aria-busy` (por exemplo, ao conferir o código de parceiro).
+
+## Obrigatório e opcional
+
+- Marque só o opcional, com "(opcional)" em `color-text-secondary` (`ss-field__optional`). Esconda o ponto vermelho do Vaadin; o `aria-required` continua.
+- Mostre o erro ao sair do campo ou ao enviar, nunca a cada tecla. O que foi digitado continua no campo.
+
+## Variantes
+
+- Prefixo e sufixo (`ss-input__affix`): "R$", "%", "+55", ".integras.digital".
+- Senha: botão mostrar/ocultar de 44px no confortável (`ss-input__btn--reveal`, `aria-pressed`); autocomplete `current-password` ou `new-password`. O botão diz "Mostrar senha" na língua da pessoa.
+- Busca: ícone search, botão × para limpar, placeholder "Buscar conectores".
+- **CopyField** (`ss-copyfield`): o valor somente leitura em `code-lg` e o botão secundário "Copiar", que vira "Copiado" por 2s; o aviso é lido por `aria-live`. Uso: o endereço do conector.
+- **OtpField** (`ss-otp`): um campo só, `inputmode="numeric"`, `autocomplete="one-time-code"`, `maxlength="6"`, mono de 24px com espaço entre os dígitos. Colar tem de funcionar (WCAG 3.3.8): nada de 6 caixinhas.
+
+## Regras
+
+- Placeholder só como exemplo ("ana@empresa.com.br"), nunca no lugar do rótulo.
+- `type`, `inputmode` e `autocomplete` corretos; máscaras que aceitam colar.
+
+## Vaadin 25
+
+`--vaadin-input-field-background: var(--color-surface-raised)`, `--vaadin-input-field-border-width: 1px`, `--vaadin-input-field-border-color: var(--color-border-control)`, `--vaadin-input-field-height`, `--vaadin-input-field-readonly-border` e `--vaadin-input-field-invalid-background`. Acaba com o campo cinza sem borda (1,22:1).
+
+- No `vaadin-bindings` 1.0.0, campo, checkbox e rádio têm borda de 1px em `color-border-control` sobre `input-background` e um anel de foco só, em `color-border-focus` (`--vaadin-focus-ring-*`). As propriedades são herdadas, nunca postas no componente, para não anular o que o Lumo ajusta no próprio host (campo inválido, desabilitado, somente leitura, marcado).
+- Os campos mostram o anel também no clique, como o campo deste sistema.
+- A borda visível vale em todo campo, inclusive o somente leitura no escuro: de 1,22:1 para 3,8 a 4,6:1. O anel de foco vai de 2,23:1 para 5,3:1 no claro e 6,7:1 no escuro.

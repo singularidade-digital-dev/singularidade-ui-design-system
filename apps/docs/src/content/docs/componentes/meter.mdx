@@ -1,0 +1,26 @@
+---
+title: Meter
+description: Medidor de uso com o número sempre escrito, para cota de consultas, teste grátis e armazenamento.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Medidor de uso com o número sempre escrito: cota de consultas, teste grátis, armazenamento.
+
+<DsPreview name="Meter" title="Prévia do Meter: uso normal, aviso e cota esgotada" height={300} />
+
+## Anatomia
+
+- Rótulo em cima ("Hoje: 12 de 50 consultas") e, à direita, o que resta em `color-text-secondary`.
+- Trilho de 8px (`size-2`), raio `radius-full`, em `color-interactive-secondary`.
+- Preenchimento em `color-interactive-primary`; vira `color-feedback-warning-solid` a partir de 80% (`ss-meter--warning`) e `color-feedback-error-solid` em 100% (`ss-meter--error`). Contra o trilho, sempre acima de 3:1 (primário 4,45 e 4,91; aviso 4,06 e 7,92; erro 3,90 e 4,78, no claro e no escuro).
+- O preenchimento anima por transform: scaleX (`--ss-value`, de 0 a 1), em `duration-base`.
+
+## Acessibilidade
+
+`role="meter"`, com `aria-valuemin`, `aria-valuemax`, `aria-valuenow` e `aria-valuetext` igual ao rótulo.
+
+## Regras
+
+- Na cota esgotada, o texto aparece: "As consultas de hoje acabaram. A cota renova amanhã."
+- Um só medidor para todo uso, no lugar de barras de progresso diferentes em cada tela.

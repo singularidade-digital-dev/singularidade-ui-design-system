@@ -1,0 +1,55 @@
+---
+title: PageEmail
+description: Modelo dos e-mails transacionais, só no tema claro, com cartão de 600px, um botão, o endereço em texto e o código de acesso no code-block.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Modelo dos e-mails transacionais: só tema claro, cartão de 600px, um botão, o endereço em texto e o código de acesso no code-block.
+
+<DsPreview name="PageEmail" title="Prévia da PageEmail: código de acesso e conector ativo" height={780} page />
+
+Na prévia, o e-mail fica claro mesmo no tema escuro (`data-theme="light"` no e-mail).
+
+## Base técnica
+
+- Tabela de 600px, 100% no celular. Fundo externo #f5f0f4 (`color-surface-sunken`) com padding de 32px e 16px; cartão #ffffff com raio de 12px.
+- Preheader oculto, de 40 a 90 caracteres. `<html lang>` e `<title>` com o assunto.
+- Declare só o tema claro: `color-scheme: light`.
+- Cores só em hex de 6 dígitos. Imagens sem `height="auto"`.
+- Fonte: `family-email` ('Plus Jakarta Sans' seguida das fontes do sistema), porque cliente de e-mail não baixa fonte.
+
+## Cabeçalho
+
+- Um PNG 2× do `integras-symbol.svg` (96×96, mostrado com 48px; o Gmail não mostra SVG) e, embaixo, o nome do produto em texto ("Integras Hub", em caixa alta e espaçado como o `brand-label`). Centralizado, padding de 24px e 32px, borda inferior #ece5eb.
+- A imagem leva `alt=""`, porque o nome já está escrito; com as imagens bloqueadas, o nome continua visível.
+
+## Corpo
+
+- Padding de 32px (24px no celular). Título 22/28 700 em #261a21. Texto 16/24 em #261a21. Secundário 14/20 em #735f6b.
+- Um único botão: fundo #be3550, texto #ffffff 16px 600, padding de 14px 28px, raio de 8px (5,51:1). Embaixo, o endereço em texto.
+- Código de acesso no partial code-block: mono 36px 700, letter-spacing de 8px, padding de 24px, fundo #f5f0f4, centralizado.
+- Alerta com borda inteira de 1px e fundo tingido, nunca a borda esquerda.
+
+## Rodapé
+
+13/20 em #735f6b sobre #f5f0f4 (5,21:1): nome, endereço, contato de ajuda, o contato de privacidade sublinhado e o motivo do envio.
+
+## Textos de exemplo (na voz da v2)
+
+- Assunto "482913 é o seu código do Integras Hub"; "Use o código abaixo para confirmar seu e-mail no Integras Hub."; "O código vale por 10 minutos e só pode ser usado uma vez."
+- Assunto "Seu conector está ativo: TSE"; "O conector TSE está ativo na sua conta do Integras Hub e se renova todo mês." (sem o "Obrigado!"); um botão "Adicionar ao Claude"; "O passo a passo, a cota do dia e o cancelamento ficam na aba Assinados."
+
+## Marca
+
+Um tema por marca.
+
+## Guia de uso
+
+- O mesmo modelo nas empresas e no Hub, com a voz da pessoa no Hub. Assunto: "Seu guia de uso — \{conector\}".
+- Abre pela assinatura ou pelo pedido; depois "Seu conector", um botão "Adicionar ao Claude" por conector com o endereço em mono embaixo, "Experimente perguntar:" com aspas curvas e "Como conectar" (claude.ai, ChatGPT e Cursor, com a entrada sem senha).
+- "Dicas" leva o caminho dos roteiros pelo nome da vitrine ("+ → Conectores → Eleições (TSE) → escolha o roteiro"). O rodapé diz o motivo: "Você recebeu este e-mail porque assinou o conector \{1\}. A assinatura fica em Conectores → Assinados…".
+- Sem nome cadastrado: "Olá!", nunca o endereço. Espanhol com tú no Hub; inglês "email".
+- Sai uma vez por ativação e quando a pessoa pede, pelo botão do detalhe do conector (veja [Padrões, 4](/paginas-modelo/padroes/#4-card-da-loja-e-detalhe)).
+- Na ativação saem dois e-mails: o de conector contratado, que também ensina a conectar, e o guia. Sem reenvio automático quando o envio falha: a pessoa tem o botão.
+- A abertura não diz o número de roteiros. "Olá, \{nome\}!" e o “→” dos caminhos são exceção às regras de pontuação (veja [Voz e tom](/conteudo/voz-e-tom/#pontuação)).

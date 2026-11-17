@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Tour</title>
+<style>
+  .tr-stage { border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); background: var(--color-surface-base); }
+  .tr-page { padding: var(--size-6); display: flex; flex-direction: column; gap: var(--size-6); }
+  .tr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-6); align-items: start; }
+  .tr-grid .ss-ccard { height: 100%; }
+  .tr-pop { left: calc(100% + var(--size-4)); top: 0; }
+  .tr-final { display: flex; flex-wrap: wrap; gap: var(--size-6); align-items: flex-start; }
+  
+  .tr-balloon { width: 360px; max-width: calc(100vw - var(--size-6)); padding: var(--size-6); gap: 0; box-shadow: var(--shadow-xl); }
+  .tr-bands { position: absolute; top: 0; right: 0; display: block; overflow: hidden; border-top-right-radius: calc(var(--radius-lg) - 1px); pointer-events: none; }
+  .tr-bands .m { fill: var(--color-brand-primary); }
+  .tr-bands .c { fill: var(--color-brand-secondary); }
+  .tr-bands .o { fill: var(--color-brand-tertiary); }
+  .tr-title { margin-top: 28px; }
+  .tr-text { margin-top: var(--size-2); }
+  .tr-balloon .ss-tour__actions { margin-top: var(--size-6); }
+  .tr-balloon .ss-btn--tertiary { min-width: 0; padding: 0 var(--size-3); }
+  .tr-grid { min-height: 260px; }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+  <div class="ss-demo-head"><h2 class="overline ss-demo-title">Passo 3 de 6</h2><span class="caption ss-demo-note">o véu escurece a tela e deixa o alvo aceso, com 8px de folga · o balão fica ao lado do alvo, nunca em cima</span></div>
+  <div class="tr-stage ss-tour-stage">
+    <header class="ss-appbar">
+      <div class="ss-appbar__start"><a class="ss-brandlink" href="#inicio"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii05My42NyAxNC4xMyAxMDU1LjAyIDEwNTUuMDIiIHZlcnNpb249IjEuMSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImludGVncmFzLWJyYW5kIiB4MT0iMC41IiB5MT0iMCIgeDI9IjAuNSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTkxRThCIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjRTg2MDZBIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Y1QTYyMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBhdGggZmlsbD0idXJsKCNpbnRlZ3Jhcy1icmFuZCkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTE0MCA2OS40Yy0zIDEuNC02LjYgMi41LTggMi42LTIuNyAwLTExIDQuMS0yMCA5LjhhMTA2IDEwNiAwIDAgMC0yNC41IDI1TDg0IDExM2MtNS41IDguNy04IDIyLjMtOCA0NC4xIDAgMjIuMyAxLjIgMzEuNSA1LjEgMzguOCA2IDExIDcuOSAxMy43IDE0IDE5LjFhNjY4IDY2OCAwIDAgMSAyMS4yIDE5LjFjNSA0LjYgMTguNCAxNy41IDI5LjcgMjguNmE5NDcgOTQ3IDAgMCAwIDMyLjUgMzAuOGw1NSA1Mi42YTk0OCA5NDggMCAwIDAgMzYgMzMuNGwxNiAxNWM3LjcgNy4yIDIxLjQgMjAuMyAzMC41IDI5LjIgMzMgMzIuMiA2OS4xIDY0LjcgNzYuMiA2OC40YTkwIDkwIDAgMCAwIDg1LjYuMXE1LjMtMi42IDIyLTE5YTI0MTQgMjQxNCAwIDAgMSA4OS43LTg1LjZjMS43LTEuOCA0Ny4yLTQ1LjYgNTQuMi01Mi4zbDE2LjUtMTUuNSAyNy44LTI2LjMgMzMtMzEuNSAyMi41LTIxLjUgMTEuNi0xMC41YzI0LjItMjEuNCAyOC0yNi42IDMzLjUtNDYuOCAzLjgtMTMuOCA0LjctMzguNiAxLjYtNDguOWwtMi42LTkuN2MtMy45LTE2LjctMjQuNS00MC41LTQyLjYtNDguOS0xNi42LTcuNy0xOS4zLTguMi00NS41LTguMi0yMi41IDAtMjQuNC4xLTI5LjggMi4zYTM0IDM0IDAgMCAxLTggMi4yYy0zLjcgMC0xNS45IDYuNS0yMC45IDExLjJsLTkuNSA4LjgtMTQuOCAxNC0xOC41IDE3LjRhNjU2NiA2NTY2IDAgMCAwLTcyLjEgNjkuNmMtNDEgNDAuNC03Ny4xIDc0LjUtODEuOCA3N2EzMSAzMSAwIDAgMS0xNi4xLjJjLTEuNC0uNS0xNi4zLTE0LTMzLTI5LjhsLTM1LTMyLjljLTguMy03LjYtMjEuNC0yMC0zOC0zNmExODE4IDE4MTggMCAwIDAtNDktNDZsLTEwLjUtMTAtMTIuNi0xMS45LTEzLjQtMTIuNUMyMjUuMSA4MCAyMTIuOCA3MiAyMDcuOCA3MmMtLjggMC00LjEtMS03LjQtMi4xLTUuMy0yLTguNC0yLjItMzAuNC0yLjYtMjQuMy0uMy0yNC41LS4zLTMwIDIuMW0yODQuMyA1MDcuN2E1MCA1MCAwIDAgMC0yMC4xIDUuNGMtOS44IDMuMi0yOS40IDIwLjMtNzUuNyA2Ni4xLTEyLjEgMTItMzAuMyAyOS42LTQwLjUgMzkuM0wyNTcuNSA3MTcgMjIwIDc1M2wtNTIuNSA1MC41TDEzNiA4MzRjLTUwLjUgNDguMi01MCA0Ny42LTU0LjYgNjMuNi00LjIgMTQuOC00LjggNTIuMy0xIDYyLjRsMy4yIDguOWMuNCAxLjMgMS44IDMuOSAzLjEgNS44czIuNCA0IDIuNCA0LjRjMCA1IDIxIDI0LjQgMzIgMjkuNSAxNiA3LjQgMTguOSA3LjkgNDkgNy45aDI3LjVsOS0zYzEzLTQuMSAxNi42LTcgNDAtMzAuMiAxMS42LTExLjQgMjUuOC0yNS4xIDMxLjUtMzAuNGExNzk4IDE3OTggMCAwIDAgNDkuNi00Ni4zYzUuNi01LjYgMTYuNC0xNiAyNC0yMy4xbDIyLjgtMjEuNWMzNS0zMy40IDQ4LTQ1LjYgNTAtNDcgMy0yLjEgMTguMy0yIDIxLjUuMiAxLjMuOSA5LjQgOC41IDE4IDE3czIwLjggMjAgMjcuMSAyNmMxMyAxMiAyNy4zIDI1LjggNTMuNSA1MS43IDkuOSA5LjggMjEuOCAyMS4xIDI2LjUgMjUuMnMyMi45IDIxLjYgNDAuNSAzOWMzMi42IDMyLjEgMzguNCAzNi44IDQ2LjcgMzguMyAyIC40IDUuOSAxLjYgOC41IDIuOCA0LjYgMiA2LjEgMi4yIDMwLjggMmwyNi0uMSA5LjMtM2E4NSA4NSAwIDAgMCA1MC4xLTQ0YzguNC0xNi42IDguNS01OC42LjMtODEtMy04LTYuOS0xMi4zLTM3LjQtNDEuNi0zNy41LTM2LTYwLjgtNTguNC03OS44LTc3LTExLjgtMTEuNy0yNC45LTI0LjMtMjktMjhzLTE4LTE3LjMtMzEtMzAtMjcuNS0yNy0zMi41LTMxLjZjLTIxLjktMjAuNS0zMC4xLTI4LjQtNDcuNS00NS40YTc1OCA3NTggMCAwIDAtNTEuOS00Ny43IDY3IDY3IDAgMCAwLTI2LjEtMTAuMyA5NCA5NCAwIDAgMC0yMy43LS40Ii8+Cjwvc3ZnPgo=" alt=""><span class="brand-label">Integras Hub</span></a></div>
+      <nav class="ss-appbar__nav" aria-label="Principal">
+        <a class="ss-navlink label" href="#conectores" aria-current="page">Conectores</a>
+        <a class="ss-navlink label" href="#meu-espaco">Meu espaço</a>
+      </nav>
+    </header>
+    <div class="tr-page">
+      <div class="ss-pageheader__row">
+        <div class="ss-pageheader__text"><h1 class="heading-lg">Conectores</h1></div>
+        <div class="ss-pageheader__actions"><button class="ss-btn ss-btn--icon ss-btn--ghost" type="button" aria-label="Ver o tour desta página"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/> <path d="M12 17h.01"/></svg></button></div>
+      </div>
+      <div class="tr-grid">
+        <div class="ss-tour-anchor">
+          <article class="ss-card ss-ccard ss-tour-target">
+            <div class="ss-ccard__head">
+              <span class="ss-logoframe"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBTw61tYm9sbyBvZmljaWFsIGRvIEluc3RpdHV0byBCcmFzaWxlaXJvIGRlIEdlb2dyYWZpYSBlIEVzdGF0w61zdGljYSwgcmVjb3J0YWRvIHNlbSByZWRlc2VuaG8gZG8gdmV0b3IKICAgICAiSUJHRS1CcmF6aWwuc3ZnIiAoV2lraW1lZGlhIENvbW1vbnMsIGRvbcOtbmlvIHDDumJsaWNvOiBQRC10ZXh0bG9nbyAvIFRPTy1CcmF6aWw7IGF1dG9yaWEgZG8gSUJHRSk6CiAgICAgc8OzIG9zIGNpbmNvIGVsZW1lbnRvcyBkbyBzw61tYm9sbywgY29tIGEgY29yIG9yaWdpbmFsLCBzZW0gbyBub21lLiBVc28gbm9taW5hdGl2bzsgbyBjb25lY3RvciBuw6NvIMOpCiAgICAgdW0gc2VydmnDp28gZG8gSUJHRSAoQURSLTAzOSBkbyBpbnRlZ3Jhcy1kaWdpdGFsKS4gLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iLTMwLjc1IC03NC41IDMxMiAzMTIiIHZlcnNpb249IjEuMSIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoyOyI+CiAgICA8ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLjczMTc0LDAsMCwxLjczMTc0LC0xNzQ0LjIsLTUzOTguNzIpIj4KICAgICAgICA8ZyB0cmFuc2Zvcm09Im1hdHJpeCg0LjE2NjY3LDAsMCw0LjE2NjY3LDEwNjQuOSwzMTcwLjA5KSI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0wLC0yLjYzM0MwLjU0OCwtNC4wODkgMS45NDIsLTUuMDU1IDMuNDk5LC01LjA1NUM1LjU2NCwtNS4wNTUgNy4yMzcsLTMuMzggNy4yMzcsLTEuMzE4QzcuMjM3LDAuNzQ3IDUuNTY0LDIuNDIyIDMuNDk5LDIuNDIyQzEuNDM1LDIuNDIyIC0wLjIzOSwwLjc0NyAtMC4yMzksLTEuMzE4Qy0wLjIzOSwtMS43NjYgLTAuMTU4LC0yLjIxMiAwLC0yLjYzMyIgc3R5bGU9ImZpbGw6cmdiKDExNiwxNDYsMTkzKTsiLz4KICAgICAgICA8L2c+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoNC4xNjY2NywwLDAsNC4xNjY2NywxMTQzLjQ4LDMyMDYuMDgpIj4KICAgICAgICAgICAgPHBhdGggZD0iTTAsLTkuMjY4TC0zLjQ2NCwwLjIxMUMtMy43MDEsMC44NjYgLTMuOTksMC44OTYgLTQuNTQ5LDAuODk2TC0xOC41ODQsMC44OTZDLTE4LjU4NCwwLjg5NiAtMTkuMDc0LDAuODk0IC0xOC41ODQsMC4yMTFDLTE0LjIxMywtNS44NyAtOC45MTMsLTEwLjE2NCAtMC4yMjYsLTkuOTQ0Qy0wLjIyNiwtOS45NDQgMC4yNDgsLTkuOTQ5IDAsLTkuMjY4IiBzdHlsZT0iZmlsbDpyZ2IoMTE2LDE0NiwxOTMpOyIvPgogICAgICAgIDwvZz4KICAgICAgICA8ZyB0cmFuc2Zvcm09Im1hdHJpeCg0LjE2NjY3LDAsMCw0LjE2NjY3LDEwMTUuNCwzMTIzLjI0KSI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0wLDkuMjdMMy40NjMsLTAuMjExQzMuNzAyLC0wLjg2NCAzLjk5MSwtMC44OTYgNC41NDgsLTAuODk2TDE4LjY0MywtMC44OTJDMTguNjQzLC0wLjg5MiAxOS4xMjksLTAuODkgMTguNjQzLC0wLjIxMUMxNC4yNzUsNS44NzcgOC45MTIsMTAuMTY2IDAuMjI1LDkuOTQ2QzAuMjI1LDkuOTQ2IC0wLjI0OCw5Ljk0OSAwLDkuMjciIHN0eWxlPSJmaWxsOnJnYigxMTYsMTQ2LDE5Myk7Ii8+CiAgICAgICAgPC9nPgogICAgICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KDQuMTY2NjcsMCwwLDQuMTY2NjcsMTAxMS44OCwzMTczLjEzKSI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0wLDcuNDRDLTEuMDg1LDYuMDc5IC0xLjUyNSw0LjAzMyAtMC41NzgsMS4zNDZMMC4xMzcsLTAuNjg2QzAuMjcxLC0xLjA2NSAwLjM4MiwtMS4zNjIgMS4wODMsLTEuMzYyTDQuMzE0LC0xLjM2MkM4LjY3LC0xLjM2MiAxMC44MzQsLTEuMzYyIDExLjkzOCwtMC4wMDlDMTMuMDQxLDEuMzQ2IDEzLjYxMiwzLjMwMiAxMi42MDIsNi4wODVMMTEuODY0LDguMTE3QzExLjc0NCw4LjQ1MyAxMS42NTMsOC44MDIgMTAuODEzLDguODAyTDcuNTY2LDguODAyQzQuMDI1LDguODAyIDEuMDgzLDguODAyIDAsNy40NCIgc3R5bGU9ImZpbGw6cmdiKDExNiwxNDYsMTkzKTsiLz4KICAgICAgICA8L2c+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoNC4xNjY2NywwLDAsNC4xNjY2NywxMTQ3LjI5LDMxNTYuMDkpIj4KICAgICAgICAgICAgPHBhdGggZD0iTTAsLTcuNDM4QzEuMDg1LC02LjA3NyAxLjUyNSwtNC4wMzQgMC41NzgsLTEuMzQ0TC0wLjEzNywwLjY4N0MtMC4yNzEsMS4wNjUgLTAuMzgyLDEuMzY0IC0xLjA4MywxLjM2NEwtNC4zMTQsMS4zNjRDLTguNjcsMS4zNjQgLTEwLjgzNiwxLjM2NCAtMTEuOTM4LDAuMDA5Qy0xMy4wNDMsLTEuMzQ0IC0xMy42MTEsLTMuMzAyIC0xMi42MDIsLTYuMDg2TC0xMS44NjQsLTguMTE1Qy0xMS43NDQsLTguNDUxIC0xMS42NTMsLTguODAyIC0xMC44MTMsLTguODAyTC03LjU2NiwtOC44MDJDLTQuMDI1LC04LjgwMiAtMS4wODMsLTguODAyIDAsLTcuNDM4IiBzdHlsZT0iZmlsbDpyZ2IoMTE2LDE0NiwxOTMpOyIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==" alt=""></span>
+              <div class="ss-ccard__titles">
+                <h2 class="ss-ccard__name heading-sm">IBGE</h2>
+                <p class="ss-ccard__category caption">Território</p>
+              </div>
+            </div>
+            <div class="ss-ccard__offer">
+              <span class="ss-badge ss-badge--brand badge">5 consultas grátis</span>
+              <div class="ss-ccard__buy">
+                <span class="ss-price body-sm"><span class="ss-price__value">R$&nbsp;19,90</span><span class="ss-price__period">/mês</span></span>
+                <span class="ss-btn ss-btn--secondary button">Adicionar ao Claude<svg class="ss-icon ss-icon--14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/> <path d="M10 14 21 3"/> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span>
+              </div>
+            </div>
+          </article>
+          <div class="ss-tour ss-tour--left tr-pop tr-balloon" role="dialog" aria-modal="true" aria-labelledby="trt" aria-describedby="trd">
+            <svg class="tr-bands" viewBox="0 0 96 56" width="96" height="56" aria-hidden="true" focusable="false"><rect class="m" x="0" y="-8" width="112" height="28" rx="6"/><rect class="c" x="0" y="24" width="112" height="16" rx="6"/><rect class="o" x="0" y="44" width="112" height="12" rx="6"/></svg>
+            <h2 class="heading tr-title" id="trt">Teste grátis</h2>
+            <p class="ss-tour__text body-sm tr-text" id="trd">Todo conector tem consultas grátis para você testar antes de assinar. O selo do cartão mostra quantas restam.</p>
+            <div class="ss-tour__actions">
+              <button class="ss-btn ss-btn--lg ss-btn--tertiary button" type="button">Pular</button>
+              <span class="ss-tour__count caption" aria-live="polite">3 de 6</span>
+              <button class="ss-btn ss-btn--lg ss-btn--secondary button" type="button">Voltar</button>
+              <button class="ss-btn ss-btn--lg ss-btn--primary button" type="button">Próximo</button>
+            </div>
+          </div>
+        </div>
+        <article class="ss-card ss-ccard">
+          <div class="ss-ccard__head">
+            <span class="ss-logoframe"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBTw61tYm9sbyBvZmljaWFsIGRvIENvbmdyZXNzbyBOYWNpb25hbCBkbyBCcmFzaWwsIHJlY29ydGFkbyBzZW0gcmVkZXNlbmhvIGRvIHZldG9yICJTw61tYm9sbyBkbyBDb25ncmVzc28KICAgICBOYWNpb25hbCBkbyBCcmFzaWwuc3ZnIiAoV2lraW1lZGlhIENvbW1vbnMsIGRvbcOtbmlvIHDDumJsaWNvOyBhdXRvcmlhIGRvIENvbmdyZXNzbyBOYWNpb25hbDsgZm9udGUgZGVjbGFyYWRhOgogICAgIHd3dzEyLnNlbmFkby5sZWcuYnIvaWRlbnRpZGFkZXZpc3VhbC9tYXJjYS1pbnN0aXR1Y2lvbmFsKTogc8OzIG8gYmxvY28gZG8gc8OtbWJvbG8gKG8gZnVuZG8gYXp1bCwgbyBkZXNlbmhvIGRvCiAgICAgZWRpZsOtY2lvIGUgYSBmYWl4YSB2ZXJkZSksIGNvbSBhcyBjb3JlcyBvcmlnaW5haXMsIHNlbSBvIG5vbWUgIkNvbmdyZXNzbyBOYWNpb25hbCIgYW8gbGFkby4gVXNvIG5vbWluYXRpdm87IG8KICAgICBjb25lY3RvciBuw6NvIMOpIHVtIHNlcnZpw6dvIGRhIEPDom1hcmEgZG9zIERlcHV0YWRvcyBuZW0gZG8gU2VuYWRvIEZlZGVyYWwgKEFEUi0wNDEgZG8gaW50ZWdyYXMtZGlnaXRhbCkuIC0tPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjI4NS43NSAtMTA5LjQwIDM3NSAzNzUiIHZlcnNpb249IjEuMSI+CiAgPGcKICAgICBpZD0iZzMiCiAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEwNCwtNzEuNjM5OTk5KSI+CiAgICA8cmVjdAogICAgICAgeD0iNDIxLjA0OTk5IgogICAgICAgeT0iNzEuNjM5OTk5IgogICAgICAgd2lkdGg9IjMxMi4zOTAwMSIKICAgICAgIGhlaWdodD0iMTEzLjc5IgogICAgICAgc3R5bGU9ImZpbGw6IzAwOGFjZiIKICAgICAgIGlkPSJyZWN0MiIgLz4KICAgIDxwYXRoCiAgICAgICBkPSJNIDczMy40NCwxOTYuOSBWIDE1OC44OSBIIDYyNi4xMiBjIDkuNjcsOS43MSAxOC45NiwxNi4zMyAyNS43MiwyMC42IDQuNTMsMi44NiA4LDQuNzEgMTAuNTYsNS45MyBIIDU5OS45OCBWIDg2Ljc3IGggLTE3LjAxIHYgNDMuMTQgaCAtMTAuMyBWIDg2Ljc3IGggLTE3LjAxIHYgOTguNjUgaCAtMTMuMSBjIC0yMC4wNCwtMTYuMjcgLTM1Ljk4LC0yNC40NyAtNTMuMjQsLTI0LjA3IC0xNy4yNSwtMC40IC0zMy4yLDcuOCAtNTMuMjQsMjQuMDcgSCA0MjEuMDMgViAxOTcgbCAzMTIuMzksLTAuMTEgeiBNIDU4Mi45NywxNDAuMzEgdiA0NS4xMSBoIC0xMC4zIHYgLTQ1LjExIHoiCiAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmIgogICAgICAgaWQ9InBhdGgzIiAvPgogICAgPHJlY3QKICAgICAgIHg9IjQyMS4wNDk5OSIKICAgICAgIHk9IjE5Ny4wMDk5OSIKICAgICAgIHdpZHRoPSIzMTIuMzkwMDEiCiAgICAgICBoZWlnaHQ9IjMwLjgzIgogICAgICAgc3R5bGU9ImZpbGw6Izc1YWQ0MCIKICAgICAgIGlkPSJyZWN0MyIgLz4KICA8L2c+Cjwvc3ZnPgo=" alt=""></span>
+            <div class="ss-ccard__titles">
+              <h2 class="ss-ccard__name heading-sm">Legislativo</h2>
+              <p class="ss-ccard__category caption">Eleições · Legislativo</p>
+            </div>
+          </div>
+          <div class="ss-ccard__offer">
+            <span class="ss-badge badge">Teste grátis usado</span>
+            <div class="ss-ccard__buy">
+              <span class="ss-price body-sm"><span class="ss-price__value">R$&nbsp;19,90</span><span class="ss-price__period">/mês</span></span>
+              <span class="ss-btn ss-btn--secondary button">Assinar</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+  <div class="tr-final">
+    <div class="ss-tour ss-tour--noarrow tr-balloon" role="dialog" aria-modal="true" aria-labelledby="trt1">
+      <svg class="tr-bands" viewBox="0 0 96 56" width="96" height="56" aria-hidden="true" focusable="false"><rect class="m" x="0" y="-8" width="112" height="28" rx="6"/><rect class="c" x="0" y="24" width="112" height="16" rx="6"/><rect class="o" x="0" y="44" width="112" height="12" rx="6"/></svg>
+      <h2 class="heading tr-title" id="trt1">Conectores</h2>
+      <p class="ss-tour__text body-sm tr-text">Cada conector dá ao seu assistente de IA uma base de dados pública para consultar, com a fonte de cada número.</p>
+      <div class="ss-tour__actions">
+        <button class="ss-btn ss-btn--lg ss-btn--tertiary button" type="button">Pular</button>
+        <span class="ss-tour__count caption">1 de 6</span>
+        <button class="ss-btn ss-btn--lg ss-btn--primary button" type="button">Próximo</button>
+      </div>
+    </div>
+    <div class="ss-tour ss-tour--noarrow tr-balloon" role="dialog" aria-modal="true" aria-labelledby="trt2">
+      <svg class="tr-bands" viewBox="0 0 96 56" width="96" height="56" aria-hidden="true" focusable="false"><rect class="m" x="0" y="-8" width="112" height="28" rx="6"/><rect class="c" x="0" y="24" width="112" height="16" rx="6"/><rect class="o" x="0" y="44" width="112" height="12" rx="6"/></svg>
+      <h2 class="heading tr-title" id="trt2">O tour quando você quiser</h2>
+      <p class="ss-tour__text body-sm tr-text">Este botão abre de novo o tour desta página, a qualquer momento.</p>
+      <div class="ss-tour__actions">
+        <span class="ss-tour__count caption">6 de 6</span>
+        <button class="ss-btn ss-btn--lg ss-btn--secondary button" type="button">Voltar</button>
+        <button class="ss-btn ss-btn--lg ss-btn--primary button" type="button">Concluir</button>
+      </div>
+    </div>
+  </div>
+  <p class="caption ss-demo-note">No primeiro passo não há "Voltar"; no último, "Concluir" fica no lugar de "Próximo" e "Pular" sai. O último passo aponta para o botão de ajuda do cabeçalho da página, “Ver o tour desta página”: o tour aparece uma vez por tela e volta por ele. Pular, Esc ou Concluir encerram, apagam o véu e devolvem o foco a quem abriu. A dispensa fica guardada no servidor, não no navegador.</p>
+</main>
+</body>
+</html>

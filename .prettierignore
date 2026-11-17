@@ -14,3 +14,6 @@ docs/superpowers/
 
 # Byte-for-byte copy of the approved DS v2 tokens.json (see packages/tokens/reference/README.md)
 packages/tokens/reference/ds-v2.tokens.json
+
+# Design System v2 previews and bundle, copied as generated (apps/docs/scripts/import-ds-v2-previews.mjs)
+apps/docs/public/ds-v2/

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Skeleton</title>
+<style>
+  .sk-row { display: grid; grid-template-columns: 20px 1.4fr 0.6fr 0.8fr 0.5fr; gap: var(--size-4); align-items: center; height: var(--size-10); padding: 0 var(--size-3); border-bottom: 1px solid var(--color-border-subtle); }
+  .sk-row:last-child { border-bottom: 0; }
+  .sk-head { background: var(--color-surface-sunken); }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+  <div class="ss-demo-head"><h2 class="overline ss-demo-title">Depois de 300ms</h2><span class="caption ss-demo-note">blocos em interactive-secondary com o raio do que substituem · pulso de 1,2s, parado com movimento reduzido</span></div>
+  <div class="ss-demo-grid ss-demo-grid--2">
+    <article class="ss-card ss-ccard" aria-busy="true" aria-label="Carregando conector">
+      <div class="ss-ccard__head">
+        <span class="ss-skel ss-skel--logo"></span>
+        <div class="ss-ccard__titles" style="flex:1">
+          <span class="ss-skel ss-skel--title" style="width:55%"></span>
+          <span class="ss-skel ss-skel--title" style="width:35%;margin-top:var(--size-1)"></span>
+        </div>
+      </div>
+      <span class="ss-skel ss-skel--line" style="width:100%"></span>
+      <span class="ss-skel ss-skel--line" style="width:92%"></span>
+      <span class="ss-skel ss-skel--line" style="width:66%"></span>
+      <div class="ss-card__footer"><span class="ss-skel ss-skel--price"></span><span class="ss-skel ss-skel--btn"></span></div>
+    </article>
+    <div class="ss-table-wrap" aria-busy="true" aria-label="Carregando tabela">
+      <div class="sk-row sk-head"><span></span><span class="ss-skel ss-skel--line" style="width:50%"></span><span class="ss-skel ss-skel--line" style="width:70%"></span><span class="ss-skel ss-skel--line" style="width:60%"></span><span></span></div>
+      <div class="sk-row"><span class="ss-skel" style="width:20px;height:20px;border-radius:var(--radius-sm)"></span><span class="ss-skel ss-skel--line" style="width:80%"></span><span class="ss-skel ss-skel--line" style="width:60%"></span><span class="ss-skel" style="width:64px;height:20px;border-radius:var(--radius-full)"></span><span class="ss-skel ss-skel--line" style="width:70%"></span></div>
+      <div class="sk-row"><span class="ss-skel" style="width:20px;height:20px;border-radius:var(--radius-sm)"></span><span class="ss-skel ss-skel--line" style="width:65%"></span><span class="ss-skel ss-skel--line" style="width:50%"></span><span class="ss-skel" style="width:56px;height:20px;border-radius:var(--radius-full)"></span><span class="ss-skel ss-skel--line" style="width:60%"></span></div>
+      <div class="sk-row"><span class="ss-skel" style="width:20px;height:20px;border-radius:var(--radius-sm)"></span><span class="ss-skel ss-skel--line" style="width:75%"></span><span class="ss-skel ss-skel--line" style="width:55%"></span><span class="ss-skel" style="width:72px;height:20px;border-radius:var(--radius-full)"></span><span class="ss-skel ss-skel--line" style="width:50%"></span></div>
+      <div class="sk-row"><span class="ss-skel" style="width:20px;height:20px;border-radius:var(--radius-sm)"></span><span class="ss-skel ss-skel--line" style="width:58%"></span><span class="ss-skel ss-skel--line" style="width:62%"></span><span class="ss-skel" style="width:60px;height:20px;border-radius:var(--radius-full)"></span><span class="ss-skel ss-skel--line" style="width:66%"></span></div>
+      <div class="sk-row"><span class="ss-skel" style="width:20px;height:20px;border-radius:var(--radius-sm)"></span><span class="ss-skel ss-skel--line" style="width:70%"></span><span class="ss-skel ss-skel--line" style="width:45%"></span><span class="ss-skel" style="width:52px;height:20px;border-radius:var(--radius-full)"></span><span class="ss-skel ss-skel--line" style="width:55%"></span></div>
+    </div>
+  </div>
+  <p class="caption ss-demo-note">0 a 100ms: estado pressionado · até 1s: spinner no controle · acima de 300ms: esqueleto da região · acima de 10s: progresso com texto e saída. Nunca tela branca: o shell chega antes do JS.</p>
+</main>
+</body>
+</html>

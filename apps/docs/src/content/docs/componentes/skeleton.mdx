@@ -1,0 +1,29 @@
+---
+title: Skeleton
+description: Esqueleto da região que está carregando, mostrado a partir de 300ms para a pessoa nunca ver tela branca.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Esqueleto da região que está carregando, mostrado a partir de 300ms para a pessoa nunca ver tela branca.
+
+<DsPreview name="Skeleton" title="Prévia do Skeleton: cartão de conector e tabela carregando" height={410} />
+
+## Aparência
+
+- Blocos em `color-interactive-secondary`, com o raio do elemento que substituem (`ss-skel--logo`, `--title`, `--line`, `--btn`, `--price`, `--avatar`).
+- Pulso de opacidade de 1,2s; parado com `prefers-reduced-motion`.
+- A região leva `aria-busy="true"` e um nome ("Carregando conectores").
+
+## Tempo (Doherty)
+
+- 0 a 100ms: estado pressionado do controle.
+- Até 1s: spinner no controle.
+- Acima de 300ms: esqueleto da região.
+- Acima de 10s: progresso com texto e saída.
+- Shell antes do JS: o `index.html` já traz o fundo e o símbolo de 48px.
+
+## Regras
+
+- Tabela: 5 linhas de esqueleto.
+- Card de conector: quadro de 52px, 2 linhas de título, 3 de texto e o rodapé.

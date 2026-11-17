@@ -1,0 +1,31 @@
+---
+title: Avatar
+description: Imagem de pessoa (círculo) ou de organização (quadrado), com iniciais e ícone como reserva e sem cor aleatória.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Imagem de pessoa (círculo) ou de organização (quadrado), com iniciais e ícone como reserva e sem cor aleatória.
+
+<DsPreview name="Avatar" title="Prévia do Avatar: tamanhos, pessoa e organização" height={320} />
+
+## Tamanhos
+
+- 24, 32, 40, 64 e 96px (`ss-avatar--24`, padrão 32, `--40`, `--64`, `--96`). O do menu da pessoa tem 32px.
+- No de 24px, as iniciais ficam em `font-size-xs` (12px), o piso da escala: duas letras com peso 600 cabem.
+
+## Forma
+
+- Pessoa: círculo.
+- Organização (`ss-avatar--org`): quadrado com raio `radius-md`.
+
+## Conteúdo, nesta ordem
+
+1. Foto (`ss-avatar--photo`), com borda interna de 1px em `color-border-subtle`.
+2. Iniciais (1 ou 2 letras, peso 600) em `color-text-secondary` sobre `color-interactive-secondary` (7,76:1 no claro e 7,21:1 no escuro).
+3. O ícone user em `color-text-muted`.
+
+## Regras
+
+- Texto alternativo com o nome, ou vazio quando o nome já aparece ao lado.
+- Instituição sem logo usa as iniciais no quadrado. Nunca o círculo #1e3a5f com "I" ou "S" em Arial, nem o avatar padrão cinza frio #e0e4ea.

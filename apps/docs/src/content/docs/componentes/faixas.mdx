@@ -1,0 +1,56 @@
+---
+title: Faixas
+description: O momento de marca do sistema, tirado da capa, com três faixas nas cores do símbolo, em três formas, só como decoração.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+O momento de marca do sistema, tirado da capa: três faixas na ordem do degradê do símbolo (magenta em cima, coral, laranja), com alturas na proporção 7:4:3. Só decoração.
+
+<DsPreview name="Faixas" title="Prévia das Faixas: canto, emblema e banda, nas duas marcas" height={916} minWidth={392} />
+
+## Regras
+
+- Só em momento de marca, e uma composição por tela.
+- Nunca texto em cima das faixas.
+- O título lê primeiro, depois a ação, depois as faixas.
+- SVG ou blocos, com `aria-hidden` e sem nada clicável. Nos sites, o SVG vem no HTML, sem script.
+- Com o balão do tour aberto, as faixas da página somem: ficam só as do balão.
+
+## Cores
+
+- Faixas: `color-brand-primary`, `-secondary` e `-tertiary`, iguais nos dois temas. Integras (padrão): #e91e8b, #e8606a e #f5a623. Com `data-brand="singularidade"`: #ed1e79, #f15052 e #f7931e.
+- Laje: `color-neutral-800` no claro e `color-neutral-600` no escuro. Tira: `color-brand-coral-100` no claro e `color-interactive-primary-subtle` (o rosa de 16%) no escuro. Os pontos ficam na cor da faixa magenta.
+- A laje e a tira leem a rampa direto. Com o mapa de calor, são as únicas leituras de rampa permitidas.
+
+## Três formas
+
+### Canto (cartão e balão)
+
+- SVG de 96 × 56. Faixas de 112 de largura, raio 6: magenta em y −8 com 28 de altura, coral em y 24 com 16, laranja em y 44 com 12.
+- As faixas saem pela borda de cima e pela da direita; o cartão recorta. O título reserva 88px à direita (80px no celular) para não encostar nelas.
+- Uso: a volta do checkout e o balão do tour do Hub.
+
+### Emblema (estado vazio)
+
+- Blocos de 28, 16 e 12px, 4px entre eles, 56px de largura e raio 6, no lugar do ícone e sem ladrilho.
+- Uso: Assinados sem assinatura, no Hub.
+
+### Banda (topo de site)
+
+- Faixas de 56, 32 e 24 (7:4:3), 8 entre elas, raio 8. Uma laje alta e uma tira com pontos, as duas com raio 12. Pontos de raio 2 a cada 16px, em 4 fileiras.
+- Faixas e laje sangram pelo topo; a tira começa 24 abaixo do topo e sai pela lateral. As três terminam na mesma linha, a base da laranja.
+- A partir de 900px (`size="wide"`): faixas de 282, laje de 180, 24 entre as formas, 12 colunas de pontos, numa caixa de 736 × 112. Abaixo de 900px (`size="narrow"`): faixas de 160, laje de 96, 16 entre as formas, e 4 colunas de pontos no celular.
+- integras.digital: faixas à esquerda; a laje e a tira vêm depois, e a tira sai pela borda direita.
+- singularidade.digital: espelhada. Faixas na borda direita do conteúdo, a laje à esquerda delas, e a tira sai pela borda esquerda da tela.
+- A página recorta a banda com uma caixa de largura total em volta dela, nunca em volta do texto.
+
+## Onde aparece
+
+- Integras Hub: no login, no canto do cartão da volta do checkout e do balão do tour, e como emblema no vazio de Assinados.
+- integras.digital: a banda no topo da home e os cartões sociais.
+- singularidade.digital: a banda espelhada no topo da home, nas cores da Singularidade.
+
+## Por que pode ter pontos
+
+A regra de [Imagem](/fundamentos/imagem/) proíbe grade e pontos de fundo. A tira das Faixas é a exceção: os pontos ficam dentro dela, só no momento de marca, nunca atrás de texto.

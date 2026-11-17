@@ -1,0 +1,32 @@
+---
+title: PageConfiguracoes
+description: Modelo de Minha conta, com navegação lateral de 220px e seções em cards de até 720px, cada uma com o próprio "Salvar alterações".
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Modelo de Minha conta: navegação lateral de 220px e seções em cards de até 720px, cada uma com o próprio "Salvar alterações".
+
+<DsPreview name="PageConfiguracoes" title="Prévia da PageConfiguracoes: Minha conta, Perfil e Privacidade" height={1250} page />
+
+## Estrutura
+
+- [PageHeader](/componentes/page-header/) "Minha conta".
+- A partir de 1024px: navegação fixa de 220px à esquerda com "Perfil", "Pagamento", "Armazenamento", "Privacidade" e, separado no fim, "Excluir a conta" (danger-tertiary). Abaixo de 1024px, vira [abas](/componentes/tabs/).
+- Conteúdo com no máximo `container-settings` (720px).
+
+## Cada seção é um card
+
+- Título em `heading-sm` e descrição.
+- Campos com 16px entre eles; dois por linha só quando relacionados, como País e Idioma.
+- Rodapé com borda superior: "Salvar alterações", ativo só quando há mudança, e "Descartar".
+- Sair da página com mudanças pendentes pede confirmação. Ao salvar, o toast "Perfil atualizado".
+
+## Privacidade
+
+- Card "Personalizar ofertas" com o badge neutro do estado, o texto real do "Como funciona", e "Revogar consentimento" ou "Dar consentimento" em botão secundário: mesmo peso, nenhum vermelho.
+- Tabela compacta: Item, Versão, Aceito em, Revogado em.
+
+## Excluir a conta
+
+Seção própria, com as consequências escritas, e um [Dialog](/componentes/dialog/) em que a pessoa digita o e-mail para confirmar.

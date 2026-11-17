@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Stepper</title>
+<style>
+  .st-box { max-width: 440px; display: flex; flex-direction: column; gap: var(--size-4); }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Cadastro de empresa</h2><span class="caption ss-demo-note">círculos de 24px · linha de 2px em border-default · rótulo abaixo</span></div>
+    <div class="st-box">
+      <p class="caption ss-secondary">Passo 2 de 3</p>
+      <ol class="ss-stepper caption" aria-label="Passos do cadastro">
+        <li class="ss-step is-done"><span class="ss-step__dot"><svg class="ss-icon ss-icon--12" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span>E-mail</span><span class="ss-sr-only">, concluído</span></li>
+        <li class="ss-step" aria-current="step"><span class="ss-step__dot">2</span><span>Empresa</span><span class="ss-sr-only">, atual</span></li>
+        <li class="ss-step"><span class="ss-step__dot">3</span><span>Plano</span></li>
+      </ol>
+      <div class="ss-demo-row">
+        <button class="ss-btn ss-btn--secondary button" type="button">Voltar</button>
+        <button class="ss-btn ss-btn--primary button" type="button">Continuar</button>
+      </div>
+      <p class="caption ss-demo-note">“Voltar” mantém o que foi digitado. Para passos use o Stepper; abas não servem.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

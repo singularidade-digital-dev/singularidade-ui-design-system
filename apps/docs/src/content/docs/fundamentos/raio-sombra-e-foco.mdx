@@ -1,0 +1,32 @@
+---
+title: Raio, sombra e foco
+description: Os cantos de controles e contêineres, a elevação com sombra só no que flutua e a regra única de foco
+sidebar: { order: 4 }
+---
+
+import TokenTables from '../../../components/TokenTables.astro';
+
+## Raio
+
+- `radius-md` (8) em controles e no quadro do logo do conector.
+- `radius-lg` (12) em contêineres: card, diálogo, menu, toast, tour, tabela.
+- `radius-full` só em badge, chip, avatar de pessoa e medidor.
+- `radius-sm` (6) no checkbox e no tooltip.
+
+<TokenTables section="radius" />
+
+## Elevação e sombra
+
+- Figura e fundo: base, raised, overlay. No escuro, o que está mais perto é mais claro.
+- Sombra só no que flutua: `shadow-xs` no card em repouso, `shadow-md` em menu, popover e card clicável em hover, `shadow-lg` no toast, `shadow-xl` no diálogo e no balão do tour do Hub.
+- Botão não tem sombra. Card dentro de card é proibido.
+- Card que não é clicável não reage a hover nem muda o cursor.
+
+<TokenTables section="shadow" />
+
+## Foco
+
+- Regra única: `outline: 2px solid` em `color-border-focus`, com offset de 2px (−2px em itens de lista, −1px em campos), só em `:focus-visible`. Nunca `outline: none` sem substituto.
+- `focus-ring` (box-shadow) só nas partes do Vaadin que não aceitam outline, sempre com `outline: 2px solid transparent` para o alto contraste do Windows.
+- `scroll-padding-top` igual à altura do cabeçalho, para nada fixo cobrir o foco.
+- `color-border-focus` dá 5,31:1 sobre `color-surface-base` no claro (#be3550 sobre #fdfafc) e 6,71:1 no escuro (#fb7185 sobre #1a1517).

@@ -1,0 +1,68 @@
+---
+title: Button
+description: Botão de ação, com um primário por tela ou diálogo, rótulo de verbo e objeto e todos os estados desenhados.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Botão de ação: um primário por tela ou diálogo, com rótulo de verbo e objeto, e todos os estados desenhados.
+
+<DsPreview name="Button" title="Prévia do Button: variantes, tamanhos e estados" height={900} />
+
+## Quando usar
+
+- **primary** (`ss-btn--primary`): a ação principal da tela ou do diálogo. Uma só.
+- **secondary** (`ss-btn--secondary`): ações de apoio e todas as ações dentro de uma grade de cards.
+- **tertiary** (`ss-btn--tertiary`): ação leve, como "Como funciona", "Desfazer" e "Limpar filtros".
+- **neutral-ghost** (`ss-btn--ghost`): ícones em barras e tabelas.
+- **danger** (`ss-btn--danger`): só no botão que confirma a ação destrutiva, dentro do diálogo.
+- **danger-tertiary** (`ss-btn--danger-tertiary`): a entrada da ação destrutiva ("Excluir a conta").
+- **provider** (`ss-btn--provider`): "Continuar com Google", com as cores e a fonte do Google (veja [Continuar com Google](#continuar-com-google)). Não recolora.
+
+## Medidas
+
+- Raio `button-radius` (8px), peso 600, gap do ícone `size-2`, largura mínima de 64px, sem sombra.
+- sm: `control-sm` (30px), padding 0 12px, 13px.
+- md: `control-md` (36px), padding 0 16px, estilo `button`. É o padrão do modo compacto.
+- lg: `control-lg` (44px), padding 0 20px, estilo `button-lg`. É o padrão do modo confortável.
+- Só ícone (`ss-btn--icon`): quadrado de 30, 36 ou 44px, com ícone de 16 ou 20px. Nas ações de tabela, 32px (`ss-btn--32`).
+
+## Estados
+
+- Hover: primary em `button-primary-background-hover`; secondary com fundo `color-interactive-secondary`; tertiary com fundo `color-interactive-primary-subtle` e texto `color-interactive-primary-hover`; danger em `color-feedback-error-hover`.
+- Pressionado: primary em `color-interactive-primary-active` (#791832 no claro, #e8606a no escuro); secondary em `color-interactive-secondary-hover`; tertiary em `color-interactive-primary-subtle-hover`.
+- Foco: outline de 2px em `color-border-focus`, com offset de 2px.
+- Desabilitado: fundo `color-interactive-secondary`, texto `color-text-disabled` e cursor not-allowed. Só quando a ação é impossível, com o motivo visível ("Reenviar em 0:45"). Nunca desabilite o envio para forçar o preenchimento: valide no envio.
+- Carregando: o ícone loader-circle girando (`ss-spin`) no lugar do ícone, o rótulo no gerúndio ("Entrando…"), a largura travada, `aria-busy="true"` e o segundo clique ignorado. Aparece em até 100ms.
+
+## Continuar com Google
+
+As cores do botão do Google são as únicas literais do sistema: vêm das regras de marca do Google. Não recolora.
+
+- Claro: fundo #ffffff, texto #1f1f1f e borda #747775; no hover, fundo #f8f9fa.
+- Escuro: fundo #131314, texto #e3e3e3 e borda #8e918f; no hover, fundo #1f1f20.
+- Texto em Roboto 500 de 14px, com 0,25px entre as letras. O "G" de quatro cores, com 20px (`icon-md`), fica como o Google desenha.
+
+## O que você fornece
+
+```html
+<button class="ss-btn ss-btn--primary button">Enviar código</button>
+```
+
+No modo confortável, use `ss-btn--lg button-lg`. `ss-btn--block` só nas telas de entrada e no celular. O ícone é um `<svg class="ss-icon">` antes do texto.
+
+## Regras
+
+- Rótulo com verbo e objeto, até 3 palavras: "Enviar código", "Cancelar assinatura". Nunca "OK", "Sim" ou "Não".
+- No diálogo, o secundário vem antes do primário, à direita.
+- Ação destrutiva fica longe do primário e com outro estilo.
+- Danger e primary são quase a mesma cor (1,03:1 no escuro e 1,14:1 no claro, de 9° a 12° de matiz). O danger nunca divide a tela com um primário: aparece só no diálogo de confirmação, ao lado do secundário, e o rótulo diz o verbo ("Cancelar assinatura").
+- Botão só com ícone exige `aria-label` e tooltip. O tooltip (`ss-tooltip`) tem fundo `color-surface-inverse`, texto `color-text-on-inverse` em 13/20, raio `radius-sm` e padding de 4px 8px; aparece depois de 500ms, também no foco, e fecha com Esc.
+
+## Vaadin 25
+
+Use `--vaadin-button-height`, `-padding`, `-font-size`, `-font-weight`, `-border-radius`, `-background`, `-text-color` e `-border`. Saem a sombra interna e o `transition: all`.
+
+- Primário chapado nos dois temas, sem sombra e sem brilho interno. Não ponha `box-shadow` em botão: o Lumo desenha o anel de foco com `box-shadow`.
+- Terciário: hover em `color-interactive-primary-subtle` com o texto em `color-interactive-primary-hover` (7,30:1 no claro; no escuro, 7,48:1 sobre a base e 6,84:1 sobre raised); pressionado em `color-interactive-primary-subtle-hover`, com o texto em 6,68:1 no claro e 5,88:1 no escuro. Os terciários de erro, sucesso e contraste mantêm a cor do texto e ganham a superfície do tom no hover.
+- Ações da grade: botões fantasma de 32px, com o ícone na cor da ação (veja [Table](/componentes/table/)).

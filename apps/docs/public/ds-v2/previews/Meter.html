@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Meter</title>
+<style>
+  .mt-col { max-width: 440px; display: flex; flex-direction: column; gap: var(--size-6); }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+  <div class="ss-demo-head"><h2 class="overline ss-demo-title">Uso sempre com número</h2><span class="caption ss-demo-note">trilho de 8px · primário até 79% · aviso a partir de 80% · erro em 100%</span></div>
+  <div class="mt-col">
+    <div class="ss-meter" role="meter" aria-valuemin="0" aria-valuemax="50" aria-valuenow="12" aria-valuetext="Hoje: 12 de 50 consultas">
+      <div class="ss-meter__labels body-sm"><span>Hoje: 12 de 50 consultas</span><span class="ss-meter__rest">restam 38</span></div>
+      <div class="ss-meter__track"><div class="ss-meter__fill" style="--ss-value:0.24"></div></div>
+    </div>
+    <div class="ss-meter ss-meter--warning" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="86" aria-valuetext="Usado: 860 MB de 1 GB">
+      <div class="ss-meter__labels body-sm"><span>Usado: 860 MB de 1 GB</span><span class="ss-meter__rest">restam 140 MB</span></div>
+      <div class="ss-meter__track"><div class="ss-meter__fill" style="--ss-value:0.86"></div></div>
+      <p class="ss-meter__note caption">Com conector pago: 1 GB, mais 1 GB por pacote Smart.</p>
+    </div>
+    <div class="ss-meter ss-meter--error" role="meter" aria-valuemin="0" aria-valuemax="50" aria-valuenow="50" aria-valuetext="Hoje: 50 de 50 consultas. As consultas de hoje acabaram.">
+      <div class="ss-meter__labels body-sm"><span>Hoje: 50 de 50 consultas</span><span class="ss-meter__rest">restam 0</span></div>
+      <div class="ss-meter__track"><div class="ss-meter__fill" style="--ss-value:1"></div></div>
+      <p class="ss-meter__note caption">As consultas de hoje acabaram. A cota renova amanhã.</p>
+    </div>
+  </div>
+</main>
+</body>
+</html>

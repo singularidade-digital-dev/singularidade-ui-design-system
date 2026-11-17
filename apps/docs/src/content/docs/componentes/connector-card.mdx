@@ -1,0 +1,48 @@
+---
+title: ConnectorCard
+description: Cartão de conector da vitrine do Hub e da loja das empresas, com logo no quadro branco, selo do teste ou do contrato, preço e uma só ação.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Cartão de conector da vitrine do Hub e da loja das empresas: logo no quadro branco, nome, categoria, uma linha do que ele faz e, embaixo, o selo do teste ou do contrato, o preço e uma só ação.
+
+<DsPreview name="ConnectorCard" title="Prévia do ConnectorCard: estados do catálogo e o cartão largo de Assinados" height={1398} minWidth={444} />
+
+## Card base (`ss-card`)
+
+- Fundo `card-background`, borda de 1px `card-border`, raio `card-radius` (12px), padding `card-padding` (20px), `shadow-xs`.
+- Altura igual na fileira: a oferta (`ss-ccard__offer`) usa `margin-top: auto`, então preço e ação ficam na mesma altura em todos os cartões.
+- Clicável (`ss-card--link`): o link é o nome (`ss-card__link`), esticado sobre o cartão, e abre o detalhe; os botões continuam focáveis à parte. Hover com `shadow-md` e borda default; foco com outline de 2px e offset de 2px.
+
+## Anatomia (catálogo)
+
+- Cabeça (`ss-ccard__head`): o quadro do logo (`ss-logoframe`, 52×52px, sempre `color-neutral-0`, borda de 1px subtle, raio `radius-md`; logo de até 40×40px com contain; `alt=""`) e, ao lado, o nome em `heading-sm` (até 2 linhas) e a categoria em `caption` `color-text-secondary` ("Eleições · Legislativo").
+- Selo "Novo" (badge brand) no começo da linha da categoria, só com data real de lançamento no catálogo; nunca no canto, onde aperta o nome.
+- Valor (`ss-ccard__value`): uma frase em `body-sm` `color-text-secondary`, cortada em 2 linhas.
+- Oferta (`ss-ccard__offer`, borda superior subtle): na 1ª linha, o selo do teste ou do contrato; na 2ª (`ss-ccard__buy`), o preço ("R$ 19,90/mês") e a ação, à direita.
+
+## Estados (textos do produto)
+
+- Teste não começado: badge brand "5 consultas grátis" e "Adicionar ao Claude" (abre o Claude numa aba nova, com o ícone external-link e o texto oculto "(abre em nova aba)").
+- Em teste: badge neutro "Teste grátis: restam 2 de 5" e "Adicionar ao Claude".
+- Teste usado: badge neutro "Teste grátis usado" e "Assinar".
+- Assinado: badge success "Assinado · renova em 12/12/2026" e "Gerenciar", que leva ao cartão na aba Assinados.
+- Pagamento pendente: badge warning "Pagamento pendente · acesso até 15/11" e "Gerenciar".
+- Cancelado com acesso: badge neutro "Cancelado · acesso até 30/11" e "Reativar".
+- Aguardando pagamento: badge info com spinner. Fora de venda, sem contrato: sem ação.
+- Carregando: o esqueleto do mesmo cartão (veja [Skeleton](/componentes/skeleton/)).
+
+## Na aba Assinados (`ss-ccard--wide`)
+
+- Cabeça com o selo do contrato no fim da linha; o [Meter](/componentes/meter/) "Hoje: 12 de 50 consultas" com "restam 38"; os extras do mês ("Consultas extras deste mês: 87 de 100 restantes") com "Comprar +100 consultas extras (R$ 4,90)" em terciário sm; o CopyField "Endereço do conector".
+- Rodapé: o preço "R$ 19,90 por mês" e, à direita, "Cancelar assinatura" (perigo terciário, abre a confirmação), "Ver detalhes" (terciário) e "Adicionar ao Claude" (o único primário da tela).
+
+## Regras
+
+- No catálogo, a ação é secundária e só uma por cartão; o primário fica no detalhe e na aba Assinados. Cinco botões cheios lado a lado viram uma parede de cor e nenhum se destaca (Von Restorff).
+- Grade (`ss-cgrid`): `repeat(auto-fill, minmax(min(100%, 320px), 1fr))`, gap de 16px, ou 24px a partir de 1024px.
+- O aviso "Não é um serviço oficial do/da …" de conector de órgão público fica no detalhe, em "Sobre os dados", e na descrição de uso do conector no Claude.
+- No detalhe do Hub, quem tem acesso vê "Enviar para o meu e-mail" (terciário, com envelope) logo depois de "Adicionar ao Claude" e antes de "Gerenciar a assinatura": manda o guia de uso para o e-mail da sessão (veja [Padrões, 4](/paginas-modelo/padroes/#4-card-da-loja-e-detalhe)).
+- Na loja das empresas, o mesmo cartão leva a linha de contagens ("13 ferramentas · 4 roteiros"; contagem zero não aparece) e o selo "Oficial" (ícone badge-check) quando o conector tem suporte oficial de quem faz o sistema, como o próprio conector Integras. O selo nunca vai em conector de órgão público: ao lado do aviso, ele o contradiz.
+- Nada de "+" e "−" redondos, verde e vermelho, no canto: use o secundário "Adicionar instância" ou itens do menu ⋯.
