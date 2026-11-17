@@ -31,13 +31,28 @@ import TokenTables from '../../../components/TokenTables.astro';
 
 ## Movimento reduzido
 
+Uma base para a página inteira: as animações rodam uma vez só, sem laço, e a rolagem não desliza.
+
 ```css
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
+
+Esqueleto e spinner param de vez, como no `bundle.css` da v2:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .ss-spin,
+  .ss-skel {
+    animation: none;
   }
 }
 ```

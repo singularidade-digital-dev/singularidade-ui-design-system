@@ -7,7 +7,7 @@ import DsPreview from '../../../components/DsPreview.astro';
 
 Status em uma ou poucas palavras, com tom suave e ícone opcional; nunca clicável, nunca só cor.
 
-<DsPreview name="Badge" title="Prévia do Badge: tons, sólido, contagem e selos de status" height={456} />
+<DsPreview name="Badge" title="Prévia do Badge: tons, sólido, contagem e selos de status" height={456} minWidth={400} />
 
 ## Medidas
 
@@ -28,13 +28,15 @@ Fundo e texto, com o contraste no claro e no escuro.
 - Pill de contagem (`ss-count`): largura mínima de 20px, tom neutro, tabular-nums.
 - Os tons tingidos pintam o tom sobre uma base `color-surface-raised` opaca: numa linha selecionada ou num contêiner tingido, o badge lê igual (dois tons translúcidos empilhados davam 3,71 a 4,12:1 no escuro).
 
-## Selo de status
+## Selo de status nos apps Vaadin
+
+Nos apps Vaadin, o selo de status é o StatusBadge da biblioteca `singularidade-ui-vaadin` 2.1.0. A v2 pede palavra e ícone em todo status (veja [Cor](/fundamentos/cor/)); este selo ainda mostra só a palavra, sem ícone, ponto nem spinner (veja [Adoção nos produtos](/releases/adocao/#o-que-os-pacotes-ainda-não-trazem)).
 
 - A palavra vem do app, na língua da tela; a cor vem do código gravado, nunca da palavra.
 - Um código sem palavra aparece como está gravado, nunca como chave faltando.
 - Pílula com padding 2px 10px, `radius-full`, 12px e peso 600, com o tom pintado sobre a base opaca.
 
-Do código para o tom:
+Do código para o tom, na biblioteca 2.1.0:
 
 - success: ACTIVE, COMPLETED, SUCCESS, PUBLISHED, RUNNING, CREATE;
 - warning: PENDING, PROVISIONING, REACTIVATING, PROCESSING, PENDING_RETRY;

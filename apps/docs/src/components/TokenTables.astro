@@ -92,6 +92,21 @@ const surface = {
   dark: resolve('{color-surface-base}', 'dark'),
 };
 
+const rampGeneric = [
+  /Rampa (magenta|coral|laranja|neutra)\.\s*/i,
+  /Neutro quente \(cinza puxado para o magenta\)\.\s*/,
+  /Rampa do núcleo, igual nos dois temas\.\s*/,
+  /Componente nunca lê a rampa: leia um token semântico\.\s*/,
+  /A única exceção é o mapa de calor[^.]*\.\s*/,
+  /Rampa de (sucesso|erro|aviso|informação)(?: \([^)]*\))?\.\s*/i,
+];
+
+function rampNote(t: Token): string {
+  let note = t.usage ?? '';
+  for (const re of rampGeneric) note = note.replace(re, '');
+  return clean(note);
+}
+
 const ramps = [
   ['Magenta', 'color-brand-magenta-'],
   ['Coral', 'color-brand-coral-'],
@@ -101,25 +116,16 @@ const ramps = [
   ['Erro', 'color-feedback-error-'],
   ['Aviso', 'color-feedback-warning-'],
   ['Informação', 'color-feedback-info-'],
-].map(([label, prefix]) => ({
-  label,
-  items: colorTokens.filter((t) => t.name.startsWith(prefix) && /-\d+$/.test(t.name)),
-}));
-
-const rampGeneric = [
-  /Rampa (magenta|coral|laranja|neutra)\.\s*/i,
-  /Neutro quente \(cinza puxado para o magenta\)\.\s*/,
-  /Rampa do núcleo, igual nos dois temas\.\s*/,
-  /Componente nunca lê a rampa: leia um token semântico\.\s*/,
-  /A única exceção é o mapa de calor[^.]*\.\s*/,
-  /Rampa de (sucesso|erro|aviso|informação)\.\s*/i,
-];
-
-function rampNote(t: Token): string {
-  let note = t.usage ?? '';
-  for (const re of rampGeneric) note = note.replace(re, '');
-  return clean(note);
-}
+].map(([label, prefix]) => {
+  const items = colorTokens.filter((t) => t.name.startsWith(prefix) && /-\d+$/.test(t.name));
+  const notes = items.map((t) => ({ name: t.name, note: rampNote(t) })).filter((n) => n.note);
+  // A note every step of the ramp shares is said once, for the whole ramp.
+  const shared =
+    notes.length > 1 && notes.length === items.length && notes.every((n) => n.note === notes[0].note)
+      ? notes[0].note
+      : '';
+  return { label, items, shared, notes: shared ? [] : notes };
+});
 
 const isRamp = (n: string) =>
   /^color-(brand-(magenta|coral|orange)|neutral|feedback-(success|error|warning|info))-\d+$/.test(
@@ -140,6 +146,32 @@ const simple = ['spacing', 'radius', 'fontSize', 'fontWeight', 'lineHeight', 'le
 const simpleData =
   simple.includes(section) ? (data[section] as { note?: string; tokens: Token[] }) : null;
 const shadowData = data.shadow as { note?: string; tokens: Token[] };
+
+/** Names of the tables. A table wider than the column scrolls sideways: its region takes the
+ * focus, so it scrolls with the arrow keys too, and the name says which table it is. */
+const tableNames: Record<string, string> = {
+  brand: 'cores da marca',
+  semantic: 'cores semânticas',
+  component: 'cores de componente',
+  shadow: 'sombras',
+  spacing: 'espaço',
+  radius: 'raio',
+  fontSize: 'tamanhos de fonte',
+  fontWeight: 'pesos de fonte',
+  lineHeight: 'entrelinhas',
+  letterSpacing: 'espaçamento entre letras',
+  duration: 'durações',
+  easing: 'curvas',
+  breakpoint: 'pontos de quebra',
+  container: 'contêineres',
+  control: 'alturas de controle',
+  zIndex: 'camadas',
+};
+const region = (name: string) => ({
+  tabindex: 0,
+  role: 'region',
+  'aria-label': `Tabela de tokens: ${name}`,
+});
 ---
 
 {
@@ -162,15 +194,14 @@ const shadowData = data.shadow as { note?: string; tokens: Token[] };
               </li>
             ))}
           </ul>
-          {r.items.some((t) => rampNote(t)) && (
+          {r.shared && <p class="tk__ramp-shared">{r.shared}</p>}
+          {r.notes.length > 0 && (
             <ul class="tk__ramp-notes">
-              {r.items
-                .filter((t) => rampNote(t))
-                .map((t) => (
-                  <li>
-                    <code>{t.name}</code>: {rampNote(t)}
-                  </li>
-                ))}
+              {r.notes.map((n) => (
+                <li>
+                  <code>{n.name}</code>: {n.note}
+                </li>
+              ))}
             </ul>
           )}
         </div>
@@ -182,7 +213,7 @@ const shadowData = data.shadow as { note?: string; tokens: Token[] };
 {
   (section === 'brand' || section === 'semantic' || section === 'component') && (
     <div class="tk not-content">
-      <div class="tk__scroll">
+      <div class="tk__scroll" {...region(tableNames[section])}>
         <table class="tk__table tk__table--pair">
           <thead>
             <tr>
@@ -228,7 +259,7 @@ const shadowData = data.shadow as { note?: string; tokens: Token[] };
 {
   section === 'type' && (
     <div class="tk not-content">
-      <div class="tk__scroll">
+      <div class="tk__scroll" {...region('famílias de fonte')}>
       <table class="tk__table">
         <thead>
           <tr>
@@ -258,7 +289,7 @@ const shadowData = data.shadow as { note?: string; tokens: Token[] };
         <div class="tk__group">
           <p class="tk__group-title">{g.name}</p>
           {g.note && <p class="tk__note">{clean(g.note)}</p>}
-          <div class="tk__scroll">
+          <div class="tk__scroll" {...region(`estilos de texto, ${g.name}`)}>
           <table class="tk__table tk__table--type">
             <thead>
               <tr>
@@ -297,7 +328,7 @@ const shadowData = data.shadow as { note?: string; tokens: Token[] };
   section === 'shadow' && (
     <div class="tk not-content">
       {shadowData.note && <p class="tk__note">{clean(shadowData.note)}</p>}
-      <div class="tk__scroll">
+      <div class="tk__scroll" {...region(tableNames.shadow)}>
         <table class="tk__table tk__table--pair">
           <thead>
             <tr>
@@ -339,7 +370,7 @@ const shadowData = data.shadow as { note?: string; tokens: Token[] };
   simpleData && (
     <div class="tk not-content">
       {simpleData.note && <p class="tk__note">{clean(simpleData.note)}</p>}
-      <div class="tk__scroll">
+      <div class="tk__scroll" {...region(tableNames[section])}>
       <table class="tk__table">
         <thead>
           <tr>
@@ -391,6 +422,17 @@ const shadowData = data.shadow as { note?: string; tokens: Token[] };
 
   .tk__scroll {
     overflow-x: auto;
+  }
+
+  .tk__scroll:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+  }
+
+  .tk__ramp-shared {
+    margin: 0.75rem 0 0;
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
   }
 
   .tk__table {

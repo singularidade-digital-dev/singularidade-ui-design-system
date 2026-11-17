@@ -9,6 +9,9 @@ const ogImageAlt =
 
 export default defineConfig({
   site,
+  // GitHub Pages serves each page at its folder, with the slash: links without it cost a 301.
+  // With 'always', Starlight writes every sidebar and prev/next link with the slash.
+  trailingSlash: 'always',
   // Pages that moved when the Design System v2 content arrived: old links keep working.
   redirects: {
     '/foundations/tokens': '/fundamentos/tokens/',

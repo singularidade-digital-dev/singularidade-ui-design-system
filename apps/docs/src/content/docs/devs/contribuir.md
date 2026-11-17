@@ -59,8 +59,18 @@ Os componentes da v2 são CSS: marcação com as classes `ss-*` do `bundle.css`.
 
 1. Gere as prévias com o gerador do Design System v2, que embute os ícones e as imagens em cada `<Nome>/preview.html`.
 2. Importe: `node apps/docs/scripts/import-ds-v2-previews.mjs <pasta components do DS v2>`. O script enquadra cada prévia com os tokens publicados (`theme.css` e `text-styles.css`), as fontes e o `bundle.css`, e copia o `bundle.css` e o `bundle.js`.
-3. Documente em `apps/docs/src/content/docs/componentes/<nome>.mdx`, com `<DsPreview name="<Nome>" title="Prévia do …" height={…} />`. A altura é a do cartão na v2; a prévia cresce com o conteúdo. Página-modelo leva `page` (desenhada a 1280px e reduzida à coluna) e, quando é uma tela só e responsiva, também `phone`, que dá a opção de 390px.
+3. Documente em `apps/docs/src/content/docs/componentes/<nome>.mdx`, com `<DsPreview name="<Nome>" title="Prévia do …" height={…} />`. A altura é a do cartão na v2; a prévia cresce com o conteúdo. Página-modelo leva `page` (desenhada a 1280px e reduzida à coluna) e, quando cabe numa tela de 390px sem rolagem lateral, também `phone`, que dá a opção de 390px. Componente desenhado para um espaço mais largo que a coluna leva `minWidth`, a menor largura em que nada sai cortado: abaixo dela, a prévia é montada nessa largura e reduzida à coluna (Header, Tour, Badge, Faixas, ConnectorCard e Dialog).
 4. Rode `pnpm --filter @singularidade/docs build` e confira a página no claro e no escuro, a 1280 e a 390px.
+
+#### Textos que mudam no site
+
+O site é público, e alguns textos da fonte da v2 mudam na importação. A tabela `adjustments` do script guarda cada troca, e o script para se um texto não aparecer o número de vezes esperado: quando a fonte muda, revise a troca em vez de publicar o texto antigo.
+
+- **Badge**: o bloco do StatusBadge leva o nome "Selo de status nos apps Vaadin · biblioteca 2.1.0" e diz que a v2 pede palavra e ícone; sai a nota interna do mapeamento em aberto.
+- **Header**: sai a pendência do logotipo; fica a regra do logo (o símbolo com o nome em `brand-label`).
+- **PageSite**: os planos como o integras.digital vende (usuário adicional a R$ 9,90/mês, "O dobro de memória do Starter", "O dobro de CPU e de memória do Standard" e "Suporte prioritário").
+- **PageEmail**: o logo leva `alt=""`, porque o nome do produto está escrito ao lado.
+- **PageConfiguracoes, Table e SideNav**: dados de exemplo claramente fictícios (o telefone 79 99999-0000, um e-mail em `.test` e a versão `a1b2c3d`).
 
 ### Componente Vaadin
 

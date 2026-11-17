@@ -17,7 +17,7 @@ Botão de ação: um primário por tela ou diálogo, com rótulo de verbo e obje
 - **neutral-ghost** (`ss-btn--ghost`): ícones em barras e tabelas.
 - **danger** (`ss-btn--danger`): só no botão que confirma a ação destrutiva, dentro do diálogo.
 - **danger-tertiary** (`ss-btn--danger-tertiary`): a entrada da ação destrutiva ("Excluir a conta").
-- **provider** (`ss-btn--provider`): "Continuar com Google", com as cores e a fonte do Google. Não recolora.
+- **provider** (`ss-btn--provider`): "Continuar com Google", com as cores e a fonte do Google (veja [Continuar com Google](#continuar-com-google)). Não recolora.
 
 ## Medidas
 
@@ -34,6 +34,14 @@ Botão de ação: um primário por tela ou diálogo, com rótulo de verbo e obje
 - Foco: outline de 2px em `color-border-focus`, com offset de 2px.
 - Desabilitado: fundo `color-interactive-secondary`, texto `color-text-disabled` e cursor not-allowed. Só quando a ação é impossível, com o motivo visível ("Reenviar em 0:45"). Nunca desabilite o envio para forçar o preenchimento: valide no envio.
 - Carregando: o ícone loader-circle girando (`ss-spin`) no lugar do ícone, o rótulo no gerúndio ("Entrando…"), a largura travada, `aria-busy="true"` e o segundo clique ignorado. Aparece em até 100ms.
+
+## Continuar com Google
+
+As cores do botão do Google são as únicas literais do sistema: vêm das regras de marca do Google. Não recolora.
+
+- Claro: fundo #ffffff, texto #1f1f1f e borda #747775; no hover, fundo #f8f9fa.
+- Escuro: fundo #131314, texto #e3e3e3 e borda #8e918f; no hover, fundo #1f1f20.
+- Texto em Roboto 500 de 14px, com 0,25px entre as letras. O "G" de quatro cores, com 20px (`icon-md`), fica como o Google desenha.
 
 ## O que você fornece
 

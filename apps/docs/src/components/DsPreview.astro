@@ -3,9 +3,12 @@
  * Live preview of a Design System v2 card (public/ds-v2/previews/<name>.html) in an iframe.
  * The preview loads the published tokens (theme.css, text-styles.css) and the v2 bundle.css.
  * The toolbar switches the preview between the light and dark themes (it starts on the site's
- * theme) and, for page models that are one responsive page, between the desktop width (1280px,
- * scaled to fit) and 390px, the start on a narrow screen. Page models that put several screens
- * side by side (login, sign-up, settings, e-mail) were designed at 1280px only.
+ * theme) and, for page models that fit a phone (`phone`), between the desktop width (1280px,
+ * scaled to fit) and 390px, the start on a narrow screen. The other page models were designed at
+ * 1280px only: several screens side by side (login, sign-up, settings, e-mail), or a header that
+ * the DS v2 does not fold yet (site, storefront).
+ * A component preview takes the width of the column; one drawn for a wider space (`minWidth`) is
+ * laid out at that width and scaled down when the column is narrower, so nothing is cut.
  * The iframe grows to the height of its content; without JavaScript it keeps `height`.
  */
 interface Props {
@@ -17,11 +20,13 @@ interface Props {
   height: number;
   /** Page model: designed at 1280px, shown scaled to the column */
   page?: boolean;
-  /** Page model that is one responsive page: adds the 390px option */
+  /** Page model that fits a 390px screen: adds the 390px option */
   phone?: boolean;
+  /** Component preview: narrowest width it was drawn for, in px; below it, scaled to the column */
+  minWidth?: number;
 }
 
-const { name, title, height, page = false, phone = false } = Astro.props;
+const { name, title, height, page = false, phone = false, minWidth } = Astro.props;
 const src = `/ds-v2/previews/${name}.html`;
 ---
 
@@ -30,6 +35,7 @@ const src = `/ds-v2/previews/${name}.html`;
   data-ds-preview
   data-page={page ? '' : undefined}
   data-phone={page && phone ? '' : undefined}
+  data-min-width={!page && minWidth ? String(minWidth) : undefined}
 >
   <div class="ds-preview__bar">
     <div class="ds-preview__group" role="group" aria-label="Tema da prévia">
@@ -81,6 +87,7 @@ const src = `/ds-v2/previews/${name}.html`;
     const open = fig.querySelector<HTMLAnchorElement>('.ds-preview__open');
     if (!iframe || !viewport || !open) return;
     const isPage = fig.hasAttribute('data-page');
+    const minWidth = Number(fig.dataset.minWidth) || 0;
     fig.classList.add('is-live');
     const siteTheme = () => (document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
     let theme = siteTheme();
@@ -123,7 +130,16 @@ const src = `/ds-v2/previews/${name}.html`;
         iframe!.style.marginInlineStart =
           width * scale < avail ? `${Math.floor((avail - width * scale) / 2)}px` : '0';
         viewport!.style.height = `${Math.ceil(h * scale)}px`;
+      } else if (minWidth && viewport!.clientWidth < minWidth) {
+        // Lay the card out at the width it was drawn for and scale it down to the column.
+        const scale = viewport!.clientWidth / minWidth;
+        iframe!.style.width = `${minWidth}px`;
+        iframe!.style.height = `${h}px`;
+        iframe!.style.transform = `scale(${scale})`;
+        viewport!.style.height = `${Math.ceil(h * scale)}px`;
       } else {
+        iframe!.style.width = '';
+        iframe!.style.transform = '';
         iframe!.style.height = `${h}px`;
         viewport!.style.height = `${h}px`;
       }

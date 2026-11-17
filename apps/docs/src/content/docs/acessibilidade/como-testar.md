@@ -28,7 +28,7 @@ O addon-a11y (axe-core) do Storybook mostra as violações no painel de cada sto
 ## Cada componente
 
 - [ ] Tem rótulo ou `aria-label`?
-- [ ] Atinge 4,5:1 em todos os estados (padrão, hover, pressionado, foco, desabilitado), nos dois temas?
+- [ ] Atinge 4,5:1 nos estados padrão, hover, pressionado e foco, nos dois temas? O desabilitado é isento pela WCAG (`color-text-disabled`, de 2,25 a 2,86:1).
 - [ ] É operável pelo teclado (Tab e Shift+Tab)?
 - [ ] O foco está visível?
 - [ ] Funciona no tema escuro?
