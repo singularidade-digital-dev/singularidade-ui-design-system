@@ -1,15 +1,31 @@
 version: 2
+# Monthly, grouped updates: one routine pull request with every minor and patch
+# update per ecosystem, and majors in pull requests of their own (except for the
+# package families below that only work when they move together).
 updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: weekly
-      day: monday
+      interval: monthly
       time: '09:00'
+      timezone: America/Sao_Paulo
     open-pull-requests-limit: 5
+    labels: ['dependencies', 'javascript']
     groups:
-      dev-deps:
-        dependency-type: development
+      # Astro and Starlight move together, in their own pull request: a Starlight
+      # 0.x "minor" can require a new Astro major (Starlight 0.42 needs Astro 7),
+      # so on their own both pull requests would fail.
+      docs-site:
+        patterns: ['astro', '@astrojs/*']
+      # Routine pull request: every other minor and patch update at once, which
+      # also keeps all @vaadin/* web components on the same version.
+      npm-minor-patch:
+        update-types: ['minor', 'patch']
+      # Storybook packages must share one version, so their majors come together.
+      # Any other major update gets a pull request of its own.
+      storybook-major:
+        patterns: ['storybook', '@storybook/*', 'storybook-addon-*']
+        update-types: ['major']
     ignore:
       # Vaadin 25 web components belong to the coordinated Boot 4.1 / Vaadin 25 /
       # Spring AI 2 / Jackson 3 upgrade wave (upgrade plan 2026-09-15, item F0 0.1).
@@ -20,8 +36,16 @@ updates:
   - package-ecosystem: maven
     directory: /
     schedule:
-      interval: weekly
-      day: monday
+      interval: monthly
+      time: '09:00'
+      timezone: America/Sao_Paulo
+    open-pull-requests-limit: 5
+    labels: ['dependencies', 'java']
+    groups:
+      # Routine pull request: every minor and patch update at once; each major
+      # gets a pull request of its own.
+      maven-minor-patch:
+        update-types: ['minor', 'patch']
     ignore:
       # flow-server 25 requires Vaadin 25 / Boot 4.1, and every merge to main
       # republishes the SNAPSHOT that singularidade-ui-vaadin consumes in production.
@@ -31,5 +55,13 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: weekly
-      day: monday
+      interval: monthly
+      time: '09:00'
+      timezone: America/Sao_Paulo
+    open-pull-requests-limit: 5
+    labels: ['dependencies', 'github_actions']
+    groups:
+      # Routine pull request: every minor and patch update at once; each major
+      # gets a pull request of its own.
+      actions-minor-patch:
+        update-types: ['minor', 'patch']
