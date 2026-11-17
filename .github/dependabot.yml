@@ -1,7 +1,8 @@
 version: 2
 # Monthly, grouped updates: one routine pull request with every minor and patch
-# update per ecosystem, and majors in pull requests of their own (except for the
-# package families below that only work when they move together).
+# update per ecosystem, and majors in pull requests of their own. The exceptions
+# below: package families that only work when they move together, Vaadin, and
+# the npm packages that produce or ship what the published packages contain.
 updates:
   - package-ecosystem: npm
     directory: /
@@ -9,7 +10,11 @@ updates:
       interval: monthly
       time: '09:00'
       timezone: America/Sao_Paulo
-    open-pull-requests-limit: 5
+    # Once this many version-update pull requests are open, Dependabot opens no
+    # new one. The six groups below can hold six at once, so 5 could keep the
+    # routine one out; 10 leaves room for a few pull requests of their own, and
+    # the backlog of majors arrives as the open ones are merged or closed.
+    open-pull-requests-limit: 10
     labels: ['dependencies', 'javascript']
     groups:
       # Astro and Starlight move together, in their own pull request: a Starlight
@@ -18,19 +23,45 @@ updates:
       docs-site:
         patterns: ['astro', '@astrojs/*']
       # Routine pull request: every other minor and patch update at once, which
-      # also keeps all @vaadin/* web components on the same version.
+      # also keeps all @vaadin/* web components on the same version. Out of it,
+      # one pull request each, go the packages that produce or ship what the
+      # published packages contain, so a change in that output points to a single
+      # package: sharp renders the brand-assets PNG icons (it is 0.x, so 0.33 to
+      # 0.35 counts as a minor), style-dictionary generates the tokens (CSS, JS,
+      # JSON and Java), lucide-static is the source of the icon set (its 0.x
+      # minors rename icons) and the @fontsource-variable fonts are copied into
+      # brand-assets.
       npm-minor-patch:
         update-types: ['minor', 'patch']
-      # Storybook packages must share one version, so their majors come together.
-      # Any other major update gets a pull request of its own.
+        exclude-patterns: ['sharp', 'style-dictionary', 'lucide-static', '@fontsource-variable/*']
+      # Families whose majors only work together; their minor and patch updates
+      # already move together in the routine pull request. Storybook packages
+      # must share one version; stylelint-config-standard requires the stylelint
+      # major it was made for (40 needs stylelint 17, 41 needs 18); @commitlint/cli
+      # and @commitlint/config-conventional are released together; typescript-eslint
+      # declares the eslint majors it supports. Any other major update gets a pull
+      # request of its own.
       storybook-major:
         patterns: ['storybook', '@storybook/*', 'storybook-addon-*']
         update-types: ['major']
+      stylelint-major:
+        patterns: ['stylelint', 'stylelint-*']
+        update-types: ['major']
+      commitlint-major:
+        patterns: ['@commitlint/*']
+        update-types: ['major']
+      eslint-major:
+        patterns: ['eslint', 'eslint-*', '@eslint/*', 'typescript-eslint', '@typescript-eslint/*']
+        update-types: ['major']
     ignore:
-      # Vaadin 25 web components belong to the coordinated Boot 4.1 / Vaadin 25 /
-      # Spring AI 2 / Jackson 3 upgrade wave (upgrade plan 2026-09-15, item F0 0.1).
-      # Minor/patch bumps keep flowing, and update-types does not filter security
-      # updates. Revisit when the wave lands.
+      # This rule's premise is past: the Vaadin 25 wave is in production since
+      # 2026-09-16 and the consumers (singularidade-ui-vaadin and the apps) run
+      # Vaadin 25.2, while Storybook still renders the 24.x web components. Still
+      # to decide: when Storybook moves to the 25.x web components, and to which
+      # line (the consumers' 25.2, or the next one together with vaadin-bom), all
+      # @vaadin/* packages in one pull request. Until then the rule stays: without
+      # it every @vaadin/* package would get a major pull request of its own,
+      # since the routine group takes only minor and patch.
       - dependency-name: '@vaadin/*'
         update-types: ['version-update:semver-major']
   - package-ecosystem: maven
@@ -42,14 +73,23 @@ updates:
     open-pull-requests-limit: 5
     labels: ['dependencies', 'java']
     groups:
-      # Routine pull request: every minor and patch update at once; each major
-      # gets a pull request of its own.
+      # Vaadin (vaadin-bom, which brings flow-server) moves along the chain that
+      # consumes vaadin-bindings, on one version end to end: this repository,
+      # then singularidade-ui-vaadin, then the apps. In a pull request of its own
+      # it can wait for that wave while the plugin updates of the routine pull
+      # request merge on a green CI.
+      vaadin:
+        patterns: ['com.vaadin:*']
+        update-types: ['minor', 'patch']
+      # Routine pull request: every other minor and patch update at once; each
+      # major gets a pull request of its own.
       maven-minor-patch:
         update-types: ['minor', 'patch']
     ignore:
-      # flow-server 25 requires Vaadin 25 / Boot 4.1, and every merge to main
-      # republishes the SNAPSHOT that singularidade-ui-vaadin consumes in production.
-      # The Vaadin major moves only with the coordinated wave (plan item F0 0.1).
+      # A Vaadin major moves only in a coordinated wave along that chain, as
+      # Vaadin 25 did with Boot 4.1 (in production since 2026-09-16). Maven
+      # artifacts are published only from a v* tag (release.yml), so a merge to
+      # main reaches singularidade-ui-vaadin only with the next release.
       - dependency-name: 'com.vaadin:*'
         update-types: ['version-update:semver-major']
   - package-ecosystem: github-actions
