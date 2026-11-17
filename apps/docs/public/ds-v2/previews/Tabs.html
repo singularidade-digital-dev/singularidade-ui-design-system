@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Tabs</title></head>
+<body>
+<main class="ss-demo">
+
+  <section class="ss-demo-col ss-comfortable">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Confortável</h2><span class="caption ss-demo-note">44px · contagem como badge neutro</span></div>
+    <div class="ss-tabs" role="tablist" aria-label="Conectores">
+      <button class="ss-tab label" role="tab" aria-selected="true" aria-controls="p1" id="tb1">Catálogo <span class="ss-count badge">5</span></button>
+      <button class="ss-tab label" role="tab" aria-selected="false" aria-controls="p2" id="tb2" tabindex="-1">Assinados <span class="ss-count badge">2</span></button>
+    </div>
+  </section>
+
+  <section class="ss-demo-col ss-compact">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Compacto e estados</h2><span class="caption ss-demo-note">40px · selecionada, hover, foco</span></div>
+    <div class="ss-tabs" role="tablist" aria-label="Minha conta">
+      <button class="ss-tab label" role="tab" aria-selected="true">Perfil</button>
+      <button class="ss-tab label is-hover" role="tab" aria-selected="false" tabindex="-1">Pagamento</button>
+      <button class="ss-tab label is-focus" role="tab" aria-selected="false" tabindex="-1">Armazenamento</button>
+      <button class="ss-tab label" role="tab" aria-selected="false" tabindex="-1">Privacidade</button>
+    </div>
+    <p class="caption ss-demo-note">Setas do teclado trocam de aba. Sem espaço, as abas rolam de lado, sem esmaecer as bordas. Abas não servem para passos: use o Stepper.</p>
+  </section>
+
+</main>
+</body>
+</html>

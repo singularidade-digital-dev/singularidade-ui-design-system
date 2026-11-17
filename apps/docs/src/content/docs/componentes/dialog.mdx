@@ -1,0 +1,39 @@
+---
+title: Dialog
+description: Diálogo modal para decisões que bloqueiam o fluxo, com a consequência escrita e botões que dizem a ação.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Diálogo modal para decisões que bloqueiam o fluxo, com a consequência escrita e botões que dizem a ação.
+
+<DsPreview name="Dialog" title="Prévia do Dialog: confirmação destrutiva e resumo antes de pagar" height={810} />
+
+## Tamanhos
+
+- sm, `dialog-width-sm` (400px): confirmações.
+- md, `dialog-max-width` (560px): o padrão.
+- lg, `dialog-width-lg` (800px): formulários e o detalhe do conector.
+- Abaixo de 640px, tela cheia com o rodapé fixo.
+
+## Aparência
+
+- Fundo `dialog-background`, borda de 1px `dialog-border`, raio `dialog-radius`, `shadow-xl`, padding `dialog-padding`. Atrás, o véu `dialog-backdrop`.
+- Título em `heading-sm`: a pergunta ou a ação. Botão fechar de 32px com `aria-label="Fechar"`.
+- Ações à direita, com gap de 8px: o secundário antes do primário ou do danger.
+
+## Comportamento
+
+- Foco inicial no primeiro campo; na confirmação destrutiva, no botão que preserva ("Manter").
+- Esc fecha, menos durante o envio. Clicar no véu só fecha diálogo sem formulário.
+- O foco fica preso no diálogo e volta para o botão que o abriu.
+- Carregando: o primário mostra o spinner e o resto fica desabilitado.
+
+## Destrutivo (texto real)
+
+- Título: "Cancelar Legislativo?" Texto: "O acesso continua até 30/11, o fim do mês já pago. Não há reembolso proporcional, e nada mais é cobrado depois." Botões: "Manter" (secundário) e "Cancelar assinatura" (danger). Nunca "OK", "Sim" ou "Não".
+- Excluir a conta: a pessoa digita o próprio e-mail para confirmar.
+
+## Vaadin 25
+
+Aplique `shadow-xl`, `dialog-radius` e `dialog-border` em `vaadin-dialog::part(overlay)`. No Vaadin 25, o seletor antigo (`vaadin-dialog-overlay::part(overlay)`) não casa mais.

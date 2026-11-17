@@ -1,0 +1,36 @@
+---
+title: SideNav
+description: Menu lateral do admin, com 240px fixos e itens em grupos de no máximo 7.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Menu lateral do admin, com 240px fixos e itens em grupos de no máximo 7.
+
+<DsPreview name="SideNav" title="Prévia da SideNav: grupos, item atual, hover e foco" height={660} />
+
+## Coluna
+
+- `sidenav-width` (240px), padding de 8px, borda direita de 1px subtle.
+- Fundo `color-surface-sunken` no claro e `color-surface-base` no escuro, com borda `border-default` nos dois temas.
+
+## Item
+
+- 36px de altura (44px no confortável), raio `radius-md`, padding 0 8px, gap de 12px.
+- Ícone de 20px e rótulo `label`, ambos em `color-text-secondary`, sem opacidade reduzida.
+- Hover: fundo `color-interactive-secondary`, texto `color-text-primary`.
+- Atual (`aria-current="page"`; no Vaadin 25, o atributo `current`): fundo `color-interactive-primary-subtle`, texto e ícone em `color-interactive-primary` (5,01:1 no claro, 5,25:1 no escuro), peso 600. Sem barrinha colorida à esquerda.
+- No claro, o fundo do item atual quase some sobre a gaveta (1,02:1). O item segue marcado pelo texto, pelo ícone coral e pelo peso, sem fundo coral-100 e sem barra coral de 3px.
+- Foco: outline de 2px com offset de −2px.
+- Rótulo longo quebra em duas linhas em vez de alargar o menu, com a palavra de cada item num span próprio. No portal das empresas, o teto é de 196px (12,25rem), o mínimo que cabe "administrativas".
+
+## Grupos
+
+- Rótulo em `overline`, `color-text-muted`, com padding de 16px 8px 4px.
+- No máximo 7 itens por grupo, com nomes de assunto: no admin da plataforma, Clientes, Catálogo, Receita e Operação.
+- Na tela, "Instituições", nunca "Tenants". No portal das empresas, "Conectores", "Papéis", "Auditoria" e "Ações administrativas" (veja [Voz e tom](/conteudo/voz-e-tom/#nomes)).
+
+## Abaixo de 1024px
+
+- Vira drawer sobre um véu (`color-surface-overlay`), com largura de min(320px, 85vw). Fecha com Esc e ao navegar.
+- A versão fica no pé, em `caption`.

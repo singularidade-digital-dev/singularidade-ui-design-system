@@ -1,0 +1,43 @@
+---
+title: Movimento
+description: Movimento curto, só em transform e opacity, com as durações e curvas do sistema e o respeito ao movimento reduzido
+sidebar: { order: 5 }
+---
+
+import TokenTables from '../../../components/TokenTables.astro';
+
+## Princípios
+
+1. **Com propósito**: o movimento orienta o olho ou comunica estado, nunca decora.
+2. **Rápido**: até 200ms na interface. Acima disso, a pessoa começa a esperar.
+3. **Curva natural**: `easing-ease-out` na entrada, `easing-ease-in` na saída.
+4. **Respeita o movimento reduzido**: com `prefers-reduced-motion`, nada se move.
+5. **Leve**: só `transform` e `opacity`, sem mudar o layout.
+
+## Regras
+
+- Hover, pressionar e foco: `duration-fast` com `easing-ease-out`, mudando só a cor.
+- Entrada de menu, toast e diálogo: `duration-base` em opacity mais translateY(4px) ou scale(0.98); saída em `duration-fast` com `easing-ease-in`; drawer e bottom sheet em `duration-slow`.
+- Anime só transform e opacity. Nunca `transition: all`, nunca translateY no hover de card, nunca `easing-spring` no produto.
+- Com `prefers-reduced-motion`, as durações vão a `duration-instant`, sem transform; esqueleto e spinner param.
+
+## Durações
+
+<TokenTables section="duration" />
+
+## Curvas
+
+<TokenTables section="easing" />
+
+## Movimento reduzido
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```

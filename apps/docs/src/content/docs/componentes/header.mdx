@@ -1,0 +1,50 @@
+---
+title: Header
+description: Cabeçalho do app (56px) e do site (64px), com o logo à esquerda levando ao início e, no app, só o menu da pessoa à direita.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Cabeçalho do app (56px) e do site (64px): o logo à esquerda leva ao início e, no app, só o menu da pessoa fica à direita.
+
+<DsPreview name="Header" title="Prévia do Header: app do Hub, app com menu lateral e site" height={883} />
+
+## App
+
+- Altura `header-height-app` (56px), fundo raised, borda inferior de 1px subtle, sem blur.
+- O primeiro foco é "Pular para o conteúdo", escondido até receber o foco (veja [Acessibilidade, 2.4.1](/acessibilidade/criterios/#241-pular-para-o-conteúdo)).
+- À esquerda: o botão do menu (44px, só quando há drawer, com `aria-expanded`) e o link do logo (`ss-brandlink`: símbolo de 24px + `brand-label` "INTEGRAS HUB", gap de 8px), que leva ao início e funciona para todos, admin ou não.
+- Menu do Hub: "Conectores", que é o início, e "Meu espaço" (`ss-navlink label`, `color-text-secondary`); o atual em `color-text-primary`, peso 600 e indicador de 2px. No máximo 5 itens.
+- No portal da empresa, entra o logo da instituição.
+- À direita (`flex: none`): o menu da pessoa (avatar de 32px, nome escondido abaixo de 640px, chevron). A ajuda de cada tela é o botão "Ver o tour desta página", no [PageHeader](/componentes/page-header/).
+
+## Título da página
+
+- Sai do cabeçalho e vai para o PageHeader. Assim o nome do produto nunca sai cortado.
+- Se ficar no cabeçalho: `flex: 1 1 auto` e `min-width: 0`, e a barra de idioma e tema sem `setWidthFull` nem `expand`.
+
+## Alinhamento
+
+A margem do cabeçalho é a margem da página. Com drawer, padding de 16px alinhado aos ícones da [SideNav](/componentes/side-nav/); sem drawer, o logo começa no mesmo x do conteúdo.
+
+## Menu da pessoa (280px)
+
+- Nome e e-mail em uma linha, com reticências e tooltip.
+- Só a conta da pessoa: Minha conta · Pagamento · Armazenamento · Privacidade; Preferências (Idioma; Tema: Claro, Escuro, Sistema); "Excluir a conta" em perigo, separado; e Sair, neutro, por último. Para onde a pessoa vai (os conectores, o espaço dela) é o menu do cabeçalho, nunca este.
+- A versão aparece só para admin.
+
+## Nos apps Vaadin
+
+- A barra fica em `color-surface-sunken` no claro e em raised no escuro, com borda `border-default` nos dois temas, sem blur.
+- O botão do menu se chama "Menu de navegação", com a dica "Mostrar ou ocultar o menu". Um logo dentro desse botão tem alt vazio, porque o botão já tem nome.
+- À direita, antes do menu da pessoa: o seletor de idioma (com o rótulo "Idioma"), o botão de tema e o de fuso (UTC ou local). No botão de tema, o ícone mostra o tema atual, e o nome diz o que o clique faz ("Usar o tema escuro", "Usar o tema claro").
+- O menu da pessoa sem nome se chama "Menu da conta". Os nomes saem na língua da pessoa (pt, en e es).
+
+## Site
+
+- Altura `header-height-site` (64px), contêiner de 1200px, logo com 28px de altura: o símbolo com "INTEGRAS" em `brand-label`, que é o logo do produto.
+- "Entrar" (terciário) e "Criar conta" (primário md).
+- No integras.digital, "Entrar" tem dois destinos. "Conta da empresa" abre um campo com o sufixo .integras.digital, que aceita o nome ou o endereço colado e confere se a instância responde. "Integras Hub" abre o login do Hub no idioma da página.
+- Abaixo de 1024px, botão de menu de 44px que abre o menu em tela cheia.
+- Fixo no topo, com fundo base e `shadow-sm` ao rolar (`is-scrolled`).
+- O primeiro foco da página é "Pular para o conteúdo" (`ss-skiplink`).

@@ -1,0 +1,582 @@
+---
+/**
+ * Token tables rendered from packages/tokens/reference/ds-v2.tokens.json, the byte-for-byte copy
+ * of the approved Design System v2 tokens.json. The package tests (tests/v2-parity.test.ts) check
+ * that the published CSS, JS, JSON and Java carry these values, so the tables cannot drift from it.
+ */
+import tokens from '../../../../packages/tokens/reference/ds-v2.tokens.json';
+
+type Section =
+  | 'ramps'
+  | 'brand'
+  | 'semantic'
+  | 'component'
+  | 'type'
+  | 'spacing'
+  | 'radius'
+  | 'shadow'
+  | 'fontSize'
+  | 'fontWeight'
+  | 'lineHeight'
+  | 'letterSpacing'
+  | 'duration'
+  | 'easing'
+  | 'breakpoint'
+  | 'container'
+  | 'control'
+  | 'zIndex';
+
+interface Props {
+  section: Section;
+}
+
+interface Token {
+  name: string;
+  value: string | Record<string, string>;
+  usage?: string;
+}
+
+interface TypeStyle {
+  name: string;
+  fontSize: string;
+  lineHeight: string;
+  fontWeight: number;
+  letterSpacing?: string;
+  sample: string;
+  usage: string;
+}
+
+const { section } = Astro.props;
+const data = tokens as unknown as Record<string, unknown>;
+const colorTokens = (data.color as { tokens: Token[] }).tokens;
+const byName = new Map(colorTokens.map((t) => [t.name, t]));
+
+/** Editorial cleanup of the usage notes: no provenance labels, no notes about old screens. */
+function clean(text = ''): string {
+  return text
+    .replace(/Nome da fonte\.\s*/g, '')
+    .replace(/Fonte \(text\.label\), de 11 para 12px\./g, 'Mudou na v2: era 11px.')
+    .replace(/\s*\(o singularidade-website (?:já )?usa [^)]*\)/g, '')
+    .replace(/nomes e valores da fonte; /g, '')
+    .replace(/ da fonte dava /g, ' da v1 dava ')
+    .replace(/^Fonte, mas proibida/g, 'Proibida')
+    .replace(/\s*\([^)]*\bhoje\b[^)]*\)/g, '')
+    .replace(/\s*\((?:fonte|Fonte)(?::[^)]*)?\)/g, '')
+    .replace(/\s*Fonte(?: \([^)]*\))?\./g, '')
+    .replace(/\s*Adição(?: \([^)]*\)|:[^.]*)?\./g, '')
+    .replace(/ADIÇÃO v2/g, 'Novo na v2')
+    .replace(/MUDANÇA v2/g, 'Mudou na v2')
+    .replace(/MUDANÇA/g, 'Mudou na v2')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
+
+function raw(t: Token, theme: 'light' | 'dark'): string {
+  return typeof t.value === 'string' ? t.value : (t.value[theme] ?? t.value.light);
+}
+
+function resolve(value: string, theme: 'light' | 'dark', depth = 0): string {
+  const m = value.match(/^\{(.+)\}$/);
+  if (!m || depth > 8) return value;
+  const ref = byName.get(m[1]);
+  return ref ? resolve(raw(ref, theme), theme, depth + 1) : value;
+}
+
+function refName(value: string): string | null {
+  const m = value.match(/^\{(.+)\}$/);
+  return m ? m[1] : null;
+}
+
+const surface = {
+  light: resolve('{color-surface-base}', 'light'),
+  dark: resolve('{color-surface-base}', 'dark'),
+};
+
+const ramps = [
+  ['Magenta', 'color-brand-magenta-'],
+  ['Coral', 'color-brand-coral-'],
+  ['Laranja', 'color-brand-orange-'],
+  ['Neutro quente', 'color-neutral-'],
+  ['Sucesso', 'color-feedback-success-'],
+  ['Erro', 'color-feedback-error-'],
+  ['Aviso', 'color-feedback-warning-'],
+  ['Informação', 'color-feedback-info-'],
+].map(([label, prefix]) => ({
+  label,
+  items: colorTokens.filter((t) => t.name.startsWith(prefix) && /-\d+$/.test(t.name)),
+}));
+
+const rampGeneric = [
+  /Rampa (magenta|coral|laranja|neutra)\.\s*/i,
+  /Neutro quente \(cinza puxado para o magenta\)\.\s*/,
+  /Rampa do núcleo, igual nos dois temas\.\s*/,
+  /Componente nunca lê a rampa: leia um token semântico\.\s*/,
+  /A única exceção é o mapa de calor[^.]*\.\s*/,
+  /Rampa de (sucesso|erro|aviso|informação)\.\s*/i,
+];
+
+function rampNote(t: Token): string {
+  let note = t.usage ?? '';
+  for (const re of rampGeneric) note = note.replace(re, '');
+  return clean(note);
+}
+
+const isRamp = (n: string) =>
+  /^color-(brand-(magenta|coral|orange)|neutral|feedback-(success|error|warning|info))-\d+$/.test(
+    n,
+  );
+const brand = colorTokens.filter((t) => /^color-brand-(integras|singularidade|primary|secondary|tertiary)/.test(t.name));
+const component = colorTokens.filter((t) => /^(button|card|dialog|input)-/.test(t.name));
+const semantic = colorTokens.filter(
+  (t) => !isRamp(t.name) && !brand.includes(t) && !component.includes(t),
+);
+
+const typeData = data.type as {
+  families: Record<string, string>;
+  groups: { name: string; family: string; note?: string; styles: TypeStyle[] }[];
+};
+
+const simple = ['spacing', 'radius', 'fontSize', 'fontWeight', 'lineHeight', 'letterSpacing', 'duration', 'easing', 'breakpoint', 'container', 'control', 'zIndex'];
+const simpleData =
+  simple.includes(section) ? (data[section] as { note?: string; tokens: Token[] }) : null;
+const shadowData = data.shadow as { note?: string; tokens: Token[] };
+---
+
+{
+  section === 'ramps' && (
+    <div class="tk not-content">
+      <p class="tk__note">
+        As rampas são o núcleo e são iguais nos dois temas. Componente nunca lê uma rampa: leia um
+        token semântico. As exceções são a escala do mapa de calor, em Gráficos, e a laje e a tira
+        das Faixas.
+      </p>
+      {ramps.map((r) => (
+        <div class="tk__ramp">
+          <p class="tk__ramp-label">{r.label}</p>
+          <ul class="tk__ramp-list">
+            {r.items.map((t) => (
+              <li>
+                <span class="tk__chip" style={`background:${raw(t, 'light')}`} />
+                <code>{t.name.replace(/^color-(brand-|feedback-)?/, '')}</code>
+                <span class="tk__hex">{raw(t, 'light')}</span>
+              </li>
+            ))}
+          </ul>
+          {r.items.some((t) => rampNote(t)) && (
+            <ul class="tk__ramp-notes">
+              {r.items
+                .filter((t) => rampNote(t))
+                .map((t) => (
+                  <li>
+                    <code>{t.name}</code>: {rampNote(t)}
+                  </li>
+                ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+{
+  (section === 'brand' || section === 'semantic' || section === 'component') && (
+    <div class="tk not-content">
+      <div class="tk__scroll">
+        <table class="tk__table tk__table--pair">
+          <thead>
+            <tr>
+              <th scope="col">Token e uso</th>
+              <th scope="col">Claro</th>
+              <th scope="col">Escuro</th>
+            </tr>
+          </thead>
+          <tbody>
+            {(section === 'brand' ? brand : section === 'semantic' ? semantic : component).map((t) => (
+              <tr>
+                <th scope="row">
+                  <code class="tk__name">{t.name}</code>
+                  {clean(t.usage) && <span class="tk__desc">{clean(t.usage)}</span>}
+                </th>
+                {(['light', 'dark'] as const).map((theme) => {
+                  const v = raw(t, theme);
+                  const ref = refName(v);
+                  const value = resolve(v, theme);
+                  return (
+                    <td>
+                      <span class="tk__val">
+                        <span class="tk__frame" style={`background:${surface[theme]}`}>
+                          <span class="tk__chip" style={`background:${value}`} />
+                        </span>
+                        <span>
+                          <span class="tk__hex">{value}</span>
+                          {ref && <span class="tk__ref">{ref.replace(/^color-/, '')}</span>}
+                        </span>
+                      </span>
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
+{
+  section === 'type' && (
+    <div class="tk not-content">
+      <div class="tk__scroll">
+      <table class="tk__table">
+        <thead>
+          <tr>
+            <th scope="col">Família</th>
+            <th scope="col">Variável CSS</th>
+            <th scope="col">Pilha</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(typeData.families).map(([name, stack]) => (
+            <tr>
+              <th scope="row">
+                <code>{name}</code>
+              </th>
+              <td class="tk__nowrap">
+                <code>--font-{name}</code>
+              </td>
+              <td class="tk__usage" style={`font-family:${stack}`}>
+                {stack}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+      {typeData.groups.map((g) => (
+        <div class="tk__group">
+          <p class="tk__group-title">{g.name}</p>
+          {g.note && <p class="tk__note">{clean(g.note)}</p>}
+          <div class="tk__scroll">
+          <table class="tk__table tk__table--type">
+            <thead>
+              <tr>
+                <th scope="col">Estilo</th>
+                <th scope="col">Exemplo</th>
+                <th scope="col">Uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              {g.styles.map((s) => (
+                <tr>
+                  <th scope="row">
+                    <code>.{s.name}</code>
+                  </th>
+                  <td>
+                    <span
+                      class="tk__sample"
+                      style={`font-family:${typeData.families[g.family]};font-size:${s.fontSize};line-height:${s.lineHeight};font-weight:${s.fontWeight};letter-spacing:${s.letterSpacing ?? 'normal'};${s.name === 'overline' || s.name === 'brand-label' ? 'text-transform:uppercase;' : ''}`}
+                    >
+                      {s.sample}
+                    </span>
+                  </td>
+                  <td class="tk__usage">{clean(s.usage)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+{
+  section === 'shadow' && (
+    <div class="tk not-content">
+      {shadowData.note && <p class="tk__note">{clean(shadowData.note)}</p>}
+      <div class="tk__scroll">
+        <table class="tk__table tk__table--pair">
+          <thead>
+            <tr>
+              <th scope="col">Token e uso</th>
+              <th scope="col">Claro</th>
+              <th scope="col">Escuro</th>
+            </tr>
+          </thead>
+          <tbody>
+            {shadowData.tokens.map((t) => (
+              <tr>
+                <th scope="row">
+                  <code class="tk__name">{t.name}</code>
+                  {clean(t.usage) && <span class="tk__desc">{clean(t.usage)}</span>}
+                </th>
+                {(['light', 'dark'] as const).map((theme) => (
+                  <td>
+                    <span class="tk__val tk__val--shadow">
+                      <span class="tk__shadow-frame" style={`background:${surface[theme]}`}>
+                        <span
+                          class="tk__shadow"
+                          style={`box-shadow:${raw(t, theme)};background:${resolve('{color-surface-raised}', theme)}`}
+                        />
+                      </span>
+                      <code class="tk__code-small">{raw(t, theme)}</code>
+                    </span>
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
+{
+  simpleData && (
+    <div class="tk not-content">
+      {simpleData.note && <p class="tk__note">{clean(simpleData.note)}</p>}
+      <div class="tk__scroll">
+      <table class="tk__table">
+        <thead>
+          <tr>
+            <th scope="col">Token</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          {simpleData.tokens.map((t) => (
+            <tr>
+              <th scope="row">
+                <code>{t.name}</code>
+              </th>
+              <td>
+                <span class="tk__val">
+                  {section === 'spacing' && (
+                    <span class="tk__bar" style={`width:${raw(t, 'light')}`} />
+                  )}
+                  {section === 'radius' && (
+                    <span
+                      class="tk__radius"
+                      style={`border-radius:${raw(t, 'light') === '9999px' ? '9999px' : raw(t, 'light')}`}
+                    />
+                  )}
+                  <code>{raw(t, 'light')}</code>
+                </span>
+              </td>
+              <td class="tk__usage">{clean(t.usage)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .tk {
+    margin-block: 1.25rem 2rem;
+  }
+
+  .tk__note {
+    margin: 0 0 0.75rem;
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
+  }
+
+  .tk__scroll {
+    overflow-x: auto;
+  }
+
+  .tk__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--sl-text-sm);
+  }
+
+  .tk__table th,
+  .tk__table td {
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    text-align: start;
+    vertical-align: top;
+  }
+
+  .tk__table thead th {
+    color: var(--sl-color-gray-2);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .tk__table tbody th {
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .tk__table code {
+    font-size: 0.8125rem;
+  }
+
+  .tk__val {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .tk__table--pair td {
+    min-width: 8.5rem;
+  }
+
+  .tk__table--pair tbody th {
+    min-width: 13rem;
+    white-space: normal;
+  }
+
+  .tk__name {
+    white-space: nowrap;
+  }
+
+  .tk__desc {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--sl-color-gray-2);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+  }
+
+  .tk__frame {
+    flex: none;
+    display: inline-flex;
+    padding: 3px;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 6px;
+  }
+
+  .tk__chip {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 1px rgb(128 128 128 / 25%);
+  }
+
+  .tk__hex {
+    display: block;
+    font-family: var(--sl-font-mono);
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-2);
+    overflow-wrap: anywhere;
+  }
+
+  .tk__ref {
+    display: block;
+    font-family: var(--sl-font-mono);
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+  }
+
+  .tk__usage {
+    min-width: 12rem;
+    color: var(--sl-color-gray-2);
+  }
+
+  .tk__ramp {
+    margin-block: 1rem 1.5rem;
+  }
+
+  .tk__ramp-label,
+  .tk__group-title {
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+  }
+
+  .tk__ramp-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tk__ramp-list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.5rem;
+    align-items: center;
+    font-size: 0.75rem;
+  }
+
+  .tk__ramp-list .tk__chip {
+    grid-row: span 2;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .tk__ramp-notes {
+    margin: 0.75rem 0 0;
+    padding-inline-start: 1.25rem;
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
+  }
+
+  .tk__group {
+    margin-block: 1.5rem;
+  }
+
+  .tk__sample {
+    display: block;
+    color: var(--sl-color-white);
+    max-width: 24rem;
+    overflow-wrap: break-word;
+  }
+
+  .tk__nowrap,
+  .tk__table--type tbody th {
+    white-space: nowrap;
+  }
+
+  .tk__bar {
+    display: inline-block;
+    height: 0.75rem;
+    min-width: 1px;
+    margin-top: 0.25rem;
+    background: var(--sl-color-accent);
+    border-radius: 2px;
+  }
+
+  .tk__radius {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--sl-color-accent);
+  }
+
+  .tk__val--shadow {
+    flex-direction: column;
+  }
+
+  .tk__shadow-frame {
+    display: inline-flex;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--sl-color-gray-5);
+  }
+
+  .tk__shadow {
+    display: inline-block;
+    width: 3rem;
+    height: 2rem;
+    border-radius: 8px;
+  }
+
+  .tk__code-small {
+    font-size: 0.6875rem;
+    overflow-wrap: anywhere;
+  }
+</style>

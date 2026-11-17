@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>EmptyState</title>
+<style>
+  .es-box { border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); background: var(--color-surface-raised); }
+  
+  .es-emblem { display: flex; flex-direction: column; gap: var(--size-1); width: 56px; }
+  .es-emblem span { display: block; border-radius: var(--radius-sm); }
+  .es-emblem .m { height: 28px; background: var(--color-brand-primary); }
+  .es-emblem .c { height: var(--size-4); background: var(--color-brand-secondary); }
+  .es-emblem .o { height: var(--size-3); background: var(--color-brand-tertiary); }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+  <div class="ss-demo-grid ss-demo-grid--2">
+
+    <section class="ss-demo-col">
+      <div class="ss-demo-head"><h2 class="overline ss-demo-title">Primeiro uso</h2></div>
+      <div class="es-box ss-empty ss-empty--inset">
+        <div class="ss-empty__inner">
+          <span class="ss-empty__icon"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg></span>
+          <h3 class="ss-empty__title heading-sm">Nada guardado por enquanto</h3>
+          <p class="ss-empty__text body-sm">Envie um arquivo, ou peça à IA para guardar algo durante a conversa — o que ela guardar aparece aqui e passa a ser encontrado nas suas próximas perguntas.</p>
+          <div class="ss-empty__actions"><button class="ss-btn ss-btn--primary button" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/> <polyline points="17 8 12 3 7 8"/> <line x1="12" x2="12" y1="3" y2="15"/></svg>Enviar arquivo</button><button class="ss-btn ss-btn--tertiary button" type="button">Como funciona</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ss-demo-col">
+      <div class="ss-demo-head"><h2 class="overline ss-demo-title">Sem acesso, sem botão</h2></div>
+      <div class="es-box ss-empty ss-empty--inset">
+        <div class="ss-empty__inner">
+          <span class="ss-empty__icon"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/> <circle cx="9" cy="7" r="4"/> <path d="M22 21v-2a4 4 0 0 0-3-3.87"/> <path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <h3 class="ss-empty__title heading-sm">Nada compartilhado com você ainda</h3>
+          <p class="ss-empty__text body-sm">Quando um administrador der ao seu papel acesso a uma categoria de documentos, as pastas dela aparecem aqui.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ss-demo-col">
+      <div class="ss-demo-head"><h2 class="overline ss-demo-title">Sem resultado</h2></div>
+      <div class="es-box ss-empty ss-empty--inset">
+        <div class="ss-empty__inner">
+          <span class="ss-empty__icon"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/> <path d="m21 21-4.3-4.3"/></svg></span>
+          <h3 class="ss-empty__title heading-sm">Nenhum arquivo encontrado com esses filtros.</h3>
+          <div class="ss-empty__actions"><button class="ss-btn ss-btn--secondary button" type="button">Limpar filtros</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ss-demo-col">
+      <div class="ss-demo-head"><h2 class="overline ss-demo-title">Erro</h2></div>
+      <div class="es-box ss-empty ss-empty--inset">
+        <div class="ss-empty__inner">
+          <span class="ss-empty__icon"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 2h13a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-5"/> <path d="M10 10 2.5 2.5C2 2 2 2.5 2 5v3a2 2 0 0 0 2 2h6z"/> <path d="M22 17v-1a2 2 0 0 0-2-2h-1"/> <path d="M4 14a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16.5l1-.5.5.5-8-8H4z"/> <path d="M6 18h.01"/> <path d="m2 2 20 20"/></svg></span>
+          <h3 class="ss-empty__title heading-sm">Não foi possível carregar os conectores.</h3>
+                    <div class="ss-empty__actions"><button class="ss-btn ss-btn--secondary button" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/> <path d="M21 3v5h-5"/> <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/> <path d="M8 16H3v5"/></svg>Tentar de novo</button></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">No Hub, na vitrine</h2><span class="caption ss-demo-note">ação de 44px, a secundária com contorno · o emblema das Faixas só no vazio de Assinados</span></div>
+    <div class="ss-demo-grid ss-demo-grid--2">
+      <div class="es-box ss-empty ss-empty--inset">
+        <div class="ss-empty__inner">
+          <span class="es-emblem" aria-hidden="true"><span class="m"></span><span class="c"></span><span class="o"></span></span>
+          <h3 class="ss-empty__title heading-sm">Você ainda não assina nenhum conector</h3>
+          <p class="ss-empty__text body-sm">Comece pelo teste grátis de qualquer conector.</p>
+          <div class="ss-empty__actions"><button class="ss-btn ss-btn--primary ss-btn--lg button" type="button">Ver o catálogo</button></div>
+        </div>
+      </div>
+      <div class="es-box ss-empty ss-empty--inset">
+        <div class="ss-empty__inner">
+          <span class="ss-empty__icon"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/> <path d="m21 21-4.3-4.3"/></svg></span>
+          <h3 class="ss-empty__title heading-sm">Nenhum conector para “licitação municipal”</h3>
+          <p class="ss-empty__text body-sm">Tente outra palavra ou limpe a busca.</p>
+          <div class="ss-empty__actions"><button class="ss-btn ss-btn--secondary ss-btn--lg button" type="button">Limpar a busca</button></div>
+        </div>
+      </div>
+      <div class="es-box ss-empty ss-empty--inset">
+        <div class="ss-empty__inner">
+          <span class="ss-empty__icon"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg></span>
+          <h3 class="ss-empty__title heading-sm">Nenhum conector nesta categoria</h3>
+          <p class="ss-empty__text body-sm">Seus 2 conectores assinados são de outras categorias.</p>
+          <div class="ss-empty__actions"><button class="ss-btn ss-btn--secondary ss-btn--lg button" type="button">Ver Compras públicas no catálogo</button></div>
+        </div>
+      </div>
+    </div>
+    <p class="caption ss-demo-note">Na vitrine, o vazio fica abaixo das abas e das categorias, com 112px de respiro até o ícone (48px no celular). O ladrilho de 64px vale em todo vazio da pessoa do Hub: vitrine, Meu espaço, lixeira, busca e memória.</p>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Página de erro</h2><span class="caption ss-demo-note">o mesmo componente, grande</span></div>
+    <div class="es-box ss-empty ss-empty--page" style="min-height:360px">
+      <div class="ss-empty__inner">
+        <span class="ss-empty__icon"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/> <path d="M12 17h.01"/></svg></span>
+        <p class="ss-empty__code overline" style="margin-top:var(--size-4)">Erro 404</p>
+        <h1 class="heading">Página não encontrada</h1>
+        <p class="ss-empty__text body">A página que você tentou abrir não existe ou foi movida.</p>
+        <div class="ss-empty__actions"><a class="ss-btn ss-btn--primary ss-btn--lg button-lg" href="#inicio">Voltar ao início</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

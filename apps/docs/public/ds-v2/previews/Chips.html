@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Chips</title></head>
+<body>
+<main class="ss-demo">
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Categoria da loja</h2><span class="caption ss-demo-note">32px · uma por vez, “Todos” volta à lista inteira · selecionado com fundo primary-subtle e ícone check, nunca só a cor</span></div>
+    <div class="ss-chips" role="radiogroup" aria-label="Categorias">
+      <button class="ss-chip label" type="button" role="radio" aria-checked="true"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Todos</button>
+      <button class="ss-chip label" type="button" role="radio" aria-checked="false" tabindex="-1">Compras públicas</button>
+      <button class="ss-chip label is-hover" type="button" role="radio" aria-checked="false" tabindex="-1">Eleições</button>
+      <button class="ss-chip label is-focus" type="button" role="radio" aria-checked="false" tabindex="-1">Legislativo</button>
+      <button class="ss-chip label" type="button" role="radio" aria-checked="false" tabindex="-1">Orçamento público</button>
+      <button class="ss-chip label" type="button" role="radio" aria-checked="false" tabindex="-1">Território</button>
+    </div>
+    <p class="caption ss-demo-note">Os chips aparecem quando há 2 ou mais categorias. Setas trocam a categoria; a lista filtra na hora, sem botão de aplicar.</p>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Filtros do admin</h2><span class="caption ss-demo-note">vários ao mesmo tempo · aria-pressed · “Limpar filtros” surge quando há algum selecionado</span></div>
+    <div class="ss-chips" role="group" aria-label="Filtrar conectores">
+      <button class="ss-chip label" type="button" aria-pressed="true"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Ativos</button>
+      <button class="ss-chip label" type="button" aria-pressed="true"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Precisam de atenção</button>
+      <button class="ss-chip label" type="button" aria-pressed="false">Inativos</button>
+      <button class="ss-btn ss-btn--tertiary ss-btn--sm button" type="button">Limpar filtros</button>
+    </div>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Entrada</h2><span class="caption ss-demo-note">e-mails da lista liberada · remover com botão de 24px e nome acessível</span></div>
+    <div class="ss-chips">
+      <span class="ss-chip ss-chip--input label">ana@empresa.com.br<button class="ss-chip__remove" type="button" aria-label="Remover ana@empresa.com.br"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button></span>
+      <span class="ss-chip ss-chip--input label">joao@empresa.com.br<button class="ss-chip__remove" type="button" aria-label="Remover joao@empresa.com.br"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button></span>
+      <span class="ss-badge badge">Liberado para 2 e-mails</span>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

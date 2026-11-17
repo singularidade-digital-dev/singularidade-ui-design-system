@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>PageHeader</title></head>
+<body>
+<main class="ss-demo">
+
+  <section class="ss-demo-col ss-comfortable">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Hub</h2><span class="caption ss-demo-note">h1 em heading · descrição até 72ch · à direita, o botão do tour da página · abas embaixo</span></div>
+    <header class="ss-pageheader">
+      <div class="ss-pageheader__row">
+        <div class="ss-pageheader__text">
+          <h1 class="heading">Conectores</h1>
+          <p class="ss-pageheader__desc body">Conectores para o seu assistente de IA consultar dados públicos, com a fonte de cada número.</p>
+        </div>
+        <div class="ss-pageheader__actions"><button class="ss-btn ss-btn--icon ss-btn--ghost" type="button" aria-label="Ver o tour desta página" title="Ver o tour desta página"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/> <path d="M12 17h.01"/></svg></button></div>
+      </div>
+      <div class="ss-tabs" role="tablist" aria-label="Conectores">
+        <button class="ss-tab label" role="tab" aria-selected="true">Catálogo <span class="ss-count badge">5</span></button>
+        <button class="ss-tab label" role="tab" aria-selected="false" tabindex="-1">Assinados <span class="ss-count badge">2</span></button>
+      </div>
+    </header>
+  </section>
+
+  <section class="ss-demo-col ss-compact">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Admin compacto, com trilha</h2><span class="caption ss-demo-note">trilha a partir do 3º nível · h1 em heading-md · quebra em até 2 linhas, sem reticências</span></div>
+    <header class="ss-pageheader">
+      <nav class="ss-crumbs caption" aria-label="Trilha"><a href="#conhecimento">Conhecimento</a><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg><a href="#normas">Normas</a><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg><span aria-current="page">POPs</span></nav>
+      <div class="ss-pageheader__row">
+        <div class="ss-pageheader__text">
+          <h1 class="heading-md">Procedimentos operacionais padrão</h1>
+          <p class="ss-pageheader__desc body-sm">Quem tem acesso à categoria Normas encontra estes documentos.</p>
+        </div>
+        <div class="ss-pageheader__actions">
+          <button class="ss-btn ss-btn--secondary button" type="button">Nova pasta</button>
+          <button class="ss-btn ss-btn--primary button" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/> <polyline points="17 8 12 3 7 8"/> <line x1="12" x2="12" y1="3" y2="15"/></svg>Enviar arquivo</button>
+        </div>
+      </div>
+    </header>
+  </section>
+
+</main>
+</body>
+</html>

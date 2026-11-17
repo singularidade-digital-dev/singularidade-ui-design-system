@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>TextField</title></head>
+<body>
+<main class="ss-demo">
+  <div class="ss-demo-grid ss-demo-grid--2">
+
+    <section class="ss-demo-col ss-comfortable" aria-label="Modo confortável">
+      <div class="ss-demo-head"><h2 class="overline ss-demo-title">Confortável</h2><span class="caption ss-demo-note">44px, texto de 16px · Hub, sites, toque</span></div>
+
+      <div class="ss-field">
+        <label class="ss-field__label label" for="t1">E-mail</label>
+        <div class="ss-input"><input id="t1" type="email" inputmode="email" autocomplete="email" placeholder="ana@empresa.com.br" aria-describedby="t1h"></div>
+        <p class="ss-field__help caption" id="t1h">Enviaremos um código de 6 dígitos.</p>
+      </div>
+
+      <div class="ss-field">
+        <label class="ss-field__label label" for="t2">E-mail <span class="ss-demo-note">· foco</span></label>
+        <div class="ss-input is-focus"><input id="t2" type="email" autocomplete="email" value="ana@empresa.com.br"></div>
+      </div>
+
+      <div class="ss-field">
+        <label class="ss-field__label label" for="t3">Código</label>
+        <div class="ss-input ss-otp is-invalid"><input id="t3" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" value="482193" aria-invalid="true" aria-describedby="t3e"></div>
+        <p class="ss-field__error caption" id="t3e"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <line x1="12" x2="12" y1="8" y2="12"/> <line x1="12" x2="12.01" y1="16" y2="16"/></svg>Código incorreto ou vencido.</p>
+      </div>
+
+      <div class="ss-field">
+        <label class="ss-field__label label" for="t4">Senha</label>
+        <div class="ss-input"><input id="t4" type="password" autocomplete="current-password" value="correto-cavalo-bateria"><button class="ss-input__btn ss-input__btn--reveal" type="button" aria-label="Mostrar senha" aria-pressed="false"><svg class="ss-icon ss-icon--md" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/> <circle cx="12" cy="12" r="3"/></svg></button></div>
+      </div>
+
+      <div class="ss-field">
+        <label class="ss-field__label label" for="t5">Telefone <span class="ss-field__optional">(opcional)</span></label>
+        <div class="ss-input"><span class="ss-input__affix ss-num">+55</span><input id="t5" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="79 99999-0000" aria-describedby="t5h"></div>
+        <p class="ss-field__help caption" id="t5h">Com DDD; de outro país, comece com + e o código do país</p>
+      </div>
+    </section>
+
+    <section class="ss-demo-col ss-compact" aria-label="Modo compacto">
+      <div class="ss-demo-head"><h2 class="overline ss-demo-title">Compacto</h2><span class="caption ss-demo-note">36px, texto de 14px · admin e plataforma</span></div>
+
+      <div class="ss-field">
+        <label class="ss-field__label label" for="c1">Buscar</label>
+        <div class="ss-input"><svg class="ss-icon ss-input__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/> <path d="m21 21-4.3-4.3"/></svg><input id="c1" type="search" placeholder="Buscar conectores" value="legis"><button class="ss-input__btn" type="button" aria-label="Limpar busca"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button></div>
+      </div>
+
+      <div class="ss-form-row">
+        <div class="ss-field">
+          <label class="ss-field__label label" for="c2">Preço mensal</label>
+          <div class="ss-input is-hover"><span class="ss-input__affix">R$</span><input id="c2" type="text" inputmode="decimal" value="19,90" class="ss-num"></div>
+        </div>
+        <div class="ss-field">
+          <label class="ss-field__label label" for="c3">Desconto</label>
+          <div class="ss-input"><input id="c3" type="text" inputmode="decimal" value="20" class="ss-num"><span class="ss-input__affix">%</span></div>
+        </div>
+      </div>
+
+      <div class="ss-field">
+        <label class="ss-field__label label" for="c4">Código de parceiro <span class="ss-field__optional">(opcional)</span></label>
+        <div class="ss-input" aria-busy="true"><input id="c4" type="text" value="ANA20" aria-describedby="c4h"><svg class="ss-icon ss-spin ss-input__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></div>
+        <p class="ss-field__help caption" id="c4h">Conferindo o código…</p>
+      </div>
+
+      <div class="ss-field">
+        <label class="ss-field__label label" for="c5">E-mail da conta</label>
+        <div class="ss-input is-readonly"><input id="c5" type="email" value="ana@empresa.com.br" readonly aria-describedby="c5h"></div>
+        <p class="ss-field__help caption" id="c5h">Somente leitura: dá para selecionar e copiar.</p>
+      </div>
+
+      <div class="ss-field">
+        <label class="ss-field__label label is-disabled" for="c6">Subdomínio</label>
+        <div class="ss-input is-disabled"><input id="c6" type="text" value="hub" disabled aria-describedby="c6h"></div>
+        <p class="ss-field__help caption" id="c6h">O subdomínio não muda depois que a instituição é criada.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="ss-demo-col ss-comfortable">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">CopyField</h2><span class="caption ss-demo-note">valor em code-lg + “Copiar”; vira “Copiado” por 2s, anunciado por aria-live</span></div>
+    <div class="ss-field">
+      <label class="ss-field__label label" for="cp1">Endereço do conector</label>
+      <div class="ss-copyfield">
+        <div class="ss-input is-readonly"><input id="cp1" type="text" class="code-lg" value="https://hub.integras.digital/tse/mcp" readonly></div>
+        <button class="ss-btn ss-btn--lg ss-btn--secondary button-lg" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/> <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>Copiar</button>
+      </div>
+    </div>
+    <div class="ss-copyfield">
+      <div class="ss-input is-readonly"><input type="text" class="code-lg" value="https://hub.integras.digital/tse/mcp" readonly aria-label="Endereço do conector"></div>
+      <button class="ss-btn ss-btn--lg ss-btn--secondary button-lg" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Copiado</button>
+    </div>
+    <p class="ss-sr-only" aria-live="polite">Endereço copiado</p>
+  </section>
+
+</main>
+</body>
+</html>

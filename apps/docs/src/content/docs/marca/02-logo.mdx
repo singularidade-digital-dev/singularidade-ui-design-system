@@ -1,30 +1,37 @@
 ---
-title: 2 · Logo & lockups
-description: Símbolo, lockups horizontal/vertical, monochrome, clear space
+title: 2 · Logo
+description: Os símbolos das duas marcas, o logo do produto Integras, tamanhos, versão monocromática, logos de conector e o logo no e-mail
 sidebar: { order: 2 }
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 
+Use os arquivos como estão: nunca redesenhe, recolora ou aproxime um logo.
+
 ## Símbolo
 
-**Singularidade**: cubo isométrico 3-faces com letras S/D em negative space, gradient brand canônico (magenta → coral → orange).
+**Integras**: dois chevrons sobrepostos formando um "X", com o degradê vertical do próprio arquivo (#E91E8B, #E8606A, #F5A623).
 
-**Integras**: 2 chevrons sobrepostos formando "X" estilizado, mesmo gradient.
+**Singularidade**: cubo isométrico com as letras S e D em espaço negativo. O degradê original tem duas paradas, de #ED1E79 a #F7931E.
 
 <div style="display:flex;gap:24px;margin:24px 0;">
-  <img src="/logos/singularidade/symbol.svg" alt="Singularidade symbol" width="160" />
-  <img src="/logos/integras/symbol.svg" alt="Integras symbol" width="160" />
+  <img src="/logos/singularidade/symbol.svg" alt="Símbolo da Singularidade" width="160" />
+  <img src="/logos/integras/symbol.svg" alt="Símbolo do Integras" width="160" />
 </div>
+
+<Aside>
+  O `singularidade/symbol.svg` do `brand-assets` ainda traz as cores do Integras. As cores originais
+  estão nos PNG da folha de identidade, em `identidade_visual/singularidade_digital/`.
+</Aside>
 
 ## Logo do produto Integras
 
-O logo do Integras é o símbolo com o nome do produto ao lado, em `brand-label` (Plus Jakarta Sans 700, caixa alta, 0.06em), decidido em 15/11/2026:
+O logo do Integras é o símbolo com o nome do produto ao lado, em `brand-label` (Plus Jakarta Sans 700, caixa alta, 0.06em):
 
 - **"INTEGRAS"** no site integras.digital e no admin da plataforma;
 - **"INTEGRAS HUB"** no Integras Hub.
 
-O mesmo logo em tudo: muda só o nome do produto ao lado do símbolo. Escrito como texto, ele acompanha o tema claro e escuro sozinho. Altura de 28px no site; no app, o símbolo de 24px com o nome ao lado; no login, o símbolo de 56px.
+O mesmo logo em tudo: muda só o nome do produto ao lado do símbolo. Escrito como texto, ele acompanha o tema claro e o escuro sozinho.
 
 <Aside type="caution">
   Os `horizontal.svg` e `vertical.svg` das duas marcas são legado: trocam o logotipo da folha de
@@ -34,33 +41,49 @@ O mesmo logo em tudo: muda só o nome do produto ao lado do símbolo. Escrito co
   originais da folha de identidade (em `identidade_visual/singularidade_digital/`).
 </Aside>
 
+## Tamanhos
+
+- **App**: o símbolo em `icon-lg` (24px) com o `brand-label` ao lado, num único link para o início.
+- **Login**: o símbolo de 56px.
+- **Site**: 28px de altura.
+- **Portal da empresa**: o logo da instituição, até 28px de altura e 160px de largura. Instituição sem logo usa o [Avatar](/componentes/avatar/) de organização, com as iniciais.
+- **Mínimo**: 24px para o símbolo e 96px para um lockup.
+
 ## Variações
 
-| Variante         | Uso                                                            |
-| ---------------- | -------------------------------------------------------------- |
-| `symbol.svg`     | Avatar, favicon, social icons (sem texto)                      |
-| `horizontal.svg` | Legado nas duas marcas: lockup em texto, não usar em nada novo |
-| `vertical.svg`   | Legado nas duas marcas: lockup em texto, não usar em nada novo |
-| `monochrome.svg` | Sobre fundo colorido/imagem; usa `currentColor`                |
+| Variante         | Uso                                                                           |
+| ---------------- | ----------------------------------------------------------------------------- |
+| `symbol.svg`     | Logo do app e do site (com o nome em texto), avatar, favicon e redes sociais |
+| `monochrome.svg` | Sobre fundo colorido ou imagem; usa `currentColor`                            |
+| `horizontal.svg` | Legado nas duas marcas: lockup em texto, não usar em nada novo                |
+| `vertical.svg`   | Legado nas duas marcas: lockup em texto, não usar em nada novo                |
 
-## Clear space
+**Monocromático**: tinta `color-neutral-800` (#261a21) sobre claro e `color-neutral-0` (#ffffff) sobre escuro. Os `monochrome.svg` usam `currentColor` e só funcionam inline; como `<img>`, saem pretos.
 
-Espaço mínimo ao redor do logo = **1× altura do símbolo**. Não inserir nada nessa área.
+## Respiro
 
-## Tamanho mínimo
+Espaço mínimo em volta do logo: **1× a altura do símbolo**. Não ponha nada nessa área.
 
-- **Web**: 24px (símbolo) / 96px (lockup horizontal)
-- **Print/exibição grande**: 32px+ ideal pro símbolo
-
-## Don'ts
+## O que não fazer
 
 <Aside type="caution">
-  - Não distorcer proporções - Não trocar cores do gradient - Não adicionar sombras/contornos - Não
-  rotacionar
+  Não distorça as proporções, não recolora o degradê, não aplique sombra ou contorno, não gire e não
+  ponha o símbolo dentro de um círculo.
 </Aside>
+
+## Logos de conector
+
+- Servem só para identificar o conector, sempre num quadro `color-neutral-0` (branco) de 52×52px, com raio `radius-md` e borda subtle, também no tema escuro. O logo tem até 40×40px, com contain, e `alt=""` quando o nome está ao lado. Veja [ConnectorCard](/componentes/connector-card/).
+- As marcas de terceiros (bancos de dados, sistemas) servem só para identificar o conector.
+- Conector de órgão público leva o aviso "Não é um serviço oficial do/da …" e nunca o selo "Oficial".
+- O conector Integras usa o próprio símbolo do Integras e, na loja das empresas, leva o selo "Oficial".
+
+## No e-mail
+
+O Gmail não mostra SVG. Use um PNG 2× do símbolo do Integras (96×96, mostrado com 48px) e o nome do produto em texto embaixo ("Integras Hub", como `brand-label`), centralizados, com `alt=""` na imagem. Veja [PageEmail](/paginas-modelo/email/).
 
 ## Download
 
-- [singularidade/symbol.svg](/logos/singularidade/symbol.svg) · [horizontal (legado)](/logos/singularidade/horizontal.svg) · [vertical (legado)](/logos/singularidade/vertical.svg) · [monochrome](/logos/singularidade/monochrome.svg)
-- [integras/symbol.svg](/logos/integras/symbol.svg) · [horizontal (legado)](/logos/integras/horizontal.svg) · [vertical (legado)](/logos/integras/vertical.svg) · [monochrome](/logos/integras/monochrome.svg)
-- PNGs em 16/32/180/512px disponíveis para favicons e iOS app icons
+- [singularidade/symbol.svg](/logos/singularidade/symbol.svg) · [monochrome](/logos/singularidade/monochrome.svg) · [horizontal (legado)](/logos/singularidade/horizontal.svg) · [vertical (legado)](/logos/singularidade/vertical.svg)
+- [integras/symbol.svg](/logos/integras/symbol.svg) · [monochrome](/logos/integras/monochrome.svg) · [horizontal (legado)](/logos/integras/horizontal.svg) · [vertical (legado)](/logos/integras/vertical.svg)
+- PNG de 16, 32, 180 e 512px para favicon e ícone de app (`icon-16.png` a `icon-512.png`, em cada pasta de marca do `brand-assets`).

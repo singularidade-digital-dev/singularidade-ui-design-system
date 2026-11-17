@@ -1,0 +1,42 @@
+---
+title: EmptyState
+description: Estado vazio que ensina o que aparece ali, como chega e quem pode agir, centralizado na área livre.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Estado vazio que ensina: diz o que aparece ali, como chega e quem pode agir, centralizado na área livre.
+
+<DsPreview name="EmptyState" title="Prévia do EmptyState: variantes, vitrine do Hub e página de erro" height={1728} />
+
+## Posição
+
+- Centralizado nos dois eixos (grid com `place-items: center`).
+- Altura mínima de min(60vh, 480px) quando é o único conteúdo; 240px dentro de card ou tabela (`ss-empty--inset`).
+- Na vitrine do Hub, o vazio fica abaixo das abas e das categorias, com 112px de respiro até o ícone (48px no celular), em vez de centralizado na altura.
+
+## Anatomia
+
+- Quadro de 64×64px, raio `radius-lg`, em `color-interactive-secondary`, com o ícone de 32px em `color-text-secondary`. O Hub usa esse ladrilho em todo vazio da pessoa: vitrine, Meu espaço, lixeira, busca e memória.
+- 16px abaixo, o título em `heading-sm`. 8px abaixo, o texto em `body-sm` `color-text-secondary`, com no máximo 400px.
+- 16px abaixo, as ações: primário só se a pessoa puder agir, mais o terciário "Como funciona". Na vitrine do Hub, a ação tem 44px; a secundária tem contorno em `color-border-control`.
+- No vazio de Assinados, o emblema das [Faixas](/componentes/faixas/) fica no lugar do ícone, sem o ladrilho. É decorativo, com `aria-hidden`.
+
+## Variantes (textos reais)
+
+- Primeiro uso: "Nada guardado por enquanto", o texto do Meu espaço e "Enviar arquivo".
+- Sem acesso, sem botão: "Nada compartilhado com você ainda" e "Quando um administrador der ao seu papel acesso a uma categoria de documentos, as pastas dela aparecem aqui."
+- Sem resultado: "Nenhum arquivo encontrado com esses filtros." e "Limpar filtros".
+- Erro: "Não foi possível carregar os conectores." e "Tentar de novo".
+- Página de erro (`ss-empty--page`): o código em `overline` ("Erro 404"), o título em `heading` ("Página não encontrada"), a descrição e "Voltar ao início".
+
+## Na vitrine do Hub
+
+- Assinados sem assinatura: o emblema das Faixas, "Você ainda não assina nenhum conector", "Comece pelo teste grátis de qualquer conector." e o primário "Ver o catálogo".
+- Busca sem resultado: a lupa em traço no ladrilho, "Nenhum conector para “\{termo\}”", "Tente outra palavra ou limpe a busca." e "Limpar a busca" com contorno, que limpa também a categoria da aba.
+- Categoria vazia em Assinados: o ícone list-filter, "Nenhum conector nesta categoria" e "Seu conector assinado é de outra categoria." ou "Seus N conectores assinados são de outras categorias.". A ação, "Ver \{categoria\} no catálogo", tem contorno e abre o catálogo nessa categoria, com o foco no chip dela.
+
+## Regras
+
+- Sem ilustração. A exceção é o emblema das Faixas, só no vazio de Assinados do Hub.
+- Nos apps Vaadin, use este componente no lugar do texto vazio da grade (`Grid.setEmptyStateText`).

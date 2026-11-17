@@ -1,0 +1,54 @@
+---
+title: Table
+description: Tabela de dados do admin, com cabeçalho legível, números à direita, até 3 ações por linha e versão em cards no celular.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Tabela de dados do admin, com cabeçalho legível, números à direita, até 3 ações por linha e versão em cards no celular.
+
+<DsPreview name="Table" title="Prévia da Table: tabela compacta, admin com muitas colunas e cards no celular" height={1090} />
+
+## Contêiner e cabeçalho
+
+- `ss-table-wrap`: borda de 1px default, raio `radius-lg`.
+- Cabeçalho de 40px, fundo `color-surface-sunken`, 13/20 600 em `color-text-secondary`, com `aria-sort`. Sem caixa alta: só a primeira letra maiúscula.
+
+## Linhas
+
+- 40px no compacto e 48px no confortável, texto `body-sm`.
+- Divisória subtle; hover em sunken; linha selecionada em `color-interactive-primary-subtle`, com checkbox (os badges continuam legíveis: o badge tingido tem base opaca).
+- Números à direita com tabular-nums (`ss-num`). Datas no formato local ("04/11/2026 00:37"); o fuso vai no cabeçalho ou no seletor LOCAL/UTC.
+- Status vira [Badge](/componentes/badge/) com palavra, na língua da tela. Texto cortado ganha tooltip. Versão e IDs em `code`.
+- Nos apps Vaadin, a grade tem borda `border-default` nos dois temas, a linha selecionada em `color-interactive-primary-subtle` e o hover da célula em `color-interactive-secondary`.
+
+## Admin com muitas colunas
+
+- Nenhuma coluna em largura automática: o vaadin-grid 25.2 mede a largura automática só com as linhas que estão na tela e não mede de novo ao rolar nem ao ordenar. Uma linha fora da tela sairia cortada.
+- O que muda de uma linha para outra (status, data, tipo, ações) tem largura fixa, do maior valor nas três línguas. Por exemplo: status 8,25rem ("Aprovisionando"), data 6,75rem, tipo 6,5rem e três ações 7,75rem.
+- O texto livre (nome, subdomínio, e-mail, plano, nome técnico) tem largura flexível e quebra linha: nos espaços, depois do "@" do e-mail e, só se nada mais couber, dentro da palavra. Nunca reticências.
+- 8px de cada lado da célula (`admin-grid-dense`) em vez de 16.
+- "Criado" mostra só a data; a hora fica na dica e na ficha da instituição. A coluna ordena pelo instante, não pelo texto.
+- As colunas de status ordenam pela palavra mostrada, e os filtros mostram a palavra.
+- No portal das empresas, onde as grades são curtas, a coluna de selo tem o tamanho da palavra (largura automática, sem crescer).
+
+## Ações da linha
+
+- Botões neutral-ghost só com ícone, de 32px, com o ícone na cor da ação.
+- Até 3 visíveis; a partir de 4, o menu ⋯ (ficam 2 na linha e o resto vai para o menu). Construtivas antes das destrutivas; `aria-label` e tooltip em cada uma.
+- Ícone de 16px, com 4px entre os botões. Neutro em `color-text-secondary`; erro, sucesso ou primário no tom, com a superfície do tom no hover. Ícone sobre base ou raised: neutro 9,14:1 ou mais, erro 6,06:1, sucesso 5,29:1, primário 5,31:1.
+
+## Barra da tabela
+
+- Título e contagem; busca só a partir de 8 linhas; filtros em chips; o primário à direita.
+- A barra de filtros quebra linha quando não cabe; a ação de exportar ("Exportar CSV") desce e fica à direita.
+
+## Estados
+
+- Vazio: [EmptyState](/componentes/empty-state/) compacto.
+- Carregando: 5 linhas de esqueleto depois de 300ms.
+- Erro: [Alert](/componentes/alert/) com "Tentar de novo".
+
+## Celular
+
+Abaixo de 640px, cada linha vira um card com pares rótulo: valor (`ss-table-card`).

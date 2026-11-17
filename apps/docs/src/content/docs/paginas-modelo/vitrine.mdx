@@ -1,0 +1,45 @@
+---
+title: PageVitrine
+description: Modelo da vitrine do Integras Hub, aberta a toda conta, com busca, categorias, as abas Catálogo e Assinados e um cartão por conector.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Modelo da vitrine do Integras Hub ("Conectores"), aberta a toda conta: busca, categorias, as abas "Catálogo" e "Assinados" e um cartão por conector, com os textos do produto.
+
+<DsPreview name="PageVitrine" title="Prévia da PageVitrine: Conectores do Integras Hub" height={1066} page phone />
+
+## Estrutura (contêiner de 1200px)
+
+1. Header do Hub: "Conectores" (atual) e "Meu espaço"; à direita, só o menu da pessoa. Logo abaixo, quando a cobrança está em modo de teste, o Banner warning do modo de teste.
+2. PageHeader "Conectores" com "Conectores para o seu assistente de IA consultar dados públicos, com a fonte de cada número." e, à direita, o botão de ajuda "Ver o tour desta página".
+3. Busca de até 560px: "Buscar por nome ou assunto" (rótulo oculto "Buscar conectores").
+4. Abas "Catálogo 5" e "Assinados 2".
+5. Chips de categoria, um por vez, começando por "Todos": "Compras públicas", "Eleições", "Legislativo", "Orçamento público", "Território". Só aparecem com 2 ou mais categorias. Aparecem também em Assinados: cada aba guarda a sua categoria (um chip de Assinados não filtra o catálogo), e Assinados abre sempre em "Todos".
+6. Grade de [ConnectorCard](/componentes/connector-card/) e o rodapé com Termos de Uso, Política de Privacidade e Acessibilidade.
+
+## Retorno do checkout
+
+- Em Assinados, abaixo da busca e das abas, um cartão: fundo raised, borda subtle (`border-default` no escuro), `radius-lg`, `shadow-xs` e as [Faixas](/componentes/faixas/) no canto.
+- Dentro: o logo no quadro branco de 52px, "\{conector\} está na sua conta" em 22/28 600 (20/26 no celular), "Adicione ao Claude e faça a primeira pergunta." em 14/20 e "Adicionar ao Claude" com 44px e texto de 16px.
+- Sem ×: o cartão some ao sair da página ou recarregar. O leitor de tela ouve o título pela região ao vivo.
+- "Combina com \{conector\}": seção própria, 24px abaixo do cartão, com os cartões comuns do catálogo, nunca dentro do cartão da compra. Até 2 conectores à venda e não assinados, que dividem com o comprado um marcador distintivo; não contam "Dados públicos" nem a categoria em código. Sem nenhum, a seção não aparece: o TSE mostra o Legislativo, e o PNCP fica sem a seção.
+- "Combina com o que você usa", as sugestões de Assinados, conta "Dados públicos" e, sem marcador em comum, sugere em ordem alfabética.
+- Compra cancelada: info "A compra foi cancelada. Nada foi cobrado."
+
+## Estados vazios
+
+- Abaixo das abas e das categorias, com 112px de respiro até o ícone (48px no celular), o ícone no ladrilho de 64px e a ação com 44px; a secundária com contorno (veja [EmptyState](/componentes/empty-state/)).
+- "Nenhum conector está à venda no momento."
+- Busca: a lupa em traço, "Nenhum conector para “\{termo\}”", "Tente outra palavra ou limpe a busca." e "Limpar a busca" com contorno, que limpa também a categoria da aba.
+- Categoria vazia em Assinados: o ícone list-filter, "Nenhum conector nesta categoria" e "Seu conector assinado é de outra categoria." ou "Seus N conectores assinados são de outras categorias.". A ação, "Ver \{categoria\} no catálogo", abre o catálogo nessa categoria, com o foco no chip dela.
+- Assinados sem assinatura: o emblema das Faixas, "Você ainda não assina nenhum conector", "Comece pelo teste grátis de qualquer conector." e o primário "Ver o catálogo".
+
+## Acesso
+
+- Toda conta do Hub vê a vitrine. A compra abre o diálogo de assinatura. Quando as assinaturas não estão abertas, "Assinar" fica desabilitado com o motivo à vista ("Assinaturas em breve. Por enquanto, use o teste grátis de cada conector.").
+- No detalhe do conector, quem tem acesso vê "Enviar para o meu e-mail", que manda o guia de uso (veja [Padrões, 4](/paginas-modelo/padroes/#4-card-da-loja-e-detalhe)).
+
+## Celular
+
+Uma coluna; busca e chips logo abaixo do título; abas e chips rolam de lado.

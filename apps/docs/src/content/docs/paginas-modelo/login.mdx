@@ -1,0 +1,42 @@
+---
+title: PageLogin
+description: Modelo de entrada no Integras Hub, com Google ou código por e-mail, sem senha, e o passo do código, numa coluna de 440px sem cartão.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Modelo de entrada no Integras Hub: Google ou código por e-mail, sem senha, e o passo do código, numa coluna de 440px sem cartão.
+
+<DsPreview name="PageLogin" title="Prévia da PageLogin: entrar e o passo do código" height={960} page />
+
+## Página
+
+- Fundo `color-surface-base`, sem cartão.
+- No topo, uma faixa de 64px com idioma e tema à direita.
+- Coluna `container-auth` (440px), centralizada e a 12vh do topo, para a tela não pular quando aparece um erro.
+
+## Ordem
+
+1. Símbolo de 56px e, 8px abaixo, "INTEGRAS HUB" (`brand-label`).
+2. 32px abaixo, o h1 "Entrar" em `heading`.
+3. 24px abaixo, "Continuar com Google" (provider, largura total, 44px).
+4. Divisor "ou".
+5. "Entrar com código por e-mail" (secundário, largura total).
+6. 32px abaixo, "Não tem conta? Criar".
+
+- Sem "Entrar com senha" no Hub: a pessoa entra com o Google ou com o código. A entrada com senha dos administradores fica fora desta tela.
+- Rodapé: "Termos de Uso · Política de Privacidade · Acessibilidade" e o link "Ajuda e privacidade", com um endereço de e-mail que recebe mensagens.
+
+## Passo do código
+
+1. O título "Entrar com código por e-mail", a introdução "Sem senha: enviaremos um código de 6 dígitos para o seu e-mail." e o campo de e-mail (44px, `type=email`).
+2. "Enviar código".
+3. Alert info: "Enviamos um código de 6 dígitos para \{e-mail\}. Ele vale por 10 minutos."
+4. [OtpField](/componentes/text-field/#variantes).
+5. "Confirmar", que mostra "Entrando…" enquanto carrega.
+6. "Reenviar código em 0:45", desabilitado enquanto conta, com o motivo no próprio rótulo, e "Usar outro e-mail".
+
+## Erros
+
+- Código errado, no campo: "Código incorreto ou vencido."
+- Limite de tentativas, em Alert: "Muitos códigos pedidos. Espere alguns minutos e tente de novo."

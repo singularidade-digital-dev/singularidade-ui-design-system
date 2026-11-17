@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Alert</title>
+<style>
+  .al-frame { border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface-base); }
+  .al-frame .ss-alert--banner { border-bottom-color: var(--color-feedback-warning-border); }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Alert</h2><span class="caption ss-demo-note">fundo tingido e borda inteira de 1px; ícone de 20px na cor de texto do tom</span></div>
+    <div class="ss-alert ss-alert--success" role="status">
+      <svg class="ss-icon ss-alert__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <path d="m9 12 2 2 4-4"/></svg>
+      <div class="ss-alert__body body-sm"><p class="ss-alert__title">Pagamento recebido. O conector fica disponível em até um minuto.</p></div>
+    </div>
+    <div class="ss-alert" role="status">
+      <svg class="ss-icon ss-alert__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <path d="M12 16v-4"/> <path d="M12 8h.01"/></svg>
+      <div class="ss-alert__body body-sm">
+        <p class="ss-alert__title">Código enviado</p>
+        <p>Enviamos um código de 6 dígitos para ana@empresa.com.br. Ele vale por 10 minutos.</p>
+      </div>
+    </div>
+    <div class="ss-alert ss-alert--warning" role="status">
+      <svg class="ss-icon ss-alert__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/> <path d="M12 9v4"/> <path d="M12 17h.01"/></svg>
+      <div class="ss-alert__body body-sm">
+        <p class="ss-alert__title">Pagamento pendente</p>
+        <p>O acesso à CGU continua até 15/11. Depois disso, as consultas param até o pagamento ser atualizado.</p>
+        <div class="ss-alert__actions"><a class="ss-link ss-link--alert label" href="#pagamento">Atualizar pagamento</a></div>
+      </div>
+    </div>
+    <div class="ss-alert ss-alert--error" role="alert">
+      <svg class="ss-icon ss-alert__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <line x1="12" x2="12" y1="8" y2="12"/> <line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+      <div class="ss-alert__body body-sm">
+        <p class="ss-alert__title">Muitos códigos pedidos.</p>
+        <p>Espere alguns minutos e tente de novo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Banner</h2><span class="caption ss-demo-note">o mesmo componente em largura total, no topo da página</span></div>
+    <div class="al-frame">
+      <div class="ss-alert ss-alert--warning ss-alert--banner" role="status">
+        <svg class="ss-icon ss-alert__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/> <path d="M12 9v4"/> <path d="M12 17h.01"/></svg>
+        <div class="ss-alert__body body-sm"><p class="ss-alert__title">Modo de teste: nenhum valor é cobrado de verdade.</p></div>
+      </div>
+      <div style="height:var(--size-12)"></div>
+    </div>
+    <p class="caption ss-demo-note">Hierarquia, do menor para o maior: erro no campo, Alert na seção, Banner na página, Dialog para decisão que bloqueia. Toast só confirma uma ação.</p>
+  </section>
+
+</main>
+</body>
+</html>

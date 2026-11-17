@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Price</title></head>
+<body>
+<main class="ss-demo">
+  <div class="ss-demo-grid ss-demo-grid--2">
+
+    <section class="ss-demo-col">
+      <div class="ss-demo-head"><h2 class="overline ss-demo-title">Destaque</h2><span class="caption ss-demo-note">28/36 700, tabular-nums</span></div>
+      <div class="ss-price ss-price--display">
+        <div class="ss-price__line"><span class="ss-price__value heading">R$&nbsp;19,90</span><span class="ss-price__period body-sm">/mês</span></div>
+        <p class="ss-price__note body-sm">Renova todo mês. Cancele quando quiser.</p>
+      </div>
+      <div class="ss-price ss-price--display">
+        <div class="ss-price__line"><span class="ss-price__old body-sm"><span class="ss-sr-only">preço original </span>R$&nbsp;19,90</span></div>
+        <div class="ss-price__line"><span class="ss-price__value heading">R$&nbsp;15,92</span><span class="ss-price__period body-sm">no 1º mês</span></div>
+        <p class="ss-price__note body-sm">Código de parceiro ANA20 aplicado. Depois, R$&nbsp;19,90/mês.</p>
+      </div>
+    </section>
+
+    <section class="ss-demo-col">
+      <div class="ss-demo-head"><h2 class="overline ss-demo-title">Inline e estados</h2></div>
+      <span class="ss-price body-sm"><span class="ss-price__value">R$&nbsp;19,90</span><span class="ss-price__period">por mês</span></span>
+      <div class="ss-demo-row"><span class="ss-price body-sm"><span class="ss-price__value">R$&nbsp;19,90</span><span class="ss-price__period">por mês</span></span><span class="ss-badge ss-badge--brand badge">5 consultas grátis</span></div>
+      <span class="ss-price body-sm"><span class="ss-price__value">Grátis</span></span>
+      <span class="ss-badge badge">Fora de venda</span>
+      <div class="ss-demo-row" aria-busy="true"><span class="ss-skel ss-skel--price"></span><span class="caption ss-demo-note">carregando, depois de 300ms</span></div>
+      <p class="caption ss-demo-note">Formatação com Intl (BRL, espaço inseparável). Período: “por mês”, “per month”, “al mes”. Proibido “a partir de” que esconde o preço, contagem regressiva e desconto sem código real.</p>
+    </section>
+
+  </div>
+</main>
+</body>
+</html>

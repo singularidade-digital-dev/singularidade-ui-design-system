@@ -1,0 +1,268 @@
+---
+/**
+ * Live preview of a Design System v2 card (public/ds-v2/previews/<name>.html) in an iframe.
+ * The preview loads the published tokens (theme.css, text-styles.css) and the v2 bundle.css.
+ * The toolbar switches the preview between the light and dark themes (it starts on the site's
+ * theme) and, for page models that are one responsive page, between the desktop width (1280px,
+ * scaled to fit) and 390px, the start on a narrow screen. Page models that put several screens
+ * side by side (login, sign-up, settings, e-mail) were designed at 1280px only.
+ * The iframe grows to the height of its content; without JavaScript it keeps `height`.
+ */
+interface Props {
+  /** File name in public/ds-v2/previews, without .html */
+  name: string;
+  /** Accessible name of the iframe */
+  title: string;
+  /** Height of the preview at its design width, in px (the card height of the DS v2) */
+  height: number;
+  /** Page model: designed at 1280px, shown scaled to the column */
+  page?: boolean;
+  /** Page model that is one responsive page: adds the 390px option */
+  phone?: boolean;
+}
+
+const { name, title, height, page = false, phone = false } = Astro.props;
+const src = `/ds-v2/previews/${name}.html`;
+---
+
+<figure
+  class="ds-preview not-content"
+  data-ds-preview
+  data-page={page ? '' : undefined}
+  data-phone={page && phone ? '' : undefined}
+>
+  <div class="ds-preview__bar">
+    <div class="ds-preview__group" role="group" aria-label="Tema da prévia">
+      <button type="button" class="ds-preview__btn" data-theme-choice="light" aria-pressed="true">
+        Claro
+      </button>
+      <button type="button" class="ds-preview__btn" data-theme-choice="dark" aria-pressed="false">
+        Escuro
+      </button>
+    </div>
+    {
+      page && phone && (
+        <div class="ds-preview__group" role="group" aria-label="Largura da prévia">
+          <button
+            type="button"
+            class="ds-preview__btn"
+            data-width-choice="1280"
+            aria-pressed="true"
+          >
+            Desktop
+          </button>
+          <button
+            type="button"
+            class="ds-preview__btn"
+            data-width-choice="390"
+            aria-pressed="false"
+          >
+            Celular
+          </button>
+        </div>
+      )
+    }
+    <a class="ds-preview__open" href={`${src}?tema=claro`} target="_blank" rel="noopener">
+      Abrir em nova aba<span class="ds-preview__sr"> (abre em nova aba)</span>
+    </a>
+  </div>
+  <div class="ds-preview__viewport" style={`height: ${height}px`}>
+    <iframe src={src} title={title} loading="lazy" style={`height: ${height}px`}></iframe>
+  </div>
+</figure>
+
+<script>
+  const PAGE_WIDTH = 1280;
+  const PHONE_WIDTH = 390;
+
+  function setup(fig: HTMLElement) {
+    const iframe = fig.querySelector('iframe');
+    const viewport = fig.querySelector<HTMLElement>('.ds-preview__viewport');
+    const open = fig.querySelector<HTMLAnchorElement>('.ds-preview__open');
+    if (!iframe || !viewport || !open) return;
+    const isPage = fig.hasAttribute('data-page');
+    fig.classList.add('is-live');
+    const siteTheme = () => (document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
+    let theme = siteTheme();
+    let chosen = false;
+    const hasPhone = fig.hasAttribute('data-phone');
+    let width =
+      hasPhone && window.matchMedia('(max-width: 50rem)').matches ? PHONE_WIDTH : PAGE_WIDTH;
+    let observed: Document | null = null;
+    const contentObserver = new ResizeObserver(() => measure());
+
+    function doc(): Document | null {
+      try {
+        return iframe!.contentDocument;
+      } catch {
+        return null;
+      }
+    }
+
+    function applyTheme() {
+      const d = doc();
+      if (d?.documentElement) d.documentElement.setAttribute('data-theme', theme);
+      fig.querySelectorAll<HTMLElement>('[data-theme-choice]').forEach((b) => {
+        b.setAttribute('aria-pressed', String(b.dataset.themeChoice === theme));
+      });
+      const base = open!.getAttribute('href')!.split('?')[0];
+      open!.setAttribute('href', `${base}?tema=${theme === 'dark' ? 'escuro' : 'claro'}`);
+    }
+
+    function measure() {
+      const d = doc();
+      if (!d?.body) return;
+      const h = Math.ceil(d.body.getBoundingClientRect().height);
+      if (!h) return;
+      if (isPage) {
+        const avail = viewport!.clientWidth;
+        const scale = Math.min(1, avail / width);
+        iframe!.style.width = `${width}px`;
+        iframe!.style.height = `${h}px`;
+        iframe!.style.transform = scale < 1 ? `scale(${scale})` : '';
+        iframe!.style.marginInlineStart =
+          width * scale < avail ? `${Math.floor((avail - width * scale) / 2)}px` : '0';
+        viewport!.style.height = `${Math.ceil(h * scale)}px`;
+      } else {
+        iframe!.style.height = `${h}px`;
+        viewport!.style.height = `${h}px`;
+      }
+    }
+
+    function onLoad() {
+      applyTheme();
+      measure();
+      const d = doc();
+      if (d?.body && observed !== d) {
+        observed = d;
+        contentObserver.disconnect();
+        contentObserver.observe(d.body);
+        d.fonts?.ready.then(measure);
+      }
+    }
+
+    iframe.addEventListener('load', onLoad);
+    if (doc()?.readyState === 'complete' && doc()?.body?.childElementCount) onLoad();
+    new ResizeObserver(() => measure()).observe(viewport);
+
+    fig.querySelectorAll<HTMLElement>('[data-theme-choice]').forEach((b) => {
+      b.addEventListener('click', () => {
+        theme = b.dataset.themeChoice === 'dark' ? 'dark' : 'light';
+        chosen = true;
+        applyTheme();
+      });
+    });
+    fig.querySelectorAll<HTMLElement>('[data-width-choice]').forEach((b) => {
+      b.setAttribute('aria-pressed', String(Number(b.dataset.widthChoice) === width));
+      b.addEventListener('click', () => {
+        width = Number(b.dataset.widthChoice) || PAGE_WIDTH;
+        fig.querySelectorAll<HTMLElement>('[data-width-choice]').forEach((x) => {
+          x.setAttribute('aria-pressed', String(x === b));
+        });
+        measure();
+      });
+    });
+
+    // Follow the site's theme switcher until the reader picks a theme for this preview.
+    new MutationObserver(() => {
+      if (!chosen) {
+        theme = siteTheme();
+        applyTheme();
+      }
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    applyTheme();
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-ds-preview]').forEach(setup);
+</script>
+
+<style>
+  .ds-preview {
+    margin-block: 1.5rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--sl-color-bg);
+  }
+
+  .ds-preview__bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    background: var(--sl-color-bg-nav);
+  }
+
+  .ds-preview__group {
+    display: inline-flex;
+    border: 1px solid var(--sl-color-gray-4);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .ds-preview__btn {
+    min-height: 2rem;
+    padding: 0 0.75rem;
+    border: 0;
+    background: transparent;
+    color: var(--sl-color-gray-2);
+    font: inherit;
+    font-size: var(--sl-text-sm);
+    cursor: pointer;
+  }
+
+  .ds-preview__btn + .ds-preview__btn {
+    border-inline-start: 1px solid var(--sl-color-gray-4);
+  }
+
+  .ds-preview__btn[aria-pressed='true'] {
+    background: var(--sl-color-accent-low);
+    color: var(--sl-color-white);
+    font-weight: 600;
+  }
+
+  .ds-preview__btn:focus-visible,
+  .ds-preview__open:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: -2px;
+  }
+
+  .ds-preview__open {
+    margin-inline-start: auto;
+    color: var(--sl-color-text-accent);
+    font-size: var(--sl-text-sm);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .ds-preview__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .ds-preview__viewport {
+    position: relative;
+    overflow: auto;
+  }
+
+  .ds-preview.is-live .ds-preview__viewport {
+    overflow: hidden;
+  }
+
+  .ds-preview iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    transform-origin: 0 0;
+  }
+</style>

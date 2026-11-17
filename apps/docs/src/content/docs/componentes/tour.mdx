@@ -1,0 +1,36 @@
+---
+title: Tour
+description: Tour guiado de cada tela, que escurece a página e acende um elemento por vez, aparece uma vez e sempre pode ser pulado.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Tour guiado de cada tela, que escurece a página e acende um elemento por vez, com um balão ao lado; aparece uma vez por tela e sempre pode ser pulado.
+
+<DsPreview name="Tour" title="Prévia do Tour: véu, alvo aceso e balão com as Faixas" height={920} />
+
+## Quando aparece
+
+- Na primeira visita a cada tela que tem tour. Depois, só pelo botão de ajuda no [PageHeader](/componentes/page-header/), "Ver o tour desta página".
+- Na vitrine, 6 passos: os conectores, a busca e as categorias, o teste grátis (o selo do cartão), "Adicionar ao Claude", a aba Assinados e, por fim, o próprio botão de ajuda: "O tour quando você quiser", "Este botão abre de novo o tour desta página, a qualquer momento."
+
+## Véu e alvo
+
+- O véu cobre a tela em `color-surface-overlay` e deixa o alvo aceso (`ss-tour-target`: um box-shadow em volta do alvo). Nada além do alvo e do balão fica clicável.
+- Folga e raio do alvo: 8px de folga e raio `radius-xl` (no Hub, 6px de folga e raio de 8px).
+- O balão fica ao lado do alvo, do lado com mais espaço, nunca em cima dele; a seta de 8px aponta para o alvo (`ss-tour--left` quando o balão está à direita).
+
+## Balão
+
+- Fundo raised, borda de 1px subtle, raio `radius-lg`, `shadow-xl`, largura de 360px (no máximo 100vw − 24px), padding de 24px.
+- As [Faixas](/componentes/faixas/) no canto de cima à direita: o canto de 96 × 56, que sai pelas bordas do balão. Com o balão aberto, as faixas da página somem.
+- Título em 28/36 700 (`heading`, −0,02em), com 28px de margem em cima, para ficar abaixo das faixas. Texto em `body-sm` `color-text-secondary`, 8px abaixo, no máximo 2 frases, com os textos do produto ("Teste grátis": "Todo conector tem consultas grátis para você testar antes de assinar. O selo do cartão mostra quantas restam.").
+- Rodapé 24px abaixo: "Pular" como botão de texto em `color-interactive-primary`, a contagem "3 de 6" em 13/20 `color-text-secondary` e, à direita, "Voltar" com contorno e "Próximo" primário, os dois com 44px.
+- No primeiro passo, "Voltar" some. No último, "Concluir" fica no lugar de "Próximo", e "Pular" sai.
+- O passo aponta o primeiro elemento visível do seletor: no celular, o passo "Lixeira" do Meu espaço aponta o ícone do cabeçalho.
+
+## Comportamento
+
+- `role="dialog"` com `aria-modal="true"` enquanto o véu está aceso. A cada passo, o foco vai para o balão: o título, que anuncia o passo, ou o "Próximo", como no Hub.
+- Pular, Esc ou Concluir encerram o tour, apagam o véu e devolvem o foco a quem o abriu. Com movimento reduzido, o véu e o balão aparecem sem animação.
+- A dispensa fica guardada no servidor, por pessoa e por tela, não no navegador.

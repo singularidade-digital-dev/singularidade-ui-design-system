@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Integras · Sua IA consulta os sistemas da empresa</title>
+<style>
+  .ps-hero-actions { display: flex; flex-wrap: wrap; gap: var(--size-2); }
+  .ps-shot-top { display: flex; align-items: center; gap: var(--size-2); height: var(--size-10); padding: 0 var(--size-4); border-bottom: 1px solid var(--color-border-subtle); background: var(--color-surface-raised); }
+  .ps-shot-top img { width: 20px; height: 20px; }
+  .ps-shot-body { padding: var(--size-4); display: flex; flex-direction: column; gap: var(--size-3); background: var(--color-surface-base); }
+  .ps-shot-body .ss-ccard { gap: var(--size-2); }
+  .ps-kicker { color: var(--color-text-secondary); }
+  .ps-roles { margin: 0; display: grid; gap: var(--size-1); }
+  .ps-roles > div { display: grid; grid-template-columns: 96px 1fr; gap: var(--size-3); padding: var(--size-1) 0; border-top: 1px solid var(--color-border-subtle); }
+  .ps-roles dt { font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+  .ps-roles dd { margin: 0; color: var(--color-text-secondary); }
+  .ps-points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--size-8); }
+  .ps-point { display: flex; flex-direction: column; gap: var(--size-2); border-top: 1px solid var(--color-border-default); padding-top: var(--size-4); }
+  .ps-point p { color: var(--color-text-secondary); }
+  .ps-plan-head { display: flex; align-items: center; justify-content: space-between; gap: var(--size-2); }
+  .ps-plan-tag { color: var(--color-text-secondary); }
+  .ps-note { color: var(--color-text-secondary); max-width: 72ch; }
+  .ps-cookie-wrap { position: sticky; bottom: var(--size-4); padding: 0 var(--size-6) var(--size-4); }
+  .ps-cookie-wrap .ss-cookie { max-width: var(--container-content); margin: 0 auto; }
+  .ps-foot-brand { display: inline-flex; align-items: center; gap: var(--size-2); color: var(--color-text-primary); }
+  .ps-foot-brand img { width: var(--icon-lg); height: var(--icon-lg); }
+</style>
+</head>
+<body>
+<div class="ss-site">
+  <a class="ss-skiplink label" href="#conteudo">Pular para o conteúdo</a>
+  <header class="ss-sitebar">
+    <div class="ss-sitebar__inner">
+      <a class="ss-brandlink" href="#inicio"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii05My42NyAxNC4xMyAxMDU1LjAyIDEwNTUuMDIiIHZlcnNpb249IjEuMSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImludGVncmFzLWJyYW5kIiB4MT0iMC41IiB5MT0iMCIgeDI9IjAuNSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTkxRThCIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjRTg2MDZBIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Y1QTYyMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBhdGggZmlsbD0idXJsKCNpbnRlZ3Jhcy1icmFuZCkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTE0MCA2OS40Yy0zIDEuNC02LjYgMi41LTggMi42LTIuNyAwLTExIDQuMS0yMCA5LjhhMTA2IDEwNiAwIDAgMC0yNC41IDI1TDg0IDExM2MtNS41IDguNy04IDIyLjMtOCA0NC4xIDAgMjIuMyAxLjIgMzEuNSA1LjEgMzguOCA2IDExIDcuOSAxMy43IDE0IDE5LjFhNjY4IDY2OCAwIDAgMSAyMS4yIDE5LjFjNSA0LjYgMTguNCAxNy41IDI5LjcgMjguNmE5NDcgOTQ3IDAgMCAwIDMyLjUgMzAuOGw1NSA1Mi42YTk0OCA5NDggMCAwIDAgMzYgMzMuNGwxNiAxNWM3LjcgNy4yIDIxLjQgMjAuMyAzMC41IDI5LjIgMzMgMzIuMiA2OS4xIDY0LjcgNzYuMiA2OC40YTkwIDkwIDAgMCAwIDg1LjYuMXE1LjMtMi42IDIyLTE5YTI0MTQgMjQxNCAwIDAgMSA4OS43LTg1LjZjMS43LTEuOCA0Ny4yLTQ1LjYgNTQuMi01Mi4zbDE2LjUtMTUuNSAyNy44LTI2LjMgMzMtMzEuNSAyMi41LTIxLjUgMTEuNi0xMC41YzI0LjItMjEuNCAyOC0yNi42IDMzLjUtNDYuOCAzLjgtMTMuOCA0LjctMzguNiAxLjYtNDguOWwtMi42LTkuN2MtMy45LTE2LjctMjQuNS00MC41LTQyLjYtNDguOS0xNi42LTcuNy0xOS4zLTguMi00NS41LTguMi0yMi41IDAtMjQuNC4xLTI5LjggMi4zYTM0IDM0IDAgMCAxLTggMi4yYy0zLjcgMC0xNS45IDYuNS0yMC45IDExLjJsLTkuNSA4LjgtMTQuOCAxNC0xOC41IDE3LjRhNjU2NiA2NTY2IDAgMCAwLTcyLjEgNjkuNmMtNDEgNDAuNC03Ny4xIDc0LjUtODEuOCA3N2EzMSAzMSAwIDAgMS0xNi4xLjJjLTEuNC0uNS0xNi4zLTE0LTMzLTI5LjhsLTM1LTMyLjljLTguMy03LjYtMjEuNC0yMC0zOC0zNmExODE4IDE4MTggMCAwIDAtNDktNDZsLTEwLjUtMTAtMTIuNi0xMS45LTEzLjQtMTIuNUMyMjUuMSA4MCAyMTIuOCA3MiAyMDcuOCA3MmMtLjggMC00LjEtMS03LjQtMi4xLTUuMy0yLTguNC0yLjItMzAuNC0yLjYtMjQuMy0uMy0yNC41LS4zLTMwIDIuMW0yODQuMyA1MDcuN2E1MCA1MCAwIDAgMC0yMC4xIDUuNGMtOS44IDMuMi0yOS40IDIwLjMtNzUuNyA2Ni4xLTEyLjEgMTItMzAuMyAyOS42LTQwLjUgMzkuM0wyNTcuNSA3MTcgMjIwIDc1M2wtNTIuNSA1MC41TDEzNiA4MzRjLTUwLjUgNDguMi01MCA0Ny42LTU0LjYgNjMuNi00LjIgMTQuOC00LjggNTIuMy0xIDYyLjRsMy4yIDguOWMuNCAxLjMgMS44IDMuOSAzLjEgNS44czIuNCA0IDIuNCA0LjRjMCA1IDIxIDI0LjQgMzIgMjkuNSAxNiA3LjQgMTguOSA3LjkgNDkgNy45aDI3LjVsOS0zYzEzLTQuMSAxNi42LTcgNDAtMzAuMiAxMS42LTExLjQgMjUuOC0yNS4xIDMxLjUtMzAuNGExNzk4IDE3OTggMCAwIDAgNDkuNi00Ni4zYzUuNi01LjYgMTYuNC0xNiAyNC0yMy4xbDIyLjgtMjEuNWMzNS0zMy40IDQ4LTQ1LjYgNTAtNDcgMy0yLjEgMTguMy0yIDIxLjUuMiAxLjMuOSA5LjQgOC41IDE4IDE3czIwLjggMjAgMjcuMSAyNmMxMyAxMiAyNy4zIDI1LjggNTMuNSA1MS43IDkuOSA5LjggMjEuOCAyMS4xIDI2LjUgMjUuMnMyMi45IDIxLjYgNDAuNSAzOWMzMi42IDMyLjEgMzguNCAzNi44IDQ2LjcgMzguMyAyIC40IDUuOSAxLjYgOC41IDIuOCA0LjYgMiA2LjEgMi4yIDMwLjggMmwyNi0uMSA5LjMtM2E4NSA4NSAwIDAgMCA1MC4xLTQ0YzguNC0xNi42IDguNS01OC42LjMtODEtMy04LTYuOS0xMi4zLTM3LjQtNDEuNi0zNy41LTM2LTYwLjgtNTguNC03OS44LTc3LTExLjgtMTEuNy0yNC45LTI0LjMtMjktMjhzLTE4LTE3LjMtMzEtMzAtMjcuNS0yNy0zMi41LTMxLjZjLTIxLjktMjAuNS0zMC4xLTI4LjQtNDcuNS00NS40YTc1OCA3NTggMCAwIDAtNTEuOS00Ny43IDY3IDY3IDAgMCAwLTI2LjEtMTAuMyA5NCA5NCAwIDAgMC0yMy43LS40Ii8+Cjwvc3ZnPgo=" alt="" style="width:28px;height:28px"><span class="brand-label">Integras</span></a>
+      <nav class="ss-sitebar__nav label" aria-label="Principal">
+        <a href="#produto">Produto</a><a href="#conhecimento">Conhecimento</a><a href="#precos">Preços</a><a href="#seguranca">Segurança</a><a href="#parceiros">Parceiros</a><a href="#sobre">Sobre</a>
+      </nav>
+      <div class="ss-sitebar__end">
+        <a class="ss-btn ss-btn--tertiary button" href="#entrar">Entrar</a>
+        <a class="ss-btn ss-btn--primary button" href="#criar">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="ss-section">
+      <div class="ss-section__inner">
+        <div class="ss-hero">
+          <div class="ss-hero__text">
+            <h1 class="display-xl">Sua IA consulta os sistemas da empresa. Você decide quem vê o quê.</h1>
+            <p class="ss-hero__lead body-lg">O Integras é um servidor MCP gerenciado. Ele liga o Claude, o ChatGPT ou o agente da sua equipe ao ERP, aos bancos de dados e aos documentos da empresa. Cada pessoa acessa só o que o papel dela permite, e cada consulta fica registrada.</p>
+            <div class="ss-hero-actions ps-hero-actions">
+              <a class="ss-btn ss-btn--lg ss-btn--primary button-lg" href="#criar">Criar conta</a>
+              <a class="ss-btn ss-btn--lg ss-btn--secondary button-lg" href="#como">Ver como funciona</a>
+            </div>
+          </div>
+          <figure class="ss-shot" aria-label="Captura do Integras: o conector ORGEN-AI e o que cada papel pode consultar">
+            <div class="ps-shot-top"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii05My42NyAxNC4xMyAxMDU1LjAyIDEwNTUuMDIiIHZlcnNpb249IjEuMSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImludGVncmFzLWJyYW5kIiB4MT0iMC41IiB5MT0iMCIgeDI9IjAuNSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTkxRThCIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjRTg2MDZBIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Y1QTYyMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBhdGggZmlsbD0idXJsKCNpbnRlZ3Jhcy1icmFuZCkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTE0MCA2OS40Yy0zIDEuNC02LjYgMi41LTggMi42LTIuNyAwLTExIDQuMS0yMCA5LjhhMTA2IDEwNiAwIDAgMC0yNC41IDI1TDg0IDExM2MtNS41IDguNy04IDIyLjMtOCA0NC4xIDAgMjIuMyAxLjIgMzEuNSA1LjEgMzguOCA2IDExIDcuOSAxMy43IDE0IDE5LjFhNjY4IDY2OCAwIDAgMSAyMS4yIDE5LjFjNSA0LjYgMTguNCAxNy41IDI5LjcgMjguNmE5NDcgOTQ3IDAgMCAwIDMyLjUgMzAuOGw1NSA1Mi42YTk0OCA5NDggMCAwIDAgMzYgMzMuNGwxNiAxNWM3LjcgNy4yIDIxLjQgMjAuMyAzMC41IDI5LjIgMzMgMzIuMiA2OS4xIDY0LjcgNzYuMiA2OC40YTkwIDkwIDAgMCAwIDg1LjYuMXE1LjMtMi42IDIyLTE5YTI0MTQgMjQxNCAwIDAgMSA4OS43LTg1LjZjMS43LTEuOCA0Ny4yLTQ1LjYgNTQuMi01Mi4zbDE2LjUtMTUuNSAyNy44LTI2LjMgMzMtMzEuNSAyMi41LTIxLjUgMTEuNi0xMC41YzI0LjItMjEuNCAyOC0yNi42IDMzLjUtNDYuOCAzLjgtMTMuOCA0LjctMzguNiAxLjYtNDguOWwtMi42LTkuN2MtMy45LTE2LjctMjQuNS00MC41LTQyLjYtNDguOS0xNi42LTcuNy0xOS4zLTguMi00NS41LTguMi0yMi41IDAtMjQuNC4xLTI5LjggMi4zYTM0IDM0IDAgMCAxLTggMi4yYy0zLjcgMC0xNS45IDYuNS0yMC45IDExLjJsLTkuNSA4LjgtMTQuOCAxNC0xOC41IDE3LjRhNjU2NiA2NTY2IDAgMCAwLTcyLjEgNjkuNmMtNDEgNDAuNC03Ny4xIDc0LjUtODEuOCA3N2EzMSAzMSAwIDAgMS0xNi4xLjJjLTEuNC0uNS0xNi4zLTE0LTMzLTI5LjhsLTM1LTMyLjljLTguMy03LjYtMjEuNC0yMC0zOC0zNmExODE4IDE4MTggMCAwIDAtNDktNDZsLTEwLjUtMTAtMTIuNi0xMS45LTEzLjQtMTIuNUMyMjUuMSA4MCAyMTIuOCA3MiAyMDcuOCA3MmMtLjggMC00LjEtMS03LjQtMi4xLTUuMy0yLTguNC0yLjItMzAuNC0yLjYtMjQuMy0uMy0yNC41LS4zLTMwIDIuMW0yODQuMyA1MDcuN2E1MCA1MCAwIDAgMC0yMC4xIDUuNGMtOS44IDMuMi0yOS40IDIwLjMtNzUuNyA2Ni4xLTEyLjEgMTItMzAuMyAyOS42LTQwLjUgMzkuM0wyNTcuNSA3MTcgMjIwIDc1M2wtNTIuNSA1MC41TDEzNiA4MzRjLTUwLjUgNDguMi01MCA0Ny42LTU0LjYgNjMuNi00LjIgMTQuOC00LjggNTIuMy0xIDYyLjRsMy4yIDguOWMuNCAxLjMgMS44IDMuOSAzLjEgNS44czIuNCA0IDIuNCA0LjRjMCA1IDIxIDI0LjQgMzIgMjkuNSAxNiA3LjQgMTguOSA3LjkgNDkgNy45aDI3LjVsOS0zYzEzLTQuMSAxNi42LTcgNDAtMzAuMiAxMS42LTExLjQgMjUuOC0yNS4xIDMxLjUtMzAuNGExNzk4IDE3OTggMCAwIDAgNDkuNi00Ni4zYzUuNi01LjYgMTYuNC0xNiAyNC0yMy4xbDIyLjgtMjEuNWMzNS0zMy40IDQ4LTQ1LjYgNTAtNDcgMy0yLjEgMTguMy0yIDIxLjUuMiAxLjMuOSA5LjQgOC41IDE4IDE3czIwLjggMjAgMjcuMSAyNmMxMyAxMiAyNy4zIDI1LjggNTMuNSA1MS43IDkuOSA5LjggMjEuOCAyMS4xIDI2LjUgMjUuMnMyMi45IDIxLjYgNDAuNSAzOWMzMi42IDMyLjEgMzguNCAzNi44IDQ2LjcgMzguMyAyIC40IDUuOSAxLjYgOC41IDIuOCA0LjYgMiA2LjEgMi4yIDMwLjggMmwyNi0uMSA5LjMtM2E4NSA4NSAwIDAgMCA1MC4xLTQ0YzguNC0xNi42IDguNS01OC42LjMtODEtMy04LTYuOS0xMi4zLTM3LjQtNDEuNi0zNy41LTM2LTYwLjgtNTguNC03OS44LTc3LTExLjgtMTEuNy0yNC45LTI0LjMtMjktMjhzLTE4LTE3LjMtMzEtMzAtMjcuNS0yNy0zMi41LTMxLjZjLTIxLjktMjAuNS0zMC4xLTI4LjQtNDcuNS00NS40YTc1OCA3NTggMCAwIDAtNTEuOS00Ny43IDY3IDY3IDAgMCAwLTI2LjEtMTAuMyA5NCA5NCAwIDAgMC0yMy43LS40Ii8+Cjwvc3ZnPgo=" alt=""><span class="brand-label caption">Integras</span></div>
+            <div class="ps-shot-body">
+              <article class="ss-card ss-ccard">
+                <div class="ss-ccard__head">
+                  <span class="ss-logoframe"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMjQuOTIzNzUybW0iCiAgIGhlaWdodD0iMjIuNjIxODc2bW0iCiAgIHZpZXdCb3g9IjAgMCAyNC45MjM3NTIgMjIuNjIxODc2IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmcyMzUiCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIgogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHNvZGlwb2RpOm5hbWVkdmlldwogICAgIGlkPSJuYW1lZHZpZXcyMzciCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjMDAwMDAwIgogICAgIGJvcmRlcm9wYWNpdHk9IjAuMjUiCiAgICAgaW5rc2NhcGU6c2hvd3BhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0ibW0iCiAgICAgc2hvd2dyaWQ9ImZhbHNlIiAvPgogIDxkZWZzCiAgICAgaWQ9ImRlZnMyMzIiIC8+CiAgPGcKICAgICBpbmtzY2FwZTpsYWJlbD0iQ2FtYWRhIDEiCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIxIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04LjQ0Mzg4MzEsLTkuMDQ3Nzg1NSkiPgogICAgPHBvbHlnb24KICAgICAgIGNsYXNzPSJzdDAiCiAgICAgICBwb2ludHM9IjI2Ny4yLDQwNC4zIDE5Ny41LDQwNC4zIDIwMS44LDQyOC44IDE5Ny4zLDQzOS43IDE4NiwzOTUuOCAyODAuMiwzOTUuOCAyNjEuMyw0NDYuMiAyMDkuNCw0NDYuMiAyMTEuMyw0NDAuNiAyNTUuMiw0NDAuNiAiCiAgICAgICBpZD0icG9seWdvbjczIgogICAgICAgc3R5bGU9ImZpbGw6IzAwYWVlZiIKICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KDAuMjY0NTgzMzMsMCwwLDAuMjY0NTgzMzMsLTQwLjc2ODYxNiwtOTUuNjc0Mjk3KSIKICAgICAgIGlua3NjYXBlOmV4cG9ydC1maWxlbmFtZT0ibG9nby5zdmciCiAgICAgICBpbmtzY2FwZTpleHBvcnQteGRwaT0iOTYiCiAgICAgICBpbmtzY2FwZTpleHBvcnQteWRwaT0iOTYiIC8+CiAgICA8cG9seWdvbgogICAgICAgY2xhc3M9InN0MSIKICAgICAgIHBvaW50cz0iMjY0LjQsNDQ4LjUgMjY4LjcsNDcyLjggMTk5LDQ3Mi44IDIxMC45LDQzNi41IDI1NSw0MzYuNSAyNTYuOCw0MzAuOSAyMDQuOSw0MzAuOSAxODYsNDgxLjMgMjgwLjIsNDgxLjMgMjY4LjgsNDM3LjQgIgogICAgICAgaWQ9InBvbHlnb243NSIKICAgICAgIHN0eWxlPSJmaWxsOiMwMDM5NzQiCiAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgwLjI2NDU4MzMzLDAsMCwwLjI2NDU4MzMzLC00MC43Njg2MTYsLTk1LjY3NDI5NykiIC8+CiAgPC9nPgo8L3N2Zz4K" alt=""></span>
+                  <div class="ss-ccard__titles"><p class="heading-sm">ORGEN-AI</p><p class="ss-ccard__category caption">ERP de laboratório · 142 ferramentas</p></div>
+                </div>
+                <p class="label">Quem vê o quê</p>
+                <dl class="ps-roles body-sm">
+                  <div><dt>Financeiro</dt><dd>Financeiro, caixa e faturamento</dd></div>
+                  <div><dt>Recepção</dt><dd>Atendimento e cadastro</dd></div>
+                  <div><dt>Direção</dt><dd>Todos os domínios</dd></div>
+                </dl>
+                <div class="ss-demo-row"><span class="ss-badge ss-badge--success badge"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <path d="m9 12 2 2 4-4"/></svg>Ativo · cada consulta registrada</span></div>
+              </article>
+              <div class="ss-copyfield">
+                <div class="ss-input is-readonly"><input type="text" class="code" value="https://empresa.integras.digital/orgen/mcp" readonly aria-label="Endereço do conector"></div>
+                <span class="ss-btn ss-btn--secondary button" aria-hidden="true"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/> <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>Copiar</span>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="ss-section" aria-labelledby="pq">
+      <div class="ss-section__inner">
+        <div class="ss-stack-2">
+          <p class="overline ps-kicker">O que é o Integras</p>
+          <h2 class="heading-xl" id="pq">A IA da sua equipe nos sistemas da empresa</h2>
+          <p class="ps-note body-lg">Liga o assistente aos sistemas e documentos da empresa, com permissão por pessoa e registro de cada acesso.</p>
+        </div>
+        <div class="ps-points">
+          <div class="ps-point"><h3 class="heading-sm">Acesso com permissão</h3><p class="body">Permissão por papel, login pelo assistente via OAuth, chaves de API com escopo e registro de cada chamada.</p></div>
+          <div class="ps-point"><h3 class="heading-sm">Vários sistemas, uma conexão</h3><p class="body">Conectores feitos com quem conhece cada sistema por dentro. Você ativa só os que usa, dentro do limite do plano.</p></div>
+          <div class="ps-point"><h3 class="heading-sm">Isolamento por cliente</h3><p class="body">Cada cliente roda isolado. Conectores e dados não passam de um cliente para outro, e testes automatizados verificam isso.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ss-section ss-section--dark" data-theme="dark" aria-labelledby="sg">
+      <div class="ss-section__inner">
+        <div class="ss-stack-2">
+          <p class="overline ps-kicker">Segurança e governança</p>
+          <h2 class="heading-xl" id="sg">Cada pessoa acessa só o que o papel dela permite</h2>
+        </div>
+        <div class="ps-points">
+          <div class="ps-point"><h3 class="heading-sm">Controle de acesso por papel</h3><p class="body">Permissões por papel que negam por padrão: o que não foi liberado fica bloqueado. Quando um papel muda, a regra nova vale em menos de 1 minuto.</p></div>
+          <div class="ps-point"><h3 class="heading-sm">Trilha de auditoria</h3><p class="body">Cada chamada de ferramenta fica registrada com usuário, papel, parâmetros (sem dados sensíveis) e horário.</p></div>
+          <div class="ps-point"><h3 class="heading-sm">Isolamento por cliente</h3><p class="body">Cada cliente roda isolado. O controle de acesso entre clientes nega por padrão e é verificado por testes.</p></div>
+        </div>
+        <div class="ps-hero-actions"><a class="ss-btn ss-btn--lg ss-btn--secondary button-lg" href="#seguranca">Conferir segurança</a></div>
+      </div>
+    </section>
+
+    <section class="ss-section" id="precos" aria-labelledby="pr">
+      <div class="ss-section__inner">
+        <div class="ss-stack-2"><h2 class="heading-xl" id="pr">Preços</h2><p class="ps-note body">Todos os planos incluem permissão por papel, trilha de auditoria e login pelo assistente com OAuth. Os conectores são cobrados à parte.</p></div>
+        <div class="ss-plans">
+          <article class="ss-card ss-plan">
+            <div class="ps-plan-head"><h3 class="heading-sm">Starter</h3></div>
+            <p class="ps-plan-tag body-sm">Para times pequenos validando IA com dados próprios.</p>
+            <div class="ss-price ss-price--display"><div class="ss-price__line"><span class="ss-price__value heading">R$&nbsp;399</span><span class="ss-price__period body-sm">/mês</span></div><p class="ss-price__note body-sm">Renova todo mês. Cancele quando quiser.</p></div>
+            <ul class="ss-plain ss-plan__list body-sm"><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Até 10 usuários inclusos</li><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Até 2 conectores ativos</li><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>RBAC e trilha de auditoria</li><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Usuário adicional: R$&nbsp;9,90/mês</li></ul>
+            <a class="ss-btn ss-btn--lg ss-btn--secondary ss-btn--block button-lg" href="#criar" style="margin-top:auto">Criar conta</a>
+          </article>
+          <article class="ss-card ss-plan ss-plan--recommended">
+            <div class="ps-plan-head"><h3 class="heading-sm">Standard</h3><span class="ss-badge ss-badge--brand badge">Recomendado</span></div>
+            <p class="ps-plan-tag body-sm">Para equipes em ritmo de produção com mais demanda.</p>
+            <div class="ss-price ss-price--display"><div class="ss-price__line"><span class="ss-price__value heading">R$&nbsp;499</span><span class="ss-price__period body-sm">/mês</span></div><p class="ss-price__note body-sm">Renova todo mês. Cancele quando quiser.</p></div>
+            <ul class="ss-plain ss-plan__list body-sm"><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Até 10 usuários inclusos</li><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Até 5 conectores ativos</li><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Base de conhecimento com 5 GB inclusos</li><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>O dobro de memória do Starter</li></ul>
+            <a class="ss-btn ss-btn--lg ss-btn--primary ss-btn--block button-lg" href="#criar" style="margin-top:auto">Criar conta</a>
+          </article>
+          <article class="ss-card ss-plan">
+            <div class="ps-plan-head"><h3 class="heading-sm">Pro</h3></div>
+            <p class="ps-plan-tag body-sm">Para cargas pesadas e operações com muitos conectores.</p>
+            <div class="ss-price ss-price--display"><div class="ss-price__line"><span class="ss-price__value heading">R$&nbsp;899</span><span class="ss-price__period body-sm">/mês</span></div><p class="ss-price__note body-sm">Renova todo mês. Cancele quando quiser.</p></div>
+            <ul class="ss-plain ss-plan__list body-sm"><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Até 10 usuários inclusos</li><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Até 10 conectores ativos</li><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>O dobro de CPU e de memória do Standard</li><li><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Suporte prioritário</li></ul>
+            <a class="ss-btn ss-btn--lg ss-btn--secondary ss-btn--block button-lg" href="#criar" style="margin-top:auto">Criar conta</a>
+          </article>
+        </div>
+        <p class="ps-note body-sm">Conectores cobrados separadamente. Você paga só os conectores que ativar. Cada um tem o preço definido pelo parceiro que o mantém.</p>
+      </div>
+    </section>
+
+    <section class="ss-section" aria-labelledby="fq">
+      <div class="ss-section__inner">
+        <h2 class="heading-xl" id="fq">Perguntas frequentes</h2>
+        <div class="ss-faq body">
+          <details open><summary>O que todos os planos incluem?<svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m18 15-6-6-6 6"/></svg></summary><p class="body">Permissão por papel, trilha de auditoria e login pelo assistente com OAuth. Os conectores são cobrados à parte, e o número de conectores ativos ao mesmo tempo depende do plano.</p></details>
+          <details><summary>Como os conectores são cobrados?<svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary><p class="body">Cada conector tem preço definido pelo parceiro que o mantém e entra na mesma fatura mensal.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ss-footer caption">
+    <div class="ss-footer__inner">
+      <span class="ps-foot-brand"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii05My42NyAxNC4xMyAxMDU1LjAyIDEwNTUuMDIiIHZlcnNpb249IjEuMSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImludGVncmFzLWJyYW5kIiB4MT0iMC41IiB5MT0iMCIgeDI9IjAuNSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTkxRThCIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjRTg2MDZBIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Y1QTYyMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBhdGggZmlsbD0idXJsKCNpbnRlZ3Jhcy1icmFuZCkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTE0MCA2OS40Yy0zIDEuNC02LjYgMi41LTggMi42LTIuNyAwLTExIDQuMS0yMCA5LjhhMTA2IDEwNiAwIDAgMC0yNC41IDI1TDg0IDExM2MtNS41IDguNy04IDIyLjMtOCA0NC4xIDAgMjIuMyAxLjIgMzEuNSA1LjEgMzguOCA2IDExIDcuOSAxMy43IDE0IDE5LjFhNjY4IDY2OCAwIDAgMSAyMS4yIDE5LjFjNSA0LjYgMTguNCAxNy41IDI5LjcgMjguNmE5NDcgOTQ3IDAgMCAwIDMyLjUgMzAuOGw1NSA1Mi42YTk0OCA5NDggMCAwIDAgMzYgMzMuNGwxNiAxNWM3LjcgNy4yIDIxLjQgMjAuMyAzMC41IDI5LjIgMzMgMzIuMiA2OS4xIDY0LjcgNzYuMiA2OC40YTkwIDkwIDAgMCAwIDg1LjYuMXE1LjMtMi42IDIyLTE5YTI0MTQgMjQxNCAwIDAgMSA4OS43LTg1LjZjMS43LTEuOCA0Ny4yLTQ1LjYgNTQuMi01Mi4zbDE2LjUtMTUuNSAyNy44LTI2LjMgMzMtMzEuNSAyMi41LTIxLjUgMTEuNi0xMC41YzI0LjItMjEuNCAyOC0yNi42IDMzLjUtNDYuOCAzLjgtMTMuOCA0LjctMzguNiAxLjYtNDguOWwtMi42LTkuN2MtMy45LTE2LjctMjQuNS00MC41LTQyLjYtNDguOS0xNi42LTcuNy0xOS4zLTguMi00NS41LTguMi0yMi41IDAtMjQuNC4xLTI5LjggMi4zYTM0IDM0IDAgMCAxLTggMi4yYy0zLjcgMC0xNS45IDYuNS0yMC45IDExLjJsLTkuNSA4LjgtMTQuOCAxNC0xOC41IDE3LjRhNjU2NiA2NTY2IDAgMCAwLTcyLjEgNjkuNmMtNDEgNDAuNC03Ny4xIDc0LjUtODEuOCA3N2EzMSAzMSAwIDAgMS0xNi4xLjJjLTEuNC0uNS0xNi4zLTE0LTMzLTI5LjhsLTM1LTMyLjljLTguMy03LjYtMjEuNC0yMC0zOC0zNmExODE4IDE4MTggMCAwIDAtNDktNDZsLTEwLjUtMTAtMTIuNi0xMS45LTEzLjQtMTIuNUMyMjUuMSA4MCAyMTIuOCA3MiAyMDcuOCA3MmMtLjggMC00LjEtMS03LjQtMi4xLTUuMy0yLTguNC0yLjItMzAuNC0yLjYtMjQuMy0uMy0yNC41LS4zLTMwIDIuMW0yODQuMyA1MDcuN2E1MCA1MCAwIDAgMC0yMC4xIDUuNGMtOS44IDMuMi0yOS40IDIwLjMtNzUuNyA2Ni4xLTEyLjEgMTItMzAuMyAyOS42LTQwLjUgMzkuM0wyNTcuNSA3MTcgMjIwIDc1M2wtNTIuNSA1MC41TDEzNiA4MzRjLTUwLjUgNDguMi01MCA0Ny42LTU0LjYgNjMuNi00LjIgMTQuOC00LjggNTIuMy0xIDYyLjRsMy4yIDguOWMuNCAxLjMgMS44IDMuOSAzLjEgNS44czIuNCA0IDIuNCA0LjRjMCA1IDIxIDI0LjQgMzIgMjkuNSAxNiA3LjQgMTguOSA3LjkgNDkgNy45aDI3LjVsOS0zYzEzLTQuMSAxNi42LTcgNDAtMzAuMiAxMS42LTExLjQgMjUuOC0yNS4xIDMxLjUtMzAuNGExNzk4IDE3OTggMCAwIDAgNDkuNi00Ni4zYzUuNi01LjYgMTYuNC0xNiAyNC0yMy4xbDIyLjgtMjEuNWMzNS0zMy40IDQ4LTQ1LjYgNTAtNDcgMy0yLjEgMTguMy0yIDIxLjUuMiAxLjMuOSA5LjQgOC41IDE4IDE3czIwLjggMjAgMjcuMSAyNmMxMyAxMiAyNy4zIDI1LjggNTMuNSA1MS43IDkuOSA5LjggMjEuOCAyMS4xIDI2LjUgMjUuMnMyMi45IDIxLjYgNDAuNSAzOWMzMi42IDMyLjEgMzguNCAzNi44IDQ2LjcgMzguMyAyIC40IDUuOSAxLjYgOC41IDIuOCA0LjYgMiA2LjEgMi4yIDMwLjggMmwyNi0uMSA5LjMtM2E4NSA4NSAwIDAgMCA1MC4xLTQ0YzguNC0xNi42IDguNS01OC42LjMtODEtMy04LTYuOS0xMi4zLTM3LjQtNDEuNi0zNy41LTM2LTYwLjgtNTguNC03OS44LTc3LTExLjgtMTEuNy0yNC45LTI0LjMtMjktMjhzLTE4LTE3LjMtMzEtMzAtMjcuNS0yNy0zMi41LTMxLjZjLTIxLjktMjAuNS0zMC4xLTI4LjQtNDcuNS00NS40YTc1OCA3NTggMCAwIDAtNTEuOS00Ny43IDY3IDY3IDAgMCAwLTI2LjEtMTAuMyA5NCA5NCAwIDAgMC0yMy43LS40Ii8+Cjwvc3ZnPgo=" alt=""><span class="label">Feito pela Singularidade Digital</span></span>
+      <nav class="ss-footer__links" aria-label="Rodapé">
+        <a href="#termos">Termos de Uso</a><a href="#privacidade">Política de Privacidade</a><a href="#cookies">Configurações de cookies</a><a class="ss-a11y-link" href="#acessibilidade"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="16" cy="4" r="1"/> <path d="m18 19 1-7-6 1"/> <path d="m5 8 3-3 5.5 3-2.36 3.5"/> <path d="M4.24 14.5a5 5 0 0 0 6.88 6"/> <path d="M13.76 17.5a5 5 0 0 0-6.88-6"/></svg>Acessibilidade</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="ps-cookie-wrap">
+    <div class="ss-cookie" role="region" aria-label="Cookies neste site">
+      <div class="ss-cookie__text"><p class="label">Cookies neste site</p><p class="body-sm ss-secondary">Usamos cookies essenciais para o funcionamento do site. Cookies de analytics nos ajudam a entender como você usa o site. Você pode escolher quais aceitar.</p></div>
+      <div class="ss-cookie__actions">
+        <button class="ss-btn ss-btn--secondary button" type="button">Aceitar todos</button>
+        <button class="ss-btn ss-btn--secondary button" type="button">Apenas essenciais</button>
+        <button class="ss-btn ss-btn--secondary button" type="button">Configurar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

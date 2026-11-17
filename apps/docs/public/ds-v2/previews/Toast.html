@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Toast</title></head>
+<body>
+<main class="ss-demo">
+  <div class="ss-demo-head"><h2 class="overline ss-demo-title">Confirma o que a pessoa fez</h2><span class="caption ss-demo-note">360px · canto superior direito no desktop, embaixo no celular · no máximo 3</span></div>
+  <div class="ss-toasts">
+    <div class="ss-toast" role="status">
+      <svg class="ss-icon ss-toast__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <path d="m9 12 2 2 4-4"/></svg>
+      <p class="ss-toast__text body-sm">Perfil atualizado</p>
+      <div class="ss-toast__end"><button class="ss-btn ss-btn--icon ss-btn--32 ss-btn--ghost" type="button" aria-label="Fechar"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button></div>
+    </div>
+    <div class="ss-toast" role="status">
+      <svg class="ss-icon ss-toast__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <path d="m9 12 2 2 4-4"/></svg>
+      <p class="ss-toast__text body-sm">Movido para a lixeira.</p>
+      <div class="ss-toast__end"><button class="ss-btn ss-btn--sm ss-btn--tertiary button" type="button">Desfazer</button><button class="ss-btn ss-btn--icon ss-btn--32 ss-btn--ghost" type="button" aria-label="Fechar"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button></div>
+    </div>
+    <div class="ss-toast ss-toast--info" role="status">
+      <svg class="ss-icon ss-toast__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <path d="M12 16v-4"/> <path d="M12 8h.01"/></svg>
+      <p class="ss-toast__text body-sm">Endereço copiado</p>
+      <div class="ss-toast__end"><button class="ss-btn ss-btn--icon ss-btn--32 ss-btn--ghost" type="button" aria-label="Fechar"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button></div>
+    </div>
+    <div class="ss-toast ss-toast--error" role="alert">
+      <svg class="ss-icon ss-toast__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <line x1="12" x2="12" y1="8" y2="12"/> <line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+      <p class="ss-toast__text body-sm">Não foi possível salvar. Tente de novo; se continuar, fale com o suporte.</p>
+      <div class="ss-toast__end"><button class="ss-btn ss-btn--icon ss-btn--32 ss-btn--ghost" type="button" aria-label="Fechar"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button></div>
+    </div>
+  </div>
+  <p class="caption ss-demo-note">Sucesso e info: 5s (8s com ação) · aviso: 8s · erro: fica até fechar · pausa com o ponteiro ou o foco. Erro de formulário fica no campo, não em toast.</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,31 @@
+---
+title: PageEstadoVazio
+description: Modelo de página vazia, com o PageHeader e o EmptyState centralizado na área de conteúdo, sem botão quando a pessoa não pode agir.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Modelo de página vazia: PageHeader e o EmptyState centralizado na área de conteúdo, sem botão quando a pessoa não pode agir.
+
+<DsPreview name="PageEstadoVazio" title="Prévia da PageEstadoVazio: Compartilhadas comigo, no portal das empresas" height={990} page phone />
+
+## Estrutura
+
+- Cabeçalho do portal das empresas (menu lateral fechado), onde "Compartilhadas comigo" existe; no Hub essa aba não aparece.
+- [PageHeader](/componentes/page-header/) "Compartilhadas comigo" com a explicação real: "Pastas da instituição que os seus papéis podem ler…".
+- [EmptyState](/componentes/empty-state/) centralizado nos dois eixos da área livre: "Nada compartilhado com você ainda".
+
+## Por que existe
+
+Sem o modelo, o vazio fica no canto da área, alinhado no início, e parece um erro de layout.
+
+## Outros exemplos
+
+Meu espaço, no primeiro uso: "Nada guardado por enquanto", com "Enviar arquivo" e "Nova nota".
+
+## No Integras Hub
+
+- A vitrine não centraliza o vazio na altura: ele fica abaixo das abas e das categorias, com 112px de respiro até o ícone (48px no celular).
+- Todo vazio da pessoa leva o ícone no ladrilho de 64px; o vazio de Assinados leva o emblema das [Faixas](/componentes/faixas/) no lugar do ícone.
+- Momento de sucesso: na volta do checkout, Assinados mostra o cartão "\{conector\} está na sua conta", com as Faixas no canto (veja [PageVitrine](/paginas-modelo/vitrine/)).
+- No celular, a pasta aberta e vazia do Meu espaço mostra "Nada guardado por enquanto" numa caixa, sem o cabeçalho das colunas (veja [Padrões, 12](/paginas-modelo/padroes/#12-celular-meu-espaço-e-conhecimento)).

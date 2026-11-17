@@ -1,0 +1,30 @@
+---
+title: Chips
+description: Chips de categoria (um por vez), de filtro (vários, liga e desliga) e de entrada (valores removíveis).
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Chips de categoria (um por vez), chips de filtro (vários, liga e desliga) e chips de entrada (valores removíveis, como os e-mails da lista liberada).
+
+<DsPreview name="Chips" title="Prévia dos Chips: categoria, filtro e entrada" height={376} />
+
+## Chip de filtro
+
+- 32px de altura, padding 0 12px, raio `radius-full`, borda de 1px `color-border-control`, `label` em `color-text-primary`.
+- Hover: fundo `color-interactive-secondary`.
+- Selecionado: fundo `color-interactive-primary-subtle`, borda e texto em `color-interactive-primary` e o ícone check de 16px (a cor nunca vem sozinha).
+- Categoria da loja: um por vez, começando por "Todos", em `role="radiogroup"` com `role="radio"` e `aria-checked`; as setas trocam a categoria e a lista filtra na hora.
+- Filtro do admin: vários ao mesmo tempo, `aria-pressed="true"`.
+
+## Chip de entrada
+
+- Botão × de 24px (`target-min`) com nome acessível ("Remover ana@empresa.com.br").
+
+## Regras
+
+- Gap de 8px (`size-2`) entre chips; eles quebram a linha.
+- Nos filtros do admin, com algum chip selecionado, aparece "Limpar filtros" (terciário). Na categoria da loja, "Todos" faz esse papel.
+- Na loja, os chips só aparecem com 2 ou mais categorias. Os rótulos da prévia são as categorias reais do catálogo (Compras públicas, Eleições, Legislativo, Orçamento público, Território); as tags vêm da plataforma.
+- Na vitrine do Hub, as categorias aparecem também na aba Assinados, e cada aba guarda a sua: um chip de Assinados não filtra o catálogo, e Assinados abre sempre em "Todos".
+- Chip é controle; [Badge](/componentes/badge/) é status e não é clicável.

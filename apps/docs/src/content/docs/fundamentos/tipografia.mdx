@@ -1,0 +1,54 @@
+---
+title: Tipografia
+description: Plus Jakarta Sans e JetBrains Mono, a escala de tamanhos e os 19 estilos de texto
+sidebar: { order: 2 }
+---
+
+import TokenTables from '../../../components/TokenTables.astro';
+
+## Famílias
+
+| Família  | Uso                                             | Fonte                      |
+| -------- | ----------------------------------------------- | -------------------------- |
+| **Sans** | Tudo: títulos, texto, botões, números           | Plus Jakarta Sans Variable |
+| **Mono** | Só dado técnico: endereço do conector, códigos, IDs, versão | JetBrains Mono Variable    |
+
+As duas vêm dos arquivos do próprio sistema (sem chamadas ao Google Fonts, melhor para a LGPD), em WOFF2 variável, com os subconjuntos latin e latin-ext (pt, en e es).
+
+```css
+@import '@singularidade/brand-assets/fonts/plus-jakarta-sans.css';
+@import '@singularidade/brand-assets/fonts/jetbrains-mono.css';
+```
+
+- Use Plus Jakarta Sans (`family-sans`) em tudo e JetBrains Mono (`family-mono`) só em dado técnico. E-mail usa `family-email`, porque cliente de e-mail não baixa fonte. No CSS, as variáveis são `--font-family-sans`, `--font-family-mono` e `--font-family-email`.
+- A pilha mono é 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace. As `@font-face` registram o nome longo e o curto, e a JetBrains Mono vai de 100 a 800.
+- Escreva números em Plus Jakarta Sans com algarismos tabulares (`ss-num`) em preço, medidor, tabela e contador.
+
+## Corpo e títulos
+
+- Corpo: `body` (16/24) no Hub, nos sites e no e-mail; `body-sm` (14/20) no admin compacto, em tabela, descrição de card, toast e alerta. Abaixo de 16px o iOS dá zoom no campo.
+- Títulos: `heading` (28/36) é o h1 do Hub, do login e das configurações, e `heading-xl` (32/40) a partir de 640px; `heading-md` (22/28) no admin compacto; `heading-sm` (18/24) em card, diálogo e EmptyState.
+- `display-xl` (56/60) só no hero do site, um por página. No topo do singularidade.digital, o título usa o tipo de vitrine da capa: Plus Jakarta Sans 700, −0,03em, entrelinha 0,95, de 40 a 80px, sem degradê.
+- Caixa alta com 0.06em só em `overline` (sobretítulo, rótulo de grupo) e `brand-label` ("INTEGRAS HUB"). Escreva o texto normal no HTML; a classe põe em caixa alta.
+- Prosa até 72ch. Título quebra linha e nunca vira reticências.
+- Tamanhos em rem, para o zoom do texto funcionar.
+
+## Estilos de texto
+
+Os 19 estilos são classes de `@singularidade/tokens/css/text-styles.css`, de `.display-xl` a `.otp`. Use junto com as classes dos componentes: `<button class="ss-btn ss-btn--primary button">`. O tema Vaadin não carrega esse arquivo; nos apps Vaadin, use os tokens `--font-*` de mesmo valor.
+
+<TokenTables section="type" />
+
+## Escala de tamanhos
+
+Os nomes da escala vêm da v1, e ela não é modular. No CSS, os tamanhos saem em rem (`--font-size-xs` é `0.75rem`); JS, JSON e Java ficam em px.
+
+<TokenTables section="fontSize" />
+
+## Pesos, entrelinhas e espaçamento
+
+<TokenTables section="fontWeight" />
+
+<TokenTables section="lineHeight" />
+
+<TokenTables section="letterSpacing" />

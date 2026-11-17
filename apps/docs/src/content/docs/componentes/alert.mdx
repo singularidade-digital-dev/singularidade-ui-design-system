@@ -1,0 +1,28 @@
+---
+title: Alert
+description: Aviso dentro da seção, com fundo tingido e borda inteira de 1px, que em largura total no topo da página vira Banner.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Aviso dentro da seção, com fundo tingido e borda inteira de 1px; em largura total no topo da página, vira Banner.
+
+<DsPreview name="Alert" title="Prévia do Alert: quatro tons e o Banner" height={640} />
+
+## Aparência
+
+- Raio `radius-md`, padding de 12px 16px, fundo `color-feedback-*-surface` e borda de 1px `color-feedback-*-border`.
+- Ícone de 20px na cor `color-feedback-*-text` do tom.
+- Título em 14/20 600 `color-text-primary` e corpo em `body-sm`.
+- Ação terciária ou link sublinhado em `color-text-primary` (`ss-link--alert`).
+- Banner (`ss-alert--banner`): o mesmo componente em largura total, sem raio, com borda só embaixo ("Modo de teste: nenhum valor é cobrado de verdade.").
+
+## Quando usar
+
+- Hierarquia: erro no campo, Alert na seção, Banner na página, [Dialog](/componentes/dialog/) para decisão que bloqueia. [Toast](/componentes/toast/) só confirma ação.
+- `role="status"` para informação; `role="alert"` para erro.
+
+## Regras
+
+- Um só componente de aviso, no lugar dos avisos feitos à mão.
+- Nunca a borda colorida à esquerda, também no e-mail: borda inteira de 1px e fundo tingido.

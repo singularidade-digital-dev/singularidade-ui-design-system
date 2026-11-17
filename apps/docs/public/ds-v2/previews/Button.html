@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/plus-jakarta-sans.css">
+<link rel="stylesheet" href="../fonts/jetbrains-mono.css">
+<link rel="stylesheet" href="../tokens/theme.css">
+<link rel="stylesheet" href="../tokens/text-styles.css">
+<link rel="stylesheet" href="../bundle.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('tema');var t=q==='escuro'?'dark':q==='claro'?'light':null;if(!t){try{if(window.parent!==window){t=window.parent.document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}}catch(e){}}if(!t){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script src="../bundle.js" defer></script><title>Button</title>
+<style>
+  .bt-scroll { overflow-x: auto; padding: 4px; margin: -4px; }
+  .bt-matrix { display: grid; grid-template-columns: max-content repeat(6, max-content); gap: var(--size-3) var(--size-4); align-items: center; }
+  .bt-matrix .caption { color: var(--color-text-muted); }
+  .bt-dialogbar { display: flex; justify-content: flex-end; gap: var(--size-2); padding: var(--size-4); border-top: 1px solid var(--color-border-subtle); }
+</style>
+</head>
+<body>
+<main class="ss-demo">
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Variantes</h2><span class="caption ss-demo-note">lg, 44px, padrão do modo confortável</span></div>
+    <div class="ss-demo-row">
+      <button class="ss-btn ss-btn--lg ss-btn--primary button-lg" type="button">Enviar código</button>
+      <button class="ss-btn ss-btn--lg ss-btn--secondary button-lg" type="button">Ver detalhes</button>
+      <button class="ss-btn ss-btn--lg ss-btn--tertiary button-lg" type="button">Como funciona</button>
+      <button class="ss-btn ss-btn--lg ss-btn--ghost button-lg" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><line x1="21" x2="14" y1="4" y2="4"/> <line x1="10" x2="3" y1="4" y2="4"/> <line x1="21" x2="12" y1="12" y2="12"/> <line x1="8" x2="3" y1="12" y2="12"/> <line x1="21" x2="16" y1="20" y2="20"/> <line x1="12" x2="3" y1="20" y2="20"/> <line x1="14" x2="14" y1="2" y2="6"/> <line x1="8" x2="8" y1="10" y2="14"/> <line x1="16" x2="16" y1="18" y2="22"/></svg>Filtros</button>
+      <button class="ss-btn ss-btn--lg ss-btn--danger button-lg" type="button">Cancelar assinatura</button>
+      <button class="ss-btn ss-btn--lg ss-btn--danger-tertiary button-lg" type="button">Excluir a conta</button>
+    </div>
+    <div class="ss-demo-row">
+      <button class="ss-btn ss-btn--lg ss-btn--provider" type="button"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4Ij48cGF0aCBmaWxsPSIjRUE0MzM1IiBkPSJNMjQgOS41YzMuNTQgMCA2LjcxIDEuMjIgOS4yMSAzLjZsNi44NS02Ljg1QzM1LjkgMi4zOCAzMC40NyAwIDI0IDAgMTQuNjIgMCA2LjUxIDUuMzggMi41NiAxMy4yMmw3Ljk4IDYuMTlDMTIuNDMgMTMuNzIgMTcuNzQgOS41IDI0IDkuNXoiLz48cGF0aCBmaWxsPSIjNDI4NUY0IiBkPSJNNDYuOTggMjQuNTVjMC0xLjU3LS4xNS0zLjA5LS4zOC00LjU1SDI0djkuMDJoMTIuOTRjLS41OCAyLjk2LTIuMjYgNS40OC00Ljc4IDcuMThsNy43MyA2YzQuNTEtNC4xOCA3LjA5LTEwLjM2IDcuMDktMTcuNjV6Ii8+PHBhdGggZmlsbD0iI0ZCQkMwNSIgZD0iTTEwLjUzIDI4LjU5Yy0uNDgtMS40NS0uNzYtMi45OS0uNzYtNC41OXMuMjctMy4xNC43Ni00LjU5bC03Ljk4LTYuMTlDLjkyIDE2LjQ2IDAgMjAuMTIgMCAyNGMwIDMuODguOTIgNy41NCAyLjU2IDEwLjc4bDcuOTctNi4xOXoiLz48cGF0aCBmaWxsPSIjMzRBODUzIiBkPSJNMjQgNDhjNi40OCAwIDExLjkzLTIuMTMgMTUuODktNS44MWwtNy43My02Yy0yLjE1IDEuNDUtNC45MiAyLjMtOC4xNiAyLjMtNi4yNiAwLTExLjU3LTQuMjItMTMuNDctOS45MWwtNy45OCA2LjE5QzYuNTEgNDIuNjIgMTQuNjIgNDggMjQgNDh6Ii8+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGg0OHY0OEgweiIvPjwvc3ZnPgo=" alt="">Continuar com Google</button>
+      <span class="caption ss-demo-note">Provider: cores e fonte do Google, a única exceção às cores dos tokens.</span>
+    </div>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Estados</h2><span class="caption ss-demo-note">md, 36px, padrão do modo compacto</span></div>
+    <div class="bt-scroll"><div class="bt-matrix">
+      <span></span>
+      <span class="caption">Padrão</span><span class="caption">Hover</span><span class="caption">Foco</span><span class="caption">Pressionado</span><span class="caption">Desabilitado</span><span class="caption">Carregando</span>
+
+      <span class="caption">Primário</span>
+      <button class="ss-btn ss-btn--primary button" type="button">Assinar</button>
+      <button class="ss-btn ss-btn--primary button is-hover" type="button">Assinar</button>
+      <button class="ss-btn ss-btn--primary button is-focus" type="button">Assinar</button>
+      <button class="ss-btn ss-btn--primary button is-active" type="button">Assinar</button>
+      <button class="ss-btn ss-btn--primary button" type="button" disabled>Assinar</button>
+      <button class="ss-btn ss-btn--primary button" type="button" aria-busy="true"><svg class="ss-icon ss-spin" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>Assinando…</button>
+
+      <span class="caption">Secundário</span>
+      <button class="ss-btn ss-btn--secondary button" type="button">Manter</button>
+      <button class="ss-btn ss-btn--secondary button is-hover" type="button">Manter</button>
+      <button class="ss-btn ss-btn--secondary button is-focus" type="button">Manter</button>
+      <button class="ss-btn ss-btn--secondary button is-active" type="button">Manter</button>
+      <button class="ss-btn ss-btn--secondary button" type="button" disabled>Manter</button>
+      <button class="ss-btn ss-btn--secondary button" type="button" aria-busy="true"><svg class="ss-icon ss-spin" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>Salvando…</button>
+
+      <span class="caption">Terciário</span>
+      <button class="ss-btn ss-btn--tertiary button" type="button">Desfazer</button>
+      <button class="ss-btn ss-btn--tertiary button is-hover" type="button">Desfazer</button>
+      <button class="ss-btn ss-btn--tertiary button is-focus" type="button">Desfazer</button>
+      <button class="ss-btn ss-btn--tertiary button is-active" type="button">Desfazer</button>
+      <button class="ss-btn ss-btn--tertiary button" type="button" disabled>Desfazer</button>
+      <span class="caption">—</span>
+
+      <span class="caption">Neutro</span>
+      <button class="ss-btn ss-btn--ghost button" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/> <path d="m15 5 4 4"/></svg>Editar</button>
+      <button class="ss-btn ss-btn--ghost button is-hover" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/> <path d="m15 5 4 4"/></svg>Editar</button>
+      <button class="ss-btn ss-btn--ghost button is-focus" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/> <path d="m15 5 4 4"/></svg>Editar</button>
+      <button class="ss-btn ss-btn--ghost button is-active" type="button"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/> <path d="m15 5 4 4"/></svg>Editar</button>
+      <button class="ss-btn ss-btn--ghost button" type="button" disabled><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/> <path d="m15 5 4 4"/></svg>Editar</button>
+      <span class="caption">—</span>
+
+      <span class="caption">Perigo</span>
+      <button class="ss-btn ss-btn--danger button" type="button">Excluir</button>
+      <button class="ss-btn ss-btn--danger button is-hover" type="button">Excluir</button>
+      <button class="ss-btn ss-btn--danger button is-focus" type="button">Excluir</button>
+      <button class="ss-btn ss-btn--danger button is-active" type="button">Excluir</button>
+      <button class="ss-btn ss-btn--danger button" type="button" disabled>Excluir</button>
+      <button class="ss-btn ss-btn--danger button" type="button" aria-busy="true"><svg class="ss-icon ss-spin" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>Excluindo…</button>
+    </div></div>
+    <p class="caption ss-demo-note">Desabilitado só quando a ação é impossível, com o motivo à vista: <span class="ss-muted">“Reenviar em 0:45”</span>. Nunca para forçar o preenchimento: valide no envio.</p>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">Tamanhos e só ícone</h2><span class="caption ss-demo-note">sm 30px · md 36px · lg 44px; só ícone exige aria-label e tooltip</span></div>
+    <div class="ss-demo-row ss-demo-row--loose">
+      <div class="ss-demo-row">
+        <button class="ss-btn ss-btn--sm ss-btn--secondary button" type="button">Assinar</button>
+        <button class="ss-btn ss-btn--secondary button" type="button">Salvar alterações</button>
+        <button class="ss-btn ss-btn--lg ss-btn--secondary button-lg" type="button">Enviar código</button>
+      </div>
+      <div class="ss-demo-row">
+        <button class="ss-btn ss-btn--icon ss-btn--sm ss-btn--ghost" type="button" aria-label="Editar"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/> <path d="m15 5 4 4"/></svg></button>
+        <button class="ss-btn ss-btn--icon ss-btn--ghost" type="button" aria-label="Copiar endereço"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/> <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></button>
+        <span class="ss-tip-anchor">
+          <button class="ss-btn ss-btn--icon ss-btn--lg ss-btn--ghost is-focus" type="button" aria-label="Mais ações" aria-describedby="tip1"><svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="1"/> <circle cx="19" cy="12" r="1"/> <circle cx="5" cy="12" r="1"/></svg></button>
+          <span class="ss-tooltip caption" role="tooltip" id="tip1">Mais ações</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="ss-demo-col">
+    <div class="ss-demo-head"><h2 class="overline ss-demo-title">No diálogo</h2><span class="caption ss-demo-note">secundário antes do primário, à direita</span></div>
+    <div class="ss-demo-surface" style="padding:0">
+      <div class="bt-dialogbar">
+        <button class="ss-btn ss-btn--secondary button" type="button">Manter</button>
+        <button class="ss-btn ss-btn--danger button" type="button">Cancelar assinatura</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

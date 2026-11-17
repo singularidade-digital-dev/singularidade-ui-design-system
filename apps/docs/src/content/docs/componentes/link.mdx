@@ -1,0 +1,23 @@
+---
+title: Link
+description: Link de navegação, sempre sublinhado no meio do texto e com um texto que diz o destino.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Link de navegação: no meio do texto é sempre sublinhado e diz o destino.
+
+<DsPreview name="Link" title="Prévia do Link: no meio do texto, sozinho, externo e dentro de Alert" height={450} />
+
+## Variantes
+
+- **No meio do texto** (`ss-link`): `color-link`, sublinhado de 1px com `text-underline-offset: 0.15em`. Hover: `color-link-hover` e sublinhado de 2px. Foco: outline de 2px com offset de 2px e `radius-xs`. Visitado tem a mesma cor.
+- **Sozinho** (`ss-link ss-link--standalone label`): 14/20 500, sublinha só no hover. Menu, "Já tenho conta: entrar", "Como funciona".
+- **Dentro de Alert** (`ss-link--alert`): `color-text-primary`, sublinhado (o coral cai para 4,36:1 sobre o aviso no escuro).
+- **Externo**: o ícone external-link de 14px e o texto oculto "(abre em nova aba)" em `ss-sr-only`.
+
+## Regras
+
+- O texto diz o destino ("Termos de Uso", "Política de Privacidade"), nunca "clique aqui".
+- Nova aba só ao sair do fluxo. Os termos, durante o cadastro, abrem num [Dialog](/componentes/dialog/).
+- Link não é botão: ação que muda dados é [Button](/componentes/button/).

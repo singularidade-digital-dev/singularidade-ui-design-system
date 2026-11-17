@@ -1,0 +1,60 @@
+---
+title: Badge
+description: Status em uma ou poucas palavras, com tom suave e ícone opcional; nunca clicável, nunca só cor.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Status em uma ou poucas palavras, com tom suave e ícone opcional; nunca clicável, nunca só cor.
+
+<DsPreview name="Badge" title="Prévia do Badge: tons, sólido, contagem e selos de status" height={456} />
+
+## Medidas
+
+- 20px de altura (padding 2px 10px) ou 24px (`ss-badge--lg`); estilo `badge` (12/16 600); raio `radius-full`.
+- Ícone de 12px ou ponto de 6px (`ss-badge__dot`), opcionais. O texto está sempre presente.
+
+## Tons
+
+Fundo e texto, com o contraste no claro e no escuro.
+
+- Neutro (padrão): `color-interactive-secondary` e `color-text-secondary` (7,76 e 7,21).
+- Success: `color-feedback-success-surface` e `-text` (5,21 e 8,01).
+- Warning: `color-feedback-warning-surface` e `-text` (4,84 e 7,00).
+- Danger: `color-feedback-error-surface` e `-text` (5,91 e 4,87).
+- Info: `color-feedback-info-surface` e `-text` (6,16 e 5,26).
+- Brand: `color-interactive-primary-subtle` e `color-interactive-primary` (5,01 e 4,81).
+- Sólido (contagem que pede atenção): `-solid` com `color-on-status`.
+- Pill de contagem (`ss-count`): largura mínima de 20px, tom neutro, tabular-nums.
+- Os tons tingidos pintam o tom sobre uma base `color-surface-raised` opaca: numa linha selecionada ou num contêiner tingido, o badge lê igual (dois tons translúcidos empilhados davam 3,71 a 4,12:1 no escuro).
+
+## Selo de status
+
+- A palavra vem do app, na língua da tela; a cor vem do código gravado, nunca da palavra.
+- Um código sem palavra aparece como está gravado, nunca como chave faltando.
+- Pílula com padding 2px 10px, `radius-full`, 12px e peso 600, com o tom pintado sobre a base opaca.
+
+Do código para o tom:
+
+- success: ACTIVE, COMPLETED, SUCCESS, PUBLISHED, RUNNING, CREATE;
+- warning: PENDING, PROVISIONING, REACTIVATING, PROCESSING, PENDING_RETRY;
+- error: FAILED, CANCELLED, ERROR, STOPPED, LOCKED, DELETE, DENIED;
+- info: SUSPENDED, INACTIVE, UNKNOWN;
+- neutro: todo outro código.
+
+## Palavras
+
+- Portal das empresas: Usuários (Ativo, Inativo, Bloqueado, Convite pendente); Chaves de API (Ativa, Revogada); Conector (Ativo, Inativo, Erro); Auditoria (Sucesso, Erro, Negado); Ações administrativas: a ação (Criação, Alteração, Exclusão, Convite enviado, Guia de uso enviado…) e o tipo de entidade (Usuário, Papel, Conector, Pasta…).
+- Admin da plataforma: Ativo, Inativo, Pendente, Provisionando, Suspenso, Reativando, Falhou, Cancelado, Em andamento, Concluído, Em execução, Parado, Desconhecido, Processando, Aguardando reenvio; "—" sem status.
+- Como fica: Convite pendente em aviso (laranja); Bloqueado e Negado em erro; Inativo em info (azul); Criação, Ativo e Sucesso em sucesso; Exclusão em erro; Revogada e as outras ações em neutro.
+
+## Na tabela
+
+- A pílula não quebra linha (`white-space: nowrap`).
+- Em grade que mede a largura automática só pelas linhas na tela (o vaadin-grid 25.2), a coluna de status tem largura fixa, do maior valor nas três línguas ("Aprovisionando", 8,25rem). Veja [Table](/componentes/table/).
+- Os filtros mostram a palavra e guardam o código; vazio, o filtro diz "Todos". A coluna de status ordena pela palavra. A exportação CSV segue com o código gravado (SUCCESS…).
+
+## Regras
+
+- Consentimento é badge neutro nos dois estados ("Consentimento dado em 12/11/2026", "Sem consentimento").
+- Badge não é clicável e não parece botão. Filtro clicável é [Chip](/componentes/chips/).

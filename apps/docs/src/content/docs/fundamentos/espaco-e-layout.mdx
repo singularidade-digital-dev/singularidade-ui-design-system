@@ -1,0 +1,49 @@
+---
+title: Espaço e layout
+description: A grade de 4px, os breakpoints, a grade de colunas, as larguras de contêiner e os alvos de toque
+sidebar: { order: 3 }
+---
+
+import TokenTables from '../../../components/TokenTables.astro';
+
+## Espaço
+
+- Siga a grade de 4px: `size-1` (4) do rótulo ao campo e do campo à ajuda; `size-2` (8) entre botões e chips; `size-4` (16) entre campos; `size-6` a `size-8` (24 a 32) entre grupos; `size-16` e `size-24` (64 e 96) entre seções de site, no celular e no desktop.
+- O espaço mostra o que é grupo: não use linha onde o espaço resolve.
+
+<TokenTables section="spacing" />
+
+## Breakpoints e grade
+
+- Breakpoints `bp-sm` (640), `bp-md` (1024) e `bp-lg` (1280), mobile-first. Margem lateral de 16px no celular e de 24px a partir de 640px.
+- Grade: 4 colunas com gutter `size-4` (16) abaixo de `bp-sm`; 8 colunas com gutter `size-6` (24) de `bp-sm` a `bp-md`; 12 colunas com gutter `size-6` a partir de `bp-md`.
+- A grade fica dentro da margem lateral e do contêiner; card, campo e gráfico ocupam colunas inteiras. Em listas e formulários simples, prefira `flex` ou `vaadin-vertical-layout`.
+
+| Faixa   | Largura       | Uso típico                      |
+| ------- | ------------- | ------------------------------- |
+| Celular | `< 640px`     | Smartphone em retrato           |
+| Tablet  | `640–1024px`  | Tablet, celular em paisagem     |
+| Desktop | `1024–1280px` | Notebook, desktop pequeno       |
+| Largo   | `> 1280px`    | Desktop grande, monitor externo |
+
+<TokenTables section="breakpoint" />
+
+## Larguras
+
+- `container-auth` (440) nas telas de entrada; `container-prose` e `container-settings` (720); `container-content` (1200) na vitrine e nos sites; `container-app` (1280).
+- Cabeçalho do app com `header-height-app` (56), do site com `header-height-site` (64); SideNav com `sidenav-width` (240).
+
+<TokenTables section="container" />
+
+## Alvos e formulários
+
+- Alvo nunca menor que `target-min` (24px); `target-touch` (44px) no modo confortável. Nas telas de entrada no celular, o botão de envio ocupa a largura toda.
+- Formulário em coluna única, rótulo em cima. Logo, título e conteúdo começam no mesmo x.
+
+<TokenTables section="control" />
+
+## Camadas
+
+Para os sites. O Vaadin empilha os próprios overlays.
+
+<TokenTables section="zIndex" />

@@ -1,0 +1,30 @@
+---
+title: Select
+description: Escolha de uma opção numa lista, com rádio visível até 4 opções, Select de 5 a 10 e ComboBox com busca acima de 10.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Escolha de uma opção numa lista: rádio visível até 4 opções, Select de 5 a 10, ComboBox com busca acima de 10.
+
+<DsPreview name="Select" title="Prévia do Select: fechado, aberto, rádio e idioma" height={600} />
+
+## Anatomia
+
+- A mesma anatomia e os mesmos estados do [TextField](/componentes/text-field/) (`ss-input ss-select`), mais um chevron de 16px em `color-text-secondary`. Placeholder "Selecione" em `color-text-muted`.
+- A lista aberta (`ss-listbox`) fica logo abaixo do campo (`size-1`) e na largura dele, com `aria-expanded` no campo: fundo raised, borda subtle, raio `radius-lg`, `shadow-md` e altura máxima de 320px.
+- Item (`ss-option`) de 36px ou 44px, padding 0 12px; hover em `color-interactive-secondary`; o selecionado tem check e peso 600.
+- Funciona pelo teclado, inclusive digitando o nome.
+
+## Quantas opções
+
+- 2 a 4: rádio visível (`ss-check ss-radio` num fieldset com legend).
+- 5 a 10: Select.
+- Mais de 10: ComboBox com busca (países).
+- Nos sites, `<select>` nativo.
+
+## Idioma
+
+- Compacto, com os nomes nativos ("Português", "English", "Español"). O botão mostra "PT" e tem `aria-label="Idioma"`.
+- Nas telas com login, o idioma fica dentro do menu da pessoa.
+- O seletor tem o rótulo "Idioma" nas três línguas: sem ele, o leitor de tela lê só o valor ("PT-BR").

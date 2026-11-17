@@ -1,0 +1,27 @@
+---
+title: PageCadastro
+description: Modelo de criação de conta no Hub, no mesmo molde do login, e do cadastro de empresa com Stepper.
+---
+
+import DsPreview from '../../../components/DsPreview.astro';
+
+Modelo de criação de conta no Hub, no mesmo molde do login, e do cadastro de empresa com Stepper.
+
+<DsPreview name="PageCadastro" title="Prévia da PageCadastro: criar conta no Hub e cadastro de empresa" height={1060} page />
+
+## Hub (coluna de 440px)
+
+1. h1 "Criar conta" e a introdução real: "Grátis. Informe seu e-mail, aceite os termos e confirme com o código que enviaremos."
+2. Alerts de intenção (textos reais): "Depois do cadastro, você vai direto para contratar o conector \{0\}."; "Código de parceiro \{0\} guardado para a sua primeira compra."
+3. O botão do Google e o divisor "ou".
+4. Campo de e-mail.
+5. Duas linhas obrigatórias, com links que abrem um Dialog: "Tenho 18 anos ou mais e aceito os Termos de Uso"; "Li e aceito a Política de Privacidade".
+6. 16px abaixo, a linha opcional "Personalizar ofertas com base no meu uso (opcional)" com "Como funciona".
+7. "Enviar código" em largura total.
+8. "Já tenho conta: entrar".
+
+## Cadastro de empresa (plataforma)
+
+- O [Stepper](/componentes/stepper/) com "Passo 2 de 3" (Empresa, Fiscal, Pagamento), na mesma coluna.
+- Campos com autocomplete; o CNPJ alfanumérico é aceito; o erro diz como resolver.
+- "Voltar" mantém os dados.

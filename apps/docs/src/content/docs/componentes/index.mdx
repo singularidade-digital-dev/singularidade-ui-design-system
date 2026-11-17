@@ -1,0 +1,86 @@
+---
+title: Componentes
+description: Os 24 componentes do Design System v2, em cinco grupos, cada um com a prévia ao vivo no claro e no escuro
+sidebar:
+  label: Visão geral
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+O Design System v2 é feito de CSS: cada componente é marcação com as classes `ss-*` do `bundle.css`, e cada prévia é essa marcação. Não há componente JavaScript para carregar. As prévias carregam o `theme.css` e o `text-styles.css` publicados em `@singularidade/tokens` e o `bundle.css` do DS v2.
+
+Em cada prévia, os botões **Claro** e **Escuro** trocam o tema (ela começa no tema do site), e **Abrir em nova aba** mostra a prévia sozinha. Os estados (hover, foco, pressionado) aparecem lado a lado: as classes `is-hover`, `is-focus` e `is-active` simulam o ponteiro e o teclado para mostrá-los parados. As classes `ss-demo-*` existem só nas prévias; não use em produto.
+
+## Ações
+
+| Componente                      | O que é                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------- |
+| [Button](/componentes/button/)  | Botão de ação: um primário por tela, rótulo de verbo e objeto           |
+| [Link](/componentes/link/)      | Link de navegação, sublinhado no meio do texto, que diz o destino       |
+
+## Formulário
+
+| Componente                              | O que é                                                                    |
+| --------------------------------------- | -------------------------------------------------------------------------- |
+| [TextField](/componentes/text-field/)   | Campo de texto com rótulo visível; inclui CopyField e OtpField             |
+| [Select](/componentes/select/)          | Escolha de uma opção: rádio, Select ou ComboBox, pelo número de opções     |
+| [Checkbox](/componentes/checkbox/)      | Caixa de 20px com rótulo clicável; também a linha de termos e consentimento |
+| [Chips](/componentes/chips/)            | Chips de categoria, de filtro e de entrada                                 |
+
+## Navegação
+
+| Componente                         | O que é                                                          |
+| ---------------------------------- | ---------------------------------------------------------------- |
+| [Header](/componentes/header/)     | Cabeçalho do app (56px) e do site (64px)                         |
+| [SideNav](/componentes/side-nav/)  | Menu lateral do admin, com grupos de no máximo 7 itens           |
+| [Tabs](/componentes/tabs/)         | Abas para trocar de vista na mesma página                        |
+| [Stepper](/componentes/stepper/)   | Passos numerados de um fluxo de mais de uma tela                 |
+
+## Exibição
+
+| Componente                                    | O que é                                                                 |
+| --------------------------------------------- | ----------------------------------------------------------------------- |
+| [PageHeader](/componentes/page-header/)       | Cabeçalho de página: trilha, h1, descrição, ações e abas                |
+| [ConnectorCard](/componentes/connector-card/) | Cartão de conector da vitrine e da loja, com selo, preço e uma ação     |
+| [Price](/componentes/price/)                  | Preço exato, com período, renovação e cancelamento                      |
+| [Badge](/componentes/badge/)                  | Status em poucas palavras, com tom suave; nunca clicável                |
+| [Avatar](/componentes/avatar/)                | Pessoa (círculo) ou organização (quadrado), com iniciais de reserva     |
+| [Table](/componentes/table/)                  | Tabela de dados do admin, que vira cards no celular                     |
+| [EmptyState](/componentes/empty-state/)       | Estado vazio que ensina o que aparece ali e como chega                  |
+| [Faixas](/componentes/faixas/)                | O momento de marca: três faixas nas cores do símbolo                    |
+
+## Feedback
+
+| Componente                          | O que é                                                              |
+| ----------------------------------- | -------------------------------------------------------------------- |
+| [Alert](/componentes/alert/)        | Aviso dentro da seção; em largura total, vira Banner                 |
+| [Toast](/componentes/toast/)        | Confirmação breve do que a pessoa fez, com "Desfazer"                |
+| [Dialog](/componentes/dialog/)      | Diálogo modal para decisões que bloqueiam o fluxo                    |
+| [Meter](/componentes/meter/)        | Medidor de uso com o número sempre escrito                           |
+| [Skeleton](/componentes/skeleton/)  | Esqueleto da região que carrega, a partir de 300ms                   |
+| [Tour](/componentes/tour/)          | Tour guiado de cada tela, que sempre pode ser pulado                 |
+
+Os componentes montados em telas inteiras estão em [Páginas-modelo](/paginas-modelo/padroes/).
+
+## Nos apps Vaadin
+
+Os apps Vaadin Flow recebem o visual pelo tema `singularidade-base` do `vaadin-bindings`, que liga os componentes do Vaadin aos tokens. As páginas dos componentes trazem, quando há, a seção "Vaadin 25" com as propriedades que valem lá. Veja [Vaadin Flow](/devs/vaadin-flow/).
+
+Os componentes da biblioteca `singularidade-ui-vaadin` (BoundFormPanel, ProfileEditCard, AvatarUploadField, AddressField, PhoneField, TaxIdField, EulaAcceptancePanel) ainda não estão documentados aqui.
+
+## Storybook
+
+O Storybook do repositório mostra os componentes do Vaadin com o tema da marca, com troca de marca e de tema. Ele ainda não tem endereço público. Para abrir:
+
+```bash
+pnpm --filter @singularidade/storybook dev   # http://localhost:6006
+```
+
+- **Foundations**: cor, tipografia, espaço, movimento, iconografia e logos.
+- **Vaadin core**: campos (text-field, password, integer, number, text-area, combo-box, select, date-picker, checkbox), ações (button, menu-bar), exibição (avatar, badge, icon, progress-bar), layout (vertical e horizontal-layout, split-layout, tabs) e overlays (dialog, notification, tooltip, popover).
+
+<Aside type="caution">
+  O Storybook usa os web components do Vaadin 24 e uma cópia própria da ponte
+  (`.storybook/vaadin-overrides.css`) sobre os quatro `{marca}.{tema}.css`. Ele não carrega o tema
+  `singularidade-base` da 1.0.0, então pode diferir do que os apps mostram no Vaadin 25.
+</Aside>
