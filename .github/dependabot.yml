@@ -3,6 +3,19 @@ version: 2
 # update per ecosystem, and majors in pull requests of their own. The exceptions
 # below: package families that only work when they move together, Vaadin, and
 # the npm packages that produce or ship what the published packages contain.
+#
+# A package that matches more than one group goes to the most specific one, not
+# to the first one listed: GitHub's documentation still says "first", but the
+# updater has scored the patterns since dependabot-core#14861 (May 2026). An
+# exact name ('astro') scores 1000, a pattern with a wildcard about 100
+# ('@astrojs/*' scores 95, 'com.vaadin:*' 97), the lone '*' 1, and a group
+# without patterns 500. A routine group without patterns would therefore
+# outrank every wildcard pattern: npm-minor-patch would take @astrojs/starlight
+# out of docs-site, and maven-minor-patch would leave vaadin empty. So each
+# routine group says patterns: ['*'] and keeps only what no other group claims.
+# Groups whose update-types do not overlap, such as a *-major group and the
+# routine group, do not compete: the package is in both, and the type of the
+# update decides which one takes it.
 updates:
   - package-ecosystem: npm
     directory: /
@@ -32,6 +45,7 @@ updates:
       # minors rename icons) and the @fontsource-variable fonts are copied into
       # brand-assets.
       npm-minor-patch:
+        patterns: ['*']
         update-types: ['minor', 'patch']
         exclude-patterns: ['sharp', 'style-dictionary', 'lucide-static', '@fontsource-variable/*']
       # Families whose majors only work together; their minor and patch updates
@@ -84,6 +98,7 @@ updates:
       # Routine pull request: every other minor and patch update at once; each
       # major gets a pull request of its own.
       maven-minor-patch:
+        patterns: ['*']
         update-types: ['minor', 'patch']
     ignore:
       # A Vaadin major moves only in a coordinated wave along that chain, as
@@ -104,4 +119,5 @@ updates:
       # Routine pull request: every minor and patch update at once; each major
       # gets a pull request of its own.
       actions-minor-patch:
+        patterns: ['*']
         update-types: ['minor', 'patch']
